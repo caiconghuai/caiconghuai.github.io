@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="web content extraction," />
 
 
 
@@ -79,16 +79,21 @@
 
 
 
-<meta name="description" content="Machine Learning/Algorithm/Deep Learning/NLP">
-<meta property="og:type" content="website">
-<meta property="og:title" content="蔡聪怀">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="在爆炸式增长的互联网时代，互联网上有大量的资源，如何爬取这些资源成为一个热门的研究点。其中如何高效的对网页正文进行抽取、清洗和存储成为一个重要的研究领域。但是，在网页上，除了正文部分，通常还会包含大量的导航栏、广告、版权等信息。相较于正文，这些信息对于我们来说用处不是很大，这部分信息，在网页正文抽取中，被称为噪声信息。为了提高网页正文采集的性能，我们需要把这这些噪声去除。 在这篇博文中，会介绍几个">
+<meta name="keywords" content="web content extraction">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网页正文抽取算法">
+<meta property="og:url" content="http://yoursite.com/2018/04/05/网页正文抽取算法/index.html">
 <meta property="og:site_name" content="蔡聪怀">
-<meta property="og:description" content="Machine Learning/Algorithm/Deep Learning/NLP">
+<meta property="og:description" content="在爆炸式增长的互联网时代，互联网上有大量的资源，如何爬取这些资源成为一个热门的研究点。其中如何高效的对网页正文进行抽取、清洗和存储成为一个重要的研究领域。但是，在网页上，除了正文部分，通常还会包含大量的导航栏、广告、版权等信息。相较于正文，这些信息对于我们来说用处不是很大，这部分信息，在网页正文抽取中，被称为噪声信息。为了提高网页正文采集的性能，我们需要把这这些噪声去除。 在这篇博文中，会介绍几个">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="https://github.com/conghuaicai/cs-skill-tree/raw/master/spider/web%20content%20extraction/images/1.png">
+<meta property="og:image" content="https://github.com/conghuaicai/cs-skill-tree/raw/master/spider/web%20content%20extraction/images/2.png">
+<meta property="og:updated_time" content="2018-04-05T08:34:20.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="蔡聪怀">
-<meta name="twitter:description" content="Machine Learning/Algorithm/Deep Learning/NLP">
+<meta name="twitter:title" content="网页正文抽取算法">
+<meta name="twitter:description" content="在爆炸式增长的互联网时代，互联网上有大量的资源，如何爬取这些资源成为一个热门的研究点。其中如何高效的对网页正文进行抽取、清洗和存储成为一个重要的研究领域。但是，在网页上，除了正文部分，通常还会包含大量的导航栏、广告、版权等信息。相较于正文，这些信息对于我们来说用处不是很大，这部分信息，在网页正文抽取中，被称为噪声信息。为了提高网页正文采集的性能，我们需要把这这些噪声去除。 在这篇博文中，会介绍几个">
+<meta name="twitter:image" content="https://github.com/conghuaicai/cs-skill-tree/raw/master/spider/web%20content%20extraction/images/1.png">
 
 
 
@@ -118,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/04/05/网页正文抽取算法/"/>
 
 
 
 
 
-  <title>蔡聪怀</title>
+  <title>网页正文抽取算法 | 蔡聪怀</title>
   
 
 
@@ -143,8 +148,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -247,9 +251,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -279,9 +283,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/05/网页正文抽取算法/" itemprop="url">网页正文抽取算法</a></h1>
+          <h1 class="post-title" itemprop="name headline">网页正文抽取算法</h1>
         
 
         <div class="post-meta">
@@ -353,9 +355,7 @@
       
 
       
-        
-          
-            <p>在爆炸式增长的互联网时代，互联网上有大量的资源，如何爬取这些资源成为一个热门的研究点。其中如何高效的对网页正文进行抽取、清洗和存储成为一个重要的研究领域。但是，在网页上，除了正文部分，通常还会包含大量的导航栏、广告、版权等信息。相较于正文，这些信息对于我们来说用处不是很大，这部分信息，在网页正文抽取中，被称为噪声信息。为了提高网页正文采集的性能，我们需要把这这些噪声去除。</p>
+        <p>在爆炸式增长的互联网时代，互联网上有大量的资源，如何爬取这些资源成为一个热门的研究点。其中如何高效的对网页正文进行抽取、清洗和存储成为一个重要的研究领域。但是，在网页上，除了正文部分，通常还会包含大量的导航栏、广告、版权等信息。相较于正文，这些信息对于我们来说用处不是很大，这部分信息，在网页正文抽取中，被称为噪声信息。为了提高网页正文采集的性能，我们需要把这这些噪声去除。</p>
 <p>在这篇博文中，会介绍几个比较经典、效果也比较好的算法，一是<strong>CETD：Content Extraction via Text Density</strong>；二是<strong>CETR：Content Extraction via Tag Ratios。</strong>三是<strong>CEPR：Content Extraction via Path Ratios</strong>。</p>
 <h1 id="CETD：Content-Extraction-via-Text-Density"><a href="#CETD：Content-Extraction-via-Text-Density" class="headerlink" title="CETD：Content Extraction via Text Density"></a>CETD：Content Extraction via Text Density</h1><p>该算法是主要思想是：在典型的网页结构中，噪声信息（指正文信息以外）通常被高度格式化，因此包含的文本信息通常很少，而正文通常包含大量文本。而且，正文通常在页面中保持完整性，即其内容通常不会被分到多个DOM树节点中。</p>
 <h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
@@ -428,8 +428,6 @@
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1] Sun, F., Song, D., &amp; Liao, L. (2011). DOM based content extraction via text density. Proceedings of the 34th International ACM SIGIR Conference on Research and Development in Information - SIGIR ’11, l, 245. </p>
 <p>[2] Wu, G., Li, L., Hu, X., &amp; Wu, X. (2013). Web news extraction via path ratios. Proceedings of the 22nd ACM International Conference on Conference on Information &amp; Knowledge Management - CIKM ’13, 2059–2068.</p>
 
-          
-        
       
     </div>
     
@@ -444,14 +442,20 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/web-content-extraction/" rel="tag"># web content extraction</a>
+          
+        </div>
+      
+
+      
+      
+      
 
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -461,10 +465,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -472,6 +477,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -492,8 +501,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -557,6 +575,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CETD：Content-Extraction-via-Text-Density"><span class="nav-number">1.</span> <span class="nav-text">CETD：Content Extraction via Text Density</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#优点"><span class="nav-number">1.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Text-Density"><span class="nav-number">1.2.</span> <span class="nav-text">Text Density</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Composite-Text-Density"><span class="nav-number">1.3.</span> <span class="nav-text">Composite Text Density</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Content-Extraction"><span class="nav-number">1.4.</span> <span class="nav-text">Content Extraction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DensitySum"><span class="nav-number">1.5.</span> <span class="nav-text">DensitySum</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CEPR：Content-Extraction-via-Path-Ratios"><span class="nav-number">2.</span> <span class="nav-text">CEPR：Content Extraction via Path Ratios</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Document-Object-Model"><span class="nav-number">2.1.</span> <span class="nav-text">Document Object Model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Extended-Labeled-Ordered-Tree"><span class="nav-number">2.2.</span> <span class="nav-text">Extended Labeled Ordered Tree</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tag-Path"><span class="nav-number">2.3.</span> <span class="nav-text">Tag Path</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特征提取"><span class="nav-number">2.4.</span> <span class="nav-text">特征提取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Text-to-Tag-Path-Ratio"><span class="nav-number">2.5.</span> <span class="nav-text">Text to Tag Path Ratio</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法流程"><span class="nav-number">2.6.</span> <span class="nav-text">算法流程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -697,6 +731,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
