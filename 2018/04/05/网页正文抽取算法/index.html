@@ -89,7 +89,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://github.com/conghuaicai/cs-skill-tree/raw/master/spider/web%20content%20extraction/images/1.png">
 <meta property="og:image" content="https://github.com/conghuaicai/cs-skill-tree/raw/master/spider/web%20content%20extraction/images/2.png">
-<meta property="og:updated_time" content="2018-04-05T08:49:17.625Z">
+<meta property="og:updated_time" content="2018-04-05T08:53:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网页正文抽取算法">
 <meta name="twitter:description" content="在爆炸式增长的互联网时代，互联网上有大量的资源，如何爬取这些资源成为一个热门的研究点。其中如何高效的对网页正文进行抽取、清洗和存储成为一个重要的研究领域。但是，在网页上，除了正文部分，通常还会包含大量的导航栏、广告、版权等信息。相较于正文，这些信息对于我们来说用处不是很大，这部分信息，在网页正文抽取中，被称为噪声信息。为了提高网页正文采集的性能，我们需要把这这些噪声去除。 在这篇博文中，会介绍几个">
@@ -381,7 +381,7 @@
 <h2 id="Composite-Text-Density"><a href="#Composite-Text-Density" class="headerlink" title="Composite Text Density"></a>Composite Text Density</h2><p>在Text Density的基础上加了关于超链接的统计信息。论文作者经过研究发现，大部分的噪声节点中都包含超链接，这个信息可以用来进一步判断该节点内容是正文还是噪声。基于这个发现，定义另外两个统计信息：</p>
 <ul>
 <li>LinkCharNumber：该节点下所有子树中的超链接字符数；</li>
-<li>LinkTagNumber：该节点下所有子树中的超链接标签数；<br>定义Composite Text Density为：$CTD_i=\frac{C_i}{T_i}log_{ln(\frac{C_i}{-LC_i}LC_i+\frac{LC_b}{C_b}C_i+e)(\frac{C_i}{LC_i}\frac{T_i}{LT_i})}$</li>
+<li>LinkTagNumber：该节点下所有子树中的超链接标签数；<br>定义Composite Text Density为：$CTD_i=\frac{C_i}{T_i}log_{ln(\frac{C_i}{-LC_i}LC_i+\frac{LC_b}{C_b}C_i+e)}(\frac{C_i}{LC_i}\frac{T_i}{LT_i})$</li>
 <li>$C_i$：字符数；</li>
 <li>$T_i$：标签数</li>
 <li>$LC_i$：链接字符；</li>

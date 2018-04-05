@@ -381,7 +381,7 @@
 <h2 id="Composite-Text-Density"><a href="#Composite-Text-Density" class="headerlink" title="Composite Text Density"></a>Composite Text Density</h2><p>在Text Density的基础上加了关于超链接的统计信息。论文作者经过研究发现，大部分的噪声节点中都包含超链接，这个信息可以用来进一步判断该节点内容是正文还是噪声。基于这个发现，定义另外两个统计信息：</p>
 <ul>
 <li>LinkCharNumber：该节点下所有子树中的超链接字符数；</li>
-<li>LinkTagNumber：该节点下所有子树中的超链接标签数；<br>定义Composite Text Density为：$CTD_i=\frac{C_i}{T_i}log_{ln(\frac{C_i}{-LC_i}LC_i+\frac{LC_b}{C_b}C_i+e)(\frac{C_i}{LC_i}\frac{T_i}{LT_i})}$</li>
+<li>LinkTagNumber：该节点下所有子树中的超链接标签数；<br>定义Composite Text Density为：$CTD_i=\frac{C_i}{T_i}log_{ln(\frac{C_i}{-LC_i}LC_i+\frac{LC_b}{C_b}C_i+e)}(\frac{C_i}{LC_i}\frac{T_i}{LT_i})$</li>
 <li>$C_i$：字符数；</li>
 <li>$T_i$：标签数</li>
 <li>$LC_i$：链接字符；</li>
