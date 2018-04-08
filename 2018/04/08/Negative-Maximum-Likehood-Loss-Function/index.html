@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="math,ml," />
 
 
 
@@ -81,16 +81,21 @@
 
 
 
-<meta name="description" content="Algorithm/Machine Learning/Deep Learning/NLP">
-<meta property="og:type" content="website">
-<meta property="og:title" content="蔡聪怀">
-<meta property="og:url" content="http://yoursite.com/categories/Spider/Content-Extraction/index.html">
+<meta name="description" content="损失函数是用来衡量模型好坏的一个标准，在机器学习里，我们通常希望模型有比较小的loss，那么该如何选择我们的损失函数呢？最小化负的似然函数，借鉴了统计学的思想，是一种常见的损失函数。 Nagative Maximum Likehood首先，假设我们有一堆的样本点：$D={(x_1,-1),(x_2,1),…,(x_N,-1)}$，我们希望我们训练出来的模型能够准确预测$x_i$的类别。通常来说，我">
+<meta name="keywords" content="math,ml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Negative Maximum Likehood Loss Function">
+<meta property="og:url" content="http://yoursite.com/2018/04/08/Negative-Maximum-Likehood-Loss-Function/index.html">
 <meta property="og:site_name" content="蔡聪怀">
-<meta property="og:description" content="Algorithm/Machine Learning/Deep Learning/NLP">
+<meta property="og:description" content="损失函数是用来衡量模型好坏的一个标准，在机器学习里，我们通常希望模型有比较小的loss，那么该如何选择我们的损失函数呢？最小化负的似然函数，借鉴了统计学的思想，是一种常见的损失函数。 Nagative Maximum Likehood首先，假设我们有一堆的样本点：$D={(x_1,-1),(x_2,1),…,(x_N,-1)}$，我们希望我们训练出来的模型能够准确预测$x_i$的类别。通常来说，我">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-08-085532.jpg">
+<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-08-085535.jpg">
+<meta property="og:updated_time" content="2018-04-08T08:55:40.147Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="蔡聪怀">
-<meta name="twitter:description" content="Algorithm/Machine Learning/Deep Learning/NLP">
+<meta name="twitter:title" content="Negative Maximum Likehood Loss Function">
+<meta name="twitter:description" content="损失函数是用来衡量模型好坏的一个标准，在机器学习里，我们通常希望模型有比较小的loss，那么该如何选择我们的损失函数呢？最小化负的似然函数，借鉴了统计学的思想，是一种常见的损失函数。 Nagative Maximum Likehood首先，假设我们有一堆的样本点：$D={(x_1,-1),(x_2,1),…,(x_N,-1)}$，我们希望我们训练出来的模型能够准确预测$x_i$的类别。通常来说，我">
+<meta name="twitter:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-08-085532.jpg">
 
 
 
@@ -120,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/Spider/Content-Extraction/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/04/08/Negative-Maximum-Likehood-Loss-Function/"/>
 
 
 
 
 
-  <title>Category: Content Extraction | 蔡聪怀</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Negative Maximum Likehood Loss Function | 蔡聪怀</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -145,7 +150,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -249,55 +254,255 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block category">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>Content Extraction<small>Category</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/08/Negative-Maximum-Likehood-Loss-Function/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Conghuai Cai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="蔡聪怀">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/04/05/网页正文抽取算法/" itemprop="url">
-              
-                <span itemprop="name">网页正文抽取算法</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Negative Maximum Likehood Loss Function</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-05T15:51:56+08:00"
-              content="2018-04-05" >
-          04-05
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-08T16:15:39+08:00">
+                2018-04-08
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Machine Learning</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/Loss-Function/" itemprop="url" rel="index">
+                    <span itemprop="name">Loss Function</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/04/08/Negative-Maximum-Likehood-Loss-Function/" class="leancloud_visitors" data-flag-title="Negative Maximum Likehood Loss Function">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  668 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  3 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>损失函数是用来衡量模型好坏的一个标准，在机器学习里，我们通常希望模型有比较小的<code>loss</code>，那么该如何选择我们的损失函数呢？最小化负的似然函数，借鉴了统计学的思想，是一种常见的损失函数。</p>
+<h2 id="Nagative-Maximum-Likehood"><a href="#Nagative-Maximum-Likehood" class="headerlink" title="Nagative Maximum Likehood"></a>Nagative Maximum Likehood</h2><p>首先，假设我们有一堆的样本点：$D={(x_1,-1),(x_2,1),…,(x_N,-1)}$，我们希望我们训练出来的模型能够准确预测$x_i$的类别。通常来说，我们定义的模型都会对每个目标类别输出一个概率值，所以，本质上，我们希望得到一个函数，它能告诉我们样本$x_i$属于+1的概率（或者属于-1的概率，本质上是一样的）：$f(x)=P(+1|x)$</p>
+<p>$$\begin{split}P(y|x)=\begin{cases} f(x) &amp; \text{for $y=+1$}\1-f(x) &amp; \text{for y=-1}\end{cases}\end{split}$$</p>
+<p>所以，我们的模型$h$产生样本集$D$的概率有多大呢：</p>
+<p>$$L=P(x1)h(x1)\cdot P(x_2)(1-h(x_2))\cdot …\cdot P(x_N)(1-h(x_N))$$</p>
+<p>如果我们的模型足够好的话，那么上面的似然函数的值会很大，我们现在需要在假设空间里面，把最好的$h$给找出来，哪个$h$最好呢？就是使得$L$最大的那个模型咯。</p>
+<p>$$L=P(x1)h_1(x1)\cdot P(x_2)(1-h_1(x_2))\cdot …\cdot P(x_N)(1-h_1(x_N))$$</p>
+<p>$$L=P(x1)h_2(x1)\cdot P(x_2)(1-h_2(x_2))\cdot …\cdot P(x_N)(1-h_2(x_N))$$</p>
+<p>…</p>
+<p>$$L=P(x1)h_k(x1)\cdot P(x_2)(1-h_k(x_2))\cdot …\cdot P(x_N)(1-h_k(x_N))$$</p>
+<p>我们发现，对于不同的模型，都要乘上$P(x_1)P(x_2)…P(x_N)$，这对于我们比较不同模型的好坏，没有帮助，所有我们可以把它略去。</p>
+<p>所以，似然函数表达式变为：</p>
+<p>$$L=h_k(x1)\cdot (1-h_k(x_2))\cdot …\cdot(1-h_k(x_N))$$</p>
+<p>我们通常选择sigmoid function当做$h$，本文最后会给出sigmoid function的性质。由于采用了sigmoid函数，似然函数表达式变为：</p>
+<p>$$L=h_k(x1)\cdot h_k(-x_2)\cdot …\cdot h_k(-x_N)$$</p>
+<p>进一步的可以写成：</p>
+<p>$$L=h_k(y_1x_1)\cdot h_k(y_2x_2)\cdot …\cdot h_k(y_Nx_N)=\prod_{n=1}^Nh(y_nx_n)$$</p>
+<h3 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h3><p>对上述的似然函数取负数，再取log，可以得到最终的负似然函数损失函数：</p>
+<p>$$MLE = \frac{1}{N}\sum_{n=1}^N-ln\theta(y_nw^Tx_n)=\frac{1}{N}\sum_{n=1}^Nln(1+e^{-y_nw^Tx_n})$$</p>
+<h3 id="求导"><a href="#求导" class="headerlink" title="求导"></a>求导</h3><p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-08-085532.jpg" alt="Screen Shot 2018-04-08 at 16.55.05"></p>
+<h2 id="sigmoid-function"><a href="#sigmoid-function" class="headerlink" title="sigmoid function"></a>sigmoid function</h2><p>我们通常会选择<code>sigmoid function</code>当做$h$。</p>
+<h3 id="函数特性"><a href="#函数特性" class="headerlink" title="函数特性"></a>函数特性</h3><p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-08-085535.jpg" alt="Screen Shot 2018-04-08 at 16.40.42"></p>
+<p>$$\theta(s)=\frac{e^s}{1+e^s}=\frac{1}{1+e^{-s}}$$</p>
+<ul>
+<li>$\theta(负无穷)$=0；</li>
+<li>$\theta(0)=\frac{1}{2}$</li>
+<li>$\theta(正无穷)=1$</li>
+<li>连续、单调</li>
+<li>$\theta(-s)=1-\theta(s)$</li>
+</ul>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1]. <a href="http://www.csuldw.com/2016/03/26/2016-03-26-loss-function/" target="_blank" rel="noopener">机器学习-损失函数</a></p>
+<p>[2]. 林轩田 “机器学习基石”</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/math/" rel="tag"># math</a>
+          
+            <a href="/tags/ml/" rel="tag"># ml</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/08/Cross Entropy Loss Function/" rel="next" title="Cross Entropy Loss Function">
+                <i class="fa fa-chevron-left"></i> Cross Entropy Loss Function
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -305,6 +510,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -325,8 +534,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -425,6 +643,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Nagative-Maximum-Likehood"><span class="nav-number">1.</span> <span class="nav-text">Nagative Maximum Likehood</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#损失函数"><span class="nav-number">1.1.</span> <span class="nav-text">损失函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#求导"><span class="nav-number">1.2.</span> <span class="nav-text">求导</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sigmoid-function"><span class="nav-number">2.</span> <span class="nav-text">sigmoid function</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#函数特性"><span class="nav-number">2.1.</span> <span class="nav-text">函数特性</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number"></span> <span class="nav-text">参考</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -565,6 +799,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

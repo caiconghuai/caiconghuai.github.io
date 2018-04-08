@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-04-08T07:49:34.668Z</updated>
+  <updated>2018-04-08T08:55:40.147Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Negative Maximum Likehood Loss Function</title>
+    <link href="http://yoursite.com/2018/04/08/Negative-Maximum-Likehood-Loss-Function/"/>
+    <id>http://yoursite.com/2018/04/08/Negative-Maximum-Likehood-Loss-Function/</id>
+    <published>2018-04-08T08:15:39.000Z</published>
+    <updated>2018-04-08T08:55:40.147Z</updated>
+    
+    <content type="html"><![CDATA[<p>损失函数是用来衡量模型好坏的一个标准，在机器学习里，我们通常希望模型有比较小的<code>loss</code>，那么该如何选择我们的损失函数呢？最小化负的似然函数，借鉴了统计学的思想，是一种常见的损失函数。</p><h2 id="Nagative-Maximum-Likehood"><a href="#Nagative-Maximum-Likehood" class="headerlink" title="Nagative Maximum Likehood"></a>Nagative Maximum Likehood</h2><p>首先，假设我们有一堆的样本点：$D={(x_1,-1),(x_2,1),…,(x_N,-1)}$，我们希望我们训练出来的模型能够准确预测$x_i$的类别。通常来说，我们定义的模型都会对每个目标类别输出一个概率值，所以，本质上，我们希望得到一个函数，它能告诉我们样本$x_i$属于+1的概率（或者属于-1的概率，本质上是一样的）：$f(x)=P(+1|x)$</p><p>$$\begin{split}P(y|x)=\begin{cases} f(x) &amp; \text{for $y=+1$}\1-f(x) &amp; \text{for y=-1}\end{cases}\end{split}$$</p><p>所以，我们的模型$h$产生样本集$D$的概率有多大呢：</p><p>$$L=P(x1)h(x1)\cdot P(x_2)(1-h(x_2))\cdot …\cdot P(x_N)(1-h(x_N))$$</p><p>如果我们的模型足够好的话，那么上面的似然函数的值会很大，我们现在需要在假设空间里面，把最好的$h$给找出来，哪个$h$最好呢？就是使得$L$最大的那个模型咯。</p><p>$$L=P(x1)h_1(x1)\cdot P(x_2)(1-h_1(x_2))\cdot …\cdot P(x_N)(1-h_1(x_N))$$</p><p>$$L=P(x1)h_2(x1)\cdot P(x_2)(1-h_2(x_2))\cdot …\cdot P(x_N)(1-h_2(x_N))$$</p><p>…</p><p>$$L=P(x1)h_k(x1)\cdot P(x_2)(1-h_k(x_2))\cdot …\cdot P(x_N)(1-h_k(x_N))$$</p><p>我们发现，对于不同的模型，都要乘上$P(x_1)P(x_2)…P(x_N)$，这对于我们比较不同模型的好坏，没有帮助，所有我们可以把它略去。</p><p>所以，似然函数表达式变为：</p><p>$$L=h_k(x1)\cdot (1-h_k(x_2))\cdot …\cdot(1-h_k(x_N))$$</p><p>我们通常选择sigmoid function当做$h$，本文最后会给出sigmoid function的性质。由于采用了sigmoid函数，似然函数表达式变为：</p><p>$$L=h_k(x1)\cdot h_k(-x_2)\cdot …\cdot h_k(-x_N)$$</p><p>进一步的可以写成：</p><p>$$L=h_k(y_1x_1)\cdot h_k(y_2x_2)\cdot …\cdot h_k(y_Nx_N)=\prod_{n=1}^Nh(y_nx_n)$$</p><h3 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h3><p>对上述的似然函数取负数，再取log，可以得到最终的负似然函数损失函数：</p><p>$$MLE = \frac{1}{N}\sum_{n=1}^N-ln\theta(y_nw^Tx_n)=\frac{1}{N}\sum_{n=1}^Nln(1+e^{-y_nw^Tx_n})$$</p><h3 id="求导"><a href="#求导" class="headerlink" title="求导"></a>求导</h3><p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-08-085532.jpg" alt="Screen Shot 2018-04-08 at 16.55.05"></p><h2 id="sigmoid-function"><a href="#sigmoid-function" class="headerlink" title="sigmoid function"></a>sigmoid function</h2><p>我们通常会选择<code>sigmoid function</code>当做$h$。</p><h3 id="函数特性"><a href="#函数特性" class="headerlink" title="函数特性"></a>函数特性</h3><p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-08-085535.jpg" alt="Screen Shot 2018-04-08 at 16.40.42"></p><p>$$\theta(s)=\frac{e^s}{1+e^s}=\frac{1}{1+e^{-s}}$$</p><ul><li>$\theta(负无穷)$=0；</li><li>$\theta(0)=\frac{1}{2}$</li><li>$\theta(正无穷)=1$</li><li>连续、单调</li><li>$\theta(-s)=1-\theta(s)$</li></ul><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1]. <a href="http://www.csuldw.com/2016/03/26/2016-03-26-loss-function/" target="_blank" rel="noopener">机器学习-损失函数</a></p><p>[2]. 林轩田 “机器学习基石”</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;损失函数是用来衡量模型好坏的一个标准，在机器学习里，我们通常希望模型有比较小的&lt;code&gt;loss&lt;/code&gt;，那么该如何选择我们的损失函数呢？最小化负的似然函数，借鉴了统计学的思想，是一种常见的损失函数。&lt;/p&gt;
+&lt;h2 id=&quot;Nagative-Maximum-Lik
+      
+    
+    </summary>
+    
+      <category term="Machine Learning" scheme="http://yoursite.com/categories/Machine-Learning/"/>
+    
+      <category term="Loss Function" scheme="http://yoursite.com/categories/Machine-Learning/Loss-Function/"/>
+    
+    
+      <category term="math" scheme="http://yoursite.com/tags/math/"/>
+    
+      <category term="ml" scheme="http://yoursite.com/tags/ml/"/>
+    
+  </entry>
   
   <entry>
     <title>Cross Entropy Loss Function</title>
