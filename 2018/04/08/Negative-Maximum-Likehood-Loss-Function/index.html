@@ -91,7 +91,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-08-085532.jpg">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-08-085535.jpg">
-<meta property="og:updated_time" content="2018-04-08T09:00:21.000Z">
+<meta property="og:updated_time" content="2018-04-08T09:00:55.773Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Negative Maximum Likehood Loss Function">
 <meta name="twitter:description" content="损失函数是用来衡量模型好坏的一个标准，在机器学习里，我们通常希望模型有比较小的loss，那么该如何选择我们的损失函数呢？最小化负的似然函数，借鉴了统计学的思想，是一种常见的损失函数。 Nagative Maximum Likehood首先，假设我们有一堆的样本点：$D={(x_1,-1),(x_2,1),…,(x_N,-1)}$，我们希望我们训练出来的模型能够准确预测$x_i$的类别。通常来说，我">
@@ -411,7 +411,7 @@
 
       
         <p>损失函数是用来衡量模型好坏的一个标准，在机器学习里，我们通常希望模型有比较小的<code>loss</code>，那么该如何选择我们的损失函数呢？最小化负的似然函数，借鉴了统计学的思想，是一种常见的损失函数。</p>
-<h2 id="Nagative-Maximum-Likehood"><a href="#Nagative-Maximum-Likehood" class="headerlink" title="Nagative Maximum Likehood"></a>Nagative Maximum Likehood</h2><p>首先，假设我们有一堆的样本点：$D={(x_1,-1),(x_2,1),…,(x_N,-1)}$，我们希望我们训练出来的模型能够准确预测$x_i$的类别。通常来说，我们定义的模型都会对每个目标类别输出一个概率值，所以，本质上，我们希望得到一个函数，它能告诉我们样本$x_i$属于+1的概率（或者属于-1的概率，本质上是一样的）：$f(x)=P(+1|x)$</p>
+<h1 id="Nagative-Maximum-Likehood"><a href="#Nagative-Maximum-Likehood" class="headerlink" title="Nagative Maximum Likehood"></a>Nagative Maximum Likehood</h1><p>首先，假设我们有一堆的样本点：$D={(x_1,-1),(x_2,1),…,(x_N,-1)}$，我们希望我们训练出来的模型能够准确预测$x_i$的类别。通常来说，我们定义的模型都会对每个目标类别输出一个概率值，所以，本质上，我们希望得到一个函数，它能告诉我们样本$x_i$属于+1的概率（或者属于-1的概率，本质上是一样的）：$f(x)=P(+1|x)$</p>
 <p>$$\begin{split}P(y|x)=\begin{cases} f(x) &amp; \text{for $y=+1$} \\ 1-f(x) &amp; \text{for y=-1}\end{cases}\end{split}$$</p>
 <p>所以，我们的模型$h$产生样本集$D$的概率有多大呢：</p>
 <p>$$L=P(x1)h(x1)\cdot P(x_2)(1-h(x_2))\cdot …\cdot P(x_N)(1-h(x_N))$$</p>
@@ -427,11 +427,11 @@
 <p>$$L=h_k(x1)\cdot h_k(-x_2)\cdot …\cdot h_k(-x_N)$$</p>
 <p>进一步的可以写成：</p>
 <p>$$L=h_k(y_1x_1)\cdot h_k(y_2x_2)\cdot …\cdot h_k(y_Nx_N)=\prod_{n=1}^Nh(y_nx_n)$$</p>
-<h3 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h3><p>对上述的似然函数取负数，再取log，可以得到最终的负对数似然损失函数：</p>
+<h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><p>对上述的似然函数取负数，再取log，可以得到最终的负对数似然损失函数：</p>
 <p>$$MLE = \frac{1}{N}\sum_{n=1}^N-ln\theta(y_nw^Tx_n)=\frac{1}{N}\sum_{n=1}^Nln(1+e^{-y_nw^Tx_n})$$</p>
-<h3 id="求导"><a href="#求导" class="headerlink" title="求导"></a>求导</h3><p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-08-085532.jpg" alt="Screen Shot 2018-04-08 at 16.55.05"></p>
-<h2 id="sigmoid-function"><a href="#sigmoid-function" class="headerlink" title="sigmoid function"></a>sigmoid function</h2><p>我们通常会选择<code>sigmoid function</code>当做$h$。</p>
-<h3 id="函数特性"><a href="#函数特性" class="headerlink" title="函数特性"></a>函数特性</h3><p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-08-085535.jpg" alt="Screen Shot 2018-04-08 at 16.40.42"></p>
+<h2 id="求导"><a href="#求导" class="headerlink" title="求导"></a>求导</h2><p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-08-085532.jpg" alt="Screen Shot 2018-04-08 at 16.55.05"></p>
+<h1 id="sigmoid-function"><a href="#sigmoid-function" class="headerlink" title="sigmoid function"></a>sigmoid function</h1><p>我们通常会选择<code>sigmoid function</code>当做$h$。</p>
+<h2 id="函数特性"><a href="#函数特性" class="headerlink" title="函数特性"></a>函数特性</h2><p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-08-085535.jpg" alt="Screen Shot 2018-04-08 at 16.40.42"></p>
 <p>$$\theta(s)=\frac{e^s}{1+e^s}=\frac{1}{1+e^{-s}}$$</p>
 <ul>
 <li>$\theta(负无穷)$=0；</li>
@@ -653,7 +653,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Nagative-Maximum-Likehood"><span class="nav-number">1.</span> <span class="nav-text">Nagative Maximum Likehood</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#损失函数"><span class="nav-number">1.1.</span> <span class="nav-text">损失函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#求导"><span class="nav-number">1.2.</span> <span class="nav-text">求导</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sigmoid-function"><span class="nav-number">2.</span> <span class="nav-text">sigmoid function</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#函数特性"><span class="nav-number">2.1.</span> <span class="nav-text">函数特性</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number"></span> <span class="nav-text">参考</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Nagative-Maximum-Likehood"><span class="nav-number">1.</span> <span class="nav-text">Nagative Maximum Likehood</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#损失函数"><span class="nav-number">1.1.</span> <span class="nav-text">损失函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求导"><span class="nav-number">1.2.</span> <span class="nav-text">求导</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sigmoid-function"><span class="nav-number">2.</span> <span class="nav-text">sigmoid function</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#函数特性"><span class="nav-number">2.1.</span> <span class="nav-text">函数特性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
