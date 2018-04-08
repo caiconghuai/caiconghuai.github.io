@@ -91,7 +91,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-08-024353.jpg">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-08-064410.jpg">
-<meta property="og:updated_time" content="2018-04-08T07:49:34.668Z">
+<meta property="og:updated_time" content="2018-04-08T16:15:49.071Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Cross Entropy Loss Function">
 <meta name="twitter:description" content="这篇文章中，讨论的Cross Entropy损失函数常用于分类问题中，但是为什么它会在分类问题中这么有效呢？我们先从一个简单的分类例子来入手。 预测政治倾向例子我们希望根据一个人的年龄、性别、年收入等相互独立的特征，来预测一个人的政治倾向，有三种可预测结果：民主党、共和党、其他党。假设我们当前有两个模型，这两个模型最后输出都是通过softmax的方式得到对于每个预测结果的概率： 模型1：    C">
@@ -497,7 +497,7 @@
 </ol>
 <p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-08-064410.jpg" alt="Screen Shot 2018-04-08 at 11.56.55"></p>
 <p>下面，我们以二分类的情形来推导一下整个求导公式：</p>
-<p>$$\frac{\partial E}{\partial score_i}=\frac{\partial E}{\partial p_i}\cdot \frac{\partial p_i}{\partial score_i}$</p>
+<p>$$\frac{\partial E}{\partial score_i}=\frac{\partial E}{\partial p_i}\cdot \frac{\partial p_i}{\partial score_i}$$</p>
 <p>我们将上述拆成两项偏导的乘积。</p>
 <h3 id="计算第一项：-frac-partial-E-partial-p-i"><a href="#计算第一项：-frac-partial-E-partial-p-i" class="headerlink" title="计算第一项：$\frac{\partial E}{\partial p_i}$"></a>计算第一项：$\frac{\partial E}{\partial p_i}$</h3><p>$$\frac{\partial E}{\partial p_i}=\frac{\partial −(ylog(p)+(1−y)log(1−p))}{\partial p_i}$$</p>
 <p>​     $$= -\frac{\partial y_ilogp_i}{\partial p_i}-\frac{\partial (1-y_i)log(1-p_i)}{\partial p_i}$$</p>
