@@ -96,7 +96,7 @@
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-07-010546.jpg">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-07-010549.jpg">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-07-010545.jpg">
-<meta property="og:updated_time" content="2018-04-09T05:54:16.609Z">
+<meta property="og:updated_time" content="2018-04-09T05:55:27.782Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="K-Means">
 <meta name="twitter:description" content="​聚类，是机器学习的任务之一。同分类算法一样，聚类算法也被广泛的应用在各个领域，如根据话题，对文章、网页和搜索结果做聚类；根据社区发现对社交网络中的用户做聚类；根据购买历史记录对消费者做聚类。和分类算法不同的是，聚类算法的样本是没有标签的，也就是说，我们并不知道样本有哪些类别，算法需要根据样本的特征，对样本进行聚类，形成不同的聚类中心点。这篇文章，主要介绍比较著名的聚类算法——K-means算法。">
@@ -378,7 +378,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  2,987 字
+                  2,984 字
                 </span>
               
 
@@ -448,14 +448,14 @@
 <li>O(nkd)  n为样本数 k为聚类中心数 d为维度</li>
 </ul>
 <h1 id="Initialization"><a href="#Initialization" class="headerlink" title="Initialization"></a>Initialization</h1><p>介绍完了整个算法过程、收敛性和时间复杂度之后，该算法的两个核心点需要我们思考: 1. 如何选择k的值; 2. 算法刚开始，并没有聚类中心，如何初始化聚类中心。对于问题1，我目前还没有过多的认识。这里主要介绍问题2，如何初始化聚类中心。</p>
-<h2 id="1-Random-Initialization"><a href="#1-Random-Initialization" class="headerlink" title="1. Random Initialization"></a>1. Random Initialization</h2><p>这种初始化方式是最简单的方式，就是随机选k个点作为聚类中心，虽然简单，但是会存在问题，我们看下面的这个例子:</p>
+<h2 id="Random-Initialization"><a href="#Random-Initialization" class="headerlink" title="Random Initialization"></a>Random Initialization</h2><p>这种初始化方式是最简单的方式，就是随机选k个点作为聚类中心，虽然简单，但是会存在问题，我们看下面的这个例子:</p>
 <p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-07-010551.jpg" alt="random init"></p>
 <p>由于，我们采用了随机初始化的方式，对于这个样本，我们随机初始化的三个点如上图的绿、红、黑三个样本点，再后面的迭代中，我们最后的聚类簇如上图的箭头所示，这样的效果好吗？显然是不好的，为什么呢？因为很显然最左边三个、中间三个、最右边三个应该是被归为一个聚类簇的:</p>
 <p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-07-010534.jpg" alt="random init2"></p>
 <p>我们可以看到，聚类中心初始化得不好，直接影响我们最后聚类的效果，可能上面举的例子样本分布和初始化聚类中心太极端，不能说明问题， 我们现在假设样本的分布是多个高斯分布的情况下，聚类中心初始化不好导致的最后聚类的效果:</p>
 <p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-07-010548.jpg" alt="random init4"></p>
 <p>我们现在计算一下假设有k个高斯分布，我们随机初始化正确的概率有大(所谓正确是指任何两个随机初始化中心不在同一个高斯分布中):$\frac {k!}{k^k} \approx \frac {1}{e^k}$，当k增大时，这个概率会越来越低。</p>
-<h2 id="2-Furthest-Point-Heuristic"><a href="#2-Furthest-Point-Heuristic" class="headerlink" title="2. Furthest Point Heuristic"></a>2. Furthest Point Heuristic</h2><p>这种方法是一个中心点一个中心点依次进行初始化的，首先随机初始化$c_1$，然后选择距离$c_1$最远的点来初始化$c_2$，以此类推。</p>
+<h2 id="Furthest-Point-Heuristic"><a href="#Furthest-Point-Heuristic" class="headerlink" title="Furthest Point Heuristic"></a>Furthest Point Heuristic</h2><p>这种方法是一个中心点一个中心点依次进行初始化的，首先随机初始化$c_1$，然后选择距离$c_1$最远的点来初始化$c_2$，以此类推。</p>
 <p>算法描述如下:</p>
 <p>Choose $c_1$ arbitrarily (or at random).</p>
 <p>For j = 2, …, k</p>
@@ -467,7 +467,7 @@
 <p>但是，这种方法的问题是容易受噪声点干扰，请看下面的例子:</p>
 <p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-07-010545.jpg" alt="dist 4"></p>
 <p>所以这种方式进行初始化也是不行的，一旦出现噪声点，就极大的影响了最后聚类的结果。虽然实际上，几乎没有哪一个k-means算法会采用上面两种初始化方式，但是这里这样介绍是顺着我们的思维方式进行的，一般思考的方式都是从简单到复杂，所以下面，我们也顺理成章的引出<code>k-means++</code>这个初始化算法， 该算法很好的反映出随机化思想在算法中的重要性。</p>
-<h2 id="3-k-means"><a href="#3-k-means" class="headerlink" title="3. k-means++"></a>3. k-means++</h2><p>算法描述如下:</p>
+<h2 id="k-means"><a href="#k-means" class="headerlink" title="k-means++"></a>k-means++</h2><p>算法描述如下:</p>
 <ul>
 <li><p>Choose $c_1$ at random.</p>
 </li>
@@ -709,7 +709,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Euclidean-k-means-clustering"><span class="nav-number">1.</span> <span class="nav-text">Euclidean k-means clustering</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Converges"><span class="nav-number">2.</span> <span class="nav-text">Converges</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Running-Time"><span class="nav-number">3.</span> <span class="nav-text">Running Time</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Initialization"><span class="nav-number">4.</span> <span class="nav-text">Initialization</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Random-Initialization"><span class="nav-number">4.1.</span> <span class="nav-text">1. Random Initialization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Furthest-Point-Heuristic"><span class="nav-number">4.2.</span> <span class="nav-text">2. Furthest Point Heuristic</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-k-means"><span class="nav-number">4.3.</span> <span class="nav-text">3. k-means++</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#In-Action"><span class="nav-number">5.</span> <span class="nav-text">In Action</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">6.</span> <span class="nav-text">References</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Euclidean-k-means-clustering"><span class="nav-number">1.</span> <span class="nav-text">Euclidean k-means clustering</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Converges"><span class="nav-number">2.</span> <span class="nav-text">Converges</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Running-Time"><span class="nav-number">3.</span> <span class="nav-text">Running Time</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Initialization"><span class="nav-number">4.</span> <span class="nav-text">Initialization</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Random-Initialization"><span class="nav-number">4.1.</span> <span class="nav-text">Random Initialization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Furthest-Point-Heuristic"><span class="nav-number">4.2.</span> <span class="nav-text">Furthest Point Heuristic</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#k-means"><span class="nav-number">4.3.</span> <span class="nav-text">k-means++</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#In-Action"><span class="nav-number">5.</span> <span class="nav-text">In Action</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">6.</span> <span class="nav-text">References</span></a></li></ol></div>
             
 
           </div>
