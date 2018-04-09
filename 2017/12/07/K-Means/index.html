@@ -96,7 +96,7 @@
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-07-010546.jpg">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-07-010549.jpg">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-07-010545.jpg">
-<meta property="og:updated_time" content="2018-04-09T05:53:20.000Z">
+<meta property="og:updated_time" content="2018-04-09T05:54:16.609Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="K-Means">
 <meta name="twitter:description" content="​聚类，是机器学习的任务之一。同分类算法一样，聚类算法也被广泛的应用在各个领域，如根据话题，对文章、网页和搜索结果做聚类；根据社区发现对社交网络中的用户做聚类；根据购买历史记录对消费者做聚类。和分类算法不同的是，聚类算法的样本是没有标签的，也就是说，我们并不知道样本有哪些类别，算法需要根据样本的特征，对样本进行聚类，形成不同的聚类中心点。这篇文章，主要介绍比较著名的聚类算法——K-means算法。">
@@ -378,7 +378,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  2,979 字
+                  2,987 字
                 </span>
               
 
@@ -437,7 +437,7 @@
 <li>For each j: $C_j \leftarrow {x \in S\ whose\ closest\ center\ is\ c_j}$</li>
 <li>For each j: $c_j \leftarrow mean\ of\ C_j $</li>
 </ol>
-<p>对于该算法，难度不是特别大，最重要的地方在Repeat中的1，2两个步骤，其中，步骤1将固定住聚类中心$c_1, c_2, …, c_k$，更新聚类集$C_1, C_2, …, C_k$。步骤2固定住聚类集$C_1, C_2, …, C_k$，更新聚类中心$c_1, c_2, …, c_k$（本文用大写C表示集合，这里指聚类簇；用c表示单个点，这里指聚类中心。在本人的其他博文中，也会采用这种表述方式）。</p>
+<p>对于该算法，难度不是特别大，最重要的地方在Repeat中的1，2两个步骤，其中，步骤1将固定住聚类中心$c_1, c_2, …, c_k$，更新聚类集$C_1, C_2, …, C_k$。步骤2固定住聚类集$C_1, C_2, …, C_k$，更新聚类中心$c_1, c_2, …, c_k$（本文用大写字符表示集合，这里用C指聚类簇；用小写字符表示单个点，这里用c指聚类中心。在本人的其他博文中，也会采用这种表述方式）。</p>
 <p>大部分学习k-means算法的人理解了步骤1和步骤2就觉得已经理解了k-means了，其实不然，先不说k-means中比较重要的聚类中心的初始化问题，任何一个机器学习算法，它要是有效的，必须证明其可收敛，也需要给出其时间复杂度和空间复杂度。</p>
 <h1 id="Converges"><a href="#Converges" class="headerlink" title="Converges"></a>Converges</h1><ul>
 <li>目标函数的值在每一轮的迭代都会降低，这个特性由算法中步骤1和步骤2保证，因为对于每个样本点，我们每次都是选择最接近的聚类中心；而且，在每个聚类簇里，我们选择平均值作为其聚类中心。</li>
