@@ -90,7 +90,7 @@
 <meta property="og:description" content="函数特性在机器学习中，hinge loss是一种损失函数，它通常用于”maximum-margin”的分类任务中，如支持向量机。数学表达式为： $$L(y)=max(0,1-\hat{y}y)$$ 其中$\hat{y}$表示预测输出，通常都是软结果（就是说输出不是0，1这种，可能是0.87。），$y$表示正确的类别。  如果$\hat{y}y&amp;lt;1$，则损失为：$1-\hat{y}y$ 如果$">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-10-065844.jpg">
-<meta property="og:updated_time" content="2018-04-10T06:58:46.921Z">
+<meta property="og:updated_time" content="2018-04-10T07:02:12.323Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hinge Loss Function">
 <meta name="twitter:description" content="函数特性在机器学习中，hinge loss是一种损失函数，它通常用于”maximum-margin”的分类任务中，如支持向量机。数学表达式为： $$L(y)=max(0,1-\hat{y}y)$$ 其中$\hat{y}$表示预测输出，通常都是软结果（就是说输出不是0，1这种，可能是0.87。），$y$表示正确的类别。  如果$\hat{y}y&amp;lt;1$，则损失为：$1-\hat{y}y$ 如果$">
@@ -419,7 +419,7 @@
 <p>其函数图像如下，与0-1损失对比：</p>
 <p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-10-065844.jpg" alt="Hinge_loss_vs_zero_one_loss.svg"></p>
 <h1 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h1><p>以支持向量机为例，其模型为：$y=w\cdot x$，如果用hinge损失，其求导结果如下：</p>
-<p>$$\begin{split}\frac{\partial L}{\partial w_i}=\begin{cases} -\hat{y}y &amp; \text{if $\hat{y}y&lt;1$} \ 0 &amp; \text{otherwise}\end{cases}\end{split}$$</p>
+<p>$$\begin{split}\frac{\partial L}{\partial w_i}=\begin{cases} -\hat{y}y &amp; \text{if $\hat{y}y&lt;1$} \\ 0 &amp; \text{otherwise}\end{cases}\end{split}$$</p>
 <h1 id="变种"><a href="#变种" class="headerlink" title="变种"></a>变种</h1><p>实际应用中，一方面很多时候我们的y的值域并不是[-1,1]，比如我们可能更希望y更接近于一个概率，即其值域最好是[0,1]。另一方面，很多时候我们希望训练的是两个样本之间的相似关系，而非样本的整体分类，所以很多时候我们会用下面的公式： </p>
 <p>$$l(y,y’)=max(0, m-y+y’)$$</p>
 <p>其中，y是正样本的得分，y’是负样本的得分，m是margin（自己选一个数）</p>

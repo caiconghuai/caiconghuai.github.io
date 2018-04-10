@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://conghuai.me/"/>
-  <updated>2018-04-10T06:58:46.921Z</updated>
+  <updated>2018-04-10T07:02:12.323Z</updated>
   <id>http://conghuai.me/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://conghuai.me/2018/04/10/Hinge-Loss-Function/"/>
     <id>http://conghuai.me/2018/04/10/Hinge-Loss-Function/</id>
     <published>2018-04-10T06:39:46.000Z</published>
-    <updated>2018-04-10T06:58:46.921Z</updated>
+    <updated>2018-04-10T07:02:12.323Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="函数特性"><a href="#函数特性" class="headerlink" title="函数特性"></a>函数特性</h1><p>在机器学习中，<strong>hinge loss</strong>是一种损失函数，它通常用于”maximum-margin”的分类任务中，如支持向量机。数学表达式为：</p><p>$$L(y)=max(0,1-\hat{y}y)$$</p><p>其中$\hat{y}$表示预测输出，通常都是软结果（就是说输出不是0，1这种，可能是0.87。），$y$表示正确的类别。</p><ul><li>如果$\hat{y}y&lt;1$，则损失为：$1-\hat{y}y$</li><li>如果$\hat{y}y&gt;=1$，则损失为：0</li></ul><p>其函数图像如下，与0-1损失对比：</p><p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-10-065844.jpg" alt="Hinge_loss_vs_zero_one_loss.svg"></p><h1 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h1><p>以支持向量机为例，其模型为：$y=w\cdot x$，如果用hinge损失，其求导结果如下：</p><p>$$\begin{split}\frac{\partial L}{\partial w_i}=\begin{cases} -\hat{y}y &amp; \text{if $\hat{y}y&lt;1$} \ 0 &amp; \text{otherwise}\end{cases}\end{split}$$</p><h1 id="变种"><a href="#变种" class="headerlink" title="变种"></a>变种</h1><p>实际应用中，一方面很多时候我们的y的值域并不是[-1,1]，比如我们可能更希望y更接近于一个概率，即其值域最好是[0,1]。另一方面，很多时候我们希望训练的是两个样本之间的相似关系，而非样本的整体分类，所以很多时候我们会用下面的公式： </p><p>$$l(y,y’)=max(0, m-y+y’)$$</p><p>其中，y是正样本的得分，y’是负样本的得分，m是margin（自己选一个数）</p><p>即我们希望正样本分数越高越好，负样本分数越低越好，但二者得分之差最多到m就足够了，差距增大并不会有任何奖励。</p><p>比如，我们想训练词向量，我们希望经常同时出现的词，他们的向量内积越大越好；不经常同时出现的词，他们的向量内积越小越好。则我们的hinge loss function可以是： </p><p>$$l(w,w_+,w_-)=max(0, 1-w^T\cdot w_+ + w^T\cdot w_-) $$</p><p>其中，w是当前正在处理的词，$w_+$是w在文中前3个词和后3个词中的某一个词，$w_−$是随机选的一个词。</p><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1]. <a href="https://www.wikiwand.com/en/Hinge_loss" target="_blank" rel="noopener">Wikiwand Hinge loss</a></p><p>[2]. <a href="https://blog.csdn.net/luo123n/article/details/48878759" target="_blank" rel="noopener">损失函数：Hinge Loss（max margin）</a></p>]]></content>
+    <content type="html"><![CDATA[<h1 id="函数特性"><a href="#函数特性" class="headerlink" title="函数特性"></a>函数特性</h1><p>在机器学习中，<strong>hinge loss</strong>是一种损失函数，它通常用于”maximum-margin”的分类任务中，如支持向量机。数学表达式为：</p><p>$$L(y)=max(0,1-\hat{y}y)$$</p><p>其中$\hat{y}$表示预测输出，通常都是软结果（就是说输出不是0，1这种，可能是0.87。），$y$表示正确的类别。</p><ul><li>如果$\hat{y}y&lt;1$，则损失为：$1-\hat{y}y$</li><li>如果$\hat{y}y&gt;=1$，则损失为：0</li></ul><p>其函数图像如下，与0-1损失对比：</p><p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-10-065844.jpg" alt="Hinge_loss_vs_zero_one_loss.svg"></p><h1 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h1><p>以支持向量机为例，其模型为：$y=w\cdot x$，如果用hinge损失，其求导结果如下：</p><p>$$\begin{split}\frac{\partial L}{\partial w_i}=\begin{cases} -\hat{y}y &amp; \text{if $\hat{y}y&lt;1$} \\ 0 &amp; \text{otherwise}\end{cases}\end{split}$$</p><h1 id="变种"><a href="#变种" class="headerlink" title="变种"></a>变种</h1><p>实际应用中，一方面很多时候我们的y的值域并不是[-1,1]，比如我们可能更希望y更接近于一个概率，即其值域最好是[0,1]。另一方面，很多时候我们希望训练的是两个样本之间的相似关系，而非样本的整体分类，所以很多时候我们会用下面的公式： </p><p>$$l(y,y’)=max(0, m-y+y’)$$</p><p>其中，y是正样本的得分，y’是负样本的得分，m是margin（自己选一个数）</p><p>即我们希望正样本分数越高越好，负样本分数越低越好，但二者得分之差最多到m就足够了，差距增大并不会有任何奖励。</p><p>比如，我们想训练词向量，我们希望经常同时出现的词，他们的向量内积越大越好；不经常同时出现的词，他们的向量内积越小越好。则我们的hinge loss function可以是： </p><p>$$l(w,w_+,w_-)=max(0, 1-w^T\cdot w_+ + w^T\cdot w_-) $$</p><p>其中，w是当前正在处理的词，$w_+$是w在文中前3个词和后3个词中的某一个词，$w_−$是随机选的一个词。</p><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1]. <a href="https://www.wikiwand.com/en/Hinge_loss" target="_blank" rel="noopener">Wikiwand Hinge loss</a></p><p>[2]. <a href="https://blog.csdn.net/luo123n/article/details/48878759" target="_blank" rel="noopener">损失函数：Hinge Loss（max margin）</a></p>]]></content>
     
     <summary type="html">
     
