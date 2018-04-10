@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://conghuai.me/2018/04/08/Cross%20Entropy%20Loss%20Function/</loc>
+    
+    <lastmod>2018-04-10T14:02:00.083Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://conghuai.me/2018/04/10/Hinge-Loss-Function/</loc>
     
     <lastmod>2018-04-10T07:02:12.323Z</lastmod>
@@ -30,30 +37,9 @@
   </url>
   
   <url>
-    <loc>http://conghuai.me/2018/04/08/Cross%20Entropy%20Loss%20Function/</loc>
-    
-    <lastmod>2018-04-08T16:16:27.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://conghuai.me/2018/04/08/Negative-Maximum-Likehood-Loss-Function/</loc>
     
     <lastmod>2018-04-08T09:00:55.773Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://conghuai.me/categories/index.html</loc>
-    
-    <lastmod>2018-04-05T05:50:02.517Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://conghuai.me/tags/index.html</loc>
-    
-    <lastmod>2018-03-17T14:32:08.717Z</lastmod>
     
   </url>
   
