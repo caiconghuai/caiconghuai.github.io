@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="math," />
 
 
 
@@ -81,16 +81,20 @@
 
 
 
-<meta name="description" content="Algorithm/Machine Learning/Deep Learning/NLP">
-<meta property="og:type" content="website">
-<meta property="og:title" content="蔡聪怀">
-<meta property="og:url" content="http://conghuai.me/archives/2017/12/index.html">
+<meta name="description" content="函数特性在机器学习中，hinge loss是一种损失函数，它通常用于”maximum-margin”的分类任务中，如支持向量机。数学表达式为： $$L(y)=max(0,1-\hat{y}y)$$ 其中$\hat{y}$表示预测输出，通常都是软结果（就是说输出不是0，1这种，可能是0.87。），$y$表示正确的类别。  如果$\hat{y}y&amp;lt;1$，则损失为：$1-\hat{y}y$ 如果$">
+<meta name="keywords" content="math">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hinge Loss Function">
+<meta property="og:url" content="http://conghuai.me/2018/04/10/Hinge-Loss-Function/index.html">
 <meta property="og:site_name" content="蔡聪怀">
-<meta property="og:description" content="Algorithm/Machine Learning/Deep Learning/NLP">
+<meta property="og:description" content="函数特性在机器学习中，hinge loss是一种损失函数，它通常用于”maximum-margin”的分类任务中，如支持向量机。数学表达式为： $$L(y)=max(0,1-\hat{y}y)$$ 其中$\hat{y}$表示预测输出，通常都是软结果（就是说输出不是0，1这种，可能是0.87。），$y$表示正确的类别。  如果$\hat{y}y&amp;lt;1$，则损失为：$1-\hat{y}y$ 如果$">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-10-065844.jpg">
+<meta property="og:updated_time" content="2018-04-10T06:58:46.921Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="蔡聪怀">
-<meta name="twitter:description" content="Algorithm/Machine Learning/Deep Learning/NLP">
+<meta name="twitter:title" content="Hinge Loss Function">
+<meta name="twitter:description" content="函数特性在机器学习中，hinge loss是一种损失函数，它通常用于”maximum-margin”的分类任务中，如支持向量机。数学表达式为： $$L(y)=max(0,1-\hat{y}y)$$ 其中$\hat{y}$表示预测输出，通常都是软结果（就是说输出不是0，1这种，可能是0.87。），$y$表示正确的类别。  如果$\hat{y}y&amp;lt;1$，则损失为：$1-\hat{y}y$ 如果$">
+<meta name="twitter:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-10-065844.jpg">
 
 
 
@@ -120,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://conghuai.me/archives/2017/12/"/>
+  <link rel="canonical" href="http://conghuai.me/2018/04/10/Hinge-Loss-Function/"/>
 
 
 
 
 
-  <title>Archive | 蔡聪怀</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Hinge Loss Function | 蔡聪怀</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -145,7 +149,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-archive">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -249,74 +253,241 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
-
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        Um..! 5 posts in total. Keep on posting.
-      </span>
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2017">2017</h1>
-          </div>
-        
-        
-
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://conghuai.me/2018/04/10/Hinge-Loss-Function/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Conghuai Cai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="蔡聪怀">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2017/12/07/K-Means/" itemprop="url">
-              
-                <span itemprop="name">K-Means</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Hinge Loss Function</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-12-07T09:01:09+08:00"
-              content="2017-12-07" >
-          12-07
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-10T14:39:46+08:00">
+                2018-04-10
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Machine Learning</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/Loss-Function/" itemprop="url" rel="index">
+                    <span itemprop="name">Loss Function</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/04/10/Hinge-Loss-Function/" class="leancloud_visitors" data-flag-title="Hinge Loss Function">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  509 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  2 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+      
 
+      
+        <h1 id="函数特性"><a href="#函数特性" class="headerlink" title="函数特性"></a>函数特性</h1><p>在机器学习中，<strong>hinge loss</strong>是一种损失函数，它通常用于”maximum-margin”的分类任务中，如支持向量机。数学表达式为：</p>
+<p>$$L(y)=max(0,1-\hat{y}y)$$</p>
+<p>其中$\hat{y}$表示预测输出，通常都是软结果（就是说输出不是0，1这种，可能是0.87。），$y$表示正确的类别。</p>
+<ul>
+<li>如果$\hat{y}y&lt;1$，则损失为：$1-\hat{y}y$</li>
+<li>如果$\hat{y}y&gt;=1$，则损失为：0</li>
+</ul>
+<p>其函数图像如下，与0-1损失对比：</p>
+<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-10-065844.jpg" alt="Hinge_loss_vs_zero_one_loss.svg"></p>
+<h1 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h1><p>以支持向量机为例，其模型为：$y=w\cdot x$，如果用hinge损失，其求导结果如下：</p>
+<p>$$\begin{split}\frac{\partial L}{\partial w_i}=\begin{cases} -\hat{y}y &amp; \text{if $\hat{y}y&lt;1$} \ 0 &amp; \text{otherwise}\end{cases}\end{split}$$</p>
+<h1 id="变种"><a href="#变种" class="headerlink" title="变种"></a>变种</h1><p>实际应用中，一方面很多时候我们的y的值域并不是[-1,1]，比如我们可能更希望y更接近于一个概率，即其值域最好是[0,1]。另一方面，很多时候我们希望训练的是两个样本之间的相似关系，而非样本的整体分类，所以很多时候我们会用下面的公式： </p>
+<p>$$l(y,y’)=max(0, m-y+y’)$$</p>
+<p>其中，y是正样本的得分，y’是负样本的得分，m是margin（自己选一个数）</p>
+<p>即我们希望正样本分数越高越好，负样本分数越低越好，但二者得分之差最多到m就足够了，差距增大并不会有任何奖励。</p>
+<p>比如，我们想训练词向量，我们希望经常同时出现的词，他们的向量内积越大越好；不经常同时出现的词，他们的向量内积越小越好。则我们的hinge loss function可以是： </p>
+<p>$$l(w,w_+,w_-)=max(0, 1-w^T\cdot w_+ + w^T\cdot w_-) $$</p>
+<p>其中，w是当前正在处理的词，$w_+$是w在文中前3个词和后3个词中的某一个词，$w_−$是随机选的一个词。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1]. <a href="https://www.wikiwand.com/en/Hinge_loss" target="_blank" rel="noopener">Wikiwand Hinge loss</a></p>
+<p>[2]. <a href="https://blog.csdn.net/luo123n/article/details/48878759" target="_blank" rel="noopener">损失函数：Hinge Loss（max margin）</a></p>
+
+      
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/math/" rel="tag"># math</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/08/Negative-Maximum-Likehood-Loss-Function/" rel="next" title="Negative Maximum Likehood Loss Function">
+                <i class="fa fa-chevron-left"></i> Negative Maximum Likehood Loss Function
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -324,6 +495,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -344,8 +519,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -444,6 +628,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#函数特性"><span class="nav-number">1.</span> <span class="nav-text">函数特性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#优化"><span class="nav-number">2.</span> <span class="nav-text">优化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#变种"><span class="nav-number">3.</span> <span class="nav-text">变种</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -584,6 +784,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
