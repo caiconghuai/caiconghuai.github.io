@@ -81,20 +81,20 @@
 
 
 
-<meta name="description" content="这篇文章中，讨论的Cross Entropy损失函数常用于分类问题中，但是为什么它会在分类问题中这么有效呢？我们先从一个简单的分类例子来入手。 \begin{align}x &amp;amp;= a +b+c+d \\ &amp;amp;= e +f \\ &amp;amp;= g\end{align} 预测政治倾向例子我们希望根据一个人的年龄、性别、年收入等相互独立的特征，来预测一个人的政治倾向，有三种可预测结果：民主">
+<meta name="description" content="这篇文章中，讨论的Cross Entropy损失函数常用于分类问题中，但是为什么它会在分类问题中这么有效呢？我们先从一个简单的分类例子来入手。 预测政治倾向例子我们希望根据一个人的年龄、性别、年收入等相互独立的特征，来预测一个人的政治倾向，有三种可预测结果：民主党、共和党、其他党。假设我们当前有两个模型，这两个模型最后输出都是通过softmax的方式得到对于每个预测结果的概率： 模型1：    C">
 <meta name="keywords" content="math">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Cross Entropy Loss Function">
 <meta property="og:url" content="http://conghuai.me/2018/04/08/Cross Entropy Loss Function/index.html">
 <meta property="og:site_name" content="蔡聪怀">
-<meta property="og:description" content="这篇文章中，讨论的Cross Entropy损失函数常用于分类问题中，但是为什么它会在分类问题中这么有效呢？我们先从一个简单的分类例子来入手。 \begin{align}x &amp;amp;= a +b+c+d \\ &amp;amp;= e +f \\ &amp;amp;= g\end{align} 预测政治倾向例子我们希望根据一个人的年龄、性别、年收入等相互独立的特征，来预测一个人的政治倾向，有三种可预测结果：民主">
+<meta property="og:description" content="这篇文章中，讨论的Cross Entropy损失函数常用于分类问题中，但是为什么它会在分类问题中这么有效呢？我们先从一个简单的分类例子来入手。 预测政治倾向例子我们希望根据一个人的年龄、性别、年收入等相互独立的特征，来预测一个人的政治倾向，有三种可预测结果：民主党、共和党、其他党。假设我们当前有两个模型，这两个模型最后输出都是通过softmax的方式得到对于每个预测结果的概率： 模型1：    C">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-08-024353.jpg">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-08-064410.jpg">
-<meta property="og:updated_time" content="2018-04-10T14:06:58.807Z">
+<meta property="og:updated_time" content="2018-04-10T14:09:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Cross Entropy Loss Function">
-<meta name="twitter:description" content="这篇文章中，讨论的Cross Entropy损失函数常用于分类问题中，但是为什么它会在分类问题中这么有效呢？我们先从一个简单的分类例子来入手。 \begin{align}x &amp;amp;= a +b+c+d \\ &amp;amp;= e +f \\ &amp;amp;= g\end{align} 预测政治倾向例子我们希望根据一个人的年龄、性别、年收入等相互独立的特征，来预测一个人的政治倾向，有三种可预测结果：民主">
+<meta name="twitter:description" content="这篇文章中，讨论的Cross Entropy损失函数常用于分类问题中，但是为什么它会在分类问题中这么有效呢？我们先从一个简单的分类例子来入手。 预测政治倾向例子我们希望根据一个人的年龄、性别、年收入等相互独立的特征，来预测一个人的政治倾向，有三种可预测结果：民主党、共和党、其他党。假设我们当前有两个模型，这两个模型最后输出都是通过softmax的方式得到对于每个预测结果的概率： 模型1：    C">
 <meta name="twitter:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-08-024353.jpg">
 
 
@@ -373,7 +373,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  1,601 字
+                  1,593 字
                 </span>
               
 
@@ -411,7 +411,6 @@
 
       
         <p>这篇文章中，讨论的Cross Entropy损失函数常用于分类问题中，但是为什么它会在分类问题中这么有效呢？我们先从一个简单的分类例子来入手。</p>
-<p>\begin{align}<br>x &amp;= a +b+c+d \\<br> &amp;= e +f \\<br> &amp;= g<br>\end{align}</p>
 <h1 id="预测政治倾向例子"><a href="#预测政治倾向例子" class="headerlink" title="预测政治倾向例子"></a>预测政治倾向例子</h1><p>我们希望根据一个人的年龄、性别、年收入等相互独立的特征，来预测一个人的政治倾向，有三种可预测结果：民主党、共和党、其他党。假设我们当前有两个模型，这两个模型最后输出都是通过softmax的方式得到对于每个预测结果的概率：</p>
 <p><strong>模型1</strong>：</p>
 <table>
@@ -499,10 +498,7 @@
 <p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-08-064410.jpg" alt="Screen Shot 2018-04-08 at 11.56.55"></p>
 <p>下面，我们以二分类的情形来推导一下整个求导公式，我们将求导分成两个过程，即拆成两项偏导的乘积。：</p>
 <p>$$\frac{\partial E}{\partial score_i}=\frac{\partial E}{\partial p_i}\cdot \frac{\partial p_i}{\partial score_i}$$</p>
-<h3 id="计算第一项：-frac-partial-E-partial-p-i"><a href="#计算第一项：-frac-partial-E-partial-p-i" class="headerlink" title="计算第一项：$\frac{\partial E}{\partial p_i}$"></a>计算第一项：$\frac{\partial E}{\partial p_i}$</h3><p>$$\frac{\partial E}{\partial p_i}=\frac{\partial −(ylog(p)+(1−y)log(1−p))}{\partial p_i}$$</p>
-<p>​     $$= -\frac{\partial y_ilogp_i}{\partial p_i}-\frac{\partial (1-y_i)log(1-p_i)}{\partial p_i}$$</p>
-<p>​     $$= -\frac{y_i}{p_i}-[(1-y_i)\cdot \frac{1}{1-p_i}\cdot (-1)]$$</p>
-<p>​     $$= -\frac{y_i}{p_i}-\frac{1-y_i}{1-p_i}$$</p>
+<h3 id="计算第一项：-frac-partial-E-partial-p-i"><a href="#计算第一项：-frac-partial-E-partial-p-i" class="headerlink" title="计算第一项：$\frac{\partial E}{\partial p_i}$"></a>计算第一项：$\frac{\partial E}{\partial p_i}$</h3><p>\begin{align}<br>\frac{\partial E}{\partial p_i} &amp;= \frac{\partial −(ylog(p)+(1−y)log(1−p))}{\partial p_i} \\<br> &amp;= -\frac{\partial y_ilogp_i}{\partial p_i}-\frac{\partial (1-y_i)log(1-p_i)}{\partial p_i} \\<br> &amp;= -\frac{y_i}{p_i}-[(1-y_i)\cdot \frac{1}{1-p_i}\cdot (-1)] \\<br> &amp;= = -\frac{y_i}{p_i}-\frac{1-y_i}{1-p_i} \\<br>\end{align}</p>
 <h3 id="计算第二项：-frac-partial-p-i-partial-score-i"><a href="#计算第二项：-frac-partial-p-i-partial-score-i" class="headerlink" title="计算第二项：$\frac{\partial p_i}{\partial score_i}$"></a>计算第二项：$\frac{\partial p_i}{\partial score_i}$</h3><p>这一项要计算的是softmax函数对于score的导数，我们先回顾一下分数求导的公式：</p>
 <blockquote>
 <p>$$f(x) = \frac{g(x)}{h(x)}=\frac{g’(x)h(x)-g(x){h}’(x)}{h^2(x)}$$</p>
