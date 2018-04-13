@@ -90,10 +90,10 @@
 <meta property="og:description" content="范数过拟合是机器学习中一个比较常见的问题，而正则化是解决模型过拟合的一种手段。我们先看一下范数的定义：  Going a bit further, we define $||x||_p$ as a “p-norm”. Given $x$, a vector with $i$ components, a p-norm is defined as: $$|| x ||_p = \left(\sum_i">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://conghuai.me/Desktop/Manhattan_distance.svg">
-<meta property="og:image" content="http://conghuai.me/Desktop/1_sMS5qc_2O6h87L_NF0B8Mw.gif">
-<meta property="og:image" content="http://conghuai.me/Desktop/1_uHXe9qibzdqieBfje7Hggw.png">
-<meta property="og:image" content="http://conghuai.me/Desktop/1_0QRBxi6dlivROqCSFQeYhA.png">
-<meta property="og:updated_time" content="2018-04-13T09:34:45.228Z">
+<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-13-093559.jpg">
+<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-13-093553.jpg">
+<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-13-093556.jpg">
+<meta property="og:updated_time" content="2018-04-13T09:36:48.767Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Regularization">
 <meta name="twitter:description" content="范数过拟合是机器学习中一个比较常见的问题，而正则化是解决模型过拟合的一种手段。我们先看一下范数的定义：  Going a bit further, we define $||x||_p$ as a “p-norm”. Given $x$, a vector with $i$ components, a p-norm is defined as: $$|| x ||_p = \left(\sum_i">
@@ -488,12 +488,12 @@
 <li>$l_2$正则化可通过假设权重$w$的先验分布为高斯分布，由最大后验概率估计导出。</li>
 </ul>
 <h1 id="稀疏性"><a href="#稀疏性" class="headerlink" title="稀疏性"></a>稀疏性</h1><p>L1正则化和L2正则化哪个能产生稀疏的解呢？答案是<strong>L1正则化</strong>。假设我们现在要求解模型$Ax=b$，也就是在2维空间上找到一条直线来拟合样本点。我们需要两个点才能去固定一条直线，但是，假设我们现在的训练样本中只有一个点。那么我们将得到无穷多个解。假设，该点为$(10, 5)$，直线为$y=a<em>x+b$，那么，该例子可形式化为求解模型：$b = 5 - 10</em>a$ 的参数。</p>
-<p><img src="../../../../../../../Desktop/1_sMS5qc_2O6h87L_NF0B8Mw.gif" alt="1_sMS5qc_2O6h87L_NF0B8Mw"></p>
+<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-13-093559.jpg" alt="1_sMS5qc_2O6h87L_NF0B8Mw"></p>
 <p>那么，当我们加上正则化项后，又该如何求解呢？</p>
 <p>假设，我们的正则化的值等于一个常数，它的图像如下所示：</p>
-<p><img src="../../../../../../../Desktop/1_uHXe9qibzdqieBfje7Hggw.png" alt="1_uHXe9qibzdqieBfje7Hggw"></p>
+<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-13-093553.jpg" alt="1_uHXe9qibzdqieBfje7Hggw"></p>
 <p>我们注意到，在红色直线上，并不是所有点都是稀疏点，而只有在顶点处的点才是稀疏的，因为顶点处的点某些维度为0。现在，我们要做的是就是扩大这个红色的形状，让它慢慢的靠近上图中蓝色的直线直到两者有公共点。当我们慢慢增大后，我们发现，最有可能成为公共交点的就是红色形状的顶点。而从刚才的分析中，我们知道，红色形状的顶点是稀疏点，所以，加上L1正则化后，得到的解往往都是稀疏的，而且这些公共点对应的常数$c$也是比较小的。</p>
-<p><img src="../../../../../../../Desktop/1_0QRBxi6dlivROqCSFQeYhA.png" alt="1_0QRBxi6dlivROqCSFQeYhA"></p>
+<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-13-093556.jpg" alt="1_0QRBxi6dlivROqCSFQeYhA"></p>
 <p>而，L2正则化没有这种稀疏性特点。</p>
 <h2 id="特征选择"><a href="#特征选择" class="headerlink" title="特征选择"></a>特征选择</h2><p>L1正则化具有特征选择的功能，这是因为L1正则化通常会产生系数的解，假设我们有100个系数，在L1正则化的作用下只有10个系数非0，那么这就等价于我们从100个特征中抽出10个重要的特征。</p>
 <h1 id="计算复杂度"><a href="#计算复杂度" class="headerlink" title="计算复杂度"></a>计算复杂度</h1><p>在计算效率上，L2优于L1，因为L1正则化通常是不可导的，这导致我们不能用矩阵方式来求解它，而大多数是依赖于近似的方式。</p>
