@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="math," />
+  <meta name="keywords" content="math,ml," />
 
 
 
@@ -81,21 +81,23 @@
 
 
 
-<meta name="description" content="这篇文章中，讨论的Cross Entropy损失函数常用于分类问题中，但是为什么它会在分类问题中这么有效呢？我们先从一个简单的分类例子来入手。 预测政治倾向例子我们希望根据一个人的年龄、性别、年收入等相互独立的特征，来预测一个人的政治倾向，有三种可预测结果：民主党、共和党、其他党。假设我们当前有两个模型，这两个模型最后输出都是通过softmax的方式得到对于每个预测结果的概率： 模型1：    C">
-<meta name="keywords" content="math">
+<meta name="description" content="范数过拟合是机器学习中一个比较常见的问题，而正则化是解决模型过拟合的一种手段。我们先看一下范数的定义：  Going a bit further, we define $||x||_p$ as a “p-norm”. Given $x$, a vector with $i$ components, a p-norm is defined as: $$|| x ||_p = \left(\sum_i">
+<meta name="keywords" content="math,ml">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Cross Entropy Loss Function">
-<meta property="og:url" content="http://conghuai.me/2018/04/08/Cross Entropy Loss Function/index.html">
+<meta property="og:title" content="Regularization">
+<meta property="og:url" content="http://conghuai.me/2018/04/12/Regularization/index.html">
 <meta property="og:site_name" content="蔡聪怀">
-<meta property="og:description" content="这篇文章中，讨论的Cross Entropy损失函数常用于分类问题中，但是为什么它会在分类问题中这么有效呢？我们先从一个简单的分类例子来入手。 预测政治倾向例子我们希望根据一个人的年龄、性别、年收入等相互独立的特征，来预测一个人的政治倾向，有三种可预测结果：民主党、共和党、其他党。假设我们当前有两个模型，这两个模型最后输出都是通过softmax的方式得到对于每个预测结果的概率： 模型1：    C">
+<meta property="og:description" content="范数过拟合是机器学习中一个比较常见的问题，而正则化是解决模型过拟合的一种手段。我们先看一下范数的定义：  Going a bit further, we define $||x||_p$ as a “p-norm”. Given $x$, a vector with $i$ components, a p-norm is defined as: $$|| x ||_p = \left(\sum_i">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-08-024353.jpg">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-08-064410.jpg">
-<meta property="og:updated_time" content="2018-04-10T14:31:07.000Z">
+<meta property="og:image" content="http://conghuai.me/Desktop/Manhattan_distance.svg">
+<meta property="og:image" content="http://conghuai.me/Desktop/1_sMS5qc_2O6h87L_NF0B8Mw.gif">
+<meta property="og:image" content="http://conghuai.me/Desktop/1_uHXe9qibzdqieBfje7Hggw.png">
+<meta property="og:image" content="http://conghuai.me/Desktop/1_0QRBxi6dlivROqCSFQeYhA.png">
+<meta property="og:updated_time" content="2018-04-13T09:34:45.228Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Cross Entropy Loss Function">
-<meta name="twitter:description" content="这篇文章中，讨论的Cross Entropy损失函数常用于分类问题中，但是为什么它会在分类问题中这么有效呢？我们先从一个简单的分类例子来入手。 预测政治倾向例子我们希望根据一个人的年龄、性别、年收入等相互独立的特征，来预测一个人的政治倾向，有三种可预测结果：民主党、共和党、其他党。假设我们当前有两个模型，这两个模型最后输出都是通过softmax的方式得到对于每个预测结果的概率： 模型1：    C">
-<meta name="twitter:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-08-024353.jpg">
+<meta name="twitter:title" content="Regularization">
+<meta name="twitter:description" content="范数过拟合是机器学习中一个比较常见的问题，而正则化是解决模型过拟合的一种手段。我们先看一下范数的定义：  Going a bit further, we define $||x||_p$ as a “p-norm”. Given $x$, a vector with $i$ components, a p-norm is defined as: $$|| x ||_p = \left(\sum_i">
+<meta name="twitter:image" content="http://conghuai.me/Desktop/Manhattan_distance.svg">
 
 
 
@@ -125,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://conghuai.me/2018/04/08/Cross Entropy Loss Function/"/>
+  <link rel="canonical" href="http://conghuai.me/2018/04/12/Regularization/"/>
 
 
 
 
 
-  <title>Cross Entropy Loss Function | 蔡聪怀</title>
+  <title>Regularization | 蔡聪怀</title>
   
 
 
@@ -268,7 +270,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://conghuai.me/2018/04/08/Cross Entropy Loss Function/">
+    <link itemprop="mainEntityOfPage" href="http://conghuai.me/2018/04/12/Regularization/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Conghuai Cai">
@@ -285,7 +287,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Cross Entropy Loss Function</h1>
+          <h1 class="post-title" itemprop="name headline">Regularization</h1>
         
 
         <div class="post-meta">
@@ -297,8 +299,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-08T10:54:16+08:00">
-                2018-04-08
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-12T22:37:46+08:00">
+                2018-04-12
               </time>
             
 
@@ -331,6 +333,17 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/Model-Optimization/" itemprop="url" rel="index">
+                    <span itemprop="name">Model Optimization</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Machine-Learning/Loss-Function/" itemprop="url" rel="index">
                     <span itemprop="name">Loss Function</span>
                   </a>
@@ -348,7 +361,7 @@
 
           
           
-             <span id="/2018/04/08/Cross Entropy Loss Function/" class="leancloud_visitors" data-flag-title="Cross Entropy Loss Function">
+             <span id="/2018/04/12/Regularization/" class="leancloud_visitors" data-flag-title="Regularization">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -373,7 +386,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  1,620 字
+                  2,053 字
                 </span>
               
 
@@ -389,7 +402,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  7 分钟
+                  8 分钟
                 </span>
               
             </div>
@@ -410,110 +423,85 @@
       
 
       
-        <p>这篇文章中，讨论的Cross Entropy损失函数常用于分类问题中，但是为什么它会在分类问题中这么有效呢？我们先从一个简单的分类例子来入手。</p>
-<h1 id="预测政治倾向例子"><a href="#预测政治倾向例子" class="headerlink" title="预测政治倾向例子"></a>预测政治倾向例子</h1><p>我们希望根据一个人的年龄、性别、年收入等相互独立的特征，来预测一个人的政治倾向，有三种可预测结果：民主党、共和党、其他党。假设我们当前有两个模型，这两个模型最后输出都是通过softmax的方式得到对于每个预测结果的概率：</p>
-<p><strong>模型1</strong>：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">COMPUTED</th>
-<th style="text-align:center">TARGETS</th>
-<th style="text-align:center">CORRECT?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">0.3 0.3 0.4</td>
-<td style="text-align:center">0 0 1（民主党）</td>
-<td style="text-align:center">正确</td>
-</tr>
-<tr>
-<td style="text-align:center">0.3 0.4 0.3</td>
-<td style="text-align:center">0 1 0（共和党）</td>
-<td style="text-align:center">正确</td>
-</tr>
-<tr>
-<td style="text-align:center">0.1 0.2 0.7</td>
-<td style="text-align:center">1 0 0 （其他党）</td>
-<td style="text-align:center">错误</td>
-</tr>
-</tbody>
-</table>
-<p><strong>模型1</strong>对于样本1和样本2以非常微弱的优势判断正确，对于样本3的判断则彻底错误。</p>
-<p><strong>模型2</strong>：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">COMPUTED</th>
-<th style="text-align:center">TARGETS</th>
-<th style="text-align:center">CORRECT?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">0.1 0.2 0.7</td>
-<td style="text-align:center">0 0 1（民主党）</td>
-<td style="text-align:center">正确</td>
-</tr>
-<tr>
-<td style="text-align:center">0.1 0.7 0.2</td>
-<td style="text-align:center">0 1 0（共和党）</td>
-<td style="text-align:center">正确</td>
-</tr>
-<tr>
-<td style="text-align:center">0.3 0.4 0.3</td>
-<td style="text-align:center">1 0 0 （其他党）</td>
-<td style="text-align:center">错误</td>
-</tr>
-</tbody>
-</table>
-<p><strong>模型2</strong>对于样本1和样本2判断非常准确，对于样本3判断错误，但是相对来说没有错得太离谱。</p>
-<p>好了，有了模型之后，我们需要通过定义损失函数来判断模型在样本上的表现了，那么我们可以定义哪些损失函数呢？</p>
-<h2 id="Classification-Error（分类错误率）"><a href="#Classification-Error（分类错误率）" class="headerlink" title="Classification Error（分类错误率）"></a>Classification Error（分类错误率）</h2><p>最为直接的损失函数定义为：$classification\ error=\frac{count\ of\ error\ items}{count\ of \ all\ items}$</p>
-<p><strong>模型1：</strong>$classification\ error=\frac{1}{3}$</p>
-<p><strong>模型2：</strong>$classification\ error=\frac{1}{3}$</p>
-<p>我们知道，<strong>模型1</strong>和<strong>模型2</strong>虽然都是预测错了1个，但是相对来说<strong>模型2</strong>表现的更好，损失函数值照理来说应该更小，但是，很遗憾的是，$classification\ error$并不能判断出来，所以这种损失函数虽然好理解，但表现不太好。</p>
-<h2 id="Mean-Squared-Error-平方和"><a href="#Mean-Squared-Error-平方和" class="headerlink" title="Mean Squared Error (平方和)"></a>Mean Squared Error (平方和)</h2><p>平方和损失也是一种比较常见的损失函数，其定义为：$MSE=\frac{1}{n}\sum_{i}^n(\hat{y_i}-y_i)$</p>
-<p><strong>模型1：</strong>$MSE=\frac{0.54+0.54+1.34}{3}=0.81$</p>
-<p><strong>模型2：</strong>$MSE=\frac{0.14+0.14+0.74}{3}=0.34$</p>
-<p>MSE能够判断出来<strong>模型2</strong>优于<strong>模型1</strong>，那为什么不采样这种损失函数呢？原因在于，使用该损失函数时，得到的表达式是非凸函数，有很多局部的极值点。在做优化的时候不太好处理。</p>
-<p>有了上面的直观分析，我们可以清楚的看到，对于分类问题的损失函数来说，分类错误率和平方和损失都不是很好的损失函数，下面我们来看一下交叉熵损失函数是怎么解决这个问题的。</p>
-<h1 id="Cross-Entropy-Error-Function"><a href="#Cross-Entropy-Error-Function" class="headerlink" title="Cross Entropy Error Function"></a>Cross Entropy Error Function</h1><p>交叉熵损失函数经常用于分类问题中，特别是在神经网络做分类问题时，也经常使用交叉熵作为损失函数，此外，由于交叉熵涉及到计算每个类别的概率，所以交叉熵几乎每次都和softmax函数一起出现。</p>
-<h2 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h2><h3 id="二分类"><a href="#二分类" class="headerlink" title="二分类"></a>二分类</h3><p>在二分的情况下，模型最后需要预测的结果只有两种情况，对于每个类别我们的预测得到的概率为$p$和$1-p$。此时表达式为：$−(ylog(p)+(1−y)log(1−p))$</p>
-<h3 id="多分类"><a href="#多分类" class="headerlink" title="多分类"></a>多分类</h3><p>多分类的情况实际上就是对二分类的扩展：$-\sum_{c=1}^My_{o,c}\log(p_{o,c})$</p>
-<p>其中：</p>
-<ul>
-<li>$M$——类别的数量；</li>
-<li>$y$——指示变量（0或1）,如果该类别和样本观测到的类别相同就是1，否则是0；</li>
-<li>$p$——对于观测样本属于类别c的预测概率。</li>
-</ul>
-<h2 id="函数图像"><a href="#函数图像" class="headerlink" title="函数图像"></a>函数图像</h2><p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-08-024353.jpg" alt="cross_entropy"></p>
-<p>可以看出，该函数是凸函数，求导时能够得到全局最优值。</p>
-<h2 id="求导"><a href="#求导" class="headerlink" title="求导"></a>求导</h2><p>我们用神经网络最后一层输出的情况，来看一眼整个模型预测及获得损失的的流程：</p>
-<ol>
-<li>神经网络最后一层得到每个类别的得分<strong>scores</strong>；</li>
-<li>该得分经过softmax转换为概率输出；</li>
-<li>模型预测的类别概率输出与真实类别的one hot形式进行cross entropy损失函数的计算。</li>
-</ol>
-<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-08-064410.jpg" alt="Screen Shot 2018-04-08 at 11.56.55"></p>
-<p>下面，我们以二分类的情形来推导一下整个求导公式，我们将求导分成两个过程，即拆成两项偏导的乘积。：</p>
-<p>$$\frac{\partial E}{\partial score_i}=\frac{\partial E}{\partial p_i}\cdot \frac{\partial p_i}{\partial score_i}$$</p>
-<h3 id="计算第一项：-frac-partial-E-partial-p-i"><a href="#计算第一项：-frac-partial-E-partial-p-i" class="headerlink" title="计算第一项：$\frac{\partial E}{\partial p_i}$"></a>计算第一项：$\frac{\partial E}{\partial p_i}$</h3><p>\begin{align}<br>\frac{\partial E}{\partial p_i} &amp;= \frac{\partial −(ylog(p)+(1−y)log(1−p))}{\partial p_i} \\<br> &amp;= -\frac{\partial y_ilogp_i}{\partial p_i}-\frac{\partial (1-y_i)log(1-p_i)}{\partial p_i} \\<br> &amp;= -\frac{y_i}{p_i}-[(1-y_i)\cdot \frac{1}{1-p_i}\cdot (-1)] \\<br> &amp;= -\frac{y_i}{p_i}-\frac{1-y_i}{1-p_i} \\<br>\end{align}</p>
-<h3 id="计算第二项：-frac-partial-p-i-partial-score-i"><a href="#计算第二项：-frac-partial-p-i-partial-score-i" class="headerlink" title="计算第二项：$\frac{\partial p_i}{\partial score_i}$"></a>计算第二项：$\frac{\partial p_i}{\partial score_i}$</h3><p>这一项要计算的是softmax函数对于score的导数，我们先回顾一下分数求导的公式：</p>
+        <h1 id="范数"><a href="#范数" class="headerlink" title="范数"></a>范数</h1><p>过拟合是机器学习中一个比较常见的问题，而正则化是解决模型过拟合的一种手段。我们先看一下范数的定义：</p>
 <blockquote>
-<p>$$f(x) = \frac{g(x)}{h(x)}=\frac{g’(x)h(x)-g(x){h}’(x)}{h^2(x)}$$</p>
+<p>Going a bit further, we define $||x||_p$ as a “p-norm”. Given $x$, a vector with $i$ components, a p-norm is defined as:</p>
+<p>$$|| x ||_p = \left(\sum_i |x_i|^p\right)^{1/p}$$</p>
+<p>The simplest norm conceptually is Euclidean distance. This is what we typically think of as distance between two points in space:</p>
+<p>$$|| x ||_2 = \sqrt{\left(\sum_i x_i^2\right)} = \sqrt{x_1^2 + x_2^2 + \ldots + x_i^2}$$</p>
+<p>Another common norm is taxicab distance, which is the 1-norm:</p>
+<p>$$|| x ||_1 = \sum_i |x_i| = |x_1| + |x_2| + \ldots + |x_i|$$</p>
+<p>Taxicab distance is so-called because it emulates moving between two points as though you are moving through the streets of Manhattan in a taxi cab. Instead of measuring the distance “as the crow flies” it measures the right-angle distance between two points:</p>
+<p><img src="../../../../../../../Desktop/Manhattan_distance.svg" alt="Manhattan_distance"></p>
 </blockquote>
-<p>考虑$k$等于$i$的情况：</p>
-<p>\begin{align}<br>\frac{\partial p_i}{\partial score_i} &amp;= \frac{({e^{y_i}})’\cdot (\sum_ie^{y_i})-e^{y_i}\cdot {(\sum_j e^{y_i})}’}{(\sum_je^{y_i})^2} \\<br> &amp;= \frac{e^{y_i}\cdot \sum_ie^{y_i}-{(e^{y_i})}^2}{(\sum_je^{y_i})^2} \\<br> &amp;= \frac{e^{y_i}}{\sum_je^{y_i}} - \frac{(e^{y_i})^2}{(\sum_je^{y_i})^2} \\<br> &amp;= \frac{e^{y_i}}{\sum_je^{y_i}}\cdot (1 - \frac{e^{y_i}}{\sum_je^{y_i}}) \\<br> &amp;= \sigma(y_i)(1-\sigma(y_i)) \\<br>\end{align}</p>
-<p>考虑k不等于i的情况：</p>
-<p>\begin{align}<br>\frac{\partial p_i}{\partial score_i} &amp;= \frac{(e^{y_k})’\cdot (\sum_ie^{y_i})-e^{y_i}\cdot {(\sum_j e^{y_i})}’}{(\sum_je^{y_i})^2} \\<br> &amp;= \frac{0\cdot \sum_ie^{y_i}-(e^{y_i})\cdot (e^{y_k})}{(\sum_je^{y_i})^2} \\<br> &amp;= -\frac{e^{y_i}\cdot e^{y_k}}{(\sum_je^{y_i})^2} \\<br> &amp;= -\frac{e^{y_i}}{\sum_je^{y_i} }\cdot \frac{e^{y_k} }{\sum_je^{y_i}} \\<br> &amp;= -\sigma(y_i)\cdot \sigma(y_k) \\<br>\end{align}</p>
-<p>综上可得softmax损失函数的求导结果：</p>
-<p>\begin{split}\frac{\partial pi}{\partial score_i}=\begin{cases} \sigma(y_i)(1-\sigma(y_i)) &amp; \text{$if\ j=k$} \\ -\sigma(y_i)\cdot \sigma(y_k) &amp; \text{$if\ j \neq k$}\end{cases}\end{split}</p>
-<h3 id="计算结果-frac-partial-E-partial-score-i"><a href="#计算结果-frac-partial-E-partial-score-i" class="headerlink" title="计算结果$\frac{\partial E}{\partial score_i}$"></a>计算结果$\frac{\partial E}{\partial score_i}$</h3><p>\begin{align}<br>\frac{\partial E}{\partial score_i} &amp;= \frac{\partial E}{\partial p_i}\cdot \frac{\partial p_i}{\partial score_i} \\<br> &amp;= [-\frac{y_i}{\sigma(y_i)}-\cdot \frac{1-y_i}{1-\sigma(y_i)}]\cdot  \sigma(y_i)(1-\sigma(y_i) \\<br> &amp;= -\frac{c_i}{\sigma(y_i)}\cdot \sigma(y_i)\cdot (1-\sigma(y_i))+\frac{1-c_i}{1-\sigma(y_i)}\cdot \sigma(y_i)\cdot (1-\sigma(y_i)) \\<br> &amp;= -c_i+c_i\cdot \sigma(y_i)+\sigma(y_i)-c_i\cdot \sigma(y_i) \\<br> &amp;= \sigma(y_i)-c_i \\<br>\end{align}</p>
-<p>可以看到，我们得到了一个非常漂亮的结果，所以，Cross Entropy损失函数，不仅可以很好的衡量模型的效果，又可以很容易的的进行求导计算。</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1]. <a href="http://jackon.me/posts/why-use-cross-entropy-error-for-loss-function/" target="_blank" rel="noopener">神经网络的分类模型 LOSS 函数为什么要用 CROSS ENTROPY</a></p>
-<p>[2]. <a href="http://sefiks.com/2017/11/08/softmax-as-a-neural-networks-activation-function/" target="_blank" rel="noopener">Softmax as a Neural Networks Activation Function</a></p>
-<p>[3]. <a href="https://sefiks.com/2017/12/17/a-gentle-introduction-to-cross-entropy-loss-function/" target="_blank" rel="noopener">A Gentle Introduction to Cross-Entropy Loss Function</a></p>
+<p>正则化（Regularization）是机器学习中一种常用的技术，其主要目的是控制模型复杂度，减小过拟合。最基本的正则化方法是在原目标（代价）函数 中添加惩罚项，对复杂度高的模型进行“惩罚”。其数学表达形式为：</p>
+<p>$$\tilde{J}(w;X,y)=J(w;X,y)+\alpha \Omega (w)$$</p>
+<p>式中：</p>
+<ul>
+<li>$X，y$为训练样本和相应标签；</li>
+<li>$w$为权重系数向量；</li>
+<li>$J()$为目标函数；</li>
+<li>$\Omega(w)$为惩罚项，即模型“规模”的某种度量；</li>
+<li>$\alpha$控制正则化强弱。</li>
+</ul>
+<p>不同的$\Omega$函数对权重$w$的最优解有不同的偏好，因为会产生不同的正则化效果，最常用的$\Omega$函数有两种，即$l_1$范数和$l_2$范数，称为$l_1$正则化和$l_2$正则化：</p>
+<p>$l_1: \Omega (w)=||w||<em>1=\sum</em>{i=1}^k|w_i|$</p>
+<p>$l_2: \Omega (w)=||w||<em>2=\sum</em>{i=1}^kw_i^2$</p>
+<p>带有L1正则化的回归模型通常被称为<strong>Lasso Regression</strong>，带有L2正则化的回归模型通常被称为<strong>Ridge Regression</strong>。</p>
+<p>L1正则化和L2正则化主要的区别在于，L1正比于参数的绝对值，而L2正比于参数的平方。这导致了两种正则化方式会产生不同的效果。</p>
+<h1 id="公式来源分析"><a href="#公式来源分析" class="headerlink" title="公式来源分析"></a>公式来源分析</h1><h2 id="基于约束条件的最优化"><a href="#基于约束条件的最优化" class="headerlink" title="基于约束条件的最优化"></a>基于约束条件的最优化</h2><p>对于模型权重系数$w$求解释通过最小化目标函数实现的，即求解：</p>
+<p>$$min_wJ(w;X,y)$$</p>
+<p>通常情况下，模型复杂度与系数$w$的个数成线性关系：即$w$数量越多，模型越复杂。因此，为了限制模型的复杂度，很自然的想法就是减少系数$w$的个数，即让$w$向量中一些元素为0或者说限制$w$中非零元素的数量。因此，我们可以在原优化问题中加入一个约束条件：</p>
+<p>$$min_wJ(w;X,y),\ s.t. ||w||_0 \leq C$$</p>
+<p>式中，$||\cdot||_0$范数表示向量中非零元素的个数，但由于该问题是一个NP问题，不易求解，为此我们可以放松一下约束条件，为了达到近似效果，我们不严格要求某些权重$w$为0，而是要求权重$w$应接近于0，即尽量小。从而可用$l_1、l_2$范数来近似$l_0$范数，即：</p>
+<p>$$min_wJ(w;X,y),\ s.t. ||w||_1 \leq C$$ 或</p>
+<p>$$min_wJ(w;X,y),\ s.t. ||w||_2^2 \leq C$$（为了后续方便处理，对$||w||_2$进行平方）</p>
+<p>利用拉格朗日算子法，我们可将上述带约束条件的最优化问题转换为不带约束项的优化问题，构建拉格朗日函数：</p>
+<p>$$min_wJ(w;X,y) + \alpha^*||w||_1$$或</p>
+<p>$$min_wJ(w;X,y) + \alpha^*||w||_2^2$$</p>
+<p>因此，我们得到了对$l_1、l_2$正则化的第一种理解：</p>
+<ul>
+<li>$l_1$正则化等价于在原优化目标函数中增加约束条件$||w||_1 \leq C$</li>
+<li>$l_2$正则化等价于在原优化目标函数中增加约束条件$||w||_2^2 \leq C$</li>
+</ul>
+<h2 id="最大后验概率估计"><a href="#最大后验概率估计" class="headerlink" title="最大后验概率估计"></a>最大后验概率估计</h2><p>在最大似然估计中，假设权重$w$是未知的参数，从而求得对数似然函数：</p>
+<p>$$l(w)=log[P(y|X;w)]=log[\prod_iP(y^i|x^i;w)]$$</p>
+<p>通过假设$y^i$的不同概率分布，即可得到不同的模型，例如若假设$y^i\sim N(w^Tx^i, \sigma^2)$的高斯分布，则有：</p>
+<p>$$l(w)=log[\prod_i\frac{1}{\sqrt {2\pi}\sigma}e^{-\frac{(y^i-w^Tx^i)^2}{2\sigma^2}}]=-\frac{1}{2\sigma^2}\sum_i(y_i-w^Tx^i)^2+C$$</p>
+<p>可令$J(w;X,y) = -l(w)$</p>
+<p>在最大后验概率估计中，则将权重$w$看做随机变量，也具有某种分布，从而有：</p>
+<p>$p(w|X,y)=\frac{P(w,X,y)}{P(X,y)}=\frac{P(X,y|w)P(w)}{P(X,y)}\propto P(y|X,w)P(w)$</p>
+<p>对上述取对数有：</p>
+<p>$$MAP = logP(y|X,w)P(w) = logP(y|X,w)+logP(w)$$</p>
+<p>可以看到，后验概率在似然函数的基础上增加一项$logP(w)$，$P(w)$的意义是对权重系数$w$的概率分布的先验假设， 在收集到训练样本${X,y}$后，则可根据$w$在${X,y}$下的后验概率对$w$进行修改正，从而做出对$w$更好地估计。</p>
+<p>若假设$w_j$的先验分布是均值为0的高斯分布，即$w_j\sim N(0, \sigma^2)$，则有：</p>
+<p>$$logP(w) = log\prod_jP(w_j)=log\prod_j[\frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(w_j)^2}{2\sigma^2}}]=-\frac{1}{2\sigma^2}\sum_jw_j^2+C’$$</p>
+<p>可以看到，在高斯分布下$logP(w)$的效果等价于在代价函数中增加$l_2$正则项。</p>
+<p>若假设$w_j$服从均值为0、参数为$a$的拉普拉斯分布，即：</p>
+<p>$P(w_j)=\frac{1}{\sqrt{2a}}e^{\frac{-|w_j|}{a}}$</p>
+<p>则有：</p>
+<p>$$logP(w) = log\prod_j\frac{1}{\sqrt{2a}}e^{\frac{-|w_j|}{a}}=-\frac{1}{a}\sum_j|w_j|+C’$$</p>
+<p>可以看到，在拉普拉斯分布下$logP(w)$的效果等价于在代价函数中增加$l_1$正则化。</p>
+<p>因此，我们得到对于$l_1、l_2$正则化的第二种理解：</p>
+<ul>
+<li>$l_1$正则化可通过假设权重$w$的先验分布为拉普拉斯分布，由最大后验概率估计导出；</li>
+<li>$l_2$正则化可通过假设权重$w$的先验分布为高斯分布，由最大后验概率估计导出。</li>
+</ul>
+<h1 id="稀疏性"><a href="#稀疏性" class="headerlink" title="稀疏性"></a>稀疏性</h1><p>L1正则化和L2正则化哪个能产生稀疏的解呢？答案是<strong>L1正则化</strong>。假设我们现在要求解模型$Ax=b$，也就是在2维空间上找到一条直线来拟合样本点。我们需要两个点才能去固定一条直线，但是，假设我们现在的训练样本中只有一个点。那么我们将得到无穷多个解。假设，该点为$(10, 5)$，直线为$y=a<em>x+b$，那么，该例子可形式化为求解模型：$b = 5 - 10</em>a$ 的参数。</p>
+<p><img src="../../../../../../../Desktop/1_sMS5qc_2O6h87L_NF0B8Mw.gif" alt="1_sMS5qc_2O6h87L_NF0B8Mw"></p>
+<p>那么，当我们加上正则化项后，又该如何求解呢？</p>
+<p>假设，我们的正则化的值等于一个常数，它的图像如下所示：</p>
+<p><img src="../../../../../../../Desktop/1_uHXe9qibzdqieBfje7Hggw.png" alt="1_uHXe9qibzdqieBfje7Hggw"></p>
+<p>我们注意到，在红色直线上，并不是所有点都是稀疏点，而只有在顶点处的点才是稀疏的，因为顶点处的点某些维度为0。现在，我们要做的是就是扩大这个红色的形状，让它慢慢的靠近上图中蓝色的直线直到两者有公共点。当我们慢慢增大后，我们发现，最有可能成为公共交点的就是红色形状的顶点。而从刚才的分析中，我们知道，红色形状的顶点是稀疏点，所以，加上L1正则化后，得到的解往往都是稀疏的，而且这些公共点对应的常数$c$也是比较小的。</p>
+<p><img src="../../../../../../../Desktop/1_0QRBxi6dlivROqCSFQeYhA.png" alt="1_0QRBxi6dlivROqCSFQeYhA"></p>
+<p>而，L2正则化没有这种稀疏性特点。</p>
+<h2 id="特征选择"><a href="#特征选择" class="headerlink" title="特征选择"></a>特征选择</h2><p>L1正则化具有特征选择的功能，这是因为L1正则化通常会产生系数的解，假设我们有100个系数，在L1正则化的作用下只有10个系数非0，那么这就等价于我们从100个特征中抽出10个重要的特征。</p>
+<h1 id="计算复杂度"><a href="#计算复杂度" class="headerlink" title="计算复杂度"></a>计算复杂度</h1><p>在计算效率上，L2优于L1，因为L1正则化通常是不可导的，这导致我们不能用矩阵方式来求解它，而大多数是依赖于近似的方式。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1]. <a href="https://medium.com/mlreview/l1-norm-regularization-and-sparsity-explained-for-dummies-5b0e4be3938a" target="_blank" rel="noopener">L1 Norm Regularization and Sparsity Explained for Dummies</a></p>
+<p>[2]. <a href="https://www.wikiwand.com/en/Regularization_(mathematics" target="_blank" rel="noopener">Regularization (mathematics)</a>)</p>
+<p>[3]. <a href="https://www.kaggle.com/residentmario/l1-norms-versus-l2-norms" target="_blank" rel="noopener">L1 Norms versus L2 Norms</a></p>
+<p>[4]. <a href="https://www.youtube.com/playlist?list=PLXVfgk9fNX2I7tB6oIINGBmW50rrmFTqf" target="_blank" rel="noopener">Hsuan-Tien Lin. Machine Learning Foundations Lecture 14.</a></p>
+<p>[5]. <a href="https://zhuanlan.zhihu.com/p/29360425" target="_blank" rel="noopener">深入理解L1、L2正则化</a></p>
 
       
     </div>
@@ -533,6 +521,8 @@
           
             <a href="/tags/math/" rel="tag"># math</a>
           
+            <a href="/tags/ml/" rel="tag"># ml</a>
+          
         </div>
       
 
@@ -544,8 +534,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/07/K-Means/" rel="next" title="K-Means">
-                <i class="fa fa-chevron-left"></i> K-Means
+              <a href="/2018/04/10/Hinge-Loss-Function/" rel="next" title="Hinge Loss Function">
+                <i class="fa fa-chevron-left"></i> Hinge Loss Function
               </a>
             
           </div>
@@ -553,10 +543,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/04/08/Negative-Maximum-Likehood-Loss-Function/" rel="prev" title="Negative Maximum Likehood Loss Function">
-                Negative Maximum Likehood Loss Function <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -727,7 +713,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#预测政治倾向例子"><span class="nav-number">1.</span> <span class="nav-text">预测政治倾向例子</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Classification-Error（分类错误率）"><span class="nav-number">1.1.</span> <span class="nav-text">Classification Error（分类错误率）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mean-Squared-Error-平方和"><span class="nav-number">1.2.</span> <span class="nav-text">Mean Squared Error (平方和)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Cross-Entropy-Error-Function"><span class="nav-number">2.</span> <span class="nav-text">Cross Entropy Error Function</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#表达式"><span class="nav-number">2.1.</span> <span class="nav-text">表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#二分类"><span class="nav-number">2.1.1.</span> <span class="nav-text">二分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多分类"><span class="nav-number">2.1.2.</span> <span class="nav-text">多分类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数图像"><span class="nav-number">2.2.</span> <span class="nav-text">函数图像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求导"><span class="nav-number">2.3.</span> <span class="nav-text">求导</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#计算第一项：-frac-partial-E-partial-p-i"><span class="nav-number">2.3.1.</span> <span class="nav-text">计算第一项：$\frac{\partial E}{\partial p_i}$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算第二项：-frac-partial-p-i-partial-score-i"><span class="nav-number">2.3.2.</span> <span class="nav-text">计算第二项：$\frac{\partial p_i}{\partial score_i}$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算结果-frac-partial-E-partial-score-i"><span class="nav-number">2.3.3.</span> <span class="nav-text">计算结果$\frac{\partial E}{\partial score_i}$</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#范数"><span class="nav-number">1.</span> <span class="nav-text">范数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#公式来源分析"><span class="nav-number">2.</span> <span class="nav-text">公式来源分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基于约束条件的最优化"><span class="nav-number">2.1.</span> <span class="nav-text">基于约束条件的最优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最大后验概率估计"><span class="nav-number">2.2.</span> <span class="nav-text">最大后验概率估计</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#稀疏性"><span class="nav-number">3.</span> <span class="nav-text">稀疏性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#特征选择"><span class="nav-number">3.1.</span> <span class="nav-text">特征选择</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#计算复杂度"><span class="nav-number">4.</span> <span class="nav-text">计算复杂度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
