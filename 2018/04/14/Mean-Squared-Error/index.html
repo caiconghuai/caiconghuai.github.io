@@ -89,10 +89,12 @@
 <meta property="og:site_name" content="蔡聪怀">
 <meta property="og:description" content="数理统计中均方误差是指参数估计值与参数值之差平方的期望值，记为MSE。MSE是衡量“平均误差”的一种较方便的方法，MSE可以评价数据的变化程度，MSE的值越小，说明预测模型描述实验数据具有更好的精确度。 SSE（和方差）在统计学历，该参数计算的是拟合数据和原始对应点的误差的平方和，计算公式为： $$SSE =\sum_{i=1}^mw_i(y_i-\hat{y_i})^2$$ 其中$y_i$是真实">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-04-14T13:29:50.707Z">
+<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-14-141825.jpg">
+<meta property="og:updated_time" content="2018-04-14T14:18:28.896Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mean Squared Error">
 <meta name="twitter:description" content="数理统计中均方误差是指参数估计值与参数值之差平方的期望值，记为MSE。MSE是衡量“平均误差”的一种较方便的方法，MSE可以评价数据的变化程度，MSE的值越小，说明预测模型描述实验数据具有更好的精确度。 SSE（和方差）在统计学历，该参数计算的是拟合数据和原始对应点的误差的平方和，计算公式为： $$SSE =\sum_{i=1}^mw_i(y_i-\hat{y_i})^2$$ 其中$y_i$是真实">
+<meta name="twitter:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-14-141825.jpg">
 
 
 
@@ -370,7 +372,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  699 字
+                  860 字
                 </span>
               
 
@@ -431,6 +433,10 @@
 <p>去对数，得到对数似然函数：</p>
 <p>$$l(x,y)=-\frac{1}{2}\sum_{i=1}^N(y_i-(\theta_0+\theta_1x_i))^2$$</p>
 <p>这个对数似然函数的形式和我们的MSE损失函数的定义是一样的。所以，使用MSE损失函数意味着，你假设你的模型是对带有服从高斯分布的噪声的输入数据做估计。</p>
+<h1 id="损失函数效果"><a href="#损失函数效果" class="headerlink" title="损失函数效果"></a>损失函数效果</h1><h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><p>使用MSE的一个缺点就是其偏导值在输出概率值接近0或者接近1的时候非常小，这可能会造成模型刚开始训练时，偏导值几乎消失。</p>
+<p>假设我们的MSE损失函数为：$J = \frac{1}{2}(y_i - \hat{y_i})^2$，偏导为：$\frac{dJ}{dW} = (y_i - \hat{y_i})\sigma’(Wx_i + b)x_i$，其中$\sigma’(Wx_i + b)$为$\sigma(Wx_i + b)(1 - \sigma(Wx_i + b))$。可以看出来，在$\sigma(Wx_i + b)$值接近0或者1的时候，$\frac{dJ}{dW}$的值都会接近于0，其函数图像如下：</p>
+<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-14-141825.jpg" alt="sigmoid_and_derivative_plot"></p>
+<p>这导致模型在一开始学习的时候速率非常慢。</p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1]. <a href="http://rohanvarma.me/Loss-Functions/" target="_blank" rel="noopener">Picking Loss Functions - A comparison between MSE, Cross Entropy, and Hinge Loss</a></p>
 
       
@@ -641,7 +647,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SSE（和方差）"><span class="nav-number">1.</span> <span class="nav-text">SSE（和方差）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MSE（均方方差）"><span class="nav-number">2.</span> <span class="nav-text">MSE（均方方差）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RMSE"><span class="nav-number">3.</span> <span class="nav-text">RMSE</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Mean-Squared-Loss的概率解释"><span class="nav-number">4.</span> <span class="nav-text">Mean-Squared Loss的概率解释</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SSE（和方差）"><span class="nav-number">1.</span> <span class="nav-text">SSE（和方差）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MSE（均方方差）"><span class="nav-number">2.</span> <span class="nav-text">MSE（均方方差）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RMSE"><span class="nav-number">3.</span> <span class="nav-text">RMSE</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Mean-Squared-Loss的概率解释"><span class="nav-number">4.</span> <span class="nav-text">Mean-Squared Loss的概率解释</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#损失函数效果"><span class="nav-number">5.</span> <span class="nav-text">损失函数效果</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#缺点"><span class="nav-number">5.1.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
