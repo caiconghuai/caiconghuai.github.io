@@ -90,12 +90,12 @@
 <meta property="og:description" content="范数过拟合是机器学习中一个比较常见的问题，而正则化是解决模型过拟合的一种手段。我们先看一下范数的定义：  Going a bit further, we define $||x||_p$ as a “p-norm”. Given $x$, a vector with $i$ components, a p-norm is defined as: $$|| x ||_p = \left(\sum_i">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://conghuai.me/Desktop/Manhattan_distance.svg">
-<meta property="og:image" content="http://conghuai.me/Desktop/v2-7431d8a79deec5d0ab3193b6a3611b95_hd.jpg">
-<meta property="og:image" content="http://conghuai.me/Desktop/v2-592216faffaa338fc792430a538afefc_hd.jpg">
+<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-14-031232.jpg">
+<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-14-031238.jpg">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-13-093559.jpg">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-13-093553.jpg">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-13-093556.jpg">
-<meta property="og:updated_time" content="2018-04-14T02:54:26.671Z">
+<meta property="og:updated_time" content="2018-04-14T03:12:40.989Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Regularization">
 <meta name="twitter:description" content="范数过拟合是机器学习中一个比较常见的问题，而正则化是解决模型过拟合的一种手段。我们先看一下范数的定义：  Going a bit further, we define $||x||_p$ as a “p-norm”. Given $x$, a vector with $i$ components, a p-norm is defined as: $$|| x ||_p = \left(\sum_i">
@@ -492,12 +492,12 @@
 <h1 id="正则化效果理解"><a href="#正则化效果理解" class="headerlink" title="正则化效果理解"></a>正则化效果理解</h1><h2 id="直观理解"><a href="#直观理解" class="headerlink" title="直观理解"></a>直观理解</h2><p>有了正则化公式来源分析，我们现在从优化的角度来看一下正则化对目标函数的影响。考虑带约束条件的优化解释，对$l_2$正则化为：</p>
 <p>$$min_w J(w;X,y)\ s.t. ||w||_2 \leq C$$</p>
 <p>该问题的求解示意图如下：</p>
-<p><img src="../../../../../../../Desktop/v2-7431d8a79deec5d0ab3193b6a3611b95_hd.jpg" alt="v2-7431d8a79deec5d0ab3193b6a3611b95_hd"></p>
+<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-14-031232.jpg" alt="v2-7431d8a79deec5d0ab3193b6a3611b95_hd"></p>
 <p>图中椭圆为原目标函数$J(w)$的一条等高线，圆为半径$\sqrt{C}$的$l_2$范数球。由于约束条件的限制，$w$必须位于$l_2$范数球内。考虑边界上的一点$w$，图中蓝色箭头为$J(w)$在该处的梯度方向$\triangledown J(w)$，红色箭头为$l_2$范数球在该处的法线方向。由于$w$不能离开边界（否则就会违反约束条件），因为在使用梯度下降法更新$w$时，只能朝$\triangledown J(w)$在范数球上$w$处的切线方向更新，即图中的绿色箭头的方向。如此$w$将沿着边界移动，当$\triangledown J(w)$与范数球上$w$处的切线方向更新，即图中绿色箭头的方向。如果$w$将沿着边界移动，当$\triangledown J(w)$与范数球上$w$处的法线平行时，此时，$\triangledown J(w)$在切线方向的分量为0，$w$将无法继续移动，从而达到最优解$w^*$（图中红色点所示）。</p>
 <p>对于$l_1$正则化：</p>
 <p>$$min_w J(w;X,y)\ s.t. ||w||_1 \leq C$$</p>
 <p>同理，其求解示意图如下所示：</p>
-<p><img src="../../../../../../../Desktop/v2-592216faffaa338fc792430a538afefc_hd.jpg" alt="v2-592216faffaa338fc792430a538afefc_hd"></p>
+<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-14-031238.jpg" alt="v2-592216faffaa338fc792430a538afefc_hd"></p>
 <p>其主要差别在于$l1、l_2$范数球的形状差异。由于此时每条边界上$w$的切线和法线方向保持不变，在图中$w$一直朝着$\triangledown J(w)$的切线方向的分量沿着边界向左上移动。当$w$跨过顶点到达$w’$处时，$\triangledown J(w)$在切线方向的分量变为右上方，因而$w$将朝右上方移动。最终，$w$将稳定在顶点处，达到最优解$w^*$，此时，可以看到$w_1=0$，这也就是采用$l_1$范数会使得$w$产生稀疏性的原因。</p>
 <p>以上的分析虽然是基于二维的情况，但不难将其推广到多维度情况，其主要目的是为了直观地说明$l_1、l_2$正则化最优解的差异，以及$l_1$范数为什么会产生稀疏性。</p>
 <h1 id="正则化效果分析"><a href="#正则化效果分析" class="headerlink" title="正则化效果分析"></a>正则化效果分析</h1><h2 id="稀疏性"><a href="#稀疏性" class="headerlink" title="稀疏性"></a>稀疏性</h2><p>从以上的正则化效果理解其实已经可以看出$L1$正则化可以使得答案稀疏的效果，如果那个还不好理解，可以看下面这个例子。</p>
