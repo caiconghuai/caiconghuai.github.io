@@ -93,7 +93,7 @@
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-13-093559.jpg">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-13-093553.jpg">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-13-093556.jpg">
-<meta property="og:updated_time" content="2018-04-14T00:31:45.000Z">
+<meta property="og:updated_time" content="2018-04-14T00:33:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Regularization">
 <meta name="twitter:description" content="范数过拟合是机器学习中一个比较常见的问题，而正则化是解决模型过拟合的一种手段。我们先看一下范数的定义：  Going a bit further, we define $||x||_p$ as a “p-norm”. Given $x$, a vector with $i$ components, a p-norm is defined as: $$|| x ||_p = \left(\sum_i">
@@ -386,7 +386,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  2,061 字
+                  2,063 字
                 </span>
               
 
@@ -487,7 +487,7 @@
 <li>$l_1$正则化可通过假设权重$w$的先验分布为拉普拉斯分布，由最大后验概率估计导出；</li>
 <li>$l_2$正则化可通过假设权重$w$的先验分布为高斯分布，由最大后验概率估计导出。</li>
 </ul>
-<h1 id="效果分析"><a href="#效果分析" class="headerlink" title="效果分析"></a>效果分析</h1><h2 id="稀疏性"><a href="#稀疏性" class="headerlink" title="稀疏性"></a>稀疏性</h2><p>L1正则化和L2正则化哪个能产生稀疏的解呢？答案是<strong>L1正则化</strong>。假设我们现在要求解模型$Ax=b$，也就是在2维空间上找到一条直线来拟合样本点。我们需要两个点才能去固定一条直线，但是，假设我们现在的训练样本中只有一个点。那么我们将得到无穷多个解。假设，该点为$(10, 5)$，直线为$y=a<em>x+b$，那么，该例子可形式化为求解模型：$b = 5 - 10</em>a$ 的参数。</p>
+<h1 id="效果分析"><a href="#效果分析" class="headerlink" title="效果分析"></a>效果分析</h1><h2 id="稀疏性"><a href="#稀疏性" class="headerlink" title="稀疏性"></a>稀疏性</h2><p>L1正则化和L2正则化哪个能产生稀疏的解呢？答案是<strong>L1正则化</strong>。假设我们现在要求解模型$Ax=b$，也就是在2维空间上找到一条直线来拟合样本点。我们需要两个点才能去固定一条直线，但是，假设我们现在的训练样本中只有一个点。那么我们将得到无穷多个解。假设，该点为(10, 5)，直线为$y=a*x+b$，那么，该例子可形式化为求解模型：$b = 5 - 10*a$ 的参数。</p>
 <p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-13-093559.jpg" alt="1_sMS5qc_2O6h87L_NF0B8Mw"></p>
 <p>那么，当我们加上正则化项后，又该如何求解呢？</p>
 <p>假设，我们的正则化的值等于一个常数，它的图像如下所示：</p>
