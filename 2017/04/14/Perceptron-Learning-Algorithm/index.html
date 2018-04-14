@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="ml," />
 
 
 
@@ -81,16 +81,21 @@
 
 
 
-<meta name="description" content="Algorithm/Machine Learning/Deep Learning/NLP">
-<meta property="og:type" content="website">
-<meta property="og:title" content="蔡聪怀">
-<meta property="og:url" content="http://conghuai.me/archives/2016/10/index.html">
+<meta name="description" content="感知机是二类分类的线性分类模型，其输入为实例的特征向量，输出为实例的类别，取+1和-1二值。感知机对应于输入空间（特征空间）中将实例划分为正负两类的分离超平面，属于判别模型。 感知机模型假设输入空间（特征空间）是$\chi \subseteq  R^n$，输出空间是$Y={+1, -1}$。输入$x\in \chi$表示实例的特征向量，对应于输入空间（特征空间）的点；输出为$y\in Y$表示实例">
+<meta name="keywords" content="ml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Perceptron Learning Algorithm">
+<meta property="og:url" content="http://conghuai.me/2017/04/14/Perceptron-Learning-Algorithm/index.html">
 <meta property="og:site_name" content="蔡聪怀">
-<meta property="og:description" content="Algorithm/Machine Learning/Deep Learning/NLP">
+<meta property="og:description" content="感知机是二类分类的线性分类模型，其输入为实例的特征向量，输出为实例的类别，取+1和-1二值。感知机对应于输入空间（特征空间）中将实例划分为正负两类的分离超平面，属于判别模型。 感知机模型假设输入空间（特征空间）是$\chi \subseteq  R^n$，输出空间是$Y={+1, -1}$。输入$x\in \chi$表示实例的特征向量，对应于输入空间（特征空间）的点；输出为$y\in Y$表示实例">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-14-084814.jpg">
+<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-14-084817.jpg">
+<meta property="og:updated_time" content="2018-04-14T08:48:27.768Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="蔡聪怀">
-<meta name="twitter:description" content="Algorithm/Machine Learning/Deep Learning/NLP">
+<meta name="twitter:title" content="Perceptron Learning Algorithm">
+<meta name="twitter:description" content="感知机是二类分类的线性分类模型，其输入为实例的特征向量，输出为实例的类别，取+1和-1二值。感知机对应于输入空间（特征空间）中将实例划分为正负两类的分离超平面，属于判别模型。 感知机模型假设输入空间（特征空间）是$\chi \subseteq  R^n$，输出空间是$Y={+1, -1}$。输入$x\in \chi$表示实例的特征向量，对应于输入空间（特征空间）的点；输出为$y\in Y$表示实例">
+<meta name="twitter:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-14-084814.jpg">
 
 
 
@@ -120,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://conghuai.me/archives/2016/10/"/>
+  <link rel="canonical" href="http://conghuai.me/2017/04/14/Perceptron-Learning-Algorithm/"/>
 
 
 
 
 
-  <title>Archive | 蔡聪怀</title>
+  <title>Perceptron Learning Algorithm | 蔡聪怀</title>
   
 
 
@@ -145,7 +150,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -249,74 +254,251 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
-
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        Um..! 7 posts in total. Keep on posting.
-      </span>
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2016">2016</h1>
-          </div>
-        
-        
-
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://conghuai.me/2017/04/14/Perceptron-Learning-Algorithm/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Conghuai Cai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="蔡聪怀">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2016/10/05/网页正文抽取算法/" itemprop="url">
-              
-                <span itemprop="name">网页正文抽取算法</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Perceptron Learning Algorithm</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-10-05T15:51:56+08:00"
-              content="2016-10-05" >
-          10-05
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-14T15:25:03+08:00">
+                2017-04-14
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Machine Learning</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/Classification/" itemprop="url" rel="index">
+                    <span itemprop="name">Classification</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/04/14/Perceptron-Learning-Algorithm/" class="leancloud_visitors" data-flag-title="Perceptron Learning Algorithm">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  865 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  3 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+      
 
+      
+        <p>感知机是二类分类的线性分类模型，其输入为实例的特征向量，输出为实例的类别，取+1和-1二值。感知机对应于输入空间（特征空间）中将实例划分为正负两类的分离超平面，属于判别模型。</p>
+<h1 id="感知机模型"><a href="#感知机模型" class="headerlink" title="感知机模型"></a>感知机模型</h1><p>假设输入空间（特征空间）是$\chi \subseteq  R^n$，输出空间是$Y={+1, -1}$。输入$x\in \chi$表示实例的特征向量，对应于输入空间（特征空间）的点；输出为$y\in Y$表示实例的类别，由输入空间到输出空间的如下函数：</p>
+<p>$$f(x) = sign(w\cdot x+b)$$</p>
+<p>称为感知机。其中，$w$和$b$为感知机模型参数，$w\in R^n$称为权值向量，$b\in R$称为偏置，sign是符号函数，即：</p>
+<p>$$\begin{split}sign(x)=\begin{cases} +1, &amp; \text{$x\geq 0$} \ -1, &amp; \text{$x&lt;0$}\end{cases}\end{split}$$</p>
+<p>感知机模型的假设空间是定义在特征空间中的所有线性分类模型，即函数集合${f|f(x)=w\cdot x + b}$。</p>
+<h2 id="几何解释"><a href="#几何解释" class="headerlink" title="几何解释"></a>几何解释</h2><p>线性方程$w\cdot x+b=0$，对应于特征空间$R^n$中的一个超平面$S$，其中$w$是超平面的法向量，$b$是超平面的截距。这个超平面将特征空间划分为两个部分，位于两部分的点分别被称为正、负两类。</p>
+<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-14-084814.jpg" alt="Screen Shot 2018-04-14 at 16.14.35"></p>
+<h1 id="学习策略"><a href="#学习策略" class="headerlink" title="学习策略"></a>学习策略</h1><p>假设训练数据集是线性可分的，感知机学习的目标是求得一个能够将训练集正实例点和负实例点完全正确分开的分离超平面。为了找出这样的超平面，即确定感知机模型参数$w,b$，需要确定一个学习策略，即定义（经验）损失函数并将损失函数极小化。</p>
+<p>损失函数选择是误分类点到超平面$S$的总距离：</p>
+<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-14-084817.jpg" alt="distance"></p>
+<p>对于误分类的数据$(x_i,y_i)$来说，当$w\cdot x+b &gt;0$时，$y_i=-1$，而当$w\cdot x_i+b&lt;0$时，$y_i=+1$，则我们可以得出，误分类点$x_i$到超平面$S$的距离是：</p>
+<p>$$-\frac{1}{||w||}y_i(w\cdot x_i+b)$$</p>
+<p>这样，假设超平面$S$的误分类点集合为M，那么所有误分类点到超平面S的总距离为：</p>
+<p>$$-\frac{1}{||w||}\sum _{x_i\in M}y_i(w\cdot x_i+b)$$</p>
+<p>不考虑$\frac{1}{||w||}$，就得到感知机学习的损失函数：</p>
+<p>$$L(w,b)=-\sum_{x_i \in M}y_i(w\cdot x_i+b)$$</p>
+<h1 id="学习算法"><a href="#学习算法" class="headerlink" title="学习算法"></a>学习算法</h1><p>感知机学习算法是对以下最优化问题的算法那，给定一个训练数据集$T={(x_1, y_1),(x_2,y_2),…,(x_N,y_N)}$，求参数$w,b$，使其为以下损失函数极小化问题的解：</p>
+<p>$$min_{w,b} L(w,b)=-\sum_{x_i \in M}y_i(w\cdot x_i + b)$$</p>
+<p>感知机学习算法是误分类驱动的，具体采用随机梯度下降法。首选，任意选取一个超平面$w_0,b_0$，然后用梯度下降法不断地极小化目标函数。极小化过程中不是一次使M中所有误分类点的梯度下降，而是一次随机选取一个误分类点使其梯度下降。</p>
+<p>假设误分类点集合M是固定的，那么损失函数$L(w,b)$的梯度由</p>
+<p>$$\triangledown_wL(w,b)=-\sum_{x_i\in M}y_ix_i$$</p>
+<p>$$\triangledown_bL(w,b)=-\sum_{x_i\in M}y_i$$</p>
+<p>给出，随机选择一个误分类点$(x_i, y_i)$，对$w,b$进行更新：</p>
+<p>$$w\leftarrow w+\eta y_ix_i$$</p>
+<p>$$b\leftarrow b+\eta y_i$$</p>
+
+      
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ml/" rel="tag"># ml</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/05/网页正文抽取算法/" rel="next" title="网页正文抽取算法">
+                <i class="fa fa-chevron-left"></i> 网页正文抽取算法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/07/K-Means/" rel="prev" title="K-Means">
+                K-Means <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -324,6 +506,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -344,8 +530,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -444,6 +639,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#感知机模型"><span class="nav-number">1.</span> <span class="nav-text">感知机模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#几何解释"><span class="nav-number">1.1.</span> <span class="nav-text">几何解释</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#学习策略"><span class="nav-number">2.</span> <span class="nav-text">学习策略</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#学习算法"><span class="nav-number">3.</span> <span class="nav-text">学习算法</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -584,6 +795,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
