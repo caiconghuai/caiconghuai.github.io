@@ -93,7 +93,7 @@
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-13-093559.jpg">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-13-093553.jpg">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-13-093556.jpg">
-<meta property="og:updated_time" content="2018-04-14T00:35:38.000Z">
+<meta property="og:updated_time" content="2018-04-14T00:39:36.339Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Regularization">
 <meta name="twitter:description" content="范数过拟合是机器学习中一个比较常见的问题，而正则化是解决模型过拟合的一种手段。我们先看一下范数的定义：  Going a bit further, we define $||x||_p$ as a “p-norm”. Given $x$, a vector with $i$ components, a p-norm is defined as: $$|| x ||_p = \left(\sum_i">
@@ -386,7 +386,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  2,060 字
+                  2,064 字
                 </span>
               
 
@@ -445,8 +445,8 @@
 <li>$\alpha$控制正则化强弱。</li>
 </ul>
 <p>不同的$\Omega$函数对权重$w$的最优解有不同的偏好，因此会产生不同的正则化效果，最常用的$\Omega$函数有两种，即$l_1$范数和$l_2$范数，称为$l_1$正则化和$l_2$正则化：</p>
-<p>$$ l_1: \Omega (w) = || w ||<em>1 = \sum</em>{i=1}^k |w_i| $$</p>
-<p>$$ l_2: \Omega (w) = || w ||<em>2 = \sum</em>{i=1}^k w_i^2 $$</p>
+<p>$$ l_1: \Omega (w) = \left | w \right |_1 = \sum_{i=1}^k |w_i| $$</p>
+<p>$$ l_2: \Omega (w) = \left | w \right |_2 = \sum_{i=1}^k w_i^2 $$</p>
 <p>带有L1正则化的回归模型通常被称为<strong>Lasso Regression</strong>，带有L2正则化的回归模型通常被称为<strong>Ridge Regression</strong>。</p>
 <p>L1正则化和L2正则化主要的区别在于，L1正比于参数的绝对值，而L2正比于参数的平方。这导致了两种正则化方式会产生不同的效果。</p>
 <h1 id="公式来源分析"><a href="#公式来源分析" class="headerlink" title="公式来源分析"></a>公式来源分析</h1><h2 id="基于约束条件的最优化"><a href="#基于约束条件的最优化" class="headerlink" title="基于约束条件的最优化"></a>基于约束条件的最优化</h2><p>对于模型权重系数$w$求解释通过最小化目标函数实现的，即求解：</p>
