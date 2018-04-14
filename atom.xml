@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://conghuai.me/"/>
-  <updated>2018-04-14T03:12:40.989Z</updated>
+  <updated>2018-04-14T09:42:35.321Z</updated>
   <id>http://conghuai.me/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mean Squared Error</title>
+    <link href="http://conghuai.me/2018/04/14/Mean-Squared-Error/"/>
+    <id>http://conghuai.me/2018/04/14/Mean-Squared-Error/</id>
+    <published>2018-04-14T09:10:01.000Z</published>
+    <updated>2018-04-14T09:42:35.321Z</updated>
+    
+    <content type="html"><![CDATA[<p>数理统计中均方误差是指参数估计值与参数值之差平方的期望值，记为MSE。MSE是衡量“平均误差”的一种较方便的方法，MSE可以评价数据的变化程度，MSE的值越小，说明预测模型描述实验数据具有更好的精确度。</p><h1 id="SSE（和方差）"><a href="#SSE（和方差）" class="headerlink" title="SSE（和方差）"></a>SSE（和方差）</h1><p>在统计学历，该参数计算的是拟合数据和原始对应点的误差的平方和，计算公式为：</p><p>$$SSE =\sum_{i=1}^mw_i(y_i-\hat{y_i})^2$$</p><p>其中$y_i$是真实数据，$\hat{y_i}$是拟合的数据，$w_i&gt;0$，从这里可以看出SSE接近于0，说明模型选择和拟合更好，数据预测也越成功。</p><h1 id="MSE（均方方差）"><a href="#MSE（均方方差）" class="headerlink" title="MSE（均方方差）"></a>MSE（均方方差）</h1><p>该统计参数是预测数据和原始数据对应点误差的平方和的均值，也就是$\frac{SSE}{n}$，和SSE没有太大的区别，计算公式为：</p><p>$$MSE=\frac{SSE}{n}=\frac{1}{n}\sum_{i=1}^mw_i(y_i-\hat{y_i})^2$$</p><p>其中，n为样本的个数。</p><h1 id="RMSE"><a href="#RMSE" class="headerlink" title="RMSE"></a>RMSE</h1><p>该统计参数，也叫回归系统的拟合标准差，是MSE的平方根，计算公式为：</p><p>$$RMSE=\sqrt{MSE}=\sqrt{\frac{SSE}{n}}=\sqrt{\frac{1}{n}\sum_{i=1}^mw_i(y_i-\hat{y_i})^2}$$</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;数理统计中均方误差是指参数估计值与参数值之差平方的期望值，记为MSE。MSE是衡量“平均误差”的一种较方便的方法，MSE可以评价数据的变化程度，MSE的值越小，说明预测模型描述实验数据具有更好的精确度。&lt;/p&gt;
+&lt;h1 id=&quot;SSE（和方差）&quot;&gt;&lt;a href=&quot;#SSE
+      
+    
+    </summary>
+    
+      <category term="Machine Learning" scheme="http://conghuai.me/categories/Machine-Learning/"/>
+    
+      <category term="Loss Function" scheme="http://conghuai.me/categories/Machine-Learning/Loss-Function/"/>
+    
+    
+      <category term="math" scheme="http://conghuai.me/tags/math/"/>
+    
+  </entry>
   
   <entry>
     <title>Regularization</title>

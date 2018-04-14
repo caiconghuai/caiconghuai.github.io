@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="math," />
 
 
 
@@ -81,16 +81,18 @@
 
 
 
-<meta name="description" content="Algorithm/Machine Learning/Deep Learning/NLP">
-<meta property="og:type" content="website">
-<meta property="og:title" content="蔡聪怀">
-<meta property="og:url" content="http://conghuai.me/categories/Machine-Learning/Loss-Function/index.html">
+<meta name="description" content="数理统计中均方误差是指参数估计值与参数值之差平方的期望值，记为MSE。MSE是衡量“平均误差”的一种较方便的方法，MSE可以评价数据的变化程度，MSE的值越小，说明预测模型描述实验数据具有更好的精确度。 SSE（和方差）在统计学历，该参数计算的是拟合数据和原始对应点的误差的平方和，计算公式为： $$SSE =\sum_{i=1}^mw_i(y_i-\hat{y_i})^2$$ 其中$y_i$是真实">
+<meta name="keywords" content="math">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mean Squared Error">
+<meta property="og:url" content="http://conghuai.me/2018/04/14/Mean-Squared-Error/index.html">
 <meta property="og:site_name" content="蔡聪怀">
-<meta property="og:description" content="Algorithm/Machine Learning/Deep Learning/NLP">
+<meta property="og:description" content="数理统计中均方误差是指参数估计值与参数值之差平方的期望值，记为MSE。MSE是衡量“平均误差”的一种较方便的方法，MSE可以评价数据的变化程度，MSE的值越小，说明预测模型描述实验数据具有更好的精确度。 SSE（和方差）在统计学历，该参数计算的是拟合数据和原始对应点的误差的平方和，计算公式为： $$SSE =\sum_{i=1}^mw_i(y_i-\hat{y_i})^2$$ 其中$y_i$是真实">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-04-14T09:42:35.321Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="蔡聪怀">
-<meta name="twitter:description" content="Algorithm/Machine Learning/Deep Learning/NLP">
+<meta name="twitter:title" content="Mean Squared Error">
+<meta name="twitter:description" content="数理统计中均方误差是指参数估计值与参数值之差平方的期望值，记为MSE。MSE是衡量“平均误差”的一种较方便的方法，MSE可以评价数据的变化程度，MSE的值越小，说明预测模型描述实验数据具有更好的精确度。 SSE（和方差）在统计学历，该参数计算的是拟合数据和原始对应点的误差的平方和，计算公式为： $$SSE =\sum_{i=1}^mw_i(y_i-\hat{y_i})^2$$ 其中$y_i$是真实">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://conghuai.me/categories/Machine-Learning/Loss-Function/"/>
+  <link rel="canonical" href="http://conghuai.me/2018/04/14/Mean-Squared-Error/"/>
 
 
 
 
 
-  <title>Category: Loss Function | 蔡聪怀</title>
+  <title>Mean Squared Error | 蔡聪怀</title>
   
 
 
@@ -145,7 +147,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -249,167 +251,230 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block category">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>Loss Function<small>Category</small>
-        </h1>
-      </div>
-
-      
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://conghuai.me/2018/04/14/Mean-Squared-Error/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Conghuai Cai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="蔡聪怀">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/04/14/Mean-Squared-Error/" itemprop="url">
-              
-                <span itemprop="name">Mean Squared Error</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Mean Squared Error</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-14T17:10:01+08:00"
-              content="2018-04-14" >
-          04-14
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-14T17:10:01+08:00">
+                2018-04-14
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Machine Learning</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/Loss-Function/" itemprop="url" rel="index">
+                    <span itemprop="name">Loss Function</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/04/14/Mean-Squared-Error/" class="leancloud_visitors" data-flag-title="Mean Squared Error">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  304 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  1 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/04/12/Regularization/" itemprop="url">
-              
-                <span itemprop="name">Regularization</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-12T22:37:46+08:00"
-              content="2018-04-12" >
-          04-12
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/04/10/Hinge-Loss-Function/" itemprop="url">
-              
-                <span itemprop="name">Hinge Loss Function</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-10T14:39:46+08:00"
-              content="2018-04-10" >
-          04-10
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/04/08/Negative-Maximum-Likehood-Loss-Function/" itemprop="url">
-              
-                <span itemprop="name">Negative Maximum Likehood Loss Function</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-08T16:15:39+08:00"
-              content="2018-04-08" >
-          04-08
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/04/08/Cross Entropy Loss Function/" itemprop="url">
-              
-                <span itemprop="name">Cross Entropy Loss Function</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-08T10:54:16+08:00"
-              content="2018-04-08" >
-          04-08
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <p>数理统计中均方误差是指参数估计值与参数值之差平方的期望值，记为MSE。MSE是衡量“平均误差”的一种较方便的方法，MSE可以评价数据的变化程度，MSE的值越小，说明预测模型描述实验数据具有更好的精确度。</p>
+<h1 id="SSE（和方差）"><a href="#SSE（和方差）" class="headerlink" title="SSE（和方差）"></a>SSE（和方差）</h1><p>在统计学历，该参数计算的是拟合数据和原始对应点的误差的平方和，计算公式为：</p>
+<p>$$SSE =\sum_{i=1}^mw_i(y_i-\hat{y_i})^2$$</p>
+<p>其中$y_i$是真实数据，$\hat{y_i}$是拟合的数据，$w_i&gt;0$，从这里可以看出SSE接近于0，说明模型选择和拟合更好，数据预测也越成功。</p>
+<h1 id="MSE（均方方差）"><a href="#MSE（均方方差）" class="headerlink" title="MSE（均方方差）"></a>MSE（均方方差）</h1><p>该统计参数是预测数据和原始数据对应点误差的平方和的均值，也就是$\frac{SSE}{n}$，和SSE没有太大的区别，计算公式为：</p>
+<p>$$MSE=\frac{SSE}{n}=\frac{1}{n}\sum_{i=1}^mw_i(y_i-\hat{y_i})^2$$</p>
+<p>其中，n为样本的个数。</p>
+<h1 id="RMSE"><a href="#RMSE" class="headerlink" title="RMSE"></a>RMSE</h1><p>该统计参数，也叫回归系统的拟合标准差，是MSE的平方根，计算公式为：</p>
+<p>$$RMSE=\sqrt{MSE}=\sqrt{\frac{SSE}{n}}=\sqrt{\frac{1}{n}\sum_{i=1}^mw_i(y_i-\hat{y_i})^2}$$</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/math/" rel="tag"># math</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/12/Regularization/" rel="next" title="Regularization">
+                <i class="fa fa-chevron-left"></i> Regularization
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -417,6 +482,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -437,8 +506,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -537,6 +615,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SSE（和方差）"><span class="nav-number">1.</span> <span class="nav-text">SSE（和方差）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MSE（均方方差）"><span class="nav-number">2.</span> <span class="nav-text">MSE（均方方差）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RMSE"><span class="nav-number">3.</span> <span class="nav-text">RMSE</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -677,6 +771,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
