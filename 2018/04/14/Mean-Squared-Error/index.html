@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="蔡聪怀">
 <meta property="og:description" content="数理统计中均方误差是指参数估计值与参数值之差平方的期望值，记为MSE。MSE是衡量“平均误差”的一种较方便的方法，MSE可以评价数据的变化程度，MSE的值越小，说明预测模型描述实验数据具有更好的精确度。 SSE（和方差）在统计学历，该参数计算的是拟合数据和原始对应点的误差的平方和，计算公式为： $$SSE =\sum_{i=1}^mw_i(y_i-\hat{y_i})^2$$ 其中$y_i$是真实">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-04-14T09:42:35.321Z">
+<meta property="og:updated_time" content="2018-04-14T13:29:50.707Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mean Squared Error">
 <meta name="twitter:description" content="数理统计中均方误差是指参数估计值与参数值之差平方的期望值，记为MSE。MSE是衡量“平均误差”的一种较方便的方法，MSE可以评价数据的变化程度，MSE的值越小，说明预测模型描述实验数据具有更好的精确度。 SSE（和方差）在统计学历，该参数计算的是拟合数据和原始对应点的误差的平方和，计算公式为： $$SSE =\sum_{i=1}^mw_i(y_i-\hat{y_i})^2$$ 其中$y_i$是真实">
@@ -370,7 +370,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  304 字
+                  699 字
                 </span>
               
 
@@ -386,7 +386,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  1 分钟
+                  3 分钟
                 </span>
               
             </div>
@@ -416,6 +416,22 @@
 <p>其中，n为样本的个数。</p>
 <h1 id="RMSE"><a href="#RMSE" class="headerlink" title="RMSE"></a>RMSE</h1><p>该统计参数，也叫回归系统的拟合标准差，是MSE的平方根，计算公式为：</p>
 <p>$$RMSE=\sqrt{MSE}=\sqrt{\frac{SSE}{n}}=\sqrt{\frac{1}{n}\sum_{i=1}^mw_i(y_i-\hat{y_i})^2}$$</p>
+<h1 id="Mean-Squared-Loss的概率解释"><a href="#Mean-Squared-Loss的概率解释" class="headerlink" title="Mean-Squared Loss的概率解释"></a>Mean-Squared Loss的概率解释</h1><p>假设我们的模型是二维平面的线性回归模型：$h_{\theta}(x_i)=\theta_0+\theta_1x$，对于这个模型，我们定义损失函数为MSE，将得到如下的表达式：</p>
+<p>$J = \frac{1}{N}\sum_{i=1}^N(y_i-h_{\theta}(x_i))^2$</p>
+<p>下面我们试着通过概率的角度，推导出上述的MSE损失函数表达式。</p>
+<p>在线性回归模型中，我们最终希望对于输入$X$进行线性组合得到值Y，考虑到输入带有噪声的情况的表达式如下：</p>
+<p>$$Y=\theta_0+\theta_1x+\eta$$</p>
+<p>为了使模型更合理，我们假设$\eta$服从均值为0，方差为1的高斯分布，即$\eta\sim N(0,1)$。所以有：</p>
+<p>$$E[Y]=E[\theta_0+\theta_1x+\eta]=\theta_0+\theta_1x$$</p>
+<p>$$Var[Y]=Var[\theta_0+\theta_1x+\eta]=1$$</p>
+<p>所以，Y服从均值为$\theta_0+\theta_1x$，方差为1的高斯分布，则样本点$(x_i,y_i)$的概率为：</p>
+<p>$$p(y_i|x_i)=e^{-\frac{(y_i-(\theta_0+\theta_1x_i))^2}{2}}$$</p>
+<p>有了单个样本的概率，我们就可以计算样本集的似然概率，我们假设每个样本是独立的：</p>
+<p>$$L(x,y)=\prod_{i=1}^Ne^{-\frac{(y_i-(\theta_0+\theta_1x_i))^2}{2}}$$</p>
+<p>去对数，得到对数似然函数：</p>
+<p>$$l(x,y)=-\frac{1}{2}\sum_{i=1}^N(y_i-(\theta_0+\theta_1x_i))^2$$</p>
+<p>这个对数似然函数的形式和我们的MSE损失函数的定义是一样的。所以，使用MSE损失函数意味着，你假设你的模型是对带有服从高斯分布的噪声的输入数据做估计。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1]. <a href="http://rohanvarma.me/Loss-Functions/" target="_blank" rel="noopener">Picking Loss Functions - A comparison between MSE, Cross Entropy, and Hinge Loss</a></p>
 
       
     </div>
@@ -625,7 +641,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SSE（和方差）"><span class="nav-number">1.</span> <span class="nav-text">SSE（和方差）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MSE（均方方差）"><span class="nav-number">2.</span> <span class="nav-text">MSE（均方方差）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RMSE"><span class="nav-number">3.</span> <span class="nav-text">RMSE</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SSE（和方差）"><span class="nav-number">1.</span> <span class="nav-text">SSE（和方差）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MSE（均方方差）"><span class="nav-number">2.</span> <span class="nav-text">MSE（均方方差）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RMSE"><span class="nav-number">3.</span> <span class="nav-text">RMSE</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Mean-Squared-Loss的概率解释"><span class="nav-number">4.</span> <span class="nav-text">Mean-Squared Loss的概率解释</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
