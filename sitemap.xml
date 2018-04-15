@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://conghuai.me/2018/04/12/Regularization/</loc>
+    
+    <lastmod>2018-04-15T11:44:20.192Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://conghuai.me/2018/04/14/Mean-Squared-Error/</loc>
     
     <lastmod>2018-04-15T11:19:29.000Z</lastmod>
@@ -19,13 +26,6 @@
     <loc>http://conghuai.me/2017/04/14/Perceptron-Learning-Algorithm/</loc>
     
     <lastmod>2018-04-14T08:53:24.480Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://conghuai.me/2018/04/12/Regularization/</loc>
-    
-    <lastmod>2018-04-14T03:12:40.989Z</lastmod>
     
   </url>
   
