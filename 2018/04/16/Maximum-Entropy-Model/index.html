@@ -92,7 +92,7 @@
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-16-125513.jpg">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-16-125507.jpg">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-16-125510.jpg">
-<meta property="og:updated_time" content="2018-04-16T12:59:33.962Z">
+<meta property="og:updated_time" content="2018-04-16T13:01:28.936Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Maximum Entropy Model">
 <meta name="twitter:description" content="最大熵原理是概率模型学习的一个准则，最大熵原理认为，学习概率模型时，在所有可能的概率模型(分布)中，熵最大的模型是最好的模型，通常用约束条件来确定概率模型的集合，所以，最大熵原理也可以表述为在满足约束条件的模型集合中选取熵最大的模型。 直观地，最大熵原理认为要选择的概率模型首先必须满足已有的事实，即约束条件。在没有更多信息的情况下，那些不确定的部分都是“等可能的”。 最大熵原理是统计学习的一个一般">
@@ -520,7 +520,7 @@
 <p>$$s.t. E_p(f) = E_\tilde{p}(f), i=1,2,…,n$$</p>
 <p>$$\sum_yP(y|x)=1$$</p>
 <h2 id="无约束最优化的对偶问题"><a href="#无约束最优化的对偶问题" class="headerlink" title="无约束最优化的对偶问题"></a>无约束最优化的对偶问题</h2><p>将约束最优化的原始问题转换为无约束最优化的对偶问题，通过求解对偶问题求解原始问题。首先，引进拉格朗日乘子$w_0,w_1,w_2,…,w_n$，定义拉格朗日函数$L(P,w)$:</p>
-<p>$$\begin{align} L(P,w) &amp;=-H(P) + w_0(1-\sum_yP(y|x)) + \sum_{i=1}^nw_i(E_\tilde{p}(f)-E_p(f))\\  &amp;= \sum_{x,y}\tilde{P}(x)P(y|x)logP(y|x)+ w_0(1-\sum_yP(y|x))+ \sum_{i=1}^nw_i(\sum_{x,y}\tilde{P}(x,y)f(x,y)-\sum_{x,y}\tilde{P}(x)P(y|x)f(x,y)) \end{align}$$</p>
+<p>$$\begin{align} L(P,w) &amp;=-H(P) + w_0(1-\sum_yP(y|x)) + \sum_{i=1}^nw_i(E_\tilde{p}(f)-E_p(f))\\  &amp;= \sum_{x,y}\tilde{P}(x)P(y|x)logP(y|x) \\ + w_0(1-\sum_yP(y|x))+ \sum_{i=1}^nw_i(\sum_{x,y}\tilde{P}(x,y)f(x,y)-\sum_{x,y}\tilde{P}(x)P(y|x)f(x,y)) \end{align}$$</p>
 <p>最优化的原始问题是：</p>
 <p>$$min_{P\in C}max_wL(P,w)$$</p>
 <p>对偶问题是：</p>
