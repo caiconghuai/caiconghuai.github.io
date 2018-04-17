@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="math," />
+  <meta name="keywords" content="ml,linear model," />
 
 
 
@@ -81,20 +81,20 @@
 
 
 
-<meta name="description" content="数理统计中均方误差是指参数估计值与参数值之差平方的期望值，记为MSE。MSE是衡量“平均误差”的一种较方便的方法，MSE可以评价数据的变化程度，MSE的值越小，说明预测模型描述实验数据具有更好的精确度。 SSE（和方差）在统计学中，该参数计算的是拟合数据和原始对应点的误差的平方和，计算公式为： $$SSE =\sum_{i=1}^mw_i(y_i-\hat{y_i})^2$$ 其中$y_i$是真实">
-<meta name="keywords" content="math">
+<meta name="description" content="逻辑斯蒂回归（logistic regression）是统计学习中的经典方法，逻辑斯蒂回归模型与最大熵模型都属于对数线性模型。 Logistic Function逻辑函数（逻辑曲线、sigmoid函数）表达式如下： $$f(x)=\frac{L}{1+e^{-k(x-x_0)}}$$ 其中：  $e$是自然对数； $x_0$是sigmoid曲线的中点； $L$是曲线的最大值； $k$是曲线的坡度">
+<meta name="keywords" content="ml,linear model">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mean Squared Error">
-<meta property="og:url" content="http://conghuai.me/2018/04/14/Mean-Squared-Error/index.html">
+<meta property="og:title" content="Logistic Regression">
+<meta property="og:url" content="http://conghuai.me/2018/04/17/Logistic-Regression/index.html">
 <meta property="og:site_name" content="蔡聪怀">
-<meta property="og:description" content="数理统计中均方误差是指参数估计值与参数值之差平方的期望值，记为MSE。MSE是衡量“平均误差”的一种较方便的方法，MSE可以评价数据的变化程度，MSE的值越小，说明预测模型描述实验数据具有更好的精确度。 SSE（和方差）在统计学中，该参数计算的是拟合数据和原始对应点的误差的平方和，计算公式为： $$SSE =\sum_{i=1}^mw_i(y_i-\hat{y_i})^2$$ 其中$y_i$是真实">
+<meta property="og:description" content="逻辑斯蒂回归（logistic regression）是统计学习中的经典方法，逻辑斯蒂回归模型与最大熵模型都属于对数线性模型。 Logistic Function逻辑函数（逻辑曲线、sigmoid函数）表达式如下： $$f(x)=\frac{L}{1+e^{-k(x-x_0)}}$$ 其中：  $e$是自然对数； $x_0$是sigmoid曲线的中点； $L$是曲线的最大值； $k$是曲线的坡度">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-14-141825.jpg">
-<meta property="og:updated_time" content="2018-04-15T11:19:29.000Z">
+<meta property="og:image" content="http://conghuai.me/Desktop/640px-Logistic-curve.svg.png">
+<meta property="og:updated_time" content="2018-04-17T03:46:23.062Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mean Squared Error">
-<meta name="twitter:description" content="数理统计中均方误差是指参数估计值与参数值之差平方的期望值，记为MSE。MSE是衡量“平均误差”的一种较方便的方法，MSE可以评价数据的变化程度，MSE的值越小，说明预测模型描述实验数据具有更好的精确度。 SSE（和方差）在统计学中，该参数计算的是拟合数据和原始对应点的误差的平方和，计算公式为： $$SSE =\sum_{i=1}^mw_i(y_i-\hat{y_i})^2$$ 其中$y_i$是真实">
-<meta name="twitter:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-14-141825.jpg">
+<meta name="twitter:title" content="Logistic Regression">
+<meta name="twitter:description" content="逻辑斯蒂回归（logistic regression）是统计学习中的经典方法，逻辑斯蒂回归模型与最大熵模型都属于对数线性模型。 Logistic Function逻辑函数（逻辑曲线、sigmoid函数）表达式如下： $$f(x)=\frac{L}{1+e^{-k(x-x_0)}}$$ 其中：  $e$是自然对数； $x_0$是sigmoid曲线的中点； $L$是曲线的最大值； $k$是曲线的坡度">
+<meta name="twitter:image" content="http://conghuai.me/Desktop/640px-Logistic-curve.svg.png">
 
 
 
@@ -124,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://conghuai.me/2018/04/14/Mean-Squared-Error/"/>
+  <link rel="canonical" href="http://conghuai.me/2018/04/17/Logistic-Regression/"/>
 
 
 
 
 
-  <title>Mean Squared Error | 蔡聪怀</title>
+  <title>Logistic Regression | 蔡聪怀</title>
   
 
 
@@ -267,7 +267,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://conghuai.me/2018/04/14/Mean-Squared-Error/">
+    <link itemprop="mainEntityOfPage" href="http://conghuai.me/2018/04/17/Logistic-Regression/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Conghuai Cai">
@@ -284,7 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Mean Squared Error</h1>
+          <h1 class="post-title" itemprop="name headline">Logistic Regression</h1>
         
 
         <div class="post-meta">
@@ -296,8 +296,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-14T17:10:01+08:00">
-                2018-04-14
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-17T09:17:17+08:00">
+                2018-04-17
               </time>
             
 
@@ -330,8 +330,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Machine-Learning/Loss-Function/" itemprop="url" rel="index">
-                    <span itemprop="name">Loss Function</span>
+                  <a href="/categories/Machine-Learning/Classification/" itemprop="url" rel="index">
+                    <span itemprop="name">Classification</span>
                   </a>
                 </span>
 
@@ -347,7 +347,7 @@
 
           
           
-             <span id="/2018/04/14/Mean-Squared-Error/" class="leancloud_visitors" data-flag-title="Mean Squared Error">
+             <span id="/2018/04/17/Logistic-Regression/" class="leancloud_visitors" data-flag-title="Logistic Regression">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -372,7 +372,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  889 字
+                  1,859 字
                 </span>
               
 
@@ -388,7 +388,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  4 分钟
+                  9 分钟
                 </span>
               
             </div>
@@ -409,35 +409,84 @@
       
 
       
-        <p>数理统计中均方误差是指参数估计值与参数值之差平方的期望值，记为MSE。MSE是衡量“平均误差”的一种较方便的方法，MSE可以评价数据的变化程度，MSE的值越小，说明预测模型描述实验数据具有更好的精确度。</p>
-<h1 id="SSE（和方差）"><a href="#SSE（和方差）" class="headerlink" title="SSE（和方差）"></a>SSE（和方差）</h1><p>在统计学中，该参数计算的是拟合数据和原始对应点的误差的平方和，计算公式为：</p>
-<p>$$SSE =\sum_{i=1}^mw_i(y_i-\hat{y_i})^2$$</p>
-<p>其中$y_i$是真实数据，$\hat{y_i}$是拟合的数据，$w_i&gt;0$，从这里可以看出SSE接近于0，说明模型选择和拟合更好，数据预测也越成功。</p>
-<h1 id="MSE（均方方差）"><a href="#MSE（均方方差）" class="headerlink" title="MSE（均方方差）"></a>MSE（均方方差）</h1><p>该统计参数是预测数据和原始数据对应点误差的平方和的均值，也就是$\frac{SSE}{n}$，和SSE没有太大的区别，计算公式为：</p>
-<p>$$MSE=\frac{SSE}{n}=\frac{1}{n}\sum_{i=1}^mw_i(y_i-\hat{y_i})^2$$</p>
-<p>其中，n为样本的个数。</p>
-<h1 id="RMSE"><a href="#RMSE" class="headerlink" title="RMSE"></a>RMSE</h1><p>该统计参数，也叫回归系统的拟合标准差，是MSE的平方根，计算公式为：</p>
-<p>$$RMSE=\sqrt{MSE}=\sqrt{\frac{SSE}{n}}=\sqrt{\frac{1}{n}\sum_{i=1}^mw_i(y_i-\hat{y_i})^2}$$</p>
-<h1 id="Mean-Squared-Loss的概率解释"><a href="#Mean-Squared-Loss的概率解释" class="headerlink" title="Mean-Squared Loss的概率解释"></a>Mean-Squared Loss的概率解释</h1><p>假设我们的模型是二维平面的线性回归模型：$h_{\theta}(x_i)=\theta_0+\theta_1x$，对于这个模型，我们定义损失函数为MSE，将得到如下的表达式：</p>
-<p>$$J = \frac{1}{N}\sum_{i=1}^N(y_i-h_{\theta}(x_i))^2$$</p>
-<p>下面我们试着通过概率的角度，推导出上述的MSE损失函数表达式。</p>
-<p>在线性回归模型中，我们最终希望对于输入$X$进行线性组合得到值Y，考虑到输入带有噪声的情况的表达式如下：</p>
-<p>$$Y=\theta_0+\theta_1x+\eta$$</p>
-<p>为了使模型更合理，我们假设$\eta$服从均值为0，方差为1的高斯分布，即$\eta\sim N(0,1)$。所以有：</p>
-<p>$$E[Y]=E[\theta_0+\theta_1x+\eta]=\theta_0+\theta_1x$$</p>
-<p>$$Var[Y]=Var[\theta_0+\theta_1x+\eta]=1$$</p>
-<p>所以，Y服从均值为$\theta_0+\theta_1x$，方差为1的高斯分布，则样本点$(x_i,y_i)$的概率为：</p>
-<p>$$p(y_i|x_i)=e^{-\frac{(y_i-(\theta_0+\theta_1x_i))^2}{2}}$$</p>
-<p>有了单个样本的概率，我们就可以计算样本集的似然概率，我们假设每个样本是独立的：</p>
-<p>$$L(x,y)=\prod_{i=1}^Ne^{-\frac{(y_i-(\theta_0+\theta_1x_i))^2}{2}}$$</p>
-<p>对似然函数取对数，得到对数似然函数：</p>
-<p>$$l(x,y)=-\frac{1}{2}\sum_{i=1}^N(y_i-(\theta_0+\theta_1x_i))^2$$</p>
-<p>这个对数似然函数的形式和我们的MSE损失函数的定义是一样的。所以，使用MSE损失函数意味着，我们假设我们的模型是对噪声的输入做估计，该噪声服从高斯分布。</p>
-<h1 id="损失函数效果"><a href="#损失函数效果" class="headerlink" title="损失函数效果"></a>损失函数效果</h1><h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><p>使用MSE的一个缺点就是其偏导值在输出概率值接近0或者接近1的时候非常小，这可能会造成模型刚开始训练时，偏导值几乎消失。</p>
-<p>假设我们的MSE损失函数为：$J = \frac{1}{2}(y_i - \hat{y_i})^2$，偏导为：$\frac{dJ}{dW} = (y_i - \hat{y_i})\sigma’(Wx_i + b)x_i$，其中$\sigma’(Wx_i + b)$为$\sigma(Wx_i + b)(1 - \sigma(Wx_i + b))$。可以看出来，在$\sigma(Wx_i + b)$值接近0或者1的时候，$\frac{dJ}{dW}$的值都会接近于0，其函数图像如下：</p>
-<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-14-141825.jpg" alt="sigmoid_and_derivative_plot"></p>
-<p>这导致模型在一开始学习的时候速率非常慢，而使用交叉熵作为损失函数则不会导致这样的情况发生。</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1]. <a href="http://rohanvarma.me/Loss-Functions/" target="_blank" rel="noopener">Picking Loss Functions - A comparison between MSE, Cross Entropy, and Hinge Loss</a></p>
+        <p>逻辑斯蒂回归（logistic regression）是统计学习中的经典方法，逻辑斯蒂回归模型与最大熵模型都属于对数线性模型。</p>
+<h1 id="Logistic-Function"><a href="#Logistic-Function" class="headerlink" title="Logistic Function"></a>Logistic Function</h1><p>逻辑函数（逻辑曲线、sigmoid函数）表达式如下：</p>
+<p>$$f(x)=\frac{L}{1+e^{-k(x-x_0)}}$$</p>
+<p>其中：</p>
+<ul>
+<li>$e$是自然对数；</li>
+<li>$x_0$是sigmoid曲线的中点；</li>
+<li>$L$是曲线的最大值；</li>
+<li>$k$是曲线的坡度</li>
+</ul>
+<p>其标准形式为：$L=1,k=1,x_0=0$</p>
+<p><img src="../../../../../../../Desktop/640px-Logistic-curve.svg.png" alt="640px-Logistic-curve.svg"></p>
+<h2 id="函数性质"><a href="#函数性质" class="headerlink" title="函数性质"></a>函数性质</h2><p>标准的逻辑函数表达式如下：</p>
+<p>$$\begin{align} f(x) &amp;= \frac{1}{1+e^{-x}} \  &amp;= \frac{e^x}{1+e^x} \  &amp;= \frac{1}{2}+\frac{1}{2}\cdot tanh(\frac{x}{2}) \end{align}$$</p>
+<ul>
+<li>对称性：$1-f(x) = f(-x)$</li>
+</ul>
+<h2 id="求导"><a href="#求导" class="headerlink" title="求导"></a>求导</h2><p>逻辑函数的一个优点在于其容易求导：</p>
+<p>$$\begin{align} \frac{df(x)}{dx} &amp;= \frac{e^x(1+e^x)-e^x\cdot e^x}{(1+e^{-x})^2} \  &amp;= \frac{e^x}{(1+e^x)^2} \  &amp;= f(x)\cdot (1-f(x)) \end{align}$$</p>
+<h1 id="逻辑斯蒂回归模型"><a href="#逻辑斯蒂回归模型" class="headerlink" title="逻辑斯蒂回归模型"></a>逻辑斯蒂回归模型</h1><h2 id="二项逻辑斯蒂回归模型"><a href="#二项逻辑斯蒂回归模型" class="headerlink" title="二项逻辑斯蒂回归模型"></a>二项逻辑斯蒂回归模型</h2><p>二项逻辑斯蒂回归模型是一种分类模型，由条件概率分布$P(Y|X)$表示，形式为参数化的逻辑斯蒂分布，这里随机变量$X$取值为实数，随机变量$Y$取值为1或-1。</p>
+<p>$P(Y=1|x) = \frac{e^{w\cdot x+b}}{1+e^{w\cdot x+b}}$</p>
+<p>$P(Y=-1|x) = \frac{1}{1+e^{w\cdot x+b}}$</p>
+<p>对于给定的输入实例$x$，按照上面式可以求得$P(Y=1|x)$和$P(Y=|x-1)$。逻辑斯蒂回归比较两个条件概率值的大小，将实例$x$分到概率值较大的那一类。</p>
+<p>有时为了方便，将权值向量和输入向量甲乙扩充，扔记作$w,x$，即$w=(w^{(1)},w^{(2)},…,w^{(n)},b)^T$，$x=(x^{(1)},x^{(2)},…,x^{(n)},1)^T$，这时候，逻辑斯蒂回归模型如下：</p>
+<p>$P(Y=1|x) = \frac{e^{w\cdot x}}{1+e^{w\cdot x}}$</p>
+<p>$P(Y=-1|x) = \frac{1}{1+e^{w\cdot x}}$</p>
+<h3 id="对数几率"><a href="#对数几率" class="headerlink" title="对数几率"></a>对数几率</h3><p>现在考察逻辑斯蒂回归模型的特点，一个事件的几率是指该事件发生的概率与该事件不发生的概率的比值，如果事件发生的概率是$p$，那么该事件的几率是$\frac{p}{1-p}$，该事件的对数几率或logit函数是</p>
+<p>$$logit(p)= log\frac{p}{1-p}$$</p>
+<p>对于逻辑斯蒂回归而言，得</p>
+<p>$$\begin{align} log\frac{P(Y=1|x)}{1-P(Y=1|x)} &amp;= log\frac{\frac{e^{w\cdot x}}{1+e^{w\cdot x}}}{1- \frac{e^{w\cdot x}}{1+e^{w\cdot x}}} \  &amp;= log\frac{e^{w\cdot x}}{1+e^{w\cdot x}-e^{w\cdot x}} \  &amp;= loge^{w\cdot x}  \&amp;= w\cdot x  \end{align}$$</p>
+<p>这就是说，在逻辑斯蒂回归模型中，输出$Y=1$的对数几率是输入$x$的线性函数，或者说，输出$Y=1$的对数几率是由输入$x$的线性函数表示的模型，即逻辑斯蒂回归模型。</p>
+<p>换一个角度看，考虑对输入$x$进行分类的线性函数$w\cdot x$，其值域为实数域，通过逻辑斯蒂回归模型可以将线性函数$w\cdot x$转化为概率：</p>
+<p>$P(Y=1|x) = \frac{e^{w\cdot x}}{1+e^{w\cdot x}}$</p>
+<p>这时，线性函数的值越接近正无穷，概率值就越接近1；线性函数的值越接近负无穷，概率值就越接近0。</p>
+<h2 id="模型参数估计"><a href="#模型参数估计" class="headerlink" title="模型参数估计"></a>模型参数估计</h2><h3 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h3><p>逻辑斯蒂回归模型学习时，对于给定的训练数据集$T={(x_1, 1),(x_2,-1),…,(x_N,-1)}$，其中，$x_i\in R^n，y_i\in{-1,1}$，可以应用极大似然估计法估计模型参数，即用这个模型生成该数据集的可能性：</p>
+<p>$$\begin{align} L(h) &amp;= P(x_1)\cdot h(1|x_1)\cdot P(x_2)\cdot h(-1|x_2)…P(x_N)\cdot h(-1|x_N) \  &amp;= P(x_1)\cdot h(1|x_1)\cdot P(x_2)\cdot [1-h(1|x_2)]…P(x_N)\cdot [1-h(1|x_N)] \end{align}$$</p>
+<p>对于$h$我们用sigmoid函数带入，用对称性得</p>
+<p>$$\begin{align} L(h) &amp;= P(x_1)\cdot h(1|x_1)\cdot P(x_2)\cdot [1-h(1|x_2)]…P(x_N)\cdot [1-h(1|x_N)] \ &amp;= P(x_1)\cdot h(1|x_1)\cdot P(x_2)\cdot h(-(1|x_2))…P(x_N)\cdot h(-(1|x_N))(\sigma函数的对称性)\end{align} $$</p>
+<p>对于不同的模型，$P(x_1),P(x_2)…P(x_N)$是一样的，乘上这些值对于我们选择最优的模型没有帮助，故略去。</p>
+<p>$L(\sigma)\propto\prod_{n=1}^N\sigma(y_nw^Tx_n)$</p>
+<p>下面，我们得到最终的损失函数</p>
+<p>$$\begin{align} g &amp;= argmax_\sigma \prod_{n=1}^N\sigma(y_nw^Tx_n) \  &amp;= argmax_{\sigma}ln\sum_{n=1}^N\sigma(y_nw^Tx_n) \  &amp;= argmin_w\frac{1}{N}\sum_{n=1}^N-ln\sigma(y_nw^Tx_n)  \ &amp;= argmin_w\frac{1}{N} \sum_{n=1}^Nln(1+e^{-y_nw^Tx_n})\ \end{align}$$</p>
+<p>所以，损失函数为</p>
+<p>$$E_{in}(w)=\frac{1}{N}\sum_{i=1}^Nln(1+e^{-y_nw^Tx_n})$$</p>
+<h3 id="证明损失函数为交叉熵"><a href="#证明损失函数为交叉熵" class="headerlink" title="证明损失函数为交叉熵"></a>证明损失函数为交叉熵</h3><p>如果不太熟悉交叉熵损失函数，可先回顾一下：<a href="http://conghuai.me/2018/04/08/Cross%20Entropy%20Loss%20Function/">Cross Entropy Loss Function</a></p>
+<p>对于二分类损失问题，交叉熵损失函数定义为<br>$$E =\sum_{i=1}^N -(y\cdot log(p)+(1-y)\cdot log(1-p))$$</p>
+<p>其中</p>
+<ul>
+<li>$y\in {0,1}$，一般规定正类为1，负类为0；</li>
+<li>$p$为取正类的概率；</li>
+<li>对于每个样本上式，其中一项为0；</li>
+</ul>
+<p>对于逻辑回归来说，其交叉熵损失函数中，$p$用逻辑函数带入，得</p>
+<p>$$\begin{align} E &amp;=\sum_{i=1}^N -(y\cdot log(p)+(1-y)\cdot log(1-p)) \  &amp;= \sum_{i=1}^N -(y\cdot log(\frac{1}{1+e^{-w\cdot x}})+(1-y)\cdot log(1-\frac{1}{1+e^{-w\cdot x}})) \  &amp;= \sum_{i=1}^N -(-y\cdot log(1+e^{-w\cdot x})+(1-y)\cdot log(\frac{e^{-w\cdot x}}{1+e^{-w\cdot x}}))  \ &amp;= \sum_{i=1}^N -(-y\cdot log(1+e^{-w\cdot x})+(1-y)\cdot log(\frac{1}{1+e^{w\cdot x}}))  \ &amp;=  \sum_{i=1}^N -(-y\cdot log(1+e^{-w\cdot x})-(1-y)\cdot log(1+e^{w\cdot x})) \ &amp;= \sum_{i=1}^N y\cdot log(1+e^{-w\cdot x})+(1-y)\cdot log(1+e^{w\cdot x})\end{align}$$</p>
+<p>我们发现</p>
+<p>$$\begin{split}E=\begin{cases} \sum_{i=1}^Nlog(1+e^{-w\cdot x}), &amp; \text{if $y=+1$} \ \sum_{i=1}^Nlog(1+e^{w\cdot x}), &amp; \text{if $y=0$}\end{cases}\end{split}$$</p>
+<p>我们可以简化上式，得</p>
+<p>$$E= \sum_{i=1}^Nln(1+e^{-y_nw^Tx_n}),y_n\in {1,-1}$$</p>
+<p>所以，我们发现，对逻辑斯蒂回归模型求负极大似然估计得到的损失函数，本质上就是交叉熵损失函数。</p>
+<h3 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h3><p>现在，我们推导一下求导过程</p>
+<p>$$E_{in}(w)=\frac{1}{N}\sum_{i=1}^Nln(1+e^{-y_nw^Tx_n})$$</p>
+<p>对$w_i$求偏导，令$A = 1+e^{-y_nw^Tx_n}$，$B = e^{-y_nw^Tx_n}$</p>
+<p>$$\frac{\partial E_{in}(w)}{\partial w_i}= \frac{1}{N} \sum_{i=1}^{N} \frac{\partial lnA}{\partial A}\cdot \frac{\partial (1+e^B)}{\partial B}\cdot \frac{\partial -y_nw^Tx_n}{\partial w_i}$$</p>
+<p><strong>第一项$\frac{\partial lnA}{\partial A}$</strong></p>
+<p>$$\frac{\partial lnA}{\partial A} = \frac{1}{A}$$</p>
+<p><strong>第二项$\frac{\partial (1+e^B)}{\partial B}$</strong></p>
+<p>$$\frac{\partial (1+e^B)}{\partial B}= e^B$$</p>
+<p><strong>第三项$\frac{\partial -y_nw^Tx_n}{\partial w_i}$</strong></p>
+<p>$$\frac{\partial -y_nw^Tx_n}{\partial w_i} = -y_nx_{n,i}$$</p>
+<p>最后得</p>
+<p>$$\begin{align} \frac{\partial E_{in}(w)}{\partial w_i} &amp;= \frac{1}{N} \sum_{i=1}^{N} \frac{\partial lnA}{\partial A}\cdot \frac{\partial (1+e^B)}{\partial B}\cdot \frac{\partial -y_nw^Tx_n}{\partial w_i} \  &amp;= \frac{1}{N}\sum_{i=1}^N\frac{1}{A}\cdot e^B \cdot (-y_nx_{n,i}) \ &amp;= \frac{1}{N}\sum_{i=1}^N\frac{e^{-y_nw^Tx_n}}{1+e^{-y_nw^Tx_n}}\cdot  (-y_nx_{n,i}) \ &amp;= \frac{1}{N}\sum_{i=1}^N\sigma(-y_nw^Tx_n)\cdot (-y_nx_{n,i})\end{align}$$</p>
+<p>通过梯度更新参数：</p>
+<p>$$w_{t+1} \leftarrow w_t-\eta \triangledown E_{in}(w_t)$$</p>
+<h2 id="多项逻辑回归"><a href="#多项逻辑回归" class="headerlink" title="多项逻辑回归"></a>多项逻辑回归</h2><h1 id="逻辑回归与最大熵"><a href="#逻辑回归与最大熵" class="headerlink" title="逻辑回归与最大熵"></a>逻辑回归与最大熵</h1><p>我们现在尝试把最大熵模型推导成logistic回归模型：</p>
+<p>最大熵模型定义了在给定输入变量$x$时，输出变量$y$的条件分布：</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1]. 李航. “统计学习方法.” <em>清华大学出版社, 北京</em> (2012).</p>
+<p>[2]. <a href="https://www.wikiwand.com/en/Logistic_function" target="_blank" rel="noopener">维基百科 Logistic function</a></p>
+<p>[3]. <a href="https://www.zhihu.com/question/24094554/answer/108271031" target="_blank" rel="noopener">如何理解最大熵模型里面的特征？</a></p>
 
       
     </div>
@@ -455,7 +504,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/math/" rel="tag"># math</a>
+            <a href="/tags/ml/" rel="tag"># ml</a>
+          
+            <a href="/tags/linear-model/" rel="tag"># linear model</a>
           
         </div>
       
@@ -468,8 +519,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/12/Regularization/" rel="next" title="Regularization">
-                <i class="fa fa-chevron-left"></i> Regularization
+              <a href="/2018/04/16/Maximum-Entropy-Model/" rel="next" title="Maximum Entropy Model">
+                <i class="fa fa-chevron-left"></i> Maximum Entropy Model
               </a>
             
           </div>
@@ -477,10 +528,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/04/16/Maximum-Entropy-Model/" rel="prev" title="Maximum Entropy Model">
-                Maximum Entropy Model <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -651,7 +698,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SSE（和方差）"><span class="nav-number">1.</span> <span class="nav-text">SSE（和方差）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MSE（均方方差）"><span class="nav-number">2.</span> <span class="nav-text">MSE（均方方差）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RMSE"><span class="nav-number">3.</span> <span class="nav-text">RMSE</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Mean-Squared-Loss的概率解释"><span class="nav-number">4.</span> <span class="nav-text">Mean-Squared Loss的概率解释</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#损失函数效果"><span class="nav-number">5.</span> <span class="nav-text">损失函数效果</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#缺点"><span class="nav-number">5.1.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Logistic-Function"><span class="nav-number">1.</span> <span class="nav-text">Logistic Function</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#函数性质"><span class="nav-number">1.1.</span> <span class="nav-text">函数性质</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求导"><span class="nav-number">1.2.</span> <span class="nav-text">求导</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#逻辑斯蒂回归模型"><span class="nav-number">2.</span> <span class="nav-text">逻辑斯蒂回归模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#二项逻辑斯蒂回归模型"><span class="nav-number">2.1.</span> <span class="nav-text">二项逻辑斯蒂回归模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#对数几率"><span class="nav-number">2.1.1.</span> <span class="nav-text">对数几率</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模型参数估计"><span class="nav-number">2.2.</span> <span class="nav-text">模型参数估计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#损失函数"><span class="nav-number">2.2.1.</span> <span class="nav-text">损失函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#证明损失函数为交叉熵"><span class="nav-number">2.2.2.</span> <span class="nav-text">证明损失函数为交叉熵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优化"><span class="nav-number">2.2.3.</span> <span class="nav-text">优化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多项逻辑回归"><span class="nav-number">2.3.</span> <span class="nav-text">多项逻辑回归</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#逻辑回归与最大熵"><span class="nav-number">3.</span> <span class="nav-text">逻辑回归与最大熵</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>

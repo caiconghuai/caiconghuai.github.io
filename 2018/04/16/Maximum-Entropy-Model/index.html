@@ -92,7 +92,7 @@
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-16-125513.jpg">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-16-125507.jpg">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-16-125510.jpg">
-<meta property="og:updated_time" content="2018-04-17T00:17:07.911Z">
+<meta property="og:updated_time" content="2018-04-17T03:47:55.557Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Maximum Entropy Model">
 <meta name="twitter:description" content="最大熵原理是概率模型学习的一个准则，最大熵原理认为，学习概率模型时，在所有可能的概率模型(分布)中，熵最大的模型是最好的模型，通常用约束条件来确定概率模型的集合，所以，最大熵原理也可以表述为在满足约束条件的模型集合中选取熵最大的模型。 直观地，最大熵原理认为要选择的概率模型首先必须满足已有的事实，即约束条件。在没有更多信息的情况下，那些不确定的部分都是“等可能的”。 最大熵原理是统计学习的一个一般">
@@ -374,7 +374,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  2,438 字
+                  2,448 字
                 </span>
               
 
@@ -533,7 +533,7 @@
 <p>具体地，求$L(P,w)$对$P(y|x)$的偏导数</p>
 <p>$$\begin{align} \frac{\partial{L(P,w)}}{\partial{P(y|x)}} &amp;=\sum_{x,y}\tilde{P}(x)(logP(y|x)+1)-\sum_yw_0-\sum_{x,y}(\tilde{P}(x)\sum_{i=1}^nw_if_i(x,y))\\  &amp;= \sum_{x,y}\tilde{P}(x)(logP(y|x)+1-w_0-\sum_{i=1}^nw_if_i(x,y)) \end{align}$$</p>
 <p>令偏导数等于0，在$\tilde{P}&gt;0$的情况下，解得：</p>
-<p>$$\begin{align} P(y|x) &amp;=e^{\sum_{i=1}^ww_if_i(x,y)+w_0-1}\\  &amp;= \frac{e^{\sum_{i=1}^ww_if_i(x,y)}}{e^{1-w_0}} \end{align}$$</p>
+<p>$$\begin{align} P(y|x) &amp;=e^{\sum_{i=1}^ww_if_i(x,y)+w_0-1}\\  &amp;= \frac{e^{\sum_{i=1}^ww_if_i(x,y)}}{e^{1-w_0}} \\  &amp;= \frac{e^{\sum_{i=1}^ww_if_i(x,y)}}{Z(x)} \end{align}$$</p>
 <p>由于$\sum_yP(y|x)=1$，得</p>
 <p>$$Z_w(x)=e^{1-w_0}=\sum_ye^{\sum_{i=1}^nw_if_i(x,y)}$$</p>
 <p>其中：</p>
@@ -602,6 +602,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/17/Logistic-Regression/" rel="prev" title="Logistic Regression">
+                Logistic Regression <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -682,7 +686,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
