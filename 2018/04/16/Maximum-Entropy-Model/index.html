@@ -92,7 +92,7 @@
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-16-125513.jpg">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-16-125507.jpg">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-16-125510.jpg">
-<meta property="og:updated_time" content="2018-04-17T00:05:57.242Z">
+<meta property="og:updated_time" content="2018-04-17T00:08:53.584Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Maximum Entropy Model">
 <meta name="twitter:description" content="最大熵原理是概率模型学习的一个准则，最大熵原理认为，学习概率模型时，在所有可能的概率模型(分布)中，熵最大的模型是最好的模型，通常用约束条件来确定概率模型的集合，所以，最大熵原理也可以表述为在满足约束条件的模型集合中选取熵最大的模型。 直观地，最大熵原理认为要选择的概率模型首先必须满足已有的事实，即约束条件。在没有更多信息的情况下，那些不确定的部分都是“等可能的”。 最大熵原理是统计学习的一个一般">
@@ -374,7 +374,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  2,400 字
+                  2,417 字
                 </span>
               
 
@@ -477,15 +477,15 @@
 </tbody>
 </table>
 <p>上面这个表刻画的就是我们在训练样本上的概率分布，对于这个概率分布，我们是绝对相信吗？如果是的话，我们会用极大似然的方式来估计出模型的参数。但是，在有些场景下，对于通过训练样本得到的经验概率分布，我们有时候只关心某些特征，我们希望得到的模型对于我们关心的特征满足经验概率分布，对于我们不关心的特征，只需要达到最大熵要求即可。但是，该如何刻画我们的特征呢？</p>
-<p>通常来说，我们通过定义特征函数来刻画特征：</p>
+<p>通常来说，我们通过定义特征函数来刻画我们关心的特征：</p>
 <p>$$\begin{split}f(a,b)=\begin{cases} 1, &amp; \text{我们关心的条件} \\ 0, &amp; \text{其他}\end{cases}\end{split}$$</p>
-<p>可以看出来，根据不同的条件，我们可以定义出多个不同的特征函数：$f_j:\varepsilon\rightarrow {0,1} $。例如，我们关心的是<code>b=0</code>这一列的特征，我们就可以定义特征函数为：</p>
+<p>可以看出来，根据不同的条件，我们可以定义出多个不同的特征函数：$f_j:\varepsilon\rightarrow \{0,1\} $。例如，我们关心的是<code>b=0</code>这一列的特征，我们就可以定义特征函数为：</p>
 <p>$$\begin{split}f(a,b)=\begin{cases} 1, &amp; \text{b=0} \\ 0, &amp; \text{其他}\end{cases}\end{split}$$</p>
 <p>有了特征函数的定义，我们现在需要保证模型在特征函数上的期望值$E_pf$和经验概率分布在特征函数上的期望值$E_{\tilde{p}}f$是一致的，即：</p>
 <p>$$E_{\tilde{p}}f = E_pf$$</p>
 <p>根据我们上面定义的特征函数，得：</p>
 <p>$$E_{\tilde{p}}f = \sum_{a,b}\tilde{p}(a,b)f(a,b)= 0.4 + 0.2 = 0.6$$</p>
-<p>即，我们得到经验概率分布在该特征函数上的期望值为：0.6，所以，我们的模型需满足：$E_pf=p(x,0) + p(y,0) = 0.6$</p>
+<p>即，我们得到经验概率分布在该特征函数上的期望值为：0.6，所以，我们的模型需满足：$E_pf=p(x,0) + p(y,0) = p(x)\cdot p(0|x) + p(y)\cdot p(0|y)= 0.6$</p>
 <p>那么，对于我们不关心的特征呢？对于这些特征，我们只需要保证熵最大即可。</p>
 <h1 id="模型定义"><a href="#模型定义" class="headerlink" title="模型定义"></a>模型定义</h1><p>有了上面的例子，现在我们形式化给出最大熵模型的定义：</p>
 <p>假设分类模型是一个条件概率分布$P(Y|X)$，$x\in X \subseteq R^n$表示输入，$y\in Y$表示输出，$X$和$Y$分别是输入和输出的集合，这个模型表示的是对于给定的输入$X$，以条件概率$P(Y|X)$输出$Y$。</p>
