@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://conghuai.me/"/>
-  <updated>2018-04-17T04:09:26.000Z</updated>
+  <updated>2018-04-18T09:56:25.786Z</updated>
   <id>http://conghuai.me/</id>
   
   <author>
@@ -15,6 +15,71 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Expectation Maximization</title>
+    <link href="http://conghuai.me/2018/04/18/Expectation-Maximization/"/>
+    <id>http://conghuai.me/2018/04/18/Expectation-Maximization/</id>
+    <published>2018-04-18T09:07:27.000Z</published>
+    <updated>2018-04-18T09:56:25.786Z</updated>
+    
+    <content type="html"><![CDATA[<p>概率模型有时既含有观测变量，又含有隐变量或潜在变量。如果概率模型的变量都是观测变量，那么给定数据，可以直接用极大似然估计法，或贝叶斯估计法估计模型参数。但是，当模型含有隐变量时，就不能简单地使用这些估计法。EM算法就是含有隐变量的概率模型参数的极大似然估计法，或极大后验概率估计法。</p><h1 id="EM算法"><a href="#EM算法" class="headerlink" title="EM算法"></a>EM算法</h1><p>我们面对一个含有隐变量的概率模型，目标是最大化观测数据（不完全数据）$Y​$关于参数$\theta​$的对数似然函数，即极大化</p><p>$$\begin{align} L(\theta) &amp;= logP(Y|\theta)=log\sum_ZP(Y,Z|\theta) \\  &amp;= log(\sum_ZP(Y|Z,\theta)P(Z|\theta)) \end{align}$$</p><p>注意到这一极大化的主要困难是上述中有未观测数据并有包含和（或积分）的对数。</p><p>事实上，EM算法是通过迭代逐步近似极大化$L(\theta)$的，假设在第$i$次迭代后$\theta$的估计值是$\theta^{(i)}$，我们希望新的估计值$\theta$能使$L(\theta)$增加，即$L(\theta)&gt;L(\theta^{(i)})$，并逐步达到最大值，为此，考虑两者的差</p><p>$$L(\theta)-L(\theta^{(i)})=log(\sum_Z P(Y|Z,\theta)P(Z|\theta))-logP(Y|\theta^{(i)})$$</p><p>利用Jensen不等式，得到其下界</p><p>$$\begin{align} L(\theta) - L(\theta^{(i)}) &amp;= log(\sum_Z P(Z|Y,\theta^{(i)})\frac{P(Y|Z,\theta)P(Z|\theta)}{P(Z|Y,\theta^{(i)})})-logP(Y|\theta^{(i)})\\  &amp;\geq \sum_ZP(Z|Y,\theta^{(i)})log\frac{P(Y|Z,\theta)P(Z|\theta)}{P(Z|Y,\theta^{(i)})}-logP(Y|\theta^{(i)}) \  &amp;= \sum_ZP(Z|Y,\theta^{(i)})log\frac{P(Y|Z,\theta)P(Z|\theta)}{P(Z|Y,\theta^{(i)})}-\sum_ZP(Z|Y,\theta^{(i)})logP(Y|\theta^{(i)})  \ &amp;= \sum_ZP(Z|Y,\theta^{(i)})log\frac{P(Y|Z,\theta)P(Z|\theta)}{P(Z|Y,\theta^{(i)})P(Y|\theta^{(i)})} \end{align}$$</p><p>我们令</p><p>$\beta(\theta,\theta^{(i)})=L(\theta^{(i)}) + \sum_ZP(Z|Y,\theta^{(i)})log\frac{P(Y|Z,\theta)P(Z|\theta)}{P(Z|Y,\theta^{(i)})P(Y|\theta^{(i)})}$</p><p>则</p><p>$$L(\theta)\geq \beta(\theta,\theta^{(i)})$$</p><p>因此，任何可以使$\beta(\theta,\theta^{(i)})$增大的$\theta$，也可以使$L(\theta)$增大，为了使$L(\theta)$有尽可能大的增长，选择$\theta^{(i+1)}$使$\beta(\theta, \theta^{(i)})$达到极大，即</p><p>$$\theta^{(i+1)}=argmax_\theta\beta(\theta,\theta^{(i)})$$</p><p>现在求$\theta^{(i+1)}$的表达式，省去对$\theta$的极大化而言是常数的项，有</p><p>$$\begin{align} \theta^{(i+1)} &amp;= argmax_\theta(L(\theta^{(i)}) + \sum_ZP(Z|Y,\theta^{(i)})log\frac{P(Y|Z,\theta)P(Z|\theta)}{P(Z|Y,\theta^{(i)})P(Y|\theta^{(i)})}) \\  &amp;= argmax_\theta \sum_ZP(Z|Y,\theta^{(i)})log\frac{P(Y|Z,\theta)P(Z|\theta)}{P(Z|Y,\theta^{(i)})P(Y|\theta^{(i)})}) \  &amp;= argmax_\theta \sum_ZP(Z|Y,\theta^{(i)})logP(Y|Z,\theta)P(Z|\theta)-\sum_ZP(Z|Y,\theta^{(i)})P(Z|Y,\theta^{(i)})P(Y|\theta^{(i))})  \ &amp;= argmax_\theta \sum_ZP(Z|Y,\theta^{(i)})logP(Y|Z,\theta)P(Z|\theta) \ &amp;= argmax_\theta \sum_ZP(Z|Y,\theta^{(i)})logP(Y,Z|\theta) \ &amp;=argmax_\theta\ Q(\theta,\theta^{(i)}) \end{align}$$</p><p>上述等价于EM算法的一次迭代，即求Q函数及其极大化。EM算法是通过不断求解下界的极大化逼近求解对数似然函数极大化的算法。</p><p><img src="../../../../../../../Desktop/Screen Shot 2018-04-18 at 17.52.20.png" alt="Screen Shot 2018-04-18 at 17.52.20"></p><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1]. 李航. “统计学习方法.” <em>清华大学出版社, 北京</em> (2012).</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;概率模型有时既含有观测变量，又含有隐变量或潜在变量。如果概率模型的变量都是观测变量，那么给定数据，可以直接用极大似然估计法，或贝叶斯估计法估计模型参数。但是，当模型含有隐变量时，就不能简单地使用这些估计法。EM算法就是含有隐变量的概率模型参数的极大似然估计法，或极大后验概率
+      
+    
+    </summary>
+    
+      <category term="Machine Learning" scheme="http://conghuai.me/categories/Machine-Learning/"/>
+    
+      <category term="Optimization" scheme="http://conghuai.me/categories/Machine-Learning/Optimization/"/>
+    
+      <category term="Bayesian" scheme="http://conghuai.me/categories/Machine-Learning/Optimization/Bayesian/"/>
+    
+    
+      <category term="ml" scheme="http://conghuai.me/tags/ml/"/>
+    
+      <category term="math" scheme="http://conghuai.me/tags/math/"/>
+    
+      <category term="optimization" scheme="http://conghuai.me/tags/optimization/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Optimization for Machine Learning</title>
+    <link href="http://conghuai.me/2018/04/18/Optimization-for-Machine-Learning/"/>
+    <id>http://conghuai.me/2018/04/18/Optimization-for-Machine-Learning/</id>
+    <published>2018-04-18T01:47:44.000Z</published>
+    <updated>2018-04-18T09:08:54.198Z</updated>
+    
+    <content type="html"><![CDATA[<p>优化问题在很多地方都会出现，如机器学习、数据挖掘、统计学等。最简单的优化问题的形式如下：</p><p>$$\begin{align} minimize\ \ f(x) \  with\ x\in R^d \ \end{align}$$</p><p>其中</p><ul><li>$x$是变量；</li><li>$f$是目标函数$f:R^d\rightarrow R$；</li></ul><ul><li>通常假设$f$是连续可导的。</li></ul><p>绝大部分的机器学习问题，最后都会转换为优化问题，例如：</p><ul><li><strong>Soft Linear SVM</strong></li></ul><p>$$argmin_w \sum_{i=1}^n||w||^2+C\sum_{i=1}^n\varepsilon _i$$</p><p>$$s.t. 1-y_ix_i^Tw \leq \varepsilon _i,\varepsilon \geq 0$$</p><ul><li><strong>Maximum Likelihood</strong></li></ul><p>$$argmax_\theta \sum_{i=1}^n logp_\theta(x_i)$$</p><ul><li><strong>K-means</strong></li></ul><p>$$argmin_{u_1,u_2,…,u_k}J(\mu)=\sum_{j=1}^k\sum_{i\in C_j}||x_i-\mu_j||^2$$</p><p>在机器学习中，通常我们需要先定义并建立优化的目标函数，然后用一个时间上较优的算法去求解该优化问题。目前，主要的优化方法有：</p><ul><li>Gradient Descent</li><li>Stochastic Gradient Descent(SGD)</li><li>Coordinate Descent</li></ul><p>这些优化方法的提出，其历史如下：</p><ul><li>1847: Cauchy proposes gradient descent</li><li>1950s: Linear Programs, soon followed by non-linear, SGD</li><li>1980s: General optimization, convergence theory</li><li>2005-today: Large scale optimization, convergence of SGD</li></ul><p>Coordinate Descent例子如下：</p><p>$$Goal : Find\ x^*\in R\ minimizing\ f(x)\ \ (Example: d= 2) $$</p><p><strong>Idea</strong>：Update one coordinate at a time, while keeping others fixed.</p><p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-18-090851.jpg" alt="Screen Shot 2018-04-18 at 10.19.46"></p><h1 id="凸优化理论"><a href="#凸优化理论" class="headerlink" title="凸优化理论"></a>凸优化理论</h1><h2 id="Convex-Sets"><a href="#Convex-Sets" class="headerlink" title="Convex Sets"></a>Convex Sets</h2><blockquote><p>A set C is <strong>convex</strong> if the line segment between any two points of C lies in C, i.e., if for any x,y $\in$ C and any $\lambda $ with $0 \leq \lambda\leq 1$,we have</p><p>$$\lambda x+(1-\lambda)y \in C$$</p></blockquote><p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-18-090842.jpg" alt="Screen Shot 2018-04-18 at 10.24.07"></p><h2 id="Convex-Functions"><a href="#Convex-Functions" class="headerlink" title="Convex Functions"></a>Convex Functions</h2><blockquote><p>Definition</p><p>A function $f: R^d \rightarrow R$ is convex if (i) dom(f) is a convex set and (ii) for all $x,y \in dom(f)$,and $\lambda$ with $0\leq \lambda \leq 1$, we have </p><p>$$f(\lambda x+(1-\lambda)y)\leq \lambda f(x)+(1-\lambda)f(y)$$</p></blockquote><p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-18-090846.jpg" alt="Screen Shot 2018-04-18 at 10.53.05"></p><p>常见的凸函数有：</p><h3 id="Linear-affine-functions"><a href="#Linear-affine-functions" class="headerlink" title="Linear/affine functions"></a>Linear/affine functions</h3><p>$$f(x)=b^Tx+c$$</p><h3 id="Quadratic-functions"><a href="#Quadratic-functions" class="headerlink" title="Quadratic functions"></a>Quadratic functions</h3><p>$$f(x)=\frac{1}{2}x^TAx+b^Tx+c$$</p><h3 id="Norms-如l1、l2范数"><a href="#Norms-如l1、l2范数" class="headerlink" title="Norms(如l1、l2范数)"></a>Norms(如l1、l2范数)</h3><p>$$||\alpha x+(1-\alpha)y||\leq ||\alpha x||+||(1-\alpha)y||=\alpha ||x||+(1-\alpha)||y||$$</p><h3 id="Composition-with-an-affine-function-f-Ax-b"><a href="#Composition-with-an-affine-function-f-Ax-b" class="headerlink" title="Composition with an affine function $f(Ax+b)$"></a>Composition with an affine function $f(Ax+b)$</h3><p>$$f(A(\alpha x+(1-\alpha)y)+b) =f(\alpha (Ax+b)+(1-\alpha)(Ay+b))\leq \alpha f(Ax+b)+(1-\alpha)f(Ay+b)$$</p><h3 id="Log-sum-exp"><a href="#Log-sum-exp" class="headerlink" title="Log-sum-exp"></a>Log-sum-exp</h3><p>$$f(x) = log(\sum_{i=1}^nexp(x_i))$$</p><p>在机器学习中， 有哪些损失函数是凸函数呢？</p><p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-18-090845.jpg" alt="Screen Shot 2018-04-18 at 11.12.36"></p><h3 id="SVM-loss"><a href="#SVM-loss" class="headerlink" title="SVM loss"></a>SVM loss</h3><p>$$f(w) = [1-y_ix_i^Tw]_+$$</p><h3 id="Binary-logistic-loss"><a href="#Binary-logistic-loss" class="headerlink" title="Binary logistic loss"></a>Binary logistic loss</h3><p>$$f(w)=log(1+exp(-y_ix_i^Tw))$$</p><h2 id="Convex-Optimization"><a href="#Convex-Optimization" class="headerlink" title="Convex Optimization"></a>Convex Optimization</h2><blockquote><p>An optimization problem is convex if its objective is a convex function, the inequality constrints $f_j$ are convex, and the equality constraints $h_j$ are affine</p></blockquote><p>$$minimize_x f_0(x)\ (Convex function)$$</p><p>$$s.t. f_i(x) \leq 0\ (Convex\ sets)$$</p><p>$$h_j(x) = 0\ (Affine)$$</p><p>凸优化的性质在于具有全局最优解。</p><h1 id="Unconstrained-optimization"><a href="#Unconstrained-optimization" class="headerlink" title="Unconstrained optimization"></a>Unconstrained optimization</h1><h2 id="Gradient-Descent"><a href="#Gradient-Descent" class="headerlink" title="Gradient Descent"></a>Gradient Descent</h2><p>$$For\ t=1,…,T$$</p><p>$$x_{t+1}\leftarrow x_t-\eta \triangledown f(x_t)$$</p><p>其中，$\eta_t$称为学习率。</p><p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-18-090850.jpg" alt="Screen Shot 2018-04-18 at 16.45.00"></p><h3 id="Batch-gradient-descent"><a href="#Batch-gradient-descent" class="headerlink" title="Batch gradient descent"></a>Batch gradient descent</h3><p>在整个训练数据集上计算梯度，然后更新参数：</p><p>$$\theta=\theta-\eta\cdot \triangledown _\theta J(\theta)$$</p><p>因为在执行每次更新时，我们需要在整个数据集上计算所有的梯度，所以批梯度下降法的速度会很慢，同时，批梯度下降法无法处理超出内存容量限制的数据集。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(nb_epochs):</span><br><span class="line">    params_grad = evaluate_gradient(loss_function, data, params)</span><br><span class="line">    params = params - learning_rate * params_grad</span><br></pre></td></tr></table></figure><p>对于凸误差函数，批梯度下降法能够保证收敛到全局最小值，对于非凸函数，则收敛到一个局部最小值。</p><h3 id="Stochastic-Gradient-Descent（SGD）"><a href="#Stochastic-Gradient-Descent（SGD）" class="headerlink" title="Stochastic Gradient Descent（SGD）"></a>Stochastic Gradient Descent（SGD）</h3><p>相反，随机梯度下降法（stochastic gradient descent, SGD）根据每一条训练样本$x^{(i)}$和标签$y^{(i)}$更新参数：</p><p>$$\theta = \theta-\eta\cdot \triangledown_\theta J(\theta;x^{(i)};y^{(i)}) $$</p><p>对于大数据集，因为批梯度下降法在每一个参数更新之前，会对相似的样本计算梯度，所以在计算过程中会有冗余。而SGD在每一次更新中只执行一次，从而消除了冗余。因而，通常SGD的运行速度更快，同时，可以用于在线学习。SGD以高方差频繁地更新，导致目标函数出现如图1所示的剧烈波动。</p><p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-18-090848.jpg" alt="20170410195019493"></p><p>与批梯度下降法的收敛会使得损失函数陷入局部最小相比，由于SGD的波动性，一方面，波动性使得SGD可以跳到新的和潜在更好的局部最优。另一方面，这使得最终收敛到特定最小值的过程变得复杂，因为SGD会一直持续波动。然而，已经证明当我们缓慢减小学习率，SGD与批梯度下降法具有相同的收敛行为，对于非凸优化和凸优化，可以分别收敛到局部最小值和全局最小值。与批梯度下降的代码相比，SGD的代码片段仅仅是在对训练样本的遍历和利用每一条样本计算梯度的过程中增加一层循环。注意，如6.1节中的解释，在每一次循环中，我们打乱训练样本。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(nb_epochs):</span><br><span class="line">    np.random.shuffle(data)</span><br><span class="line">    <span class="keyword">for</span> example <span class="keyword">in</span> data:</span><br><span class="line">        params_grad = evaluate_gradient(loss_function, example, params)</span><br><span class="line">        params = params - learning_rate * params_grad</span><br></pre></td></tr></table></figure><h2 id="Newton’s-method"><a href="#Newton’s-method" class="headerlink" title="Newton’s method"></a>Newton’s method</h2><h1 id="Constrained-optimization"><a href="#Constrained-optimization" class="headerlink" title="Constrained optimization"></a>Constrained optimization</h1>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;优化问题在很多地方都会出现，如机器学习、数据挖掘、统计学等。最简单的优化问题的形式如下：&lt;/p&gt;
+&lt;p&gt;$$\begin{align} minimize\ \ f(x) \  with\ x\in R^d \ \end{align}$$&lt;/p&gt;
+&lt;p&gt;其中&lt;/p&gt;
+&lt;ul&gt;
+      
+    
+    </summary>
+    
+      <category term="Machine Learning" scheme="http://conghuai.me/categories/Machine-Learning/"/>
+    
+      <category term="Optimization" scheme="http://conghuai.me/categories/Machine-Learning/Optimization/"/>
+    
+    
+      <category term="ml" scheme="http://conghuai.me/tags/ml/"/>
+    
+      <category term="math" scheme="http://conghuai.me/tags/math/"/>
+    
+  </entry>
   
   <entry>
     <title>Maximum Entropy Model</title>
@@ -99,9 +164,9 @@
       <category term="Overfiting" scheme="http://conghuai.me/categories/Machine-Learning/Overfiting/"/>
     
     
-      <category term="math" scheme="http://conghuai.me/tags/math/"/>
-    
       <category term="ml" scheme="http://conghuai.me/tags/ml/"/>
+    
+      <category term="math" scheme="http://conghuai.me/tags/math/"/>
     
   </entry>
   
@@ -156,9 +221,9 @@
       <category term="Loss Function" scheme="http://conghuai.me/categories/Machine-Learning/Loss-Function/"/>
     
     
-      <category term="math" scheme="http://conghuai.me/tags/math/"/>
-    
       <category term="ml" scheme="http://conghuai.me/tags/ml/"/>
+    
+      <category term="math" scheme="http://conghuai.me/tags/math/"/>
     
   </entry>
   
