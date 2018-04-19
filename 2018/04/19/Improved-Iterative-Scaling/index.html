@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="蔡聪怀">
 <meta property="og:description" content="逻辑斯蒂回归模型、最大熵模型学习归结为以似然函数为目标函数的最优化问题，通常通过迭代算法求解。从最优化的观点看，这时的目标函数具有很好的性质。它是光滑的凸函数，因此多种最优化的方法都适用，保证能找到全局最优解。常用的方法有改进的迭代尺度法、梯度下降法、牛顿法或拟牛顿法。 改进的迭代尺度法第一次下界：$A(\delta|w)$改进的迭代尺度法(improved iterative scaling,">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-04-19T02:07:02.437Z">
+<meta property="og:updated_time" content="2018-04-19T02:08:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Improved Iterative Scaling">
 <meta name="twitter:description" content="逻辑斯蒂回归模型、最大熵模型学习归结为以似然函数为目标函数的最优化问题，通常通过迭代算法求解。从最优化的观点看，这时的目标函数具有很好的性质。它是光滑的凸函数，因此多种最优化的方法都适用，保证能找到全局最优解。常用的方法有改进的迭代尺度法、梯度下降法、牛顿法或拟牛顿法。 改进的迭代尺度法第一次下界：$A(\delta|w)$改进的迭代尺度法(improved iterative scaling,">
@@ -440,7 +440,7 @@
 <h2 id="第二次下界：-B-delta-w"><a href="#第二次下界：-B-delta-w" class="headerlink" title="第二次下界：$B(\delta|w)$"></a>第二次下界：$B(\delta|w)$</h2><p>为了达到上述的目的，IIS进一步降低下界$A(\delta|w)$，具体地，IIS引进一个量$f^\#(x,y)$</p>
 <p>$$f^#(x,y)=\sum_if_i(x,y)$$</p>
 <p>因为$f_i$是二值函数，估$f^#(x,y)$表示所有特征在$(x,y)$出现的次数，这样，改写$A(\delta|w)$为</p>
-<p>$$A(\delta|w)=\sum_{x,y}\tilde{P}(x,y)\sum_{i=1}^n\delta_if_i(x,y)+1-\sum_x\tilde{P}(x)\sum_yP_w(y|x)exp(f^#(x,y)\sum_{i=1}^n\frac{\delta_if_i(x,y)}{f^#(x,y)})$$</p>
+<p>$$A(\delta|w)=\sum_{x,y}\tilde{P}(x,y)\sum_{i=1}^n\delta_if_i(x,y)+1-\sum_x\tilde{P}(x)\sum_yP_w(y|x)exp(f^#(x,y)\sum_{i=1}^n\frac{\delta_if_i(x,y)}{f^\#(x,y)})$$</p>
 <p>利用指数函数的凸性以及对任意$i$，有$\frac{f_i(x,y)}{f^#(x,y)}\geq 0$且$\sum_{i=1}^n\frac{f_i(x,y)}{f^#(x,y)}=1$，利用Jensen不等式得到</p>
 <blockquote>
 <p>Jensen不等式的有限形式</p>
@@ -452,22 +452,22 @@
 <p>带入到$A(\delta|w)$式子中，得</p>
 <p>$$A(\delta|w)\geq\sum_{x,y}\tilde{P}(x,y)\sum_{i=1}^n\delta_if_i(x,y)+1-\sum_x\tilde{P}(x)\sum_yP_w(y|x) \sum_{i=1}^n\frac{f_i(x,y)}{f^#(x,y)}exp(\delta_if^#(x,y))$$</p>
 <p>记右端为</p>
-<p>$$B(\delta|w)= \sum_{x,y}\tilde{P}(x,y)\sum_{i=1}^n\delta_if_i(x,y)+1-\sum_x\tilde{P}(x)\sum_yP_w(y|x) \sum_{i=1}^n\frac{f_i(x,y)}{f^#(x,y)}exp(\delta_if^#(x,y))$$</p>
+<p>$$B(\delta|w)= \sum_{x,y}\tilde{P}(x,y)\sum_{i=1}^n\delta_if_i(x,y)+1-\sum_x\tilde{P}(x)\sum_yP_w(y|x) \sum_{i=1}^n\frac{f_i(x,y)}{f^\#(x,y)}exp(\delta_if^\#(x,y))$$</p>
 <p>于是得到</p>
 <p>$$L(w+\delta) - L(w) \geq B(\delta|w)$$</p>
 <p>这里，$B(\delta|w)$是对数似然函数该变量的一个新的下界，求$B(\delta|w)$对$\delta_i$的偏导数</p>
-<p>$$\begin{align} \frac{\partial B(\delta|w)}{\partial \delta_i} &amp;= \sum_{x,y}\tilde{P}(x,y)f_i(x,y)-\sum_x\tilde{P}(x)\sum_yP_w(y|x)\frac{f_i(x,y)}{f^#(x,y)}exp(\delta_if^#(x,y))f^#(x,y) \\ &amp;= \sum_{x,y}\tilde{P}(x,y)f_i(x,y)-\sum_x\tilde{P}(x)\sum_yP_w(y|x)f_i(x,y)exp(\delta_if^#(x,y)) \end{align}$$</p>
+<p>$$\begin{align} \frac{\partial B(\delta|w)}{\partial \delta_i} &amp;= \sum_{x,y}\tilde{P}(x,y)f_i(x,y)-\sum_x\tilde{P}(x)\sum_yP_w(y|x)\frac{f_i(x,y)}{f^\#(x,y)}exp(\delta_if^\#(x,y))f^\#(x,y) \\ &amp;= \sum_{x,y}\tilde{P}(x,y)f_i(x,y)-\sum_x\tilde{P}(x)\sum_yP_w(y|x)f_i(x,y)exp(\delta_if^\#(x,y)) \end{align}$$</p>
 <p>在上式中，除了$\delta_i$外不含有任何其他变量，令偏导数为0，得到</p>
-<p>$$\sum_{x,y}\tilde{P}(x,y)f_i(x,y)+1-\sum_x\tilde{P}(x)\sum_yP_w(y|x)f_i(x,y)exp(\delta_if^#(x,y)) = 0$$</p>
+<p>$$\sum_{x,y}\tilde{P}(x,y)f_i(x,y)+1-\sum_x\tilde{P}(x)\sum_yP_w(y|x)f_i(x,y)exp(\delta_if^\#(x,y)) = 0$$</p>
 <p>于是，依次对$\delta_i$求解上述方程，最终可以得到$\delta$。</p>
 <h2 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h2><p>输入：特征函数$f_1,f_2,…,f_n;$经验分布$\hat{P}(X,Y)$，模型$P_w(y|x)$</p>
 <p>输出：最优参数值$w_i^*$；最优模型$P_{w^*}$</p>
 <p>(1) 对所有$i\in \{1,2,…,n\}$，取初值$w_i=0$</p>
 <p>(2) 对每一$i\in \{1,2,…,n\}$ :</p>
 <p>​    (a) 令$\delta_i$是方程</p>
-<p>$$E_\hat{p}(f_i)=\sum_x\tilde{P}(x)\sum_yP_w(y|x)f_i(x,y)exp(\delta_if^#(x,y))$$</p>
+<p>$$E_\hat{p}(f_i)=\sum_x\tilde{P}(x)\sum_yP_w(y|x)f_i(x,y)exp(\delta_if^\#(x,y))$$</p>
 <p>的解，其中</p>
-<p>$$f^#(x,y) = \sum_{i=1}^nf_i(x,y)$$</p>
+<p>$$f^\#(x,y) = \sum_{i=1}^nf_i(x,y)$$</p>
 <p>​    (b) 更新$w_i$的值：$w_i \leftarrow w_i + \delta_i$</p>
 <p>(3) 如果不是所有$w_i$都收敛，重复步骤(2)</p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1]. 李航. “统计学习方法.” <em>清华大学出版社, 北京</em> (2012).</p>
