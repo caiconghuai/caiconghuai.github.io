@@ -90,7 +90,7 @@
 <meta property="og:description" content="概率模型有时既含有观测变量，又含有隐变量或潜在变量。如果概率模型的变量都是观测变量，那么给定数据，可以直接用极大似然估计法，或贝叶斯估计法估计模型参数。但是，当模型含有隐变量时，就不能简单地使用这些估计法。EM算法就是含有隐变量的概率模型参数的极大似然估计法，或极大后验概率估计法。 EM算法我们面对一个含有隐变量的概率模型，目标是最大化观测数据（不完全数据）$Y​$关于参数$\theta​$的对数">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-18-095839.jpg">
-<meta property="og:updated_time" content="2018-04-18T09:59:50.067Z">
+<meta property="og:updated_time" content="2018-04-18T10:00:36.865Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Expectation Maximization">
 <meta name="twitter:description" content="概率模型有时既含有观测变量，又含有隐变量或潜在变量。如果概率模型的变量都是观测变量，那么给定数据，可以直接用极大似然估计法，或贝叶斯估计法估计模型参数。但是，当模型含有隐变量时，就不能简单地使用这些估计法。EM算法就是含有隐变量的概率模型参数的极大似然估计法，或极大后验概率估计法。 EM算法我们面对一个含有隐变量的概率模型，目标是最大化观测数据（不完全数据）$Y​$关于参数$\theta​$的对数">
@@ -435,7 +435,7 @@
 <p>因此，任何可以使$\beta(\theta,\theta^{(i)})$增大的$\theta$，也可以使$L(\theta)$增大，为了使$L(\theta)$有尽可能大的增长，选择$\theta^{(i+1)}$使$\beta(\theta, \theta^{(i)})$达到极大，即</p>
 <p>$$\theta^{(i+1)}=argmax_\theta\beta(\theta,\theta^{(i)})$$</p>
 <p>现在求$\theta^{(i+1)}$的表达式，省去对$\theta$的极大化而言是常数的项，有</p>
-<p>$$\begin{align} \theta^{(i+1)} &amp;= argmax_\theta(L(\theta^{(i)}) + \sum_ZP(Z|Y,\theta^{(i)})log\frac{P(Y|Z,\theta)P(Z|\theta)}{P(Z|Y,\theta^{(i)})P(Y|\theta^{(i)})}) \\  &amp;= argmax_\theta \sum_ZP(Z|Y,\theta^{(i)})log\frac{P(Y|Z,\theta)P(Z|\theta)}{P(Z|Y,\theta^{(i)})P(Y|\theta^{(i)})}) \\  &amp;= argmax_\theta \sum_ZP(Z|Y,\theta^{(i)})logP(Y|Z,\theta)P(Z|\theta)-\sum_ZP(Z|Y,\theta^{(i)})P(Z|Y,\theta^{(i)})P(Y|\theta^{(i))})  \\ &amp;= argmax_\theta \sum_ZP(Z|Y,\theta^{(i)})logP(Y|Z,\theta)P(Z|\theta) \\ &amp;= argmax_\theta \sum_ZP(Z|Y,\theta^{(i)})logP(Y,Z|\theta) \\ &amp;=argmax_\theta\ Q(\theta,\theta^{(i)}) \end{align}$$</p>
+<p>$$\begin{align} \theta^{(i+1)} &amp;= argmax_\theta(L(\theta^{(i)}) + \sum_ZP(Z|Y,\theta^{(i)})log\frac{P(Y|Z,\theta)P(Z|\theta)}{P(Z|Y,\theta^{(i)})P(Y|\theta^{(i)})}) \\  &amp;= argmax_\theta \sum_ZP(Z|Y,\theta^{(i)})log\frac{P(Y|Z,\theta)P(Z|\theta)}{P(Z|Y,\theta^{(i)})P(Y|\theta^{(i)})}) \\  &amp;= argmax_\theta \sum_ZP(Z|Y,\theta^{(i)})logP(Y|Z,\theta)P(Z|\theta)-\sum_ZP(Z|Y,\theta^{(i)})P(Z|Y,\theta^{(i)})P(Y|\theta^{(i))})  \\ &amp;= argmax_\theta \sum_ZP(Z|Y,\theta^{(i)})logP(Y|Z,\theta)P(Z|\theta) \\ &amp;= argmax_\theta \sum_ZP(Z|Y,\theta^{(i)})logP(Y,Z|\theta) \\ &amp;= argmax_\theta\ Q(\theta,\theta^{(i)}) \end{align}$$</p>
 <p>上述等价于EM算法的一次迭代，即求Q函数及其极大化。EM算法是通过不断求解下界的极大化逼近求解对数似然函数极大化的算法。</p>
 <p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-18-095839.jpg" alt="Screen Shot 2018-04-18 at 17.52.20"></p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1]. 李航. “统计学习方法.” <em>清华大学出版社, 北京</em> (2012).</p>
@@ -482,6 +482,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/19/Improved-Iterative-Scaling/" rel="prev" title="Improved Iterative Scaling">
+                Improved Iterative Scaling <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -562,7 +566,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

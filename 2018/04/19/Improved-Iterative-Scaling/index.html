@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="algorithm," />
+  <meta name="keywords" content="ml,math,optimization," />
 
 
 
@@ -81,21 +81,18 @@
 
 
 
-<meta name="description" content="在爆炸式增长的互联网时代，互联网上有大量的资源，如何爬取这些资源成为一个热门的研究点。其中如何高效的对网页正文进行抽取、清洗和存储成为一个重要的研究领域。但是，在网页上，除了正文部分，通常还会包含大量的导航栏、广告、版权等信息。相较于正文，这些信息对于我们来说用处不是很大，这部分信息，在网页正文抽取中，被称为噪声信息。为了提高网页正文采集的性能，我们需要把这这些噪声去除。 在这篇博文中，会介绍几个">
-<meta name="keywords" content="algorithm">
+<meta name="description" content="逻辑斯蒂回归模型、最大熵模型学习归结为以似然函数为目标函数的最优化问题，通常通过迭代算法求解。从最优化的观点看，这时的目标函数具有很好的性质。它是光滑的凸函数，因此多种最优化的方法都适用，保证能找到全局最优解。常用的方法有改进的迭代尺度法、梯度下降法、牛顿法或拟牛顿法。 改进的迭代尺度法第一次下界：$A(\delta|w)$改进的迭代尺度法(improved iterative scaling,">
+<meta name="keywords" content="ml,math,optimization">
 <meta property="og:type" content="article">
-<meta property="og:title" content="网页正文抽取算法">
-<meta property="og:url" content="http://conghuai.me/2016/10/05/网页正文抽取算法/index.html">
+<meta property="og:title" content="Improved Iterative Scaling">
+<meta property="og:url" content="http://conghuai.me/2018/04/19/Improved-Iterative-Scaling/index.html">
 <meta property="og:site_name" content="蔡聪怀">
-<meta property="og:description" content="在爆炸式增长的互联网时代，互联网上有大量的资源，如何爬取这些资源成为一个热门的研究点。其中如何高效的对网页正文进行抽取、清洗和存储成为一个重要的研究领域。但是，在网页上，除了正文部分，通常还会包含大量的导航栏、广告、版权等信息。相较于正文，这些信息对于我们来说用处不是很大，这部分信息，在网页正文抽取中，被称为噪声信息。为了提高网页正文采集的性能，我们需要把这这些噪声去除。 在这篇博文中，会介绍几个">
+<meta property="og:description" content="逻辑斯蒂回归模型、最大熵模型学习归结为以似然函数为目标函数的最优化问题，通常通过迭代算法求解。从最优化的观点看，这时的目标函数具有很好的性质。它是光滑的凸函数，因此多种最优化的方法都适用，保证能找到全局最优解。常用的方法有改进的迭代尺度法、梯度下降法、牛顿法或拟牛顿法。 改进的迭代尺度法第一次下界：$A(\delta|w)$改进的迭代尺度法(improved iterative scaling,">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://github.com/conghuaicai/cs-skill-tree/raw/master/spider/web%20content%20extraction/images/1.png">
-<meta property="og:image" content="https://github.com/conghuaicai/cs-skill-tree/raw/master/spider/web%20content%20extraction/images/2.png">
-<meta property="og:updated_time" content="2018-04-09T05:47:24.000Z">
+<meta property="og:updated_time" content="2018-04-19T02:03:22.351Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="网页正文抽取算法">
-<meta name="twitter:description" content="在爆炸式增长的互联网时代，互联网上有大量的资源，如何爬取这些资源成为一个热门的研究点。其中如何高效的对网页正文进行抽取、清洗和存储成为一个重要的研究领域。但是，在网页上，除了正文部分，通常还会包含大量的导航栏、广告、版权等信息。相较于正文，这些信息对于我们来说用处不是很大，这部分信息，在网页正文抽取中，被称为噪声信息。为了提高网页正文采集的性能，我们需要把这这些噪声去除。 在这篇博文中，会介绍几个">
-<meta name="twitter:image" content="https://github.com/conghuaicai/cs-skill-tree/raw/master/spider/web%20content%20extraction/images/1.png">
+<meta name="twitter:title" content="Improved Iterative Scaling">
+<meta name="twitter:description" content="逻辑斯蒂回归模型、最大熵模型学习归结为以似然函数为目标函数的最优化问题，通常通过迭代算法求解。从最优化的观点看，这时的目标函数具有很好的性质。它是光滑的凸函数，因此多种最优化的方法都适用，保证能找到全局最优解。常用的方法有改进的迭代尺度法、梯度下降法、牛顿法或拟牛顿法。 改进的迭代尺度法第一次下界：$A(\delta|w)$改进的迭代尺度法(improved iterative scaling,">
 
 
 
@@ -125,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://conghuai.me/2016/10/05/网页正文抽取算法/"/>
+  <link rel="canonical" href="http://conghuai.me/2018/04/19/Improved-Iterative-Scaling/"/>
 
 
 
 
 
-  <title>网页正文抽取算法 | 蔡聪怀</title>
+  <title>Improved Iterative Scaling | 蔡聪怀</title>
   
 
 
@@ -268,7 +265,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://conghuai.me/2016/10/05/网页正文抽取算法/">
+    <link itemprop="mainEntityOfPage" href="http://conghuai.me/2018/04/19/Improved-Iterative-Scaling/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Conghuai Cai">
@@ -285,7 +282,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">网页正文抽取算法</h1>
+          <h1 class="post-title" itemprop="name headline">Improved Iterative Scaling</h1>
         
 
         <div class="post-meta">
@@ -297,8 +294,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-10-05T15:51:56+08:00">
-                2016-10-05
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-19T08:18:16+08:00">
+                2018-04-19
               </time>
             
 
@@ -320,8 +317,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Spider/" itemprop="url" rel="index">
-                    <span itemprop="name">Spider</span>
+                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Machine Learning</span>
                   </a>
                 </span>
 
@@ -331,8 +328,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Spider/Content-Extraction/" itemprop="url" rel="index">
-                    <span itemprop="name">Content Extraction</span>
+                  <a href="/categories/Machine-Learning/Optimization/" itemprop="url" rel="index">
+                    <span itemprop="name">Optimization</span>
                   </a>
                 </span>
 
@@ -348,7 +345,7 @@
 
           
           
-             <span id="/2016/10/05/网页正文抽取算法/" class="leancloud_visitors" data-flag-title="网页正文抽取算法">
+             <span id="/2018/04/19/Improved-Iterative-Scaling/" class="leancloud_visitors" data-flag-title="Improved Iterative Scaling">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -373,7 +370,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  1,723 字
+                  1,618 字
                 </span>
               
 
@@ -389,7 +386,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  7 分钟
+                  8 分钟
                 </span>
               
             </div>
@@ -410,83 +407,69 @@
       
 
       
-        <p>在爆炸式增长的互联网时代，互联网上有大量的资源，如何爬取这些资源成为一个热门的研究点。其中如何高效的对网页正文进行抽取、清洗和存储成为一个重要的研究领域。但是，在网页上，除了正文部分，通常还会包含大量的导航栏、广告、版权等信息。相较于正文，这些信息对于我们来说用处不是很大，这部分信息，在网页正文抽取中，被称为噪声信息。为了提高网页正文采集的性能，我们需要把这这些噪声去除。</p>
-<p>在这篇博文中，会介绍几个比较经典、效果也比较好的算法，一是<strong>CETD：Content Extraction via Text Density</strong>；二是<strong>CETR：Content Extraction via Tag Ratios。</strong>三是<strong>CEPR：Content Extraction via Path Ratios</strong>。</p>
-<h1 id="CETD：Content-Extraction-via-Text-Density"><a href="#CETD：Content-Extraction-via-Text-Density" class="headerlink" title="CETD：Content Extraction via Text Density"></a>CETD：Content Extraction via Text Density</h1><p>该算法是主要思想是：在典型的网页结构中，噪声信息（指正文信息以外）通常被高度格式化，因此包含的文本信息通常很少，而正文通常包含大量文本。而且，正文通常在页面中保持完整性，即其内容通常不会被分到多个DOM树节点中。</p>
-<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
-<li>没有对页面结构作任何假设。</li>
-<li>保持原页面的信息。</li>
-</ul>
-<h2 id="Text-Density"><a href="#Text-Density" class="headerlink" title="Text Density"></a>Text Density</h2><ul>
-<li>CharNumber：该节点下所有子树中的字符数；</li>
-<li>TagNumber：该节点下所有子树的标签数；</li>
-</ul>
-<p>定义Text Density为：$TD_i=\frac{C_i}{T_i}$,$C_i$表示CharNumber，$T_i$表示TagNumber，当$T_i$为0时，将其设置为1。通常来说，该值越高，该节点内容越有可能是正文。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Algorithm <span class="number">1</span> <span class="function">Pseudocode of <span class="title">ComputeDensity</span><span class="params">(N)</span></span></span><br><span class="line">1: INPUT: N </span><br><span class="line"><span class="number">2</span>: OUTPUT: N </span><br><span class="line"><span class="number">3</span>: <span class="keyword">for</span> all child node C in N <span class="keyword">do</span> </span><br><span class="line"><span class="number">4</span>:    ComputeDensity(C)</span><br><span class="line"><span class="number">5</span>: end <span class="keyword">for</span> </span><br><span class="line"><span class="number">6</span>: N.CharNumber ←CountChar(N) </span><br><span class="line"><span class="number">7</span>: N.TagNumber ←CountTag(N) </span><br><span class="line"><span class="number">8</span>: <span class="keyword">if</span> N.TagNumber == <span class="number">0</span> then </span><br><span class="line"><span class="number">9</span>:    N.TagNumber ←<span class="number">1</span></span><br><span class="line"><span class="number">10</span>: end <span class="keyword">if</span> <span class="number">11</span>: N.Density ←N.CharNumber/N.TagNumber</span><br></pre></td></tr></table></figure>
-<h2 id="Composite-Text-Density"><a href="#Composite-Text-Density" class="headerlink" title="Composite Text Density"></a>Composite Text Density</h2><p>在Text Density的基础上加了关于超链接的统计信息。论文作者经过研究发现，大部分的噪声节点中都包含超链接，这个信息可以用来进一步判断该节点内容是正文还是噪声。基于这个发现，定义另外两个统计信息：</p>
-<ul>
-<li>LinkCharNumber：该节点下所有子树中的超链接字符数；</li>
-<li>LinkTagNumber：该节点下所有子树中的超链接标签数；</li>
-</ul>
-<p>定义Composite Text Density为：$CTD_i=\frac{C_i}{T_i}log_{ln(\frac{C_i}{-LC_i}LC_i+\frac{LC_b}{C_b}C_i+e)}(\frac{C_i}{LC_i}\frac{T_i}{LT_i})$</p>
-<ul>
-<li>$C_i$：字符数；</li>
-<li>$T_i$：标签数</li>
-<li>$LC_i$：链接字符；</li>
-<li>$-LC_i$：非链接字符；</li>
-<li>$LT_i$：链接标签；</li>
-<li>$LC_b$：<code>&lt;body&gt;</code>标签下的超链接字符数</li>
-<li>$C_b$：<code>&lt;body&gt;</code>标签下的字符数</li>
-</ul>
-<h2 id="Content-Extraction"><a href="#Content-Extraction" class="headerlink" title="Content Extraction"></a>Content Extraction</h2><p>通过计算每个节点的TD或CTD，我们可以根据该值来判断是否抽取该节点下的文本当做正文，判断方式就是设置一个阈值，如果大于该阈值就抽取，小于该阈值就不抽取。论文作者用了一个非常巧妙的值当做阈值，即<code>&lt;body&gt;</code>的Text Density。</p>
-<h2 id="DensitySum"><a href="#DensitySum" class="headerlink" title="DensitySum"></a>DensitySum</h2><p>在实践中发现，有一些正文包含的Text Density值很低，如正文的日期，正文的引用等。论文作者发现，一般来说，正文块都是属于DOM树中的某个祖先节点的，又因为正文节点的text density大于噪声节点，所以正文块对应的节点，如果把它所有孩子的text densities相加，将会得到最大的text densities值。从而可以通过DensitySum可以解决该问题，定义DensitySum为：$DensitySum_N=\sum_{i\in C}TextDensity_i$，$C$是N的孩子集合。<br>在算法的具体实现中，如果网页只包含一个content block，我们只需要在<code>&lt;body&gt;</code>标签下寻找最大的DensitySum，然后将其标记为content即可。对于有多个content block的情况，我们需要对于text density大于阈值的所有节点，都用上述方法进行抽取。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Algorithm <span class="number">2</span> <span class="function">Pseudocode of <span class="title">ExtractContent</span><span class="params">(N)</span></span></span><br><span class="line">1: INPUT: N </span><br><span class="line"><span class="number">2</span>: <span class="keyword">if</span> N.TextDensity &gt;= threshold then </span><br><span class="line"><span class="number">3</span>:       T ←FindMaxDensitySumTag(N)</span><br><span class="line"><span class="number">4</span>:       MarkContent(T) </span><br><span class="line"><span class="number">5</span>:       <span class="keyword">for</span> all child node C in N <span class="keyword">do</span></span><br><span class="line"><span class="number">6</span>:          ExtractContent(C)</span><br><span class="line"><span class="number">7</span>:       end <span class="keyword">for</span></span><br><span class="line"><span class="number">8</span>: end <span class="keyword">if</span></span><br></pre></td></tr></table></figure>
-<p>上面说过，论文作者将<code>&lt;body&gt;</code>标签的text density当做是阈值，但是在实践中，有一些content block的text density会低于该阈值，这会导致正文内容的丢失。为了解决这一问题，先把阈值设为0，然后找到最大的DensitySum的标签。紧接着，从<code>&lt;body&gt;</code>标签到该标签路径上，将最小的text density值设为阈值。</p>
-<h1 id="CEPR：Content-Extraction-via-Path-Ratios"><a href="#CEPR：Content-Extraction-via-Path-Ratios" class="headerlink" title="CEPR：Content Extraction via Path Ratios"></a>CEPR：Content Extraction via Path Ratios</h1><p>该算法能够通过$TPR/ETPR$直方图快速、准确的从网页中提取新闻内容。</p>
-<h2 id="Document-Object-Model"><a href="#Document-Object-Model" class="headerlink" title="Document Object Model"></a>Document Object Model</h2><p><img src="https://github.com/conghuaicai/cs-skill-tree/raw/master/spider/web%20content%20extraction/images/1.png" alt="文档树"></p>
-<h2 id="Extended-Labeled-Ordered-Tree"><a href="#Extended-Labeled-Ordered-Tree" class="headerlink" title="Extended Labeled Ordered Tree"></a>Extended Labeled Ordered Tree</h2><p>正文和噪声的主要区别有：</p>
-<ol>
-<li>正文通常只包含在一个部分中，但是噪声信息在很多部分中都会出现；</li>
-<li>正文通常都有相同的tag paths；</li>
-</ol>
-<p><strong>定义：</strong></p>
-<ul>
-<li>$L={l_0,l_1,l_2,…}$,$l_i$表示标记，即tag；</li>
-<li>$T=(V,E,v_0,\prec ,L,l(\cdot),c(\cdot))$<ul>
-<li>$l:V\rightarrow L$是label function，即求出节点所属的标签$l(v)$；</li>
-<li>$c：V\rightarrow String$是content function，即求出节点的本文内容$c(v)$；</li>
-</ul>
-</li>
-</ul>
-<h2 id="Tag-Path"><a href="#Tag-Path" class="headerlink" title="Tag Path"></a>Tag Path</h2><p>$l(v_0),l(v_1)…l(v_k)$称为节点v的tag path，表示为$path(v)$。</p>
-<h2 id="特征提取"><a href="#特征提取" class="headerlink" title="特征提取"></a>特征提取</h2><ol>
-<li>正文节点有相似的tag paths；</li>
-<li>噪声节点有相似的tag paths；</li>
-<li>正文节点包含更多的文本数据；</li>
-<li>噪声节点包含更少的文本数据；</li>
-<li>所有的节点都是叶子节点；</li>
-</ol>
-<h2 id="Text-to-Tag-Path-Ratio"><a href="#Text-to-Tag-Path-Ratio" class="headerlink" title="Text to Tag Path Ratio"></a>Text to Tag Path Ratio</h2><ul>
-<li><strong>pathNum</strong>：tag path在tree T中出现的次数，这个概念比较容易造成误解，现在的理解是，叶节点是不算在tag path里面的。tag path是一个tag序列标识，tag下可能包含多个叶节点，这些叶结点对应的tag path就是一样的，所以这个序列标识是有可能重复的。</li>
-<li><strong>txtNum</strong>：节点中所有字符的个数；</li>
-<li>$accNodes(p)={v_p^1,v_p^2,…,v_p^m}$是tag path p上可访问的节点的集合；</li>
-<li><strong>Text to Tag Path Radio：</strong>$TPR(p)=\frac{\sum_{v\in accNodes(p)}length(c(v))}{|accNodes(p)|}$<ul>
-<li>对于包含长文本的路径，该值很高；</li>
-<li>对于其他路径，该值很低；</li>
-</ul>
-</li>
-</ul>
-<p>举例子说明：</p>
-<p>上述文档图的TPR计算方式如下:</p>
-<ol>
-<li>#1 text node : <code>tag path = &lt;div.div.div.h1&gt;</code>，txtNum = 40, pathNum=1, TPR=40；</li>
-<li>#2 text node: <code>tag path = &lt;div.div.div.p&gt;</code>，txtNum=645，pathNum=2(因为这个序列出现两次)，TPR=322.5；</li>
-<li>#3 text node: <code>tag path=&lt;div.div.div.p.a&gt;</code>，txtNum=7，pathNum=1，TPR=7；</li>
-<li>#4 text node: <code>tag path=&lt;div.div.div.p&gt;</code>，txtNum=645，pathNum=2，TPR=322.5；</li>
-</ol>
-<h2 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h2><p><img src="https://github.com/conghuaicai/cs-skill-tree/raw/master/spider/web%20content%20extraction/images/2.png" alt="算法流程"></p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1] Sun, F., Song, D., &amp; Liao, L. (2011). DOM based content extraction via text density. Proceedings of the 34th International ACM SIGIR Conference on Research and Development in Information - SIGIR ’11, l, 245. </p>
-<p>[2] Wu, G., Li, L., Hu, X., &amp; Wu, X. (2013). Web news extraction via path ratios. Proceedings of the 22nd ACM International Conference on Conference on Information &amp; Knowledge Management - CIKM ’13, 2059–2068.</p>
+        <p>逻辑斯蒂回归模型、最大熵模型学习归结为以似然函数为目标函数的最优化问题，通常通过迭代算法求解。从最优化的观点看，这时的目标函数具有很好的性质。它是光滑的凸函数，因此多种最优化的方法都适用，保证能找到全局最优解。常用的方法有改进的迭代尺度法、梯度下降法、牛顿法或拟牛顿法。</p>
+<h1 id="改进的迭代尺度法"><a href="#改进的迭代尺度法" class="headerlink" title="改进的迭代尺度法"></a>改进的迭代尺度法</h1><h2 id="第一次下界：-A-delta-w"><a href="#第一次下界：-A-delta-w" class="headerlink" title="第一次下界：$A(\delta|w)$"></a>第一次下界：$A(\delta|w)$</h2><p>改进的迭代尺度法(improved iterative scaling, IIS)是一种最大熵模型学习的最优化算法。</p>
+<p>已知最大熵模型为</p>
+<p>$$P_w(y|x)=\frac{1}{Z_w(x)}exp(\sum_{i=1}^nw_if_i(x,y))$$</p>
+<p>其中，</p>
+<p>$$Z_w(x)=\sum_yexp(\sum_{i=1}^nw_if_i(x,y))$$</p>
+<p>对数似然函数为</p>
+<p>$$L(w)=\sum_{x,y}\tilde{P}(x,y)\sum_{i=1}^nw_if_i(x,y)-\sum_x\tilde{P}(x)logZ_w(x)$$</p>
+<p>目标是通过极大似然估计学习模型参数，即求对数似然函数的极大值$\hat{w}$</p>
+<p><strong>IIS的想法</strong>是：假设最大熵模型当前的参数向量是$w=(w_1,w_2,…,w_n)^T$，我们希望找到一个新的参数向量$w+\delta =(w_1+\delta_1 ,w_2+\delta_2 ,…,w_n+\delta_n)$，使得模型的对数似然函数值增大，如果能有这样一种参数向量更新的方法：$\tau \rightarrow w+\delta$，那么就可以重复使用这一方法，直到找到对数似然函数的最大值。</p>
+<p>对于给定的经验分布$\tilde{P}(x,y)$，模型参数从$w$到$w+\delta$，对数似然函数的改变量是</p>
+<p>$$\begin{align} L(w+\delta) - L(w) &amp;=\sum_{x,y}\tilde{P}(x,y)\sum_{i=1}^n(w+\delta)_if_i(x,y)-\sum_x\tilde{P}(x)logZ_{w+\delta}(x) \\  &amp;- \sum_{x,y}\tilde{P}(x,y)\sum_{i=1}^nw_if_i(x,y)-\sum_x\tilde{P}(x)logZ_w(x) \\  &amp;= \sum_{x,y}\tilde{P}(x,y)\sum_{i=1}^n\delta_if_i(x,y)-\sum_x\tilde{P}(x)log\frac{Z_{w+\delta}(x)}{Z_w(x)}  \end{align}$$</p>
+<p>利用不等式</p>
+<p>$$-log\alpha \geq1-\alpha,\alpha&gt;0$$</p>
+<blockquote>
+<p>证明上述不等式：</p>
+<p>令 g(x) = x - lnx -1</p>
+<p>g’(x) = 1 - $\frac{1}{x}$ = 0 得 x = 1</p>
+<p>g(x) $\geq $ g(1) = 0，因此，x - lnx - 1 $\geq$ 0</p>
+</blockquote>
+<p>我们可以得到，注意$Z_w(x)=\sum_yexp(\sum_{i=1}^nw_if_i(x,y))$</p>
+<p>$$\begin{align} L(w+\delta) - L(w) &amp;\geq \sum_{x,y}\tilde{P}(x,y)\sum_{i=1}^n\delta_if_i(x,y)+\sum_x\tilde{P}(x)(1-\frac{Z_{w+\delta}(x)}{Z_w(x)})  \\ &amp;= \sum_{x,y}\tilde{P}(x,y)\sum_{i=1}^n\delta_if_i(x,y)+\sum_x\tilde{P}(x)- \sum_x\tilde{P}(x)\frac{Z_{w+\delta}(x)}{Z_w(x)} \\ &amp;= \sum_{x,y}\tilde{P}(x,y)\sum_{i=1}^n\delta_if_i(x,y)+\sum_x\tilde{P}(x)- \sum_x\tilde{P}(x)\frac{\sum_yexp(\sum_{i=1}^n(w_i+\delta_i)f_i(x,y))}{\sum_yexp(\sum_{i=1}^nw_if_i(x,y))} \\&amp;=  \sum_{x,y}\tilde{P}(x,y)\sum_{i=1}^n\delta_if_i(x,y)+\sum_x\tilde{P}(x)- \sum_x\tilde{P}(x)\sum_yexp\sum_{i=1}^n\delta_i f_i(x,y) \end{align} $$</p>
+<p>我们再利用$\sum_x \tilde{P}(x)=1$和$\sum_yP_w(y|x)=1$对上式进行变形，其中前者在式子中出现，我们将其变为1；后者我们强行将其放到式子最后一项的乘法中。</p>
+<p>$$\begin{align} L(w+\delta) - L(w) &amp;=  \sum_{x,y}\tilde{P}(x,y)\sum_{i=1}^n\delta_if_i(x,y)+1- \sum_x\tilde{P}(x)\sum_yP_w(y|x)\sum_yexp\sum_{i=1}^n\delta_i f_i(x,y) \\&amp;= \sum_{x,y}\tilde{P}(x,y)\sum_{i=1}^n\delta_if_i(x,y)+1- \sum_x\tilde{P}(x)\sum_yP_w(y|x)exp\sum_{i=1}^n\delta_i f_i(x,y)\end{align} $$</p>
+<p>将上式右端记为</p>
+<p>$$A(\delta|w)=  \sum_{x,y}\tilde{P}(x,y)\sum_{i=1}^n\delta_if_i(x,y)+1- \sum_x\tilde{P}(x)\sum_yP_w(y|x)exp\sum_{i=1}^n\delta_i f_i(x,y)$$</p>
+<p>于是有</p>
+<p>$$L(w+\delta)-L(w)\geq A(\delta|w)$$</p>
+<p>即$A(\delta|w)$是对数似然函数改变量的一个下界。</p>
+<p>如果能找到适当的$\delta$使下界$A(\delta|w)$提高，那么对数似然函数也会提高。然而，函数$A(\delta|w)$中的$\delta$是一个向量，含有多个变量，不易同时优化。IIS试图一次只优化其中一个变量$\delta_i$，而固定其他变量$\delta_j$，$i\neq j$。</p>
+<h2 id="第二次下界：-B-delta-w"><a href="#第二次下界：-B-delta-w" class="headerlink" title="第二次下界：$B(\delta|w)$"></a>第二次下界：$B(\delta|w)$</h2><p>为了达到上述的目的，IIS进一步降低下界$A(\delta|w)$，具体地，IIS引进一个量$f^#(x,y)$</p>
+<p>$$f^#(x,y)=\sum_if_i(x,y)$$</p>
+<p>因为$f_i$是二值函数，估$f^#(x,y)$表示所有特征在$(x,y)$出现的次数，这样，改写$A(\delta|w)$为</p>
+<p>$$A(\delta|w)=\sum_{x,y}\tilde{P}(x,y)\sum_{i=1}^n\delta_if_i(x,y)+1-\sum_x\tilde{P}(x)\sum_yP_w(y|x)exp(f^#(x,y)\sum_{i=1}^n\frac{\delta_if_i(x,y)}{f^#(x,y)})$$</p>
+<p>利用指数函数的凸性以及对任意$i$，有$\frac{f_i(x,y)}{f^#(x,y)}\geq 0$且$\sum_{i=1}^n\frac{f_i(x,y)}{f^#(x,y)}=1$，利用Jensen不等式得到</p>
+<blockquote>
+<p>Jensen不等式的有限形式</p>
+<p>$$\varphi (\sum_{i=1}^ng(x_i)\lambda <em>i)\leq \sum</em>{i=1}^n\varphi(g(x_i))\lambda_i$$</p>
+</blockquote>
+<p>带</p>
+<p>将$\varphi \leftarrow exp$，$g(x_i) \leftarrow \delta_if^#(x,y)$，$\lambda_i \leftarrow \frac{f_i(x,y)}{f^#(x,y)}$带入到Jensen不等式中，得</p>
+<p>$$exp(\sum_{i=1}^n\frac{f_i(x,y)}{f^#(x,y)}\delta_if^#(x,y))\leq \sum_{i=1}^n\frac{f_i(x,y)}{f^#(x,y)}exp(\delta_if^#(x,y))$$</p>
+<p>带入到$A(\delta|w)$式子中，得</p>
+<p>$$A(\delta|w)\geq\sum_{x,y}\tilde{P}(x,y)\sum_{i=1}^n\delta_if_i(x,y)+1-\sum_x\tilde{P}(x)\sum_yP_w(y|x) \sum_{i=1}^n\frac{f_i(x,y)}{f^#(x,y)}exp(\delta_if^#(x,y))$$</p>
+<p>记右端为</p>
+<p>$$B(\delta|w)= \sum_{x,y}\tilde{P}(x,y)\sum_{i=1}^n\delta_if_i(x,y)+1-\sum_x\tilde{P}(x)\sum_yP_w(y|x) \sum_{i=1}^n\frac{f_i(x,y)}{f^#(x,y)}exp(\delta_if^#(x,y))$$</p>
+<p>于是得到</p>
+<p>$$L(w+\delta) - L(w) \geq B(\delta|w)$$</p>
+<p>这里，$B(\delta|w)$是对数似然函数该变量的一个新的下界，求$B(\delta|w)$对$\delta_i$的偏导数</p>
+<p>$$\begin{align} \frac{\partial B(\delta|w)}{\partial \delta_i} &amp;= \sum_{x,y}\tilde{P}(x,y)f_i(x,y)-\sum_x\tilde{P}(x)\sum_yP_w(y|x)\frac{f_i(x,y)}{f^#(x,y)}exp(\delta_if^#(x,y))f^#(x,y) \\ &amp;= \sum_{x,y}\tilde{P}(x,y)f_i(x,y)-\sum_x\tilde{P}(x)\sum_yP_w(y|x)f_i(x,y)exp(\delta_if^#(x,y)) \end{align}$$</p>
+<p>在上式中，除了$\delta_i$外不含有任何其他变量，令偏导数为0，得到</p>
+<p>$$\sum_{x,y}\tilde{P}(x,y)f_i(x,y)+1-\sum_x\tilde{P}(x)\sum_yP_w(y|x)f_i(x,y)exp(\delta_if^#(x,y)) = 0$$</p>
+<p>于是，依次对$\delta_i$求解上述方程，最终可以得到$\delta$。</p>
+<h2 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h2><p>输入：特征函数$f_1,f_2,…,f_n;$经验分布$\hat{P}(X,Y)$，模型$P_w(y|x)$</p>
+<p>输出：最优参数值$w_i^*$；最优模型$P_{w^*}$</p>
+<p>(1) 对所有$i\in \{1,2,…,n}$，取初值$w_i=0$</p>
+<p>(2) 对每一$i\in \{1,2,…,n}$ :</p>
+<p>​    (a) 令$\delta_i$是方程</p>
+<p>$$E_\hat{p}(f_i)=\sum_x\tilde{P}(x)\sum_yP_w(y|x)f_i(x,y)exp(\delta_if^#(x,y))$$</p>
+<p>的解，其中</p>
+<p>$$f^#(x,y) = \sum_{i=1}^nf_i(x,y)$$</p>
+<p>​    (b) 更新$w_i$的值：$w_i \leftarrow w_i + \delta_i$</p>
+<p>(3) 如果不是所有$w_i$都收敛，重复步骤(2)</p>
 
       
     </div>
@@ -504,7 +487,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/algorithm/" rel="tag"># algorithm</a>
+            <a href="/tags/ml/" rel="tag"># ml</a>
+          
+            <a href="/tags/math/" rel="tag"># math</a>
+          
+            <a href="/tags/optimization/" rel="tag"># optimization</a>
           
         </div>
       
@@ -517,15 +504,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/04/18/Expectation-Maximization/" rel="next" title="Expectation Maximization">
+                <i class="fa fa-chevron-left"></i> Expectation Maximization
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/04/14/Perceptron-Learning-Algorithm/" rel="prev" title="Perceptron Learning Algorithm">
-                Perceptron Learning Algorithm <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -696,7 +683,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CETD：Content-Extraction-via-Text-Density"><span class="nav-number">1.</span> <span class="nav-text">CETD：Content Extraction via Text Density</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#优点"><span class="nav-number">1.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Text-Density"><span class="nav-number">1.2.</span> <span class="nav-text">Text Density</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Composite-Text-Density"><span class="nav-number">1.3.</span> <span class="nav-text">Composite Text Density</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Content-Extraction"><span class="nav-number">1.4.</span> <span class="nav-text">Content Extraction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DensitySum"><span class="nav-number">1.5.</span> <span class="nav-text">DensitySum</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CEPR：Content-Extraction-via-Path-Ratios"><span class="nav-number">2.</span> <span class="nav-text">CEPR：Content Extraction via Path Ratios</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Document-Object-Model"><span class="nav-number">2.1.</span> <span class="nav-text">Document Object Model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Extended-Labeled-Ordered-Tree"><span class="nav-number">2.2.</span> <span class="nav-text">Extended Labeled Ordered Tree</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tag-Path"><span class="nav-number">2.3.</span> <span class="nav-text">Tag Path</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特征提取"><span class="nav-number">2.4.</span> <span class="nav-text">特征提取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Text-to-Tag-Path-Ratio"><span class="nav-number">2.5.</span> <span class="nav-text">Text to Tag Path Ratio</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法流程"><span class="nav-number">2.6.</span> <span class="nav-text">算法流程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#改进的迭代尺度法"><span class="nav-number">1.</span> <span class="nav-text">改进的迭代尺度法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一次下界：-A-delta-w"><span class="nav-number">1.1.</span> <span class="nav-text">第一次下界：$A(\delta|w)$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二次下界：-B-delta-w"><span class="nav-number">1.2.</span> <span class="nav-text">第二次下界：$B(\delta|w)$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法描述"><span class="nav-number">1.3.</span> <span class="nav-text">算法描述</span></a></li></ol></li></ol></div>
             
 
           </div>
