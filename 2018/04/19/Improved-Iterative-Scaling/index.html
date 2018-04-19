@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="蔡聪怀">
 <meta property="og:description" content="逻辑斯蒂回归模型、最大熵模型学习归结为以似然函数为目标函数的最优化问题，通常通过迭代算法求解。从最优化的观点看，这时的目标函数具有很好的性质。它是光滑的凸函数，因此多种最优化的方法都适用，保证能找到全局最优解。常用的方法有改进的迭代尺度法、梯度下降法、牛顿法或拟牛顿法。 改进的迭代尺度法第一次下界：$A(\delta|w)$改进的迭代尺度法(improved iterative scaling,">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-04-19T02:08:09.000Z">
+<meta property="og:updated_time" content="2018-04-19T02:09:42.385Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Improved Iterative Scaling">
 <meta name="twitter:description" content="逻辑斯蒂回归模型、最大熵模型学习归结为以似然函数为目标函数的最优化问题，通常通过迭代算法求解。从最优化的观点看，这时的目标函数具有很好的性质。它是光滑的凸函数，因此多种最优化的方法都适用，保证能找到全局最优解。常用的方法有改进的迭代尺度法、梯度下降法、牛顿法或拟牛顿法。 改进的迭代尺度法第一次下界：$A(\delta|w)$改进的迭代尺度法(improved iterative scaling,">
@@ -438,19 +438,19 @@
 <p>即$A(\delta|w)$是对数似然函数改变量的一个下界。</p>
 <p>如果能找到适当的$\delta$使下界$A(\delta|w)$提高，那么对数似然函数也会提高。然而，函数$A(\delta|w)$中的$\delta$是一个向量，含有多个变量，不易同时优化。IIS试图一次只优化其中一个变量$\delta_i$，而固定其他变量$\delta_j$，$i\neq j$。</p>
 <h2 id="第二次下界：-B-delta-w"><a href="#第二次下界：-B-delta-w" class="headerlink" title="第二次下界：$B(\delta|w)$"></a>第二次下界：$B(\delta|w)$</h2><p>为了达到上述的目的，IIS进一步降低下界$A(\delta|w)$，具体地，IIS引进一个量$f^\#(x,y)$</p>
-<p>$$f^#(x,y)=\sum_if_i(x,y)$$</p>
+<p>$$f^\#(x,y)=\sum_if_i(x,y)$$</p>
 <p>因为$f_i$是二值函数，估$f^#(x,y)$表示所有特征在$(x,y)$出现的次数，这样，改写$A(\delta|w)$为</p>
-<p>$$A(\delta|w)=\sum_{x,y}\tilde{P}(x,y)\sum_{i=1}^n\delta_if_i(x,y)+1-\sum_x\tilde{P}(x)\sum_yP_w(y|x)exp(f^#(x,y)\sum_{i=1}^n\frac{\delta_if_i(x,y)}{f^\#(x,y)})$$</p>
-<p>利用指数函数的凸性以及对任意$i$，有$\frac{f_i(x,y)}{f^#(x,y)}\geq 0$且$\sum_{i=1}^n\frac{f_i(x,y)}{f^#(x,y)}=1$，利用Jensen不等式得到</p>
+<p>$$A(\delta|w)=\sum_{x,y}\tilde{P}(x,y)\sum_{i=1}^n\delta_if_i(x,y)+1-\sum_x\tilde{P}(x)\sum_yP_w(y|x)exp(f^\#(x,y)\sum_{i=1}^n\frac{\delta_if_i(x,y)}{f^\#(x,y)})$$</p>
+<p>利用指数函数的凸性以及对任意$i$，有$\frac{f_i(x,y)}{f^\#(x,y)}\geq 0$且$\sum_{i=1}^n\frac{f_i(x,y)}{f^\#(x,y)}=1$，利用Jensen不等式得到</p>
 <blockquote>
 <p>Jensen不等式的有限形式</p>
 <p>$$\varphi (\sum_{i=1}^ng(x_i)\lambda <em>i)\leq \sum</em>{i=1}^n\varphi(g(x_i))\lambda_i$$</p>
 </blockquote>
 <p>带</p>
-<p>将$\varphi \leftarrow exp$，$g(x_i) \leftarrow \delta_if^#(x,y)$，$\lambda_i \leftarrow \frac{f_i(x,y)}{f^#(x,y)}$带入到Jensen不等式中，得</p>
-<p>$$exp(\sum_{i=1}^n\frac{f_i(x,y)}{f^#(x,y)}\delta_if^#(x,y))\leq \sum_{i=1}^n\frac{f_i(x,y)}{f^#(x,y)}exp(\delta_if^#(x,y))$$</p>
+<p>将$\varphi \leftarrow exp$，$g(x_i) \leftarrow \delta_if^\#(x,y)$，$\lambda_i \leftarrow \frac{f_i(x,y)}{f^\#(x,y)}$带入到Jensen不等式中，得</p>
+<p>$$exp(\sum_{i=1}^n\frac{f_i(x,y)}{f^\#(x,y)}\delta_if^\#(x,y))\leq \sum_{i=1}^n\frac{f_i(x,y)}{f^\#(x,y)}exp(\delta_if^\#(x,y))$$</p>
 <p>带入到$A(\delta|w)$式子中，得</p>
-<p>$$A(\delta|w)\geq\sum_{x,y}\tilde{P}(x,y)\sum_{i=1}^n\delta_if_i(x,y)+1-\sum_x\tilde{P}(x)\sum_yP_w(y|x) \sum_{i=1}^n\frac{f_i(x,y)}{f^#(x,y)}exp(\delta_if^#(x,y))$$</p>
+<p>$$A(\delta|w)\geq\sum_{x,y}\tilde{P}(x,y)\sum_{i=1}^n\delta_if_i(x,y)+1-\sum_x\tilde{P}(x)\sum_yP_w(y|x) \sum_{i=1}^n\frac{f_i(x,y)}{f^\#(x,y)}exp(\delta_if^\#(x,y))$$</p>
 <p>记右端为</p>
 <p>$$B(\delta|w)= \sum_{x,y}\tilde{P}(x,y)\sum_{i=1}^n\delta_if_i(x,y)+1-\sum_x\tilde{P}(x)\sum_yP_w(y|x) \sum_{i=1}^n\frac{f_i(x,y)}{f^\#(x,y)}exp(\delta_if^\#(x,y))$$</p>
 <p>于是得到</p>
