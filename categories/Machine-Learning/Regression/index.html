@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="ml,math,optimization," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -81,20 +81,16 @@
 
 
 
-<meta name="description" content="概率模型有时既含有观测变量，又含有隐变量或潜在变量。如果概率模型的变量都是观测变量，那么给定数据，可以直接用极大似然估计法，或贝叶斯估计法估计模型参数。但是，当模型含有隐变量时，就不能简单地使用这些估计法。EM算法就是含有隐变量的概率模型参数的极大似然估计法，或极大后验概率估计法。 EM算法我们面对一个含有隐变量的概率模型，目标是最大化观测数据（不完全数据）$Y​$关于参数$\theta​$的对数">
-<meta name="keywords" content="ml,math,optimization">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Expectation Maximization">
-<meta property="og:url" content="http://conghuai.me/2018/04/18/Expectation-Maximization/index.html">
+<meta name="description" content="Algorithm/Machine Learning/Deep Learning/NLP">
+<meta property="og:type" content="website">
+<meta property="og:title" content="蔡聪怀">
+<meta property="og:url" content="http://conghuai.me/categories/Machine-Learning/Regression/index.html">
 <meta property="og:site_name" content="蔡聪怀">
-<meta property="og:description" content="概率模型有时既含有观测变量，又含有隐变量或潜在变量。如果概率模型的变量都是观测变量，那么给定数据，可以直接用极大似然估计法，或贝叶斯估计法估计模型参数。但是，当模型含有隐变量时，就不能简单地使用这些估计法。EM算法就是含有隐变量的概率模型参数的极大似然估计法，或极大后验概率估计法。 EM算法我们面对一个含有隐变量的概率模型，目标是最大化观测数据（不完全数据）$Y​$关于参数$\theta​$的对数">
+<meta property="og:description" content="Algorithm/Machine Learning/Deep Learning/NLP">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-18-095839.jpg">
-<meta property="og:updated_time" content="2018-04-18T10:00:36.865Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Expectation Maximization">
-<meta name="twitter:description" content="概率模型有时既含有观测变量，又含有隐变量或潜在变量。如果概率模型的变量都是观测变量，那么给定数据，可以直接用极大似然估计法，或贝叶斯估计法估计模型参数。但是，当模型含有隐变量时，就不能简单地使用这些估计法。EM算法就是含有隐变量的概率模型参数的极大似然估计法，或极大后验概率估计法。 EM算法我们面对一个含有隐变量的概率模型，目标是最大化观测数据（不完全数据）$Y​$关于参数$\theta​$的对数">
-<meta name="twitter:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-18-095839.jpg">
+<meta name="twitter:title" content="蔡聪怀">
+<meta name="twitter:description" content="Algorithm/Machine Learning/Deep Learning/NLP">
 
 
 
@@ -124,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://conghuai.me/2018/04/18/Expectation-Maximization/"/>
+  <link rel="canonical" href="http://conghuai.me/categories/Machine-Learning/Regression/"/>
 
 
 
 
 
-  <title>Expectation Maximization | 蔡聪怀</title>
+  <title>Category: Regression | 蔡聪怀</title>
   
 
 
@@ -149,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -253,259 +249,55 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
+  
+  
+  
+  <div class="post-block category">
 
-  
+    <div id="posts" class="posts-collapse">
+      <div class="collection-title">
+        <h1>Regression<small>Category</small>
+        </h1>
+      </div>
 
-  
-  
-  
+      
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://conghuai.me/2018/04/18/Expectation-Maximization/">
+    <header class="post-header">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Conghuai Cai">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="蔡聪怀">
-    </span>
-
-    
-      <header class="post-header">
-
+      <h2 class="post-title">
         
+            <a class="post-title-link" href="/2018/04/19/Support-Vector-Machine/" itemprop="url">
+              
+                <span itemprop="name">Support Vector Machine</span>
+              
+            </a>
         
-          <h1 class="post-title" itemprop="name headline">Expectation Maximization</h1>
-        
+      </h2>
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-18T17:07:27+08:00">
-                2018-04-18
-              </time>
-            
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2018-04-19T10:18:56+08:00"
+              content="2018-04-19" >
+          04-19
+        </time>
+      </div>
 
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index">
-                    <span itemprop="name">Machine Learning</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Machine-Learning/Optimization/" itemprop="url" rel="index">
-                    <span itemprop="name">Optimization</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Machine-Learning/Optimization/Bayesian/" itemprop="url" rel="index">
-                    <span itemprop="name">Bayesian</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/04/18/Expectation-Maximization/" class="leancloud_visitors" data-flag-title="Expectation Maximization">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">Visitors&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  771 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">
-                  4 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p>概率模型有时既含有观测变量，又含有隐变量或潜在变量。如果概率模型的变量都是观测变量，那么给定数据，可以直接用极大似然估计法，或贝叶斯估计法估计模型参数。但是，当模型含有隐变量时，就不能简单地使用这些估计法。EM算法就是含有隐变量的概率模型参数的极大似然估计法，或极大后验概率估计法。</p>
-<h1 id="EM算法"><a href="#EM算法" class="headerlink" title="EM算法"></a>EM算法</h1><p>我们面对一个含有隐变量的概率模型，目标是最大化观测数据（不完全数据）$Y​$关于参数$\theta​$的对数似然函数，即极大化</p>
-<p>$$\begin{align} L(\theta) &amp;= logP(Y|\theta)=log\sum_ZP(Y,Z|\theta) \\  &amp;= log(\sum_ZP(Y|Z,\theta)P(Z|\theta)) \end{align}$$</p>
-<p>注意到这一极大化的主要困难是上述中有未观测数据并有包含和（或积分）的对数。</p>
-<p>事实上，EM算法是通过迭代逐步近似极大化$L(\theta)$的，假设在第$i$次迭代后$\theta$的估计值是$\theta^{(i)}$，我们希望新的估计值$\theta$能使$L(\theta)$增加，即$L(\theta)&gt;L(\theta^{(i)})$，并逐步达到最大值，为此，考虑两者的差</p>
-<p>$$L(\theta)-L(\theta^{(i)})=log(\sum_Z P(Y|Z,\theta)P(Z|\theta))-logP(Y|\theta^{(i)})$$</p>
-<p>利用Jensen不等式，得到其下界</p>
-<p>$$\begin{align} L(\theta) - L(\theta^{(i)}) &amp;= log(\sum_Z P(Z|Y,\theta^{(i)})\frac{P(Y|Z,\theta)P(Z|\theta)}{P(Z|Y,\theta^{(i)})})-logP(Y|\theta^{(i)})\\  &amp;\geq \sum_ZP(Z|Y,\theta^{(i)})log\frac{P(Y|Z,\theta)P(Z|\theta)}{P(Z|Y,\theta^{(i)})}-logP(Y|\theta^{(i)}) \\  &amp;= \sum_ZP(Z|Y,\theta^{(i)})log\frac{P(Y|Z,\theta)P(Z|\theta)}{P(Z|Y,\theta^{(i)})}-\sum_ZP(Z|Y,\theta^{(i)})logP(Y|\theta^{(i)})  \\ &amp;= \sum_ZP(Z|Y,\theta^{(i)})log\frac{P(Y|Z,\theta)P(Z|\theta)}{P(Z|Y,\theta^{(i)})P(Y|\theta^{(i)})} \end{align}$$</p>
-<p>我们令</p>
-<p>$\beta(\theta,\theta^{(i)})=L(\theta^{(i)}) + \sum_ZP(Z|Y,\theta^{(i)})log\frac{P(Y|Z,\theta)P(Z|\theta)}{P(Z|Y,\theta^{(i)})P(Y|\theta^{(i)})}$</p>
-<p>则</p>
-<p>$$L(\theta)\geq \beta(\theta,\theta^{(i)})$$</p>
-<p>因此，任何可以使$\beta(\theta,\theta^{(i)})$增大的$\theta$，也可以使$L(\theta)$增大，为了使$L(\theta)$有尽可能大的增长，选择$\theta^{(i+1)}$使$\beta(\theta, \theta^{(i)})$达到极大，即</p>
-<p>$$\theta^{(i+1)}=argmax_\theta\beta(\theta,\theta^{(i)})$$</p>
-<p>现在求$\theta^{(i+1)}$的表达式，省去对$\theta$的极大化而言是常数的项，有</p>
-<p>$$\begin{align} \theta^{(i+1)} &amp;= argmax_\theta(L(\theta^{(i)}) + \sum_ZP(Z|Y,\theta^{(i)})log\frac{P(Y|Z,\theta)P(Z|\theta)}{P(Z|Y,\theta^{(i)})P(Y|\theta^{(i)})}) \\  &amp;= argmax_\theta \sum_ZP(Z|Y,\theta^{(i)})log\frac{P(Y|Z,\theta)P(Z|\theta)}{P(Z|Y,\theta^{(i)})P(Y|\theta^{(i)})}) \\  &amp;= argmax_\theta \sum_ZP(Z|Y,\theta^{(i)})logP(Y|Z,\theta)P(Z|\theta)-\sum_ZP(Z|Y,\theta^{(i)})P(Z|Y,\theta^{(i)})P(Y|\theta^{(i))})  \\ &amp;= argmax_\theta \sum_ZP(Z|Y,\theta^{(i)})logP(Y|Z,\theta)P(Z|\theta) \\ &amp;= argmax_\theta \sum_ZP(Z|Y,\theta^{(i)})logP(Y,Z|\theta) \\ &amp;= argmax_\theta\ Q(\theta,\theta^{(i)}) \end{align}$$</p>
-<p>上述等价于EM算法的一次迭代，即求Q函数及其极大化。EM算法是通过不断求解下界的极大化逼近求解对数似然函数极大化的算法。</p>
-<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-18-095839.jpg" alt="Screen Shot 2018-04-18 at 17.52.20"></p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1]. 李航. “统计学习方法.” <em>清华大学出版社, 北京</em> (2012).</p>
-
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/ml/" rel="tag"># ml</a>
-          
-            <a href="/tags/math/" rel="tag"># math</a>
-          
-            <a href="/tags/optimization/" rel="tag"># optimization</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/04/18/Optimization-for-Machine-Learning/" rel="next" title="Optimization for Machine Learning">
-                <i class="fa fa-chevron-left"></i> Optimization for Machine Learning
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/04/19/Improved-Iterative-Scaling/" rel="prev" title="Improved Iterative Scaling">
-                Improved Iterative Scaling <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
+    </header>
   </article>
 
 
-
-    <div class="post-spread">
       
     </div>
+
   </div>
+  
+  
+  
+
+  
+
 
 
           </div>
@@ -513,10 +305,6 @@
 
 
           
-
-  
-
-
 
         </div>
         
@@ -537,17 +325,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -646,22 +425,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#EM算法"><span class="nav-number">1.</span> <span class="nav-text">EM算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">2.</span> <span class="nav-text">参考</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -802,10 +565,6 @@
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
 
   
 
