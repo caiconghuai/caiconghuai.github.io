@@ -98,7 +98,7 @@
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-19-090107.jpg">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-20-031530.jpg">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-20-031533.jpg">
-<meta property="og:updated_time" content="2018-04-20T06:09:33.100Z">
+<meta property="og:updated_time" content="2018-04-20T06:13:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Support Vector Machine">
 <meta name="twitter:description" content="支持向量机（support vector machines,SVM）是一种二类分类模型，它的基本模型是定义在特征空间上的间隔最大的线性分类器，间隔最大使它有别于感知机；支持向量机还包括核技巧，这使它成为实质上的非线性分类器，支持向量机的学习策略就是间隔最大化，这使它成为实质上的非线性分类器。支持向量机的学习策略就是间隔最大化，可形式化为一个求解凸二次规划的问题，也等价于正则化的合页损失函数的最小">
@@ -622,37 +622,37 @@
 <p>我们通过代数替换，将$\beta_i$换成$C-a_i$，并规定</p>
 <p>$$C-a_i\geq 0 \rightarrow \alpha_i \leq C$$</p>
 <p>将$\beta_i=C-\alpha_i$，$w = \sum_{i=1}^N\alpha_iy_ix_i$带入L中，得</p>
-<p>$$\begin{align} L(w,b,\xi,\alpha,\beta) &amp;= \frac{1}{2}||w||^2+C\sum_{i=1}^N\xi_i-\sum_{i=1}^N\alpha_i(y_i(w\cdot x_i+b)-1+\xi_i)-\sum_{i=1}^N(C-\alpha_i)\xi_i \  &amp;= \frac{1}{2}||w||^2+C\sum_{i=1}^N\xi_i-\sum_{i=1}^N\alpha_iy_i(w\cdot x_i+b)+\sum_{i=1}^N\alpha_i-\sum_{i=1}^N\alpha_i\xi_i-C\sum_{i=1}^N\xi_i+\sum_{i=1}^N\alpha_i\xi_i \  &amp;= \frac{1}{2}\sum_{i=1}^N\sum_{j=1}^N\alpha_i\alpha_jy_iy_j(x_i\cdot x_j) -\sum_{i=1}^N\alpha_i  \ \end{align}$$</p>
+<p>$$\begin{align} L(w,b,\xi,\alpha,\beta) &amp;= \frac{1}{2}||w||^2+C\sum_{i=1}^N\xi_i-\sum_{i=1}^N\alpha_i(y_i(w\cdot x_i+b)-1+\xi_i)-\sum_{i=1}^N(C-\alpha_i)\xi_i \\  &amp;= \frac{1}{2}||w||^2+C\sum_{i=1}^N\xi_i-\sum_{i=1}^N\alpha_iy_i(w\cdot x_i+b)+\sum_{i=1}^N\alpha_i-\sum_{i=1}^N\alpha_i\xi_i-C\sum_{i=1}^N\xi_i+\sum_{i=1}^N\alpha_i\xi_i \\  &amp;= \frac{1}{2}\sum_{i=1}^N\sum_{j=1}^N\alpha_i\alpha_jy_iy_j(x_i\cdot x_j) -\sum_{i=1}^N\alpha_i  \\ \end{align}$$</p>
 <h4 id="2-求-min-w-b-xi-L-w-b-xi-alpha-mu-对-alpha-的极大"><a href="#2-求-min-w-b-xi-L-w-b-xi-alpha-mu-对-alpha-的极大" class="headerlink" title="(2) 求$min_{w,b,\xi}L(w,b,\xi,\alpha,\mu)$对$\alpha$的极大"></a>(2) 求$min_{w,b,\xi}L(w,b,\xi,\alpha,\mu)$对$\alpha$的极大</h4><p>$$max_\alpha\ -\frac{1}{2}\sum_{i=1}^N\sum_{j=1}^N\alpha_i\alpha_jy_iy_j(x_i\cdot x_j)+\sum_{i=1}^N\alpha_i$$</p>
 <p>$$s.t.\ \sum_{i=1}^N\alpha_iy_i=0$$</p>
 <p>$$0\leq \alpha_i\leq C$$</p>
 <p>对偶问题取得最优解需要满足如下的KKT条件</p>
 <blockquote>
 <p>KKT 条件</p>
-<p>$$w^*-\sum_{i=1}^N\alpha_i^*y_ix_i=0$$</p>
+<p>$$w^<em>-\sum_{i=1}^N\alpha_i^</em>y_ix_i=0$$</p>
 <p>$$-\sum_{i=1}^N\alpha_i^*y_i=0$$</p>
-<p>$$C-\alpha^*-\beta^*=0$$</p>
-<p>$$\alpha_i^*(y_i(w^*\cdot x_i+b^*)-1+\xi^*_i)=0$$</p>
-<p>$$\beta_i^*\xi_i^*=0$$</p>
-<p>$$y_i(w^*\cdot x_i+b^*)-1+\xi_i^*\geq0$$</p>
+<p>$$C-\alpha^<em>-\beta^</em>=0$$</p>
+<p>$$\alpha_i^<em>(y_i(w^</em>\cdot x_i+b^<em>)-1+\xi^</em>_i)=0$$</p>
+<p>$$\beta_i^<em>\xi_i^</em>=0$$</p>
+<p>$$y_i(w^<em>\cdot x_i+b^</em>)-1+\xi_i^*\geq0$$</p>
 <p>$$\xi_i^*\geq0$$</p>
 <p>$$\alpha_i^*\geq0$$</p>
 <p>$$\beta_i^*\geq0$$</p>
 </blockquote>
-<h3 id="模型理解-2"><a href="#模型理解-2" class="headerlink" title="模型理解"></a>模型理解</h3><p>设$\alpha^*=(\alpha_1^*,\alpha_2^*,…,\alpha_N^*)^T$是对偶问题的一个解，若存在$\alpha^*$的一个分量$\alpha_j^*$，$0&lt;\alpha_j^*&lt;C$，则原始问题的解$w^*,b^*$可按下式求得</p>
-<p>$$w^*=\sum_{i=1}^N\alpha_i^*y_ix_i$$</p>
-<p>$$b^*=y_j-\sum_{i=1}^Ny_i\alpha_i^*(x_i\cdot x_j)$$</p>
-<p>在线性不可分的情况下，将对偶问题的解$\alpha^*=(\alpha_1^*,\alpha_2^*,…,\alpha_N^*)^T$中对应于$\alpha_i^*&gt;0$的样本点$(x_i,y_i)$的实例$x_i$称为支持向量（软间隔的支持向量），这时的支持向量要比线性可分时的情况复杂一些</p>
+<h3 id="模型理解-2"><a href="#模型理解-2" class="headerlink" title="模型理解"></a>模型理解</h3><p>设$\alpha^<em>=(\alpha_1^</em>,\alpha_2^<em>,…,\alpha_N^</em>)^T$是对偶问题的一个解，若存在$\alpha^<em>$的一个分量$\alpha_j^</em>$，$0&lt;\alpha_j^<em>&lt;C$，则原始问题的解$w^</em>,b^*$可按下式求得</p>
+<p>$$w^<em>=\sum_{i=1}^N\alpha_i^</em>y_ix_i$$</p>
+<p>$$b^<em>=y_j-\sum_{i=1}^Ny_i\alpha_i^</em>(x_i\cdot x_j)$$</p>
+<p>在线性不可分的情况下，将对偶问题的解$\alpha^<em>=(\alpha_1^</em>,\alpha_2^<em>,…,\alpha_N^</em>)^T$中对应于$\alpha_i^*&gt;0$的样本点$(x_i,y_i)$的实例$x_i$称为支持向量（软间隔的支持向量），这时的支持向量要比线性可分时的情况复杂一些</p>
 <p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-20-031530.jpg" alt="Screen Shot 2018-04-20 at 10.32.56"></p>
 <p>软间隔的支持向量$x_i$或者在间隔边界上，或者在间隔边界与分离超平面之间，或者在分离超平面误分一侧。</p>
 <p>考虑两个KKT条件</p>
 <blockquote>
-<p>$$\alpha_i^*(y_i(w^*\cdot x_i+b^*)-1+\xi^*_i)=0$$</p>
-<p>$$\beta_i^*\xi_i^*=0 \rightarrow (C-\alpha_i^*)\xi_i^*=0$$</p>
+<p>$$\alpha_i^<em>(y_i(w^</em>\cdot x_i+b^<em>)-1+\xi^</em>_i)=0$$</p>
+<p>$$\beta_i^<em>\xi_i^</em>=0 \rightarrow (C-\alpha_i^<em>)\xi_i^</em>=0$$</p>
 </blockquote>
 <ul>
 <li>若$\alpha_i = 0$，由第二个条件得，$\xi_i=0$，说明这些点没有违反边界，一般在边界之外；</li>
-<li>若$0&lt;\alpha_i&lt; C$，由第二个条件得，$\xi_i=0$，由第一个条件得，$y_i(w^*\cdot x_i+b^*)-1+\xi^*_i=0$，综上，得$y_i(w^*\cdot x_i+b^*)-1=0$，则这些点在边界上。</li>
+<li>若$0&lt;\alpha_i&lt; C$，由第二个条件得，$\xi_i=0$，由第一个条件得，$y_i(w^<em>\cdot x_i+b^</em>)-1+\xi^<em>_i=0$，综上，得$y_i(w^</em>\cdot x_i+b^*)-1=0$，则这些点在边界上。</li>
 <li>若$\alpha_i = C$，样本点违反边界值，违反距离为$\xi_i=1-y_n(w^Tx_i+b)$<ul>
 <li>$0&lt;\xi_i&lt;1$，则分类正确，$x_i$在间隔边界与分离超平面之间；</li>
 <li>$\xi_i=1$，则$x_i$在分离超平面上；</li>
