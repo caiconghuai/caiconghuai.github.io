@@ -90,7 +90,7 @@
 <meta property="og:description" content="逻辑斯蒂回归（logistic regression）是统计学习中的经典方法，逻辑斯蒂回归模型与最大熵模型都属于对数线性模型。 Logistic Function逻辑函数（逻辑曲线、sigmoid函数）表达式如下： $$f(x)=\frac{L}{1+e^{-k(x-x_0)}}$$ 其中：  $e$是自然对数； $x_0$是sigmoid曲线的中点； $L$是曲线的最大值； $k$是曲线的坡度">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-17-040033.jpg">
-<meta property="og:updated_time" content="2018-04-17T04:10:54.196Z">
+<meta property="og:updated_time" content="2018-04-20T03:20:15.673Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Logistic Regression">
 <meta name="twitter:description" content="逻辑斯蒂回归（logistic regression）是统计学习中的经典方法，逻辑斯蒂回归模型与最大熵模型都属于对数线性模型。 Logistic Function逻辑函数（逻辑曲线、sigmoid函数）表达式如下： $$f(x)=\frac{L}{1+e^{-k(x-x_0)}}$$ 其中：  $e$是自然对数； $x_0$是sigmoid曲线的中点； $L$是曲线的最大值； $k$是曲线的坡度">
@@ -372,7 +372,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  2,212 字
+                  2,210 字
                 </span>
               
 
@@ -445,8 +445,8 @@
 <p>这时，线性函数的值越接近正无穷，概率值就越接近1；线性函数的值越接近负无穷，概率值就越接近0。</p>
 <h2 id="模型参数估计"><a href="#模型参数估计" class="headerlink" title="模型参数估计"></a>模型参数估计</h2><h3 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h3><p>逻辑斯蒂回归模型学习时，对于给定的训练数据集$T=\{(x_1, 1),(x_2,-1),…,(x_N,-1)\}$，其中，$x_i\in R^n，y_i\in\{-1,1\}$，可以应用极大似然估计法估计模型参数，即用这个模型生成该数据集的可能性：</p>
 <p>$$\begin{align} L(h) &amp;= P(x_1)\cdot h(1|x_1)\cdot P(x_2)\cdot h(-1|x_2)…P(x_N)\cdot h(-1|x_N) \\  &amp;= P(x_1)\cdot h(1|x_1)\cdot P(x_2)\cdot [1-h(1|x_2)]…P(x_N)\cdot [1-h(1|x_N)] \end{align}$$</p>
-<p>对于$h$我们用sigmoid函数带入，用对称性得</p>
-<p>$$\begin{align} L(h) &amp;= P(x_1)\cdot h(1|x_1)\cdot P(x_2)\cdot [1-h(1|x_2)]…P(x_N)\cdot [1-h(1|x_N)] \\ &amp;= P(x_1)\cdot h(1|x_1)\cdot P(x_2)\cdot h(-(1|x_2))…P(x_N)\cdot h(-(1|x_N))(\sigma函数的对称性)\end{align} $$</p>
+<p>对于$h$我们用sigmoid函数带入，用对称性$1-f(x) = f(-x)$得</p>
+<p>$$\begin{align} L(h) &amp;= P(x_1)\cdot h(1|x_1)\cdot P(x_2)\cdot [1-h(1|x_2)]…P(x_N)\cdot [1-h(1|x_N)] \\ &amp;= P(x_1)\cdot h(1|x_1)\cdot P(x_2)\cdot h(-(1|x_2))…P(x_N)\cdot h(-(1|x_N))\end{align} $$</p>
 <p>对于不同的模型，$P(x_1),P(x_2)…P(x_N)$是一样的，乘上这些值对于我们选择最优的模型没有帮助，故略去。</p>
 <p>$$L(\sigma)\propto\prod_{n=1}^N\sigma(y_nw^Tx_n)$$</p>
 <p>下面，通过最小化损失函数得到最终模型</p>
