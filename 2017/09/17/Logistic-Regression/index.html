@@ -90,7 +90,7 @@
 <meta property="og:description" content="逻辑斯蒂回归（logistic regression）是统计学习中的经典方法，逻辑斯蒂回归模型与最大熵模型都属于对数线性模型。 Logistic Function逻辑函数（逻辑曲线、sigmoid函数）表达式如下： $$f(x)=\frac{L}{1+e^{-k(x-x_0)}}$$ 其中：  $e$是自然对数； $x_0$是sigmoid曲线的中点； $L$是曲线的最大值； $k$是曲线的坡度">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-17-040033.jpg">
-<meta property="og:updated_time" content="2018-04-20T03:25:46.000Z">
+<meta property="og:updated_time" content="2018-04-20T06:01:24.882Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Logistic Regression">
 <meta name="twitter:description" content="逻辑斯蒂回归（logistic regression）是统计学习中的经典方法，逻辑斯蒂回归模型与最大熵模型都属于对数线性模型。 Logistic Function逻辑函数（逻辑曲线、sigmoid函数）表达式如下： $$f(x)=\frac{L}{1+e^{-k(x-x_0)}}$$ 其中：  $e$是自然对数； $x_0$是sigmoid曲线的中点； $L$是曲线的最大值； $k$是曲线的坡度">
@@ -485,7 +485,7 @@
 <p>如果我们我们限定$y$为二元变量，即$Dom(y) = \{y_0,y_1\}$，那么就可以把最大熵模型转换为logistic回归模型，我们还需要定义特征函数为：</p>
 <p>$$\begin{split} f(x,y)=\begin{cases} g(x), &amp; \text{$y=y_1$} \\ 0, &amp; \text{$y=y_0$}\end{cases}\end{split}$$</p>
 <p>即仅在$y=y_1$时抽取$x$的特征，在$y=y_0$时不抽任何特征（直接返回全为0的特征向量。）</p>
-<p>将这个特征函数待会最大熵模型，我们得到$y=y_1$时：</p>
+<p>将这个特征函数带回最大熵模型，我们得到$y=y_1$时：</p>
 <p>$$\begin{align} P(y_1|x) &amp;= \frac{e^{w\cdot f(x,y_1)}}{e^{w\cdot f(x,y_0)}+e^{w\cdot f(x,y_1)}} \\  &amp;= \frac{e^{w\cdot g(x)}}{e^{w\cdot 0}+e^{w\cdot g(x)}} \\  &amp;= \frac{e^{w\cdot g(x)}}{1+e^{w\cdot g(x)}}  \\ &amp;= \sigma(w\cdot g(x)) \\ \end{align}$$</p>
 <p>当$y=y_0$时，得</p>
 <p>$$\begin{align} P(y_0|x) &amp;= \frac{e^{w\cdot f(x,y_0)}}{e^{w\cdot f(x,y_0)}+e^{w\cdot f(x,y_1)}} \\  &amp;= \frac{e^{w\cdot 0}}{e^{w\cdot 0}+e^{w\cdot g(x)}} \\  &amp;= \frac{1}{1+e^{w\cdot g(x)}}  \\ &amp;= \sigma(-w\cdot g(x)) \\&amp;=1-\sigma(w\cdot x) \\ \end{align}$$</p>
