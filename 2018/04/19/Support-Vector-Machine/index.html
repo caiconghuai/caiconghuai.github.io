@@ -98,14 +98,14 @@
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-19-090107.jpg">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-20-031530.jpg">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-20-031533.jpg">
-<meta property="og:image" content="http://conghuai.me/Desktop/two_circles.png">
-<meta property="og:image" content="http://conghuai.me/Desktop/Screen%20Shot%202018-04-21%20at%2010.11.50.png">
-<meta property="og:image" content="http://conghuai.me/Desktop/Screen%20Shot%202018-04-21%20at%2010.49.44.png">
-<meta property="og:image" content="http://conghuai.me/Desktop/Screen%20Shot%202018-04-21%20at%2015.04.30.png">
-<meta property="og:image" content="http://conghuai.me/Desktop/Screen%20Shot%202018-04-21%20at%2015.12.00.png">
-<meta property="og:image" content="http://conghuai.me/Desktop/Screen%20Shot%202018-04-21%20at%2015.14.06.png">
-<meta property="og:image" content="http://conghuai.me/Desktop/Screen%20Shot%202018-04-21%20at%2015.17.51.png">
-<meta property="og:updated_time" content="2018-04-21T07:39:35.193Z">
+<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-21-074025.jpg">
+<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-21-074028.jpg">
+<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-21-74029.jpg">
+<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-21-74026.jpg">
+<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-21-074030.jpg">
+<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-21-74031.jpg">
+<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-21-074031.jpg">
+<meta property="og:updated_time" content="2018-04-21T07:40:36.181Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Support Vector Machine">
 <meta name="twitter:description" content="支持向量机（support vector machines,SVM）是一种二类分类模型，它的基本模型是定义在特征空间上的间隔最大的线性分类器，间隔最大使它有别于感知机；支持向量机还包括核技巧，这使它成为实质上的非线性分类器，支持向量机的学习策略就是间隔最大化，这使它成为实质上的非线性分类器。支持向量机的学习策略就是间隔最大化，可形式化为一个求解凸二次规划的问题，也等价于正则化的合页损失函数的最小">
@@ -682,7 +682,7 @@
 <p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-20-031533.jpg" alt="Screen Shot 2018-04-20 at 11.11.00"></p>
 <p>所以，线性支持向量机学习等价于最小化二阶范数正则化的合页函数。</p>
 <h1 id="非线性支持向量机与核函数"><a href="#非线性支持向量机与核函数" class="headerlink" title="非线性支持向量机与核函数"></a>非线性支持向量机与核函数</h1><p>对解线性分类问题，线性分类支持向量机是一种非常有效的方法。但是，有时候分类问题是非线性的，这时可以使用非线性支持向量机。其主要特点是利用核技巧。</p>
-<h2 id="核技巧"><a href="#核技巧" class="headerlink" title="核技巧"></a>核技巧</h2><p><img src="../../../../../../../Desktop/two_circles.png" alt="two_circles"></p>
+<h2 id="核技巧"><a href="#核技巧" class="headerlink" title="核技巧"></a>核技巧</h2><p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-21-074025.jpg" alt="two_circles"></p>
 <p>如图所示的数据集，其理想的分界应该是一个“圆圈”而不是一条线（超平面）。如果用$X_1$和$X_2$来表示这个二维平面的两个坐标的话，一条二次曲线的方差可以写成主要的形式</p>
 <p>$$a_1X_1+a_2X_1^2+a_3X_2+a_4X_2^2+a_5X_1X_2+a_6=0$$</p>
 <p>注意上面的形式，如果我们构建另外一个五维的空间，其中五个坐标的值分别为$Z_1=X_1,Z_2=X_1^2,Z_3=X_2,Z_4=X_2^2,Z_5=X_1X_2$，那么显然，上面的方程在新的坐标系下可以写作</p>
@@ -750,7 +750,7 @@
 <p>中级：线性试试看，不行换高斯，卡方有奇效，绝招MKL；</p>
 <p>玩家：Kernel度量相似性，自己做啊自己做。</p>
 <h2 id="模型理解-3"><a href="#模型理解-3" class="headerlink" title="模型理解"></a>模型理解</h2><p>利用核技巧，可以将线性分类的学习方法应用到非线性分类问题中去。将线性支持向量机扩展到非线性支持向量机，只需将线性支持向量机对偶形式中的内积换成核函数。</p>
-<h2 id="算法-2"><a href="#算法-2" class="headerlink" title="算法"></a>算法</h2><p><img src="../../../../../../../Desktop/Screen Shot 2018-04-21 at 10.11.50.png" alt="Screen Shot 2018-04-21 at 10.11.50"></p>
+<h2 id="算法-2"><a href="#算法-2" class="headerlink" title="算法"></a>算法</h2><p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-21-074028.jpg" alt="Screen Shot 2018-04-21 at 10.11.50"></p>
 <h1 id="Soft-Binary-Classification"><a href="#Soft-Binary-Classification" class="headerlink" title="Soft Binary Classification"></a>Soft Binary Classification</h1><p>考虑Hinge损失函数形式的SVM目标函数</p>
 <p>$$min_{b,w}\ \ C\cdot \sum_{i=1}^Nmax(0, 1-y_i(w\cdot x_i+b))+\frac{1}{2}||w||^2$$</p>
 <p>把该目标函数与下面的形式进行对比</p>
@@ -786,7 +786,7 @@
 </tr>
 </tbody>
 </table>
-<p><img src="../../../../../../../Desktop/Screen Shot 2018-04-21 at 10.49.44.png" alt="Screen Shot 2018-04-21 at 10.49.44"></p>
+<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-21-74029.jpg" alt="Screen Shot 2018-04-21 at 10.49.44"></p>
 <p>从上面的分析，我们可以看出来，如果我们解决了一个软间隔的SVM问题，就相当于解决了一个L2正则化的模型，反之也成立，那么我们是否可以结合两者进行处理呢？</p>
 <p>结合SVM模型和逻辑回归模型，分如下两个步骤</p>
 <ol>
@@ -820,14 +820,14 @@
 <p>我们可以使用梯度下降法求解上述表达式。求解结果为：$\beta=(\lambda I+K)^{-1}y$</p>
 <p>所以，借助核函数，我们可以很轻易的解决非线性的回归问题。</p>
 <p>比较线性回归和Kernel Ridge Regression</p>
-<p><img src="../../../../../../../Desktop/Screen Shot 2018-04-21 at 15.04.30.png" alt="Screen Shot 2018-04-21 at 15.04.30"></p>
+<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-21-74026.jpg" alt="Screen Shot 2018-04-21 at 15.04.30"></p>
 <h2 id="Tube-Regression"><a href="#Tube-Regression" class="headerlink" title="Tube Regression"></a>Tube Regression</h2><p>在之前的线性回归模型中，我们距离的计算公式为：$|s-y|$。我们现在借助SVM的想法，设置一个间隔，如果预测值里真实值的距离在该间隔内，我们就不要计算该损失。</p>
 <p>$$err(y,s)=max(0,|s-y|-\varepsilon )$$</p>
-<p><img src="../../../../../../../Desktop/Screen Shot 2018-04-21 at 15.12.00.png" alt="Screen Shot 2018-04-21 at 15.12.00"></p>
+<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-21-074030.jpg" alt="Screen Shot 2018-04-21 at 15.12.00"></p>
 <p>通过这样的定义，我们希望借助SVM的求解方式，来得到稀疏的$\beta$。</p>
-<h3 id="Tube-versus-Squared-Regression"><a href="#Tube-versus-Squared-Regression" class="headerlink" title="Tube versus Squared Regression"></a>Tube versus Squared Regression</h3><p><img src="../../../../../../../Desktop/Screen Shot 2018-04-21 at 15.14.06.png" alt="Screen Shot 2018-04-21 at 15.14.06"></p>
+<h3 id="Tube-versus-Squared-Regression"><a href="#Tube-versus-Squared-Regression" class="headerlink" title="Tube versus Squared Regression"></a>Tube versus Squared Regression</h3><p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-21-74031.jpg" alt="Screen Shot 2018-04-21 at 15.14.06"></p>
 <p>模仿SVM的优化问题，我们将上述写成</p>
-<p><img src="../../../../../../../Desktop/Screen Shot 2018-04-21 at 15.17.51.png" alt="Screen Shot 2018-04-21 at 15.17.51"></p>
+<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-21-074031.jpg" alt="Screen Shot 2018-04-21 at 15.17.51"></p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1]. 李航. “统计学习方法.” <em>清华大学出版社, 北京</em> (2012).</p>
 <p>[2]. <a href="https://stackoverflow.com/questions/33778297/support-vector-machine-kernel-types" target="_blank" rel="noopener">Support Vector Machine kernel types</a></p>
 <p>[3]. <a href="https://www.zhihu.com/question/21883548" target="_blank" rel="noopener">SVM的核函数如何选取？</a></p>
