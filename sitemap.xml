@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://conghuai.me/2018/04/12/Regularization/</loc>
+    
+    <lastmod>2018-04-22T02:48:14.855Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://conghuai.me/2018/04/19/Support-Vector-Machine/</loc>
     
     <lastmod>2018-04-22T02:41:29.871Z</lastmod>
@@ -47,13 +54,6 @@
     <loc>http://conghuai.me/2017/06/20/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%80%BB%E7%BB%93/</loc>
     
     <lastmod>2018-04-17T16:10:50.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://conghuai.me/2018/04/12/Regularization/</loc>
-    
-    <lastmod>2018-04-17T07:08:20.663Z</lastmod>
     
   </url>
   
