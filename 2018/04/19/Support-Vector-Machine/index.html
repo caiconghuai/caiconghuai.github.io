@@ -105,7 +105,7 @@
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-21-074030.jpg">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-21-74031.jpg">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-21-074031.jpg">
-<meta property="og:updated_time" content="2018-04-21T08:08:51.990Z">
+<meta property="og:updated_time" content="2018-04-22T02:39:15.075Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Support Vector Machine">
 <meta name="twitter:description" content="支持向量机（support vector machines,SVM）是一种二类分类模型，它的基本模型是定义在特征空间上的间隔最大的线性分类器，间隔最大使它有别于感知机；支持向量机还包括核技巧，这使它成为实质上的非线性分类器，支持向量机的学习策略就是间隔最大化，这使它成为实质上的非线性分类器。支持向量机的学习策略就是间隔最大化，可形式化为一个求解凸二次规划的问题，也等价于正则化的合页损失函数的最小">
@@ -608,7 +608,7 @@
 <p>同时，对每个松弛变量$\xi_i$，支付一个代价$\xi_i$，目标函数变成</p>
 <p>$$\frac{1}{2}||w||^2+C\sum_{i=1}^N\xi_i$$</p>
 <p>这里，$C&gt;0$称为惩罚参数，一般由应用问题决定，$C$值大时对误分类的惩罚增大，$C$值小时对误分类的惩罚减小。最优化目标函数包含两层含义：（1）使$\frac{1}{2}||w||^2$尽量小即间隔尽量大（2）同时使误分类点的个数尽量小，C是调和二者的系数。</p>
-<p>线性不可分你的线性支持向量机的学习问题如下</p>
+<p>线性不可分的线性支持向量机的学习问题如下</p>
 <p>$$min_{w,b,\xi}\ \ \frac{1}{2}||w||^2+C\sum_{i=1}^N\xi_i$$</p>
 <p>$$s.t.\ \ \ y_i(w\cdot x_i+b)\geq1-\xi_i,\ i=1,2,…,N$$</p>
 <p>$$s.t.\ \ \xi_i\geq0,\ i=1,2,…,N$$</p>
@@ -710,8 +710,8 @@
 </blockquote>
 <p>这一定义在构造核函数时很有用，但对于一个具体函数$K(x,z)$来说，检验它是否为正定核函数并不容易，因为要求对任意有限输入集${x_1,x_2,…,x_m}$验证$K$对应的$Gram$矩阵是否为半正定的。</p>
 <h3 id="多项式核函数"><a href="#多项式核函数" class="headerlink" title="多项式核函数"></a>多项式核函数</h3><p>$$K(x,z)=(x\cdot z+1)^p$$</p>
-<p>对应的支持向量机是一个$p$次多项式分类器，再次情形下，分类决策函数变为</p>
-<p>$$f(x)=sign(\sum_{i=1}^Na_i^*y_i(x_i\cdot x+1)+b^*)$$</p>
+<p>对应的支持向量机是一个$p$次多项式分类器，再此情形下，分类决策函数变为</p>
+<p>$$f(x)=sign(\sum_{i=1}^Na_i^*y_i(x_i\cdot x+1)^p+b^*)$$</p>
 <h3 id="高斯核函数"><a href="#高斯核函数" class="headerlink" title="高斯核函数"></a>高斯核函数</h3><p>$$K(x,z)=exp(-\frac{||x-z||^2}{2\sigma^2})$$</p>
 <p>对应的支持向量机是高斯径向基函数(radial basis function)分类器，在此情形下，分类决策函数变为</p>
 <p>$$f(x) = sign(\sum_{i=1}^Na_i^*y_iexp(-\frac{||x-z||^2}{2\sigma^2})+b^*)$$</p>
