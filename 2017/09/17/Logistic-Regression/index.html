@@ -90,7 +90,7 @@
 <meta property="og:description" content="逻辑斯蒂回归（logistic regression）是统计学习中的经典方法，逻辑斯蒂回归模型与最大熵模型都属于对数线性模型。 Logistic Function逻辑函数（逻辑曲线、sigmoid函数）表达式如下： $$f(x)=\frac{L}{1+e^{-k(x-x_0)}}$$ 其中：  $e$是自然对数； $x_0$是sigmoid曲线的中点； $L$是曲线的最大值； $k$是曲线的坡度">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-17-040033.jpg">
-<meta property="og:updated_time" content="2018-04-20T06:01:24.882Z">
+<meta property="og:updated_time" content="2018-04-23T06:59:45.163Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Logistic Regression">
 <meta name="twitter:description" content="逻辑斯蒂回归（logistic regression）是统计学习中的经典方法，逻辑斯蒂回归模型与最大熵模型都属于对数线性模型。 Logistic Function逻辑函数（逻辑曲线、sigmoid函数）表达式如下： $$f(x)=\frac{L}{1+e^{-k(x-x_0)}}$$ 其中：  $e$是自然对数； $x_0$是sigmoid曲线的中点； $L$是曲线的最大值； $k$是曲线的坡度">
@@ -372,7 +372,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  2,210 字
+                  2,434 字
                 </span>
               
 
@@ -388,7 +388,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  11 分钟
+                  12 分钟
                 </span>
               
             </div>
@@ -453,7 +453,7 @@
 <p>$$\begin{align} g &amp;= argmax_\sigma \prod_{n=1}^N\sigma(y_nw^Tx_n) \\  &amp;= argmax_{\sigma}ln\sum_{n=1}^N\sigma(y_nw^Tx_n) \\  &amp;= argmin_w\frac{1}{N}\sum_{n=1}^N-ln\sigma(y_nw^Tx_n)  \\ &amp;= argmin_w\frac{1}{N} \sum_{n=1}^Nln(1+e^{-y_nw^Tx_n})\\ \end{align}$$</p>
 <p>所以，损失函数为</p>
 <p>$$E_{in}(w)=\frac{1}{N}\sum_{i=1}^Nln(1+e^{-y_nw^Tx_n})$$</p>
-<h3 id="证明损失函数为交叉熵"><a href="#证明损失函数为交叉熵" class="headerlink" title="证明损失函数为交叉熵"></a>证明损失函数为交叉熵</h3><p>如果不太熟悉交叉熵损失函数，可先回顾一下：<a href="http://conghuai.me/2018/04/08/Cross%20Entropy%20Loss%20Function/">Cross Entropy Loss Function</a></p>
+<h3 id="证明损失函数为交叉熵"><a href="#证明损失函数为交叉熵" class="headerlink" title="证明损失函数为交叉熵"></a>证明损失函数为交叉熵</h3><h4 id="1-从交叉熵公式推导到逻辑损失的cost-function"><a href="#1-从交叉熵公式推导到逻辑损失的cost-function" class="headerlink" title="(1) 从交叉熵公式推导到逻辑损失的cost function"></a>(1) 从交叉熵公式推导到逻辑损失的cost function</h4><p>如果不太熟悉交叉熵损失函数，可先回顾一下：<a href="http://conghuai.me/2018/04/08/Cross%20Entropy%20Loss%20Function/">Cross Entropy Loss Function</a></p>
 <p>对于二分类损失问题，交叉熵损失函数定义为<br>$$E =\sum_{i=1}^N -(y\cdot log(p)+(1-y)\cdot log(1-p))$$</p>
 <p>其中</p>
 <ul>
@@ -468,6 +468,14 @@
 <p>我们可以简化上式，得</p>
 <p>$$E= \sum_{i=1}^Nln(1+e^{-y_nw^Tx_n}),y_n\in \{1,-1\}$$</p>
 <p>所以，我们发现，对逻辑斯蒂回归模型求负极大似然估计得到的损失函数，本质上就是交叉熵损失函数。</p>
+<h4 id="2-直接定义逻辑回归的loss-function为交叉熵"><a href="#2-直接定义逻辑回归的loss-function为交叉熵" class="headerlink" title="(2) 直接定义逻辑回归的loss function为交叉熵"></a>(2) 直接定义逻辑回归的loss function为交叉熵</h4><p>逻辑回归模型的概率为</p>
+<p>$$P(y=1|x) = \frac{e^{w\cdot x}}{1+e^{w\cdot x}}$$</p>
+<p>$$P(y=0|x) = \frac{1}{1+e^{w\cdot x}}$$</p>
+<p>我们可以将上面两种形式写成一种</p>
+<p>$$P(y|x) =  (\frac{e^{w\cdot x}}{1+e^{w\cdot x}})^y(\frac{1}{1+e^{w\cdot x}})^{(1-y)}$$</p>
+<p>当然，我们希望$P(y|x)$的概率越大越好，因为$P(y|x)$代表该样本label为$y$的概率，所以，我们可以把$-logP(y|x)$当做loss function：</p>
+<p>$$l = -logP(y|x)=-[log\ y\cdot \frac{e^{w\cdot x}}{1+e^{w\cdot x}}+log\ (1-y)\cdot \frac{1}{1+e^{w\cdot x}}]$$</p>
+<p>主要定义的损失函数即为交叉熵损失函数，最后推导的结果和用极大似然估计得到的目标函数是一样的。</p>
 <h3 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h3><p>现在，我们推导一下求导过程</p>
 <p>$$E_{in}(w)=\frac{1}{N}\sum_{i=1}^Nln(1+e^{-y_nw^Tx_n})$$</p>
 <p>对$w_i$求偏导，令$A = 1+e^{-y_nw^Tx_n}$，$B = e^{-y_nw^Tx_n}$</p>
@@ -618,7 +626,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -629,7 +637,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -640,7 +648,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -708,7 +716,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Logistic-Function"><span class="nav-number">1.</span> <span class="nav-text">Logistic Function</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#函数性质"><span class="nav-number">1.1.</span> <span class="nav-text">函数性质</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求导"><span class="nav-number">1.2.</span> <span class="nav-text">求导</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#逻辑斯蒂回归模型"><span class="nav-number">2.</span> <span class="nav-text">逻辑斯蒂回归模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#二项逻辑斯蒂回归模型"><span class="nav-number">2.1.</span> <span class="nav-text">二项逻辑斯蒂回归模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#对数几率"><span class="nav-number">2.1.1.</span> <span class="nav-text">对数几率</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模型参数估计"><span class="nav-number">2.2.</span> <span class="nav-text">模型参数估计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#损失函数"><span class="nav-number">2.2.1.</span> <span class="nav-text">损失函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#证明损失函数为交叉熵"><span class="nav-number">2.2.2.</span> <span class="nav-text">证明损失函数为交叉熵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优化"><span class="nav-number">2.2.3.</span> <span class="nav-text">优化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一项-frac-partial-lnA-partial-A"><span class="nav-number">2.2.3.1.</span> <span class="nav-text">第一项 $\frac{\partial lnA}{\partial A}$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二项-frac-partial-1-e-B-partial-B"><span class="nav-number">2.2.3.2.</span> <span class="nav-text">第二项 $\frac{\partial (1+e^B)}{\partial B}$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第三项-frac-partial-y-nw-Tx-n-partial-w-i"><span class="nav-number">2.2.3.3.</span> <span class="nav-text">第三项 $\frac{\partial -y_nw^Tx_n}{\partial w_i}$</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多项逻辑回归"><span class="nav-number">2.3.</span> <span class="nav-text">多项逻辑回归</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#逻辑回归与最大熵"><span class="nav-number">3.</span> <span class="nav-text">逻辑回归与最大熵</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Logistic-Function"><span class="nav-number">1.</span> <span class="nav-text">Logistic Function</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#函数性质"><span class="nav-number">1.1.</span> <span class="nav-text">函数性质</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求导"><span class="nav-number">1.2.</span> <span class="nav-text">求导</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#逻辑斯蒂回归模型"><span class="nav-number">2.</span> <span class="nav-text">逻辑斯蒂回归模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#二项逻辑斯蒂回归模型"><span class="nav-number">2.1.</span> <span class="nav-text">二项逻辑斯蒂回归模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#对数几率"><span class="nav-number">2.1.1.</span> <span class="nav-text">对数几率</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模型参数估计"><span class="nav-number">2.2.</span> <span class="nav-text">模型参数估计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#损失函数"><span class="nav-number">2.2.1.</span> <span class="nav-text">损失函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#证明损失函数为交叉熵"><span class="nav-number">2.2.2.</span> <span class="nav-text">证明损失函数为交叉熵</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-从交叉熵公式推导到逻辑损失的cost-function"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">(1) 从交叉熵公式推导到逻辑损失的cost function</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-直接定义逻辑回归的loss-function为交叉熵"><span class="nav-number">2.2.2.2.</span> <span class="nav-text">(2) 直接定义逻辑回归的loss function为交叉熵</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优化"><span class="nav-number">2.2.3.</span> <span class="nav-text">优化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一项-frac-partial-lnA-partial-A"><span class="nav-number">2.2.3.1.</span> <span class="nav-text">第一项 $\frac{\partial lnA}{\partial A}$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二项-frac-partial-1-e-B-partial-B"><span class="nav-number">2.2.3.2.</span> <span class="nav-text">第二项 $\frac{\partial (1+e^B)}{\partial B}$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第三项-frac-partial-y-nw-Tx-n-partial-w-i"><span class="nav-number">2.2.3.3.</span> <span class="nav-text">第三项 $\frac{\partial -y_nw^Tx_n}{\partial w_i}$</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多项逻辑回归"><span class="nav-number">2.3.</span> <span class="nav-text">多项逻辑回归</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#逻辑回归与最大熵"><span class="nav-number">3.</span> <span class="nav-text">逻辑回归与最大熵</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
