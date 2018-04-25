@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://conghuai.me/"/>
-  <updated>2018-04-25T07:34:54.840Z</updated>
+  <updated>2018-04-25T09:06:56.044Z</updated>
   <id>http://conghuai.me/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Activation Functions</title>
+    <link href="http://conghuai.me/2018/04/25/Activation-Functions/"/>
+    <id>http://conghuai.me/2018/04/25/Activation-Functions/</id>
+    <published>2018-04-25T07:38:44.000Z</published>
+    <updated>2018-04-25T09:06:56.044Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fqp0idk6d0j315o0p0tc4.jpg" alt="nural-network_3"></p><p>激活函数是神经网络中一个比较重要的概念，激活函数首先计算输入的线性值，然后决定是否“激活”该值。</p><p>$$Y=Activation(\sum(weight\ *\ input ) + bias)$$</p><p>上面的线性组合的值的范围为$[-\infty, +\infty]$，激活函数根据上一层输出的线性组合值来决定是否将该值传到下一层，并决定以何种方式传到下一层。</p><p>正如绝大多数神经网络借助某种形式的梯度下降进行优化，激活函数需要是可微分的。此外，复杂的激活函数也许产生一些梯度消失或梯度爆炸的问题。常见的激活函数有很多，我们该如何选择合适的激活函数呢？我们先来分析一下每种激活函数的特点和性质。</p><h1 id="激活函数的作用"><a href="#激活函数的作用" class="headerlink" title="激活函数的作用"></a>激活函数的作用</h1><p>激活函数显然增加了神经网络的复杂度，那么 ，我们是否可以不同激活函数呢？答案是不可行的，如果不用激活函数，那么神经网络模型最终将会只是一个线性模型。而线性模型由于其模型的复杂度不够，在解决很多复杂问题上都显得力不从心。</p><h1 id="常见的激活函数"><a href="#常见的激活函数" class="headerlink" title="常见的激活函数"></a>常见的激活函数</h1><h2 id="Sigmoid"><a href="#Sigmoid" class="headerlink" title="Sigmoid"></a>Sigmoid</h2><h3 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h3><p>$$g(z) = \frac{1}{1+e^{-z}}$$</p><h3 id="导数"><a href="#导数" class="headerlink" title="导数"></a>导数</h3><p>$$g’(z) = g(z)(1-g(z))$$</p><h3 id="函数性质"><a href="#函数性质" class="headerlink" title="函数性质"></a>函数性质</h3><p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fqp0icy6xwj311z0moacm.jpg" alt="5561420171010093434"></p><h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sigmoid</span><span class="params">(x, derivative=False)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> (derivative == <span class="keyword">True</span>):</span><br><span class="line">        <span class="keyword">return</span> x * (<span class="number">1</span> - x)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> / (<span class="number">1</span> + np.exp(-x))</span><br></pre></td></tr></table></figure><h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ol><li>梯度消失问题</li></ol><p>在导函数的两端，函数值非常的小，这意味着在做梯度下降时，参数的改变量将非常小。这就可能带来梯度消失的问题。</p><ol><li>饱和问题。</li></ol><p>饱和问题是指当初始参数过大时，会导致sigmoid导数值很小，造成学习速率非常慢。</p><h2 id="Tanh"><a href="#Tanh" class="headerlink" title="Tanh"></a>Tanh</h2><h3 id="表达式-1"><a href="#表达式-1" class="headerlink" title="表达式"></a>表达式</h3><p>$$g(z) = tanh(z) = \frac{e^z-e^{-z}}{e^z+e^{-z}}$$</p><h3 id="导数-1"><a href="#导数-1" class="headerlink" title="导数"></a>导数</h3><p>$$g’(z)= 1-g(z)^2$$</p><h3 id="函数性质-1"><a href="#函数性质-1" class="headerlink" title="函数性质"></a>函数性质</h3><p>在分类任务中，双曲正切函数（Tanh）逐渐取代Sigmoid函数作为标准的激活函数。<img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fqp0ig26d5j311m0jy0vf.jpg" alt="8940520171010093544"></p><h3 id="实现-1"><a href="#实现-1" class="headerlink" title="实现"></a>实现</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">tanh</span><span class="params">(x, derivative=False)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> (derivative == <span class="keyword">True</span>):</span><br><span class="line">        <span class="keyword">return</span> (<span class="number">1</span> - (x ** <span class="number">2</span>))</span><br><span class="line">    <span class="keyword">return</span> np.tanh(x)</span><br></pre></td></tr></table></figure><h2 id="ReLU"><a href="#ReLU" class="headerlink" title="ReLU"></a>ReLU</h2><p>修正线性单元（Rectified linear unit，ReLU）是神经网络中最常用的激活函数。它保留了 step 函数的生物学启发（只有输入超出阈值时神经元才激活），不过当输入为正的时候，导数不为零，从而允许基于梯度的学习（尽管在 x=0 的时候，导数是未定义的）。使用这个函数能使计算变得很快，因为无论是函数还是其导数都不包含复杂的数学运算。然而，当输入为负值的时候，ReLU 的学习速度可能会变得很慢，甚至使神经元直接无效，因为此时输入小于零而梯度为零，从而其权重无法得到更新，在剩下的训练过程中会一直保持静默。</p><h3 id="表达式-2"><a href="#表达式-2" class="headerlink" title="表达式"></a>表达式</h3><p>$$\begin{split} f(x)=\begin{cases} x, &amp; \text{$x\geq 0$} \\ 0, &amp; \text{$x&lt;0$}\end{cases}\end{split}$$</p><h3 id="导数-2"><a href="#导数-2" class="headerlink" title="导数"></a>导数</h3><p>$$\begin{split} f’(x)=\begin{cases} 1, &amp; \text{$x\geq 0$} \\ 0, &amp; \text{$x&lt;0$}\end{cases}\end{split}$$</p><h3 id="函数性质-2"><a href="#函数性质-2" class="headerlink" title="函数性质"></a>函数性质</h3><p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fqp0if00ohj31240mujtv.jpg" alt="4217520171010093357"></p><h3 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h3><ol><li>静默神经元。</li></ol><p>由于该激活函数在$x&lt;0$的时候，其导数值为0，就会使得一些神经元一直得不到更新。</p><ol><li>只能用于隐藏层。</li></ol><h2 id="Leaky-ReLU"><a href="#Leaky-ReLU" class="headerlink" title="Leaky ReLU"></a>Leaky ReLU</h2><p>经典（以及广泛使用的）ReLU 激活函数的变体，带泄露修正线性单元（Leaky ReLU）的输出对负值输入有很小的坡度。由于导数总是不为零，这能减少静默神经元的出现，允许基于梯度的学习（虽然会很慢）。</p><h3 id="表达式-3"><a href="#表达式-3" class="headerlink" title="表达式"></a>表达式</h3><p>$$\begin{split} f(x)=\begin{cases} x, &amp; \text{$x\geq0$} \\ 0.01x, &amp; \text{$x&lt;0$}\end{cases}\end{split}$$</p><h3 id="求导"><a href="#求导" class="headerlink" title="求导"></a>求导</h3><p>$$\begin{split} f’(x)=\begin{cases} 1, &amp; \text{$x\geq0$} \\ 0.01, &amp; \text{$x&lt;0$}\end{cases}\end{split}$$</p><h3 id="函数性质-3"><a href="#函数性质-3" class="headerlink" title="函数性质"></a>函数性质</h3><p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fqp0ieauwoj311z0mq0ve.jpg" alt="1601520171010093621"></p><h1 id="选择激活函数准则"><a href="#选择激活函数准则" class="headerlink" title="选择激活函数准则"></a>选择激活函数准则</h1><ul><li>Sigmoid激活函数常用于分类任务。</li><li>Sigmoid和Tanh函数会产生梯度消失问题。</li><li>ReLU是目前使用最广泛的激活函数。</li><li>如果在神经网络中，出现了静默神经元，可以考虑使用 Leaky ReLU。</li><li>ReLU激活函数只能用于隐藏层。</li></ul><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1]. <a href="https://medium.com/the-theory-of-everything/understanding-activation-functions-in-neural-networks-9491262884e0" target="_blank" rel="noopener">Understanding Activation Functions in Neural Networks</a></p><p>[2]. <a href="https://www.analyticsvidhya.com/blog/2017/10/fundamentals-deep-learning-activation-functions-when-to-use-them/" target="_blank" rel="noopener">Fundamentals of Deep Learning – Activation Functions and When to Use Them?</a></p><p>[3]. <a href="https://www.wikiwand.com/en/Activation_function" target="_blank" rel="noopener">维基百科Activation Functions</a></p><p>[4]. <a href="https://analyticsindiamag.com/most-common-activation-functions-in-neural-networks-and-rationale-behind-it/" target="_blank" rel="noopener">Types Of Activation Functions In Neural Networks And Rationale Behind It</a></p><p>[5]. <a href="https://dashee87.github.io/data%20science/deep%20learning/visualising-activation-functions-in-neural-networks/" target="_blank" rel="noopener">Visualising Activation Functions in Neural Networks</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;img src=&quot;https://ws3.sinaimg.cn/large/006tKfTcgy1fqp0idk6d0j315o0p0tc4.jpg&quot; alt=&quot;nural-network_3&quot;&gt;&lt;/p&gt;
+&lt;p&gt;激活函数是神经网络中一个比较重要的概念，激活函数首先计算输入
+      
+    
+    </summary>
+    
+      <category term="Machine Learning" scheme="http://conghuai.me/categories/Machine-Learning/"/>
+    
+      <category term="Deep Learning" scheme="http://conghuai.me/categories/Machine-Learning/Deep-Learning/"/>
+    
+    
+      <category term="dl" scheme="http://conghuai.me/tags/dl/"/>
+    
+  </entry>
   
   <entry>
     <title>Neural Networks and Deep Learning Foundation</title>

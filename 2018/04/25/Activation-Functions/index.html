@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="ml," />
+  <meta name="keywords" content="dl," />
 
 
 
@@ -81,21 +81,24 @@
 
 
 
-<meta name="description" content="感知机是二类分类的线性分类模型，其输入为实例的特征向量，输出为实例的类别，取+1和-1二值。感知机对应于输入空间（特征空间）中将实例划分为正负两类的分离超平面，属于判别模型。 感知机模型假设输入空间（特征空间）是$\chi \subseteq  R^n$，输出空间是$Y={+1, -1}$。输入$x\in \chi$表示实例的特征向量，对应于输入空间（特征空间）的点；输出为$y\in Y$表示实例">
-<meta name="keywords" content="ml">
+<meta name="description" content="激活函数是神经网络中一个比较重要的概念，激活函数首先计算输入的线性值，然后决定是否“激活”该值。 $$Y=Activation(\sum(weight\ *\ input ) + bias)$$ 上面的线性组合的值的范围为$[-\infty, +\infty]$，激活函数根据上一层输出的线性组合值来决定是否将该值传到下一层，并决定以何种方式传到下一层。 正如绝大多数神经网络借助某种形式的梯度下降">
+<meta name="keywords" content="dl">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Perceptron Learning Algorithm">
-<meta property="og:url" content="http://conghuai.me/2017/04/14/Perceptron-Learning-Algorithm/index.html">
+<meta property="og:title" content="Activation Functions">
+<meta property="og:url" content="http://conghuai.me/2018/04/25/Activation-Functions/index.html">
 <meta property="og:site_name" content="蔡聪怀">
-<meta property="og:description" content="感知机是二类分类的线性分类模型，其输入为实例的特征向量，输出为实例的类别，取+1和-1二值。感知机对应于输入空间（特征空间）中将实例划分为正负两类的分离超平面，属于判别模型。 感知机模型假设输入空间（特征空间）是$\chi \subseteq  R^n$，输出空间是$Y={+1, -1}$。输入$x\in \chi$表示实例的特征向量，对应于输入空间（特征空间）的点；输出为$y\in Y$表示实例">
+<meta property="og:description" content="激活函数是神经网络中一个比较重要的概念，激活函数首先计算输入的线性值，然后决定是否“激活”该值。 $$Y=Activation(\sum(weight\ *\ input ) + bias)$$ 上面的线性组合的值的范围为$[-\infty, +\infty]$，激活函数根据上一层输出的线性组合值来决定是否将该值传到下一层，并决定以何种方式传到下一层。 正如绝大多数神经网络借助某种形式的梯度下降">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-14-084814.jpg">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-14-084817.jpg">
-<meta property="og:updated_time" content="2018-04-14T08:53:24.480Z">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fqp0idk6d0j315o0p0tc4.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fqp0icy6xwj311z0moacm.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fqp0ig26d5j311m0jy0vf.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fqp0if00ohj31240mujtv.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fqp0ieauwoj311z0mq0ve.jpg">
+<meta property="og:updated_time" content="2018-04-25T09:06:56.044Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Perceptron Learning Algorithm">
-<meta name="twitter:description" content="感知机是二类分类的线性分类模型，其输入为实例的特征向量，输出为实例的类别，取+1和-1二值。感知机对应于输入空间（特征空间）中将实例划分为正负两类的分离超平面，属于判别模型。 感知机模型假设输入空间（特征空间）是$\chi \subseteq  R^n$，输出空间是$Y={+1, -1}$。输入$x\in \chi$表示实例的特征向量，对应于输入空间（特征空间）的点；输出为$y\in Y$表示实例">
-<meta name="twitter:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-14-084814.jpg">
+<meta name="twitter:title" content="Activation Functions">
+<meta name="twitter:description" content="激活函数是神经网络中一个比较重要的概念，激活函数首先计算输入的线性值，然后决定是否“激活”该值。 $$Y=Activation(\sum(weight\ *\ input ) + bias)$$ 上面的线性组合的值的范围为$[-\infty, +\infty]$，激活函数根据上一层输出的线性组合值来决定是否将该值传到下一层，并决定以何种方式传到下一层。 正如绝大多数神经网络借助某种形式的梯度下降">
+<meta name="twitter:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fqp0idk6d0j315o0p0tc4.jpg">
 
 
 
@@ -125,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://conghuai.me/2017/04/14/Perceptron-Learning-Algorithm/"/>
+  <link rel="canonical" href="http://conghuai.me/2018/04/25/Activation-Functions/"/>
 
 
 
 
 
-  <title>Perceptron Learning Algorithm | 蔡聪怀</title>
+  <title>Activation Functions | 蔡聪怀</title>
   
 
 
@@ -268,7 +271,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://conghuai.me/2017/04/14/Perceptron-Learning-Algorithm/">
+    <link itemprop="mainEntityOfPage" href="http://conghuai.me/2018/04/25/Activation-Functions/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Conghuai Cai">
@@ -285,7 +288,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Perceptron Learning Algorithm</h1>
+          <h1 class="post-title" itemprop="name headline">Activation Functions</h1>
         
 
         <div class="post-meta">
@@ -297,8 +300,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-14T15:25:03+08:00">
-                2017-04-14
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-25T15:38:44+08:00">
+                2018-04-25
               </time>
             
 
@@ -331,8 +334,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Machine-Learning/Classification/" itemprop="url" rel="index">
-                    <span itemprop="name">Classification</span>
+                  <a href="/categories/Machine-Learning/Deep-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Deep Learning</span>
                   </a>
                 </span>
 
@@ -348,7 +351,7 @@
 
           
           
-             <span id="/2017/04/14/Perceptron-Learning-Algorithm/" class="leancloud_visitors" data-flag-title="Perceptron Learning Algorithm">
+             <span id="/2018/04/25/Activation-Functions/" class="leancloud_visitors" data-flag-title="Activation Functions">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -373,7 +376,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  865 字
+                  1,111 字
                 </span>
               
 
@@ -389,7 +392,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  3 分钟
+                  4 分钟
                 </span>
               
             </div>
@@ -410,32 +413,55 @@
       
 
       
-        <p>感知机是二类分类的线性分类模型，其输入为实例的特征向量，输出为实例的类别，取+1和-1二值。感知机对应于输入空间（特征空间）中将实例划分为正负两类的分离超平面，属于判别模型。</p>
-<h1 id="感知机模型"><a href="#感知机模型" class="headerlink" title="感知机模型"></a>感知机模型</h1><p>假设输入空间（特征空间）是$\chi \subseteq  R^n$，输出空间是$Y={+1, -1}$。输入$x\in \chi$表示实例的特征向量，对应于输入空间（特征空间）的点；输出为$y\in Y$表示实例的类别，由输入空间到输出空间的如下函数：</p>
-<p>$$f(x) = sign(w\cdot x+b)$$</p>
-<p>称为感知机。其中，$w$和$b$为感知机模型参数，$w\in R^n$称为权值向量，$b\in R$称为偏置，sign是符号函数，即：</p>
-<p>$$\begin{split}sign(x)=\begin{cases} +1, &amp; \text{$x\geq 0$} \\ -1, &amp; \text{$x&lt;0$}\end{cases}\end{split}$$</p>
-<p>感知机模型的假设空间是定义在特征空间中的所有线性分类模型，即函数集合$\{f|f(x)=w\cdot x + b\}$。</p>
-<h2 id="几何解释"><a href="#几何解释" class="headerlink" title="几何解释"></a>几何解释</h2><p>线性方程$w\cdot x+b=0$，对应于特征空间$R^n$中的一个超平面$S$，其中$w$是超平面的法向量，$b$是超平面的截距。这个超平面将特征空间划分为两个部分，位于两部分的点分别被称为正、负两类。</p>
-<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-14-084814.jpg" alt="Screen Shot 2018-04-14 at 16.14.35"></p>
-<h1 id="学习策略"><a href="#学习策略" class="headerlink" title="学习策略"></a>学习策略</h1><p>假设训练数据集是线性可分的，感知机学习的目标是求得一个能够将训练集正实例点和负实例点完全正确分开的分离超平面。为了找出这样的超平面，即确定感知机模型参数$w,b$，需要确定一个学习策略，即定义（经验）损失函数并将损失函数极小化。</p>
-<p>损失函数选择是误分类点到超平面$S$的总距离：</p>
-<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-14-084817.jpg" alt="distance"></p>
-<p>对于误分类的数据$(x_i,y_i)$来说，当$w\cdot x+b &gt;0$时，$y_i=-1$，而当$w\cdot x_i+b&lt;0$时，$y_i=+1$，则我们可以得出，误分类点$x_i$到超平面$S$的距离是：</p>
-<p>$$-\frac{1}{||w||}y_i(w\cdot x_i+b)$$</p>
-<p>这样，假设超平面$S$的误分类点集合为M，那么所有误分类点到超平面S的总距离为：</p>
-<p>$$-\frac{1}{||w||}\sum _{x_i\in M}y_i(w\cdot x_i+b)$$</p>
-<p>不考虑$\frac{1}{||w||}$，就得到感知机学习的损失函数：</p>
-<p>$$L(w,b)=-\sum_{x_i \in M}y_i(w\cdot x_i+b)$$</p>
-<h1 id="学习算法"><a href="#学习算法" class="headerlink" title="学习算法"></a>学习算法</h1><p>感知机学习算法是对以下最优化问题的算法那，给定一个训练数据集$T=\{(x_1, y_1),(x_2,y_2),…,(x_N,y_N)\}$，求参数$w,b$，使其为以下损失函数极小化问题的解：</p>
-<p>$$min_{w,b} L(w,b)=-\sum_{x_i \in M}y_i(w\cdot x_i + b)$$</p>
-<p>感知机学习算法是误分类驱动的，具体采用随机梯度下降法。首选，任意选取一个超平面$w_0,b_0$，然后用梯度下降法不断地极小化目标函数。极小化过程中不是一次使M中所有误分类点的梯度下降，而是一次随机选取一个误分类点使其梯度下降。</p>
-<p>假设误分类点集合M是固定的，那么损失函数$L(w,b)$的梯度由</p>
-<p>$$\triangledown_wL(w,b)=-\sum_{x_i\in M}y_ix_i$$</p>
-<p>$$\triangledown_bL(w,b)=-\sum_{x_i\in M}y_i$$</p>
-<p>给出，随机选择一个误分类点$(x_i, y_i)$，对$w,b$进行更新：</p>
-<p>$$w\leftarrow w+\eta y_ix_i$$</p>
-<p>$$b\leftarrow b+\eta y_i$$</p>
+        <p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fqp0idk6d0j315o0p0tc4.jpg" alt="nural-network_3"></p>
+<p>激活函数是神经网络中一个比较重要的概念，激活函数首先计算输入的线性值，然后决定是否“激活”该值。</p>
+<p>$$Y=Activation(\sum(weight\ *\ input ) + bias)$$</p>
+<p>上面的线性组合的值的范围为$[-\infty, +\infty]$，激活函数根据上一层输出的线性组合值来决定是否将该值传到下一层，并决定以何种方式传到下一层。</p>
+<p>正如绝大多数神经网络借助某种形式的梯度下降进行优化，激活函数需要是可微分的。此外，复杂的激活函数也许产生一些梯度消失或梯度爆炸的问题。常见的激活函数有很多，我们该如何选择合适的激活函数呢？我们先来分析一下每种激活函数的特点和性质。</p>
+<h1 id="激活函数的作用"><a href="#激活函数的作用" class="headerlink" title="激活函数的作用"></a>激活函数的作用</h1><p>激活函数显然增加了神经网络的复杂度，那么 ，我们是否可以不同激活函数呢？答案是不可行的，如果不用激活函数，那么神经网络模型最终将会只是一个线性模型。而线性模型由于其模型的复杂度不够，在解决很多复杂问题上都显得力不从心。</p>
+<h1 id="常见的激活函数"><a href="#常见的激活函数" class="headerlink" title="常见的激活函数"></a>常见的激活函数</h1><h2 id="Sigmoid"><a href="#Sigmoid" class="headerlink" title="Sigmoid"></a>Sigmoid</h2><h3 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h3><p>$$g(z) = \frac{1}{1+e^{-z}}$$</p>
+<h3 id="导数"><a href="#导数" class="headerlink" title="导数"></a>导数</h3><p>$$g’(z) = g(z)(1-g(z))$$</p>
+<h3 id="函数性质"><a href="#函数性质" class="headerlink" title="函数性质"></a>函数性质</h3><p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fqp0icy6xwj311z0moacm.jpg" alt="5561420171010093434"></p>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sigmoid</span><span class="params">(x, derivative=False)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> (derivative == <span class="keyword">True</span>):</span><br><span class="line">        <span class="keyword">return</span> x * (<span class="number">1</span> - x)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> / (<span class="number">1</span> + np.exp(-x))</span><br></pre></td></tr></table></figure>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ol>
+<li>梯度消失问题</li>
+</ol>
+<p>在导函数的两端，函数值非常的小，这意味着在做梯度下降时，参数的改变量将非常小。这就可能带来梯度消失的问题。</p>
+<ol>
+<li>饱和问题。</li>
+</ol>
+<p>饱和问题是指当初始参数过大时，会导致sigmoid导数值很小，造成学习速率非常慢。</p>
+<h2 id="Tanh"><a href="#Tanh" class="headerlink" title="Tanh"></a>Tanh</h2><h3 id="表达式-1"><a href="#表达式-1" class="headerlink" title="表达式"></a>表达式</h3><p>$$g(z) = tanh(z) = \frac{e^z-e^{-z}}{e^z+e^{-z}}$$</p>
+<h3 id="导数-1"><a href="#导数-1" class="headerlink" title="导数"></a>导数</h3><p>$$g’(z)= 1-g(z)^2$$</p>
+<h3 id="函数性质-1"><a href="#函数性质-1" class="headerlink" title="函数性质"></a>函数性质</h3><p>在分类任务中，双曲正切函数（Tanh）逐渐取代Sigmoid函数作为标准的激活函数。<img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fqp0ig26d5j311m0jy0vf.jpg" alt="8940520171010093544"></p>
+<h3 id="实现-1"><a href="#实现-1" class="headerlink" title="实现"></a>实现</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">tanh</span><span class="params">(x, derivative=False)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> (derivative == <span class="keyword">True</span>):</span><br><span class="line">        <span class="keyword">return</span> (<span class="number">1</span> - (x ** <span class="number">2</span>))</span><br><span class="line">    <span class="keyword">return</span> np.tanh(x)</span><br></pre></td></tr></table></figure>
+<h2 id="ReLU"><a href="#ReLU" class="headerlink" title="ReLU"></a>ReLU</h2><p>修正线性单元（Rectified linear unit，ReLU）是神经网络中最常用的激活函数。它保留了 step 函数的生物学启发（只有输入超出阈值时神经元才激活），不过当输入为正的时候，导数不为零，从而允许基于梯度的学习（尽管在 x=0 的时候，导数是未定义的）。使用这个函数能使计算变得很快，因为无论是函数还是其导数都不包含复杂的数学运算。然而，当输入为负值的时候，ReLU 的学习速度可能会变得很慢，甚至使神经元直接无效，因为此时输入小于零而梯度为零，从而其权重无法得到更新，在剩下的训练过程中会一直保持静默。</p>
+<h3 id="表达式-2"><a href="#表达式-2" class="headerlink" title="表达式"></a>表达式</h3><p>$$\begin{split} f(x)=\begin{cases} x, &amp; \text{$x\geq 0$} \\ 0, &amp; \text{$x&lt;0$}\end{cases}\end{split}$$</p>
+<h3 id="导数-2"><a href="#导数-2" class="headerlink" title="导数"></a>导数</h3><p>$$\begin{split} f’(x)=\begin{cases} 1, &amp; \text{$x\geq 0$} \\ 0, &amp; \text{$x&lt;0$}\end{cases}\end{split}$$</p>
+<h3 id="函数性质-2"><a href="#函数性质-2" class="headerlink" title="函数性质"></a>函数性质</h3><p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fqp0if00ohj31240mujtv.jpg" alt="4217520171010093357"></p>
+<h3 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h3><ol>
+<li>静默神经元。</li>
+</ol>
+<p>由于该激活函数在$x&lt;0$的时候，其导数值为0，就会使得一些神经元一直得不到更新。</p>
+<ol>
+<li>只能用于隐藏层。</li>
+</ol>
+<h2 id="Leaky-ReLU"><a href="#Leaky-ReLU" class="headerlink" title="Leaky ReLU"></a>Leaky ReLU</h2><p>经典（以及广泛使用的）ReLU 激活函数的变体，带泄露修正线性单元（Leaky ReLU）的输出对负值输入有很小的坡度。由于导数总是不为零，这能减少静默神经元的出现，允许基于梯度的学习（虽然会很慢）。</p>
+<h3 id="表达式-3"><a href="#表达式-3" class="headerlink" title="表达式"></a>表达式</h3><p>$$\begin{split} f(x)=\begin{cases} x, &amp; \text{$x\geq0$} \\ 0.01x, &amp; \text{$x&lt;0$}\end{cases}\end{split}$$</p>
+<h3 id="求导"><a href="#求导" class="headerlink" title="求导"></a>求导</h3><p>$$\begin{split} f’(x)=\begin{cases} 1, &amp; \text{$x\geq0$} \\ 0.01, &amp; \text{$x&lt;0$}\end{cases}\end{split}$$</p>
+<h3 id="函数性质-3"><a href="#函数性质-3" class="headerlink" title="函数性质"></a>函数性质</h3><p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fqp0ieauwoj311z0mq0ve.jpg" alt="1601520171010093621"></p>
+<h1 id="选择激活函数准则"><a href="#选择激活函数准则" class="headerlink" title="选择激活函数准则"></a>选择激活函数准则</h1><ul>
+<li>Sigmoid激活函数常用于分类任务。</li>
+<li>Sigmoid和Tanh函数会产生梯度消失问题。</li>
+<li>ReLU是目前使用最广泛的激活函数。</li>
+<li>如果在神经网络中，出现了静默神经元，可以考虑使用 Leaky ReLU。</li>
+<li>ReLU激活函数只能用于隐藏层。</li>
+</ul>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1]. <a href="https://medium.com/the-theory-of-everything/understanding-activation-functions-in-neural-networks-9491262884e0" target="_blank" rel="noopener">Understanding Activation Functions in Neural Networks</a></p>
+<p>[2]. <a href="https://www.analyticsvidhya.com/blog/2017/10/fundamentals-deep-learning-activation-functions-when-to-use-them/" target="_blank" rel="noopener">Fundamentals of Deep Learning – Activation Functions and When to Use Them?</a></p>
+<p>[3]. <a href="https://www.wikiwand.com/en/Activation_function" target="_blank" rel="noopener">维基百科Activation Functions</a></p>
+<p>[4]. <a href="https://analyticsindiamag.com/most-common-activation-functions-in-neural-networks-and-rationale-behind-it/" target="_blank" rel="noopener">Types Of Activation Functions In Neural Networks And Rationale Behind It</a></p>
+<p>[5]. <a href="https://dashee87.github.io/data%20science/deep%20learning/visualising-activation-functions-in-neural-networks/" target="_blank" rel="noopener">Visualising Activation Functions in Neural Networks</a></p>
 
       
     </div>
@@ -453,7 +479,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/ml/" rel="tag"># ml</a>
+            <a href="/tags/dl/" rel="tag"># dl</a>
           
         </div>
       
@@ -466,8 +492,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/10/05/网页正文抽取算法/" rel="next" title="网页正文抽取算法">
-                <i class="fa fa-chevron-left"></i> 网页正文抽取算法
+              <a href="/2018/04/24/Neural-Networks-and-Deep-Learning-Foundation/" rel="next" title="Neural Networks and Deep Learning Foundation">
+                <i class="fa fa-chevron-left"></i> Neural Networks and Deep Learning Foundation
               </a>
             
           </div>
@@ -475,10 +501,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/06/20/Java多线程总结/" rel="prev" title="Java多线程总结">
-                Java多线程总结 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -649,7 +671,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#感知机模型"><span class="nav-number">1.</span> <span class="nav-text">感知机模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#几何解释"><span class="nav-number">1.1.</span> <span class="nav-text">几何解释</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#学习策略"><span class="nav-number">2.</span> <span class="nav-text">学习策略</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#学习算法"><span class="nav-number">3.</span> <span class="nav-text">学习算法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#激活函数的作用"><span class="nav-number">1.</span> <span class="nav-text">激活函数的作用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常见的激活函数"><span class="nav-number">2.</span> <span class="nav-text">常见的激活函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Sigmoid"><span class="nav-number">2.1.</span> <span class="nav-text">Sigmoid</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#表达式"><span class="nav-number">2.1.1.</span> <span class="nav-text">表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#导数"><span class="nav-number">2.1.2.</span> <span class="nav-text">导数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数性质"><span class="nav-number">2.1.3.</span> <span class="nav-text">函数性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现"><span class="nav-number">2.1.4.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点"><span class="nav-number">2.1.5.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tanh"><span class="nav-number">2.2.</span> <span class="nav-text">Tanh</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#表达式-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#导数-1"><span class="nav-number">2.2.2.</span> <span class="nav-text">导数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数性质-1"><span class="nav-number">2.2.3.</span> <span class="nav-text">函数性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现-1"><span class="nav-number">2.2.4.</span> <span class="nav-text">实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ReLU"><span class="nav-number">2.3.</span> <span class="nav-text">ReLU</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#表达式-2"><span class="nav-number">2.3.1.</span> <span class="nav-text">表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#导数-2"><span class="nav-number">2.3.2.</span> <span class="nav-text">导数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数性质-2"><span class="nav-number">2.3.3.</span> <span class="nav-text">函数性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点-1"><span class="nav-number">2.3.4.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Leaky-ReLU"><span class="nav-number">2.4.</span> <span class="nav-text">Leaky ReLU</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#表达式-3"><span class="nav-number">2.4.1.</span> <span class="nav-text">表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#求导"><span class="nav-number">2.4.2.</span> <span class="nav-text">求导</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数性质-3"><span class="nav-number">2.4.3.</span> <span class="nav-text">函数性质</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#选择激活函数准则"><span class="nav-number">3.</span> <span class="nav-text">选择激活函数准则</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
