@@ -94,7 +94,7 @@
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fqorpcvi8qj30kg0bwq3c.jpg">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fqorpbe3f8j30x60crab9.jpg">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fqorpbyfobj30et0g6dga.jpg">
-<meta property="og:updated_time" content="2018-04-25T07:34:12.467Z">
+<meta property="og:updated_time" content="2018-04-25T07:34:54.840Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Neural Networks and Deep Learning Foundation">
 <meta name="twitter:description" content="神经网络由于其多层多神经元的特性，参数往往很多，这也导致了学习深度学习的时候会有太“复杂”的感觉。该文章整理出一些神经网络中重要的基础概念和符号表示系统。 符号表示体系单层神经元 通常用$a^l$来表示第$l$层的向量，用$a^l_i$来表示该层向量中第$i$个分量。记住，上标用来表示整体，下标用来表示分量。 参数矩阵W  $ W$中的每一行代表的是每一个输出神经元输入的参数；W中的每一列代表的是">
@@ -432,10 +432,10 @@
 <p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fqorpbe3f8j30x60crab9.jpg" alt="Screen Shot 2018-04-24 at 15.50.28"></p>
 <h3 id="单个样本"><a href="#单个样本" class="headerlink" title="单个样本"></a>单个样本</h3><p>对于单个样本，我们只需要计算其loss function值，然后分别计算导数即可：</p>
 <p>$$\frac{\partial L}{\partial a}=-\frac{y}{a}-\frac{1-y}{1-a}$$</p>
-<p>$$\begin{align} \frac{\partial L}{\partial z} &amp;=\frac{\partial L}{\partial a}\cdot \frac{\partial a}{\partial z} \\  &amp;= a\cdot(1-a)\cdot [-\frac{y}{a}-\frac{1-y}{1-a}] \\ &amp;= a- y\end{align}$$</p>
-<p>$$\begin{align} \frac{\partial L}{\partial w_1} &amp;=\frac{\partial L}{\partial z}\cdot \frac{\partial z}{\partial w} \\  &amp;= x_1\cdot (a-y) \end{align}$$</p>
-<p>$$\begin{align} \frac{\partial L}{\partial w_2} &amp;=\frac{\partial L}{\partial z}\cdot \frac{\partial z}{\partial w} \\  &amp;= x_2\cdot (a-y) \end{align}$$</p>
-<p>$$\begin{align} \frac{\partial L}{\partial w_3} &amp;=\frac{\partial L}{\partial z}\cdot \frac{\partial z}{\partial w} \\  &amp;= x_3\cdot (a-y) \end{align}$$</p>
+<p>$$\begin{align} \frac{\partial L}{\partial z} &amp;=\frac{\partial L}{\partial a}\cdot \frac{\partial a}{\partial z} \\\\  &amp;= a\cdot(1-a)\cdot [-\frac{y}{a}-\frac{1-y}{1-a}] \\\\ &amp;= a- y\end{align}$$</p>
+<p>$$\begin{align} \frac{\partial L}{\partial w_1} &amp;=\frac{\partial L}{\partial z}\cdot \frac{\partial z}{\partial w} \\\\  &amp;= x_1\cdot (a-y) \end{align}$$</p>
+<p>$$\begin{align} \frac{\partial L}{\partial w_2} &amp;=\frac{\partial L}{\partial z}\cdot \frac{\partial z}{\partial w} \\\\  &amp;= x_2\cdot (a-y) \end{align}$$</p>
+<p>$$\begin{align} \frac{\partial L}{\partial w_3} &amp;=\frac{\partial L}{\partial z}\cdot \frac{\partial z}{\partial w} \\\\  &amp;= x_3\cdot (a-y) \end{align}$$</p>
 <p>可以看出来，在对单个样本计算loss function的时候并不困难，我们只需要计算三个导数即可。</p>
 <p>实现分析：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(num_iterations): // 迭代次数</span><br><span class="line">    z = w*x + b</span><br><span class="line">    a = sigmoid(z)</span><br><span class="line">    J = -[y*loga + (<span class="number">1</span>-y)*log(<span class="number">1</span>-a)]</span><br><span class="line">    dz = a - y</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(para_num):</span><br><span class="line">        dw_i = x_i*dz</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(para_num): // 参数个数</span><br><span class="line">        w_i = w_i - alpha * dw_i</span><br></pre></td></tr></table></figure>
@@ -445,10 +445,10 @@
 <p>$$a^{(i)}=\hat{y}^{(i)}=\sigma(z^{(i)})=\sigma(w^Tx^{(i)}+b)$$</p>
 <p>求偏导</p>
 <p>$$\frac{\partial J}{\partial a^{i}}=\frac{1}{m}\cdot [-\frac{y^{(i)}}{a^{(i)}}-\frac{1-y^{(i)}}{1-a^{(i)}}]$$</p>
-<p>$$\begin{align} \frac{\partial J}{\partial z^{(i)}} &amp;=\frac{\partial J}{\partial a^{(i)}}\cdot \frac{\partial a^{(i)}}{\partial z^{(i)}} \  &amp;= \frac{1}{m}\cdot a^{(i)}\cdot(1-a^{(i)})\cdot [-\frac{y^{(i)}}{a^{(i)}}-\frac{1-y^{(i)}}{1-a^{(i)}}] \&amp;= \frac{1}{m}\cdot (a^{(i)}- y^{(i)})\end{align}$$</p>
-<p>$$\begin{align} \frac{\partial J}{\partial w_1} &amp;=\sum_{i=1}^N\frac{\partial J}{\partial z^{(i)}}\cdot \frac{\partial z^{(i)}}{\partial w_1} \  &amp;= \frac{1}{m} \cdot x_1\cdot (a-y) \end{align}$$</p>
-<p>$$\begin{align} \frac{\partial J}{\partial w_2} &amp;=\sum_{i=1}^N\frac{\partial J}{\partial z^{(i)}}\cdot \frac{\partial z^{(i)}}{\partial w_2} \  &amp;= \frac{1}{m} \cdot x_2\cdot (a-y) \end{align}$$</p>
-<p>$$\begin{align} \frac{\partial J}{\partial w_3} &amp;=\sum_{i=1}^N\frac{\partial J}{\partial z^{(i)}}\cdot \frac{\partial z^{(i)}}{\partial w_3} \  &amp;= \frac{1}{m} \cdot x_3\cdot (a-y) \end{align}$$</p>
+<p>$$\begin{align} \frac{\partial J}{\partial z^{(i)}} &amp;=\frac{\partial J}{\partial a^{(i)}}\cdot \frac{\partial a^{(i)}}{\partial z^{(i)}} \\  &amp;= \frac{1}{m}\cdot a^{(i)}\cdot(1-a^{(i)})\cdot [-\frac{y^{(i)}}{a^{(i)}}-\frac{1-y^{(i)}}{1-a^{(i)}}] \\&amp;= \frac{1}{m}\cdot (a^{(i)}- y^{(i)})\end{align}$$</p>
+<p>$$\begin{align} \frac{\partial J}{\partial w_1} &amp;=\sum_{i=1}^N\frac{\partial J}{\partial z^{(i)}}\cdot \frac{\partial z^{(i)}}{\partial w_1} \\  &amp;= \frac{1}{m} \cdot x_1\cdot (a-y) \end{align}$$</p>
+<p>$$\begin{align} \frac{\partial J}{\partial w_2} &amp;=\sum_{i=1}^N\frac{\partial J}{\partial z^{(i)}}\cdot \frac{\partial z^{(i)}}{\partial w_2} \\  &amp;= \frac{1}{m} \cdot x_2\cdot (a-y) \end{align}$$</p>
+<p>$$\begin{align} \frac{\partial J}{\partial w_3} &amp;=\sum_{i=1}^N\frac{\partial J}{\partial z^{(i)}}\cdot \frac{\partial z^{(i)}}{\partial w_3} \\  &amp;= \frac{1}{m} \cdot x_3\cdot (a-y) \end{align}$$</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(num_iterations): // 迭代次数</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(num_sample): // 样本个数</span><br><span class="line">        z = w*x + b</span><br><span class="line">        a = sigmoid(z)</span><br><span class="line">        J = -[y*loga + (<span class="number">1</span>-y)*log(<span class="number">1</span>-a)]</span><br><span class="line">        dz = a - y</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(para_num): // 参数个数</span><br><span class="line">            dw_i += x_i*dz</span><br><span class="line">        b += dz_i</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(para_num): // 参数个数</span><br><span class="line">        w_i = w_i - alpha * dw_i</span><br><span class="line">    b = b - alpha * db</span><br></pre></td></tr></table></figure>
 <p>可以看到，算法学习需要3重循环。</p>
 <h3 id="向量化"><a href="#向量化" class="headerlink" title="向量化"></a>向量化</h3><p>通过使用numpy数组及向量计算，我们可以减少循环次数，提高运算效率。通过定义<code>dw=[dw_1, dw_2, ..., dw_n]</code>和<code>w=[w_1, w_2, ..., w_n]</code>来进行向量化操作。</p>
@@ -459,7 +459,7 @@
 <li><p>样本输入：$X=[x^{(1)},x^{(2)},…,x^{(m)}]$，其中$x^{(i)}$为列向量。</p>
 </li>
 <li><p>得到Z：</p>
-<p>$$\begin{align} Z=[z^{(1)},z^{(2)},…,z^{(m)}] &amp;= w^T\cdot X+[b,b,…,b] \  &amp;= [w^Tx^{(1)}+b,w^Tx^{(2)}+b,…,w^Tx^{(m)}+b]  \ \end{align}$$</p>
+<p>$$\begin{align} Z=[z^{(1)},z^{(2)},…,z^{(m)}] &amp;= w^T\cdot X+[b,b,…,b] \\  &amp;= [w^Tx^{(1)}+b,w^Tx^{(2)}+b,…,w^Tx^{(m)}+b]  \\ \end{align}$$</p>
 <p><code>Z=np.dot(W.T, X)+b</code></p>
 </li>
 <li><p>$A=[\sigma(z^{(1)}),\sigma(z^{(2)}),…,\sigma(z^{(m)})]$</p>
