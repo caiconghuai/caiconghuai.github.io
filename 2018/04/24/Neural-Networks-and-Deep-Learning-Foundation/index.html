@@ -94,7 +94,10 @@
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fqorpcvi8qj30kg0bwq3c.jpg">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fqorpbe3f8j30x60crab9.jpg">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fqorpbyfobj30et0g6dga.jpg">
-<meta property="og:updated_time" content="2018-04-25T07:34:54.840Z">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fqtiqbhsp5j30qp0eeq3z.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fqtiqb8zayj30zf0drdgx.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fqtjjorp99j30f901mjrg.jpg">
+<meta property="og:updated_time" content="2018-04-29T07:06:58.316Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Neural Networks and Deep Learning Foundation">
 <meta name="twitter:description" content="神经网络由于其多层多神经元的特性，参数往往很多，这也导致了学习深度学习的时候会有太“复杂”的感觉。该文章整理出一些神经网络中重要的基础概念和符号表示系统。 符号表示体系单层神经元 通常用$a^l$来表示第$l$层的向量，用$a^l_i$来表示该层向量中第$i$个分量。记住，上标用来表示整体，下标用来表示分量。 参数矩阵W  $ W$中的每一行代表的是每一个输出神经元输入的参数；W中的每一列代表的是">
@@ -454,7 +457,10 @@
 <h3 id="向量化"><a href="#向量化" class="headerlink" title="向量化"></a>向量化</h3><p>通过使用numpy数组及向量计算，我们可以减少循环次数，提高运算效率。通过定义<code>dw=[dw_1, dw_2, ..., dw_n]</code>和<code>w=[w_1, w_2, ..., w_n]</code>来进行向量化操作。</p>
 <h4 id="一、参数向量化"><a href="#一、参数向量化" class="headerlink" title="一、参数向量化"></a>一、参数向量化</h4><p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fqorpbyfobj30et0g6dga.jpg" alt="Screen Shot 2018-04-24 at 23.11.18"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(num_iterations): // 迭代次数</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(num_sample): // 样本个数</span><br><span class="line">        z = w*x + b</span><br><span class="line">        a = sigmoid(z)</span><br><span class="line">        J = -[y*loga + (<span class="number">1</span>-y)*log(<span class="number">1</span>-a)]</span><br><span class="line">        dz = a - y</span><br><span class="line">        dw += x_i*dz_i</span><br><span class="line">        b += dz_i</span><br><span class="line">	w -= alpha*dw</span><br><span class="line">    b = b - alpha * db</span><br></pre></td></tr></table></figure>
-<h4 id="二、样本向量化"><a href="#二、样本向量化" class="headerlink" title="二、样本向量化"></a>二、样本向量化</h4><p>在上面的实现中，对于样本的处理，并没有转化为向量的操作，现在，我们研究一下如何转化为向量的操作。</p>
+<h4 id="二、样本向量化"><a href="#二、样本向量化" class="headerlink" title="二、样本向量化"></a>二、样本向量化</h4><p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fqtiqbhsp5j30qp0eeq3z.jpg" alt="Screen Shot 2018-04-29 at 14.26.21"></p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fqtiqb8zayj30zf0drdgx.jpg" alt="Screen Shot 2018-04-29 at 14.37.57"></p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fqtjjorp99j30f901mjrg.jpg" alt="Screen Shot 2018-04-29 at 15.06.40"></p>
+<p>在上面的实现中，对于样本的处理，并没有转化为向量的操作，现在，我们研究一下如何转化为向量的操作。</p>
 <ul>
 <li><p>样本输入：$X=[x^{(1)},x^{(2)},…,x^{(m)}]$，其中$x^{(i)}$为列向量。</p>
 </li>
@@ -589,7 +595,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="dl," />
 
 
 
@@ -81,16 +81,20 @@
 
 
 
-<meta name="description" content="Algorithm/Machine Learning/Deep Learning/NLP">
-<meta property="og:type" content="website">
-<meta property="og:title" content="蔡聪怀">
-<meta property="og:url" content="http://conghuai.me/archives/index.html">
+<meta name="description" content="深度学习中通常都有很多个隐藏层， 每个隐藏层会有很多个神经元，这些神经元的输出连接到下一层，然后经过激活函数产生新的输出。数据输入到神经元，经过多个隐藏层，最后产生最终的输出结果。我们对预测结果和真实结果计算损失函数，然后利用该损失对各层的参数求偏导，进而通过偏导值更新参数。这个过程会迭代很多次。  构建运算块神经网络运算从大的方向上主要分为两个，一个是前向运算，另一个是后向运算。两个运算的输入、">
+<meta name="keywords" content="dl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Building blocks of deep neural networks">
+<meta property="og:url" content="http://conghuai.me/2018/04/27/Building-blocks-of-deep-neural-networks/index.html">
 <meta property="og:site_name" content="蔡聪怀">
-<meta property="og:description" content="Algorithm/Machine Learning/Deep Learning/NLP">
+<meta property="og:description" content="深度学习中通常都有很多个隐藏层， 每个隐藏层会有很多个神经元，这些神经元的输出连接到下一层，然后经过激活函数产生新的输出。数据输入到神经元，经过多个隐藏层，最后产生最终的输出结果。我们对预测结果和真实结果计算损失函数，然后利用该损失对各层的参数求偏导，进而通过偏导值更新参数。这个过程会迭代很多次。  构建运算块神经网络运算从大的方向上主要分为两个，一个是前向运算，另一个是后向运算。两个运算的输入、">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="http://conghuai.me/Desktop/Screen%20Shot%202018-04-29%20at%2013.47.34.png">
+<meta property="og:updated_time" content="2018-04-29T06:38:06.758Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="蔡聪怀">
-<meta name="twitter:description" content="Algorithm/Machine Learning/Deep Learning/NLP">
+<meta name="twitter:title" content="Building blocks of deep neural networks">
+<meta name="twitter:description" content="深度学习中通常都有很多个隐藏层， 每个隐藏层会有很多个神经元，这些神经元的输出连接到下一层，然后经过激活函数产生新的输出。数据输入到神经元，经过多个隐藏层，最后产生最终的输出结果。我们对预测结果和真实结果计算损失函数，然后利用该损失对各层的参数求偏导，进而通过偏导值更新参数。这个过程会迭代很多次。  构建运算块神经网络运算从大的方向上主要分为两个，一个是前向运算，另一个是后向运算。两个运算的输入、">
+<meta name="twitter:image" content="http://conghuai.me/Desktop/Screen%20Shot%202018-04-29%20at%2013.47.34.png">
 
 
 
@@ -120,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://conghuai.me/archives/"/>
+  <link rel="canonical" href="http://conghuai.me/2018/04/27/Building-blocks-of-deep-neural-networks/"/>
 
 
 
 
 
-  <title>Archive | 蔡聪怀</title>
+  <title>Building blocks of deep neural networks | 蔡聪怀</title>
   
 
 
@@ -145,7 +149,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -249,411 +253,263 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://conghuai.me/2018/04/27/Building-blocks-of-deep-neural-networks/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Conghuai Cai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="蔡聪怀">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">Building blocks of deep neural networks</h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-27T20:16:45+08:00">
+                2018-04-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        Um..! 20 posts in total. Keep on posting.
-      </span>
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Machine Learning</span>
+                  </a>
+                </span>
 
-      
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/Deep-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Deep Learning</span>
+                  </a>
+                </span>
 
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2018">2018</h1>
-          </div>
-        
-        
 
-        
+          
+            
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
+          
+             <span id="/2018/04/27/Building-blocks-of-deep-neural-networks/" class="leancloud_visitors" data-flag-title="Building blocks of deep neural networks">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/04/27/Building-blocks-of-deep-neural-networks/" itemprop="url">
+          
+
+          
+            <div class="post-wordcount">
               
-                <span itemprop="name">Building blocks of deep neural networks</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  335 字
+                </span>
               
-            </a>
-        
-      </h2>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-27T20:16:45+08:00"
-              content="2018-04-27" >
-          04-27
-        </time>
-      </div>
+              
+                <span class="post-meta-divider">|</span>
+              
 
-    </header>
-  </article>
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  1 分钟
+                </span>
+              
+            </div>
+          
 
+          
 
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/04/25/Activation-Functions/" itemprop="url">
-              
-                <span itemprop="name">Activation Functions</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-25T15:38:44+08:00"
-              content="2018-04-25" >
-          04-25
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/04/24/Neural-Networks-and-Deep-Learning-Foundation/" itemprop="url">
-              
-                <span itemprop="name">Neural Networks and Deep Learning Foundation</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-24T14:33:38+08:00"
-              content="2018-04-24" >
-          04-24
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <p>深度学习中通常都有很多个隐藏层， 每个隐藏层会有很多个神经元，这些神经元的输出连接到下一层，然后经过激活函数产生新的输出。数据输入到神经元，经过多个隐藏层，最后产生最终的输出结果。我们对预测结果和真实结果计算损失函数，然后利用该损失对各层的参数求偏导，进而通过偏导值更新参数。这个过程会迭代很多次。</p>
+<p><img src="../../../../../../../Desktop/Screen Shot 2018-04-29 at 13.47.34.png" alt="Screen Shot 2018-04-29 at 13.47.34"></p>
+<h1 id="构建运算块"><a href="#构建运算块" class="headerlink" title="构建运算块"></a>构建运算块</h1><p>神经网络运算从大的方向上主要分为两个，一个是前向运算，另一个是后向运算。两个运算的输入、输出已经所需参数都是不一样的。</p>
+<h2 id="前向运算"><a href="#前向运算" class="headerlink" title="前向运算"></a>前向运算</h2><p>前向运算指训练数据输入到神经网络中，经过多个隐藏层，最后得到损失函数值。</p>
+<p>对于<code>Layer L</code></p>
+<ul>
+<li>输入<ul>
+<li>$a^{[l-1]}$</li>
+</ul>
+</li>
+<li>输出<ul>
+<li>$a^{[l]}$</li>
+</ul>
+</li>
+<li>参数<ul>
+<li>$W^{[l]}$,$b^{[l]}$</li>
+</ul>
+</li>
+<li>运算</li>
+</ul>
+<p>$$Z^{[l]}=W^{[l]}A^{[l-1]}+b$$</p>
+<p>$$A^{[l]}=g^{[l]}(Z^{[l]})$$</p>
+<ul>
+<li>缓存<ul>
+<li>$Z^{[l]}$</li>
+</ul>
+</li>
+</ul>
+<h2 id="后向运算"><a href="#后向运算" class="headerlink" title="后向运算"></a>后向运算</h2><p>后向运算指损失函数值对各个隐藏层参数求偏导的过程。</p>
+<ul>
+<li>输入<ul>
+<li>$da^{[l]}$</li>
+</ul>
+</li>
+<li>输出<ul>
+<li>$da^{[l-1]}$,$dW^{[l]}$,$db^{[l]}$</li>
+</ul>
+</li>
+<li>运算</li>
+</ul>
+<p>$$dZ^{[l]}=dA^{[l]}\cdot g^{[l]}‘(Z^{[l]})$$</p>
+<p>$$dW^{[l]}=\frac{1}{m}dZ^{[l]}A^{[l-1]T}$$</p>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/04/22/Adaboost/" itemprop="url">
-              
-                <span itemprop="name">Adaboost</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-22T11:02:07+08:00"
-              content="2018-04-22" >
-          04-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/04/19/Support-Vector-Machine/" itemprop="url">
-              
-                <span itemprop="name">Support Vector Machine</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-19T10:18:56+08:00"
-              content="2018-04-19" >
-          04-19
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/04/19/Improved-Iterative-Scaling/" itemprop="url">
-              
-                <span itemprop="name">Improved Iterative Scaling</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-19T08:18:16+08:00"
-              content="2018-04-19" >
-          04-19
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/04/18/Expectation-Maximization/" itemprop="url">
-              
-                <span itemprop="name">Expectation Maximization</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-18T17:07:27+08:00"
-              content="2018-04-18" >
-          04-18
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/04/18/Optimization-for-Machine-Learning/" itemprop="url">
-              
-                <span itemprop="name">Optimization for Machine Learning</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-18T09:47:44+08:00"
-              content="2018-04-18" >
-          04-18
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/04/16/Maximum-Entropy-Model/" itemprop="url">
-              
-                <span itemprop="name">Maximum Entropy Model</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-16T15:56:56+08:00"
-              content="2018-04-16" >
-          04-16
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/04/14/Mean-Squared-Error/" itemprop="url">
-              
-                <span itemprop="name">Mean Squared Error</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-14T17:10:01+08:00"
-              content="2018-04-14" >
-          04-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/dl/" rel="tag"># dl</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/25/Activation-Functions/" rel="next" title="Activation Functions">
+                <i class="fa fa-chevron-left"></i> Activation Functions
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -661,6 +517,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -681,8 +541,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -781,6 +650,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#构建运算块"><span class="nav-number">1.</span> <span class="nav-text">构建运算块</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前向运算"><span class="nav-number">1.1.</span> <span class="nav-text">前向运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后向运算"><span class="nav-number">1.2.</span> <span class="nav-text">后向运算</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -921,6 +806,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
