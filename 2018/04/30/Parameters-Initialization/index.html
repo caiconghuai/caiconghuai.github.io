@@ -89,13 +89,13 @@
 <meta property="og:site_name" content="蔡聪怀">
 <meta property="og:description" content="神经网络通常有大量的参数需要训练，在模型一开始训练时，需要初始化模型的参数，我们该采用何种策略来初始化参数呢？不同的初始化方法将会带来如下的效果：  加速梯度下降的收敛速度； 可能会使得模型在训练集上的错误率更低。  Zero initialization如果我们将权重设置为零，那么所有层的所有神经元都执行相同的计算，给出相同的输出，则整个深层网络的复杂度将于单个神经元的复杂度相同，并且预测不会比">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://conghuai.me/Desktop/Screen%20Shot%202018-04-30%20at%2015.35.56.png">
-<meta property="og:image" content="http://conghuai.me/Desktop/Screen%20Shot%202018-04-30%20at%2015.38.06.png">
-<meta property="og:updated_time" content="2018-04-30T07:54:09.473Z">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fquqmny4l2j30dj0hktbc.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fquqmmnj2qj30ey0hk413.jpg">
+<meta property="og:updated_time" content="2018-04-30T07:57:50.547Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Parameters Initialization">
 <meta name="twitter:description" content="神经网络通常有大量的参数需要训练，在模型一开始训练时，需要初始化模型的参数，我们该采用何种策略来初始化参数呢？不同的初始化方法将会带来如下的效果：  加速梯度下降的收敛速度； 可能会使得模型在训练集上的错误率更低。  Zero initialization如果我们将权重设置为零，那么所有层的所有神经元都执行相同的计算，给出相同的输出，则整个深层网络的复杂度将于单个神经元的复杂度相同，并且预测不会比">
-<meta name="twitter:image" content="http://conghuai.me/Desktop/Screen%20Shot%202018-04-30%20at%2015.35.56.png">
+<meta name="twitter:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fquqmny4l2j30dj0hktbc.jpg">
 
 
 
@@ -417,10 +417,10 @@
 </ul>
 <h1 id="Zero-initialization"><a href="#Zero-initialization" class="headerlink" title="Zero initialization"></a>Zero initialization</h1><p>如果我们将权重设置为零，那么所有层的所有神经元都执行相同的计算，给出相同的输出，则整个深层网络的复杂度将于单个神经元的复杂度相同，并且预测不会比随机更好。这样的初始化方式带来了隐层层神经元<strong>对称问题</strong>。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> l <span class="keyword">in</span> range(<span class="number">1</span>, L):</span><br><span class="line">    <span class="comment">### START CODE HERE ### (≈ 2 lines of code)</span></span><br><span class="line">    parameters[<span class="string">'W'</span> + str(l)] = np.zeros((layers_dims[l], layers_dims[l<span class="number">-1</span>]))</span><br><span class="line">    parameters[<span class="string">'b'</span> + str(l)] = np.zeros((layers_dims[l], <span class="number">1</span>))</span><br><span class="line">    <span class="comment">### END CODE HERE ###</span></span><br></pre></td></tr></table></figure>
-<p><img src="../../../../../../../Desktop/Screen Shot 2018-04-30 at 15.35.56.png" alt="Screen Shot 2018-04-30 at 15.35.56"></p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fquqmny4l2j30dj0hktbc.jpg" alt="Screen Shot 2018-04-30 at 15.35.56"></p>
 <h1 id="Random-initialization"><a href="#Random-initialization" class="headerlink" title="Random initialization"></a>Random initialization</h1><p>为了解决对称问题，我们可以随机初始化$W$参数，这样可以使得每个神经元得到不同的输出。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> l <span class="keyword">in</span> range(<span class="number">1</span>, L):</span><br><span class="line">    <span class="comment">### START CODE HERE ### (≈ 2 lines of code)</span></span><br><span class="line">    parameters[<span class="string">'W'</span> + str(l)] = np.random.randn(layers_dims[l], layers_dims[l<span class="number">-1</span>]) * <span class="number">10</span></span><br><span class="line">    parameters[<span class="string">'b'</span> + str(l)] = np.zeros((layers_dims[l], <span class="number">1</span>))</span><br><span class="line">    <span class="comment">### END CODE HERE ###</span></span><br></pre></td></tr></table></figure>
-<p><img src="../../../../../../../Desktop/Screen Shot 2018-04-30 at 15.38.06.png" alt="Screen Shot 2018-04-30 at 15.38.06"></p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fquqmmnj2qj30ey0hk413.jpg" alt="Screen Shot 2018-04-30 at 15.38.06"></p>
 <p>随机初始化参数可能会带来两个问题：（1）梯度消失；（2）梯度爆炸。</p>
 <h2 id="梯度消失"><a href="#梯度消失" class="headerlink" title="梯度消失"></a>梯度消失</h2><blockquote>
 <p>The weight update is minor and results in slower convergence. This makes the optimization of the loss function slow. In the worst case, this may completely stop the neural network from training further.</p>
@@ -435,7 +435,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">W = np.random.randn(size_l, size_l<span class="number">-1</span>) * np.sqrt(<span class="number">2</span>/size_l<span class="number">-1</span>)</span><br></pre></td></tr></table></figure>
 <h2 id="Tanh"><a href="#Tanh" class="headerlink" title="Tanh"></a>Tanh</h2><p>$$\sqrt {\frac{1}{size^{[l-1]}}}$$</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">W = np.random.randn(size_l, size_l<span class="number">-1</span>) * np.sqrt(<span class="number">1</span>/size_l<span class="number">-1</span>)</span><br></pre></td></tr></table></figure>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1] . <a href="https://www.coursera.org/learn/deep-neural-network/lecture/RwqYe/weight-initialization-for-deep-networks" target="_blank" rel="noopener">https://www.coursera.org/learn/deep-neural-network/lecture/RwqYe/weight-initialization-for-deep-networks</a></p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1]. <a href="https://www.coursera.org/learn/deep-neural-network/lecture/RwqYe/weight-initialization-for-deep-networks" target="_blank" rel="noopener">https://www.coursera.org/learn/deep-neural-network/lecture/RwqYe/weight-initialization-for-deep-networks</a></p>
 <p>[2]. <a href="https://towardsdatascience.com/deep-learning-best-practices-1-weight-initialization-14e5c0295b94" target="_blank" rel="noopener">Deep Learning Best Practices (1) — Weight Initialization</a></p>
 
       
