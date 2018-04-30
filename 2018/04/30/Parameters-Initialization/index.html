@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="dl,regularization,hyperparameter tuning," />
 
 
 
@@ -81,17 +81,21 @@
 
 
 
-<meta name="description" content="I am a master student at Harbin Institute of Technology. My main research interests lie within machine learning and deep learning for natural language processing, and I am particularly interested in w">
-<meta property="og:type" content="website">
-<meta property="og:title" content="About Me">
-<meta property="og:url" content="http://conghuai.me/about/index.html">
+<meta name="description" content="神经网络通常有大量的参数需要训练，在模型一开始训练时，需要初始化模型的参数，我们该采用何种策略来初始化参数呢？不同的初始化方法将会带来如下的效果：  加速梯度下降的收敛速度； 可能会使得模型在训练集上的错误率更低。  Zero initialization如果我们将权重设置为零，那么所有层的所有神经元都执行相同的计算，给出相同的输出，则整个深层网络的复杂度将于单个神经元的复杂度相同，并且预测不会比">
+<meta name="keywords" content="dl,regularization,hyperparameter tuning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Parameters Initialization">
+<meta property="og:url" content="http://conghuai.me/2018/04/30/Parameters-Initialization/index.html">
 <meta property="og:site_name" content="蔡聪怀">
-<meta property="og:description" content="I am a master student at Harbin Institute of Technology. My main research interests lie within machine learning and deep learning for natural language processing, and I am particularly interested in w">
+<meta property="og:description" content="神经网络通常有大量的参数需要训练，在模型一开始训练时，需要初始化模型的参数，我们该采用何种策略来初始化参数呢？不同的初始化方法将会带来如下的效果：  加速梯度下降的收敛速度； 可能会使得模型在训练集上的错误率更低。  Zero initialization如果我们将权重设置为零，那么所有层的所有神经元都执行相同的计算，给出相同的输出，则整个深层网络的复杂度将于单个神经元的复杂度相同，并且预测不会比">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-04-09T05:46:50.000Z">
+<meta property="og:image" content="http://conghuai.me/Desktop/Screen%20Shot%202018-04-30%20at%2015.35.56.png">
+<meta property="og:image" content="http://conghuai.me/Desktop/Screen%20Shot%202018-04-30%20at%2015.38.06.png">
+<meta property="og:updated_time" content="2018-04-30T07:54:09.473Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="About Me">
-<meta name="twitter:description" content="I am a master student at Harbin Institute of Technology. My main research interests lie within machine learning and deep learning for natural language processing, and I am particularly interested in w">
+<meta name="twitter:title" content="Parameters Initialization">
+<meta name="twitter:description" content="神经网络通常有大量的参数需要训练，在模型一开始训练时，需要初始化模型的参数，我们该采用何种策略来初始化参数呢？不同的初始化方法将会带来如下的效果：  加速梯度下降的收敛速度； 可能会使得模型在训练集上的错误率更低。  Zero initialization如果我们将权重设置为零，那么所有层的所有神经元都执行相同的计算，给出相同的输出，则整个深层网络的复杂度将于单个神经元的复杂度相同，并且预测不会比">
+<meta name="twitter:image" content="http://conghuai.me/Desktop/Screen%20Shot%202018-04-30%20at%2015.35.56.png">
 
 
 
@@ -121,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://conghuai.me/about/"/>
+  <link rel="canonical" href="http://conghuai.me/2018/04/30/Parameters-Initialization/"/>
 
 
 
 
 
-  <title>About Me | 蔡聪怀</title>
+  <title>Parameters Initialization | 蔡聪怀</title>
   
 
 
@@ -252,43 +256,249 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://conghuai.me/2018/04/30/Parameters-Initialization/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Conghuai Cai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="蔡聪怀">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">About Me</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <p>I am a master student at Harbin Institute of Technology. My main research interests lie within machine learning and deep learning for natural language processing, and I am particularly interested in web scrawler and Data Mining. I am supervised by <a href="http://www.hitsz.edu.cn/teacher/view/id-237.html" target="_blank" rel="noopener">Yunming Ye</a>. </p>
-<h2 id="Education"><a href="#Education" class="headerlink" title="Education"></a>Education</h2><ul>
-<li>Sept. 2016 - Present, <strong>Master student</strong>, Dept. of Computer Science, <a href="http://www.hitsz.edu.cn/" target="_blank" rel="noopener">Harbin Institute of Technology</a>.</li>
-<li>Sept. 2012 - Jul. 2016, <strong>BE</strong>, Dept. of Information Science and Technology, <a href="http://www.neu.edu.cn/" target="_blank" rel="noopener">Northeastern University</a></li>
+          <h1 class="post-title" itemprop="name headline">Parameters Initialization</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-30T15:16:45+08:00">
+                2018-04-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Deep-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Deep Learning</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Deep-Learning/Optimization/" itemprop="url" rel="index">
+                    <span itemprop="name">Optimization</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/04/30/Parameters-Initialization/" class="leancloud_visitors" data-flag-title="Parameters Initialization">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  641 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  3 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>神经网络通常有大量的参数需要训练，在模型一开始训练时，需要初始化模型的参数，我们该采用何种策略来初始化参数呢？不同的初始化方法将会带来如下的效果：</p>
+<ul>
+<li>加速梯度下降的收敛速度；</li>
+<li>可能会使得模型在训练集上的错误率更低。</li>
 </ul>
-<h2 id="Talks"><a href="#Talks" class="headerlink" title="Talks"></a>Talks</h2><ul>
-<li>Minimum Edit Distance[<a href="https://docs.google.com/presentation/d/1dbuzgiMIKCGVHA8bt37HneWK74ghd1V1lN4xmYUfzfc/edit" target="_blank" rel="noopener">PPT</a>].</li>
-<li>K-Means[<a href="https://docs.google.com/presentation/d/1QCt7zMC26Yq7LhH-eW569NSySPIzxHHET5HI84gRb0s/edit" target="_blank" rel="noopener">PPT</a>]</li>
-<li>Hidden Markov Model[<a href="https://drive.google.com/file/d/10YnAP9NdQ0yY_sgesDdQs36nwBE-ErNI/view" target="_blank" rel="noopener">PPT</a>]</li>
-</ul>
+<h1 id="Zero-initialization"><a href="#Zero-initialization" class="headerlink" title="Zero initialization"></a>Zero initialization</h1><p>如果我们将权重设置为零，那么所有层的所有神经元都执行相同的计算，给出相同的输出，则整个深层网络的复杂度将于单个神经元的复杂度相同，并且预测不会比随机更好。这样的初始化方式带来了隐层层神经元<strong>对称问题</strong>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> l <span class="keyword">in</span> range(<span class="number">1</span>, L):</span><br><span class="line">    <span class="comment">### START CODE HERE ### (≈ 2 lines of code)</span></span><br><span class="line">    parameters[<span class="string">'W'</span> + str(l)] = np.zeros((layers_dims[l], layers_dims[l<span class="number">-1</span>]))</span><br><span class="line">    parameters[<span class="string">'b'</span> + str(l)] = np.zeros((layers_dims[l], <span class="number">1</span>))</span><br><span class="line">    <span class="comment">### END CODE HERE ###</span></span><br></pre></td></tr></table></figure>
+<p><img src="../../../../../../../Desktop/Screen Shot 2018-04-30 at 15.35.56.png" alt="Screen Shot 2018-04-30 at 15.35.56"></p>
+<h1 id="Random-initialization"><a href="#Random-initialization" class="headerlink" title="Random initialization"></a>Random initialization</h1><p>为了解决对称问题，我们可以随机初始化$W$参数，这样可以使得每个神经元得到不同的输出。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> l <span class="keyword">in</span> range(<span class="number">1</span>, L):</span><br><span class="line">    <span class="comment">### START CODE HERE ### (≈ 2 lines of code)</span></span><br><span class="line">    parameters[<span class="string">'W'</span> + str(l)] = np.random.randn(layers_dims[l], layers_dims[l<span class="number">-1</span>]) * <span class="number">10</span></span><br><span class="line">    parameters[<span class="string">'b'</span> + str(l)] = np.zeros((layers_dims[l], <span class="number">1</span>))</span><br><span class="line">    <span class="comment">### END CODE HERE ###</span></span><br></pre></td></tr></table></figure>
+<p><img src="../../../../../../../Desktop/Screen Shot 2018-04-30 at 15.38.06.png" alt="Screen Shot 2018-04-30 at 15.38.06"></p>
+<p>随机初始化参数可能会带来两个问题：（1）梯度消失；（2）梯度爆炸。</p>
+<h2 id="梯度消失"><a href="#梯度消失" class="headerlink" title="梯度消失"></a>梯度消失</h2><blockquote>
+<p>The weight update is minor and results in slower convergence. This makes the optimization of the loss function slow. In the worst case, this may completely stop the neural network from training further.</p>
+</blockquote>
+<p>在神经网络中，对于任何激活函数，当我们对损失做反向传播的时候，$dW$将会越来越小。所以，越靠近输入层的神经元其改变量将越小。</p>
+<h2 id="梯度爆炸"><a href="#梯度爆炸" class="headerlink" title="梯度爆炸"></a>梯度爆炸</h2><blockquote>
+<p>This may result in oscillating around the minima or even overshooting the optimum again and again and the model will never learn!</p>
+</blockquote>
+<p>该问题和上面的相反，当我们参数值很大时，经过多层神经元累积后，得到的值将会非常大。</p>
+<h1 id="Best-Practices"><a href="#Best-Practices" class="headerlink" title="Best Practices"></a>Best Practices</h1><p>在神经网络模型中，我们通常会使用<code>ReLU</code>或者<code>leaky ReLU</code>作为激活函数，该激活函数对于梯度消失和梯度爆炸问题具有较好的鲁棒性。我们可以根据不同的激活函数，采用启发式方式来初始化参数。</p>
+<h2 id="ReLU"><a href="#ReLU" class="headerlink" title="ReLU"></a>ReLU</h2><p>$$\sqrt {\frac{2}{size^{[l-1]}}}$$</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">W = np.random.randn(size_l, size_l<span class="number">-1</span>) * np.sqrt(<span class="number">2</span>/size_l<span class="number">-1</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="Tanh"><a href="#Tanh" class="headerlink" title="Tanh"></a>Tanh</h2><p>$$\sqrt {\frac{1}{size^{[l-1]}}}$$</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">W = np.random.randn(size_l, size_l<span class="number">-1</span>) * np.sqrt(<span class="number">1</span>/size_l<span class="number">-1</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1] . <a href="https://www.coursera.org/learn/deep-neural-network/lecture/RwqYe/weight-initialization-for-deep-networks" target="_blank" rel="noopener">https://www.coursera.org/learn/deep-neural-network/lecture/RwqYe/weight-initialization-for-deep-networks</a></p>
+<p>[2]. <a href="https://towardsdatascience.com/deep-learning-best-practices-1-weight-initialization-14e5c0295b94" target="_blank" rel="noopener">Deep Learning Best Practices (1) — Weight Initialization</a></p>
 
-        
-      </div>
-      
-      
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/dl/" rel="tag"># dl</a>
+          
+            <a href="/tags/regularization/" rel="tag"># regularization</a>
+          
+            <a href="/tags/hyperparameter-tuning/" rel="tag"># hyperparameter tuning</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/27/Building-blocks-of-deep-neural-networks/" rel="next" title="Building blocks of deep neural networks">
+                <i class="fa fa-chevron-left"></i> Building blocks of deep neural networks
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -440,7 +650,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Education"><span class="nav-number">1.</span> <span class="nav-text">Education</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Talks"><span class="nav-number">2.</span> <span class="nav-text">Talks</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Zero-initialization"><span class="nav-number">1.</span> <span class="nav-text">Zero initialization</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Random-initialization"><span class="nav-number">2.</span> <span class="nav-text">Random initialization</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#梯度消失"><span class="nav-number">2.1.</span> <span class="nav-text">梯度消失</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#梯度爆炸"><span class="nav-number">2.2.</span> <span class="nav-text">梯度爆炸</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Best-Practices"><span class="nav-number">3.</span> <span class="nav-text">Best Practices</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ReLU"><span class="nav-number">3.1.</span> <span class="nav-text">ReLU</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tanh"><span class="nav-number">3.2.</span> <span class="nav-text">Tanh</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
