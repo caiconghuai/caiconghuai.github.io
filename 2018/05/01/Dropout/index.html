@@ -90,7 +90,7 @@
 <meta property="og:description" content="过拟合是机器学习和深度学习的一个比较重要的问题，模型一旦过拟合，就会出现在训练样本上表现很好，但是在测试样本上表现很差的情况。所以，过拟合导致模型变得不可用。 Dropout  In a standard neural network, the derivative received by each parameter tells it how it should change so the fi">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fqvphars2ej30h209475u.jpg">
-<meta property="og:updated_time" content="2018-05-01T04:06:55.181Z">
+<meta property="og:updated_time" content="2018-05-01T04:08:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Dropout">
 <meta name="twitter:description" content="过拟合是机器学习和深度学习的一个比较重要的问题，模型一旦过拟合，就会出现在训练样本上表现很好，但是在测试样本上表现很差的情况。所以，过拟合导致模型变得不可用。 Dropout  In a standard neural network, the derivative received by each parameter tells it how it should change so the fi">
@@ -449,7 +449,7 @@
 <li>Test phase：$O_i = a(\sum_{k=1}^{d_i}w_kx_k+b)$</li>
 </ul>
 <h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><h2 id="前向运算"><a href="#前向运算" class="headerlink" title="前向运算"></a>前向运算</h2><ol>
-<li>对于每层神经元$a^{[l]}$，我们创建一个维度一样的变量$d^{[l]}$，其中$d^{[l]}_i\in(0,1)$。因为每一层的输入有多个，我们采用向量化方式来处理，将$d^{[l]}$进行扩充得，$D^{[l]}=[d^{[l] (1)},d^{[l] (2)},…,d^{[l] (m)}]$，该维度与$A^{[l]}$的维度一致；</li>
+<li>对于每层神经元$a^{[l]}$，我们创建一个维度一样的变量$d^{[l]}$，其中$d^{[l]}_i\in(0,1)$。因为每一层的输入有多个，我们采用向量化方式来处理，将$d^{[l]}$进行扩充得，$D^{[l]}=[d^{[l]1},d^{[l]2},…,d^{[l]m}]$，该维度与$A^{[l]}$的维度一致；</li>
 <li>将$D^{[l]}$中的每个元素根据与keep_prob相比，置位0或1；</li>
 <li>$A^{[l]} = A^{[l]}*D^{[l]}$；</li>
 <li>$A^{[l]} /= keep\_prob$</li>
