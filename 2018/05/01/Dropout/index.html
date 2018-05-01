@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="ml,dl,overfiting," />
 
 
 
@@ -81,16 +81,20 @@
 
 
 
-<meta name="description" content="Algorithm/Machine Learning/Deep Learning/NLP">
-<meta property="og:type" content="website">
-<meta property="og:title" content="蔡聪怀">
-<meta property="og:url" content="http://conghuai.me/tags/regularization/index.html">
+<meta name="description" content="过拟合是机器学习和深度学习的一个比较重要的问题，模型一旦过拟合，就会出现在训练样本上表现很好，但是在测试样本上表现很差的情况。所以，过拟合导致模型变得不可用。 Dropout  In a standard neural network, the derivative received by each parameter tells it how it should change so the fi">
+<meta name="keywords" content="ml,dl,overfiting">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dropout">
+<meta property="og:url" content="http://conghuai.me/2018/05/01/Dropout/index.html">
 <meta property="og:site_name" content="蔡聪怀">
-<meta property="og:description" content="Algorithm/Machine Learning/Deep Learning/NLP">
+<meta property="og:description" content="过拟合是机器学习和深度学习的一个比较重要的问题，模型一旦过拟合，就会出现在训练样本上表现很好，但是在测试样本上表现很差的情况。所以，过拟合导致模型变得不可用。 Dropout  In a standard neural network, the derivative received by each parameter tells it how it should change so the fi">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="http://conghuai.me/Desktop/dropout.jpeg">
+<meta property="og:updated_time" content="2018-05-01T04:02:37.924Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="蔡聪怀">
-<meta name="twitter:description" content="Algorithm/Machine Learning/Deep Learning/NLP">
+<meta name="twitter:title" content="Dropout">
+<meta name="twitter:description" content="过拟合是机器学习和深度学习的一个比较重要的问题，模型一旦过拟合，就会出现在训练样本上表现很好，但是在测试样本上表现很差的情况。所以，过拟合导致模型变得不可用。 Dropout  In a standard neural network, the derivative received by each parameter tells it how it should change so the fi">
+<meta name="twitter:image" content="http://conghuai.me/Desktop/dropout.jpeg">
 
 
 
@@ -120,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://conghuai.me/tags/regularization/"/>
+  <link rel="canonical" href="http://conghuai.me/2018/05/01/Dropout/"/>
 
 
 
 
 
-  <title>Tag: regularization | 蔡聪怀</title>
+  <title>Dropout | 蔡聪怀</title>
   
 
 
@@ -145,7 +149,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -249,54 +253,281 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>regularization<small>Tag</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://conghuai.me/2018/05/01/Dropout/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Conghuai Cai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="蔡聪怀">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/04/30/Parameters-Initialization/" itemprop="url">
-              
-                <span itemprop="name">Parameters Initialization</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Dropout</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-30T15:16:45+08:00"
-              content="2018-04-30" >
-          04-30
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-01T11:26:03+08:00">
+                2018-05-01
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Machine Learning</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/Overfiting/" itemprop="url" rel="index">
+                    <span itemprop="name">Overfiting</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Deep-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Deep Learning</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Deep-Learning/Overfiting/" itemprop="url" rel="index">
+                    <span itemprop="name">Overfiting</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/05/01/Dropout/" class="leancloud_visitors" data-flag-title="Dropout">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  717 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  3 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>过拟合是机器学习和深度学习的一个比较重要的问题，模型一旦过拟合，就会出现在训练样本上表现很好，但是在测试样本上表现很差的情况。所以，过拟合导致模型变得不可用。</p>
+<h1 id="Dropout"><a href="#Dropout" class="headerlink" title="Dropout"></a>Dropout</h1><p><img src="../../../../../../../Desktop/dropout.jpeg" alt="dropout"></p>
+<blockquote>
+<p>In a standard neural network, the derivative received by each parameter tells it how it should change so the final loss function is reduced, given what all other units are doing. Therefore, units may change in a way that they fix up the mistakes of the other units. This may lead to complex co-adaptations. This in turn leads to overfitting because these co-adaptations do not generalize to unseen data. We hypothesize that for each hidden unit, Dropout prevents co-adaptation by making the presence of other hidden units unreliable. Therefore, a hidden unit cannot rely on other specific units to correct its mistakes.</p>
+</blockquote>
+<p>Dropout方法在每次迭代中都会随机关闭一部分的神经元，这就相当于修改了模型，所以在每次迭代中，实际上训练的就是不同的模型，每个模型都只用到一部分的神经元。这样做的好处在于，使得某个神经元不会过于依赖另一个神经元，避免了互相适应的效果，所以有效的防止了过拟合。</p>
+<p>被关闭的神经元对于前向传播和反向传播都不起作用。</p>
+<h2 id="Directly-Dropout"><a href="#Directly-Dropout" class="headerlink" title="Directly Dropout"></a>Directly Dropout</h2><p>因为在训练阶段，某个神经元被保留的概率为$p$，在测试阶段，为了模拟组合不同神经网络的结果，我们需要对激活函数值乘以概率$p$。</p>
+<ul>
+<li>Train phase : $O_i = X_i a(\sum_{k=1}^{d_i}w_kx_k+b)$</li>
+<li>Test phase : $O_i = pa(\sum_{k=1}^{d_i}w_kx_k+b)$</li>
+</ul>
+<h2 id="Inverted-Dropout"><a href="#Inverted-Dropout" class="headerlink" title="Inverted Dropout"></a>Inverted Dropout</h2><p>与上面方式不同是，该方法在训练过程就考虑的缩放因子，所以在测试阶段就不需要做任何处理。</p>
+<ul>
+<li>Train phase : $O_i = \frac{1}{p}X_i a(\sum_{k=1}^{d_i}w_kx_k+b)$</li>
+<li>Test phase：$O_i = a(\sum_{k=1}^{d_i}w_kx_k+b)$</li>
+</ul>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><h2 id="前向运算"><a href="#前向运算" class="headerlink" title="前向运算"></a>前向运算</h2><ol>
+<li>对于每层神经元$a^{[l]}$，我们创建一个维度一样的变量$d^{[l]}$，其中$d^{[l]}_i\in(0,1)$。因为每一层的输入有多个，我们采用向量化方式来处理，将$d^{[l]}$进行扩充得，$D^{[l]}=[d^{<a href="1">l</a>},d^{<a href="2">l</a>},…,d^{<a href="m">l</a>}]$，该维度与$A^{[l]}$的维度一致；</li>
+<li>将$D^{[l]}$中的每个元素根据与keep_prob相比，置位0或1；</li>
+<li>$A^{[l]} = A^{[l]}*D^{[l]}$；</li>
+<li>$A^{[l]} /= keep_prob$</li>
+</ol>
+<h2 id="后向运算"><a href="#后向运算" class="headerlink" title="后向运算"></a>后向运算</h2><ol>
+<li>在前向运算中，我们利用$D^{[l]}$关闭了某些神经元的前向传播，在后向运算的时候，我们同样关闭该神经元的后向传播：$dA^{[l]} = dA^{[l]}*D^{[l]}$;</li>
+<li>$dA^{[l]} /= keep_prob$</li>
+</ol>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
+<li>Dropout是一种防止过拟合的技术，通常用于神经网络中；</li>
+<li>在训练阶段使用Dropout，而不要在测试阶段使用它；</li>
+<li>在前向运算和后向运算都使用Dropout；</li>
+<li>Dropout存在两种版本：direct 和 inverted。</li>
+</ul>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1] . <a href="https://pgaleone.eu/deep-learning/regularization/2017/01/10/anaysis-of-dropout/" target="_blank" rel="noopener">Analysis of Dropout</a></p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ml/" rel="tag"># ml</a>
+          
+            <a href="/tags/dl/" rel="tag"># dl</a>
+          
+            <a href="/tags/overfiting/" rel="tag"># overfiting</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/30/Parameters-Initialization/" rel="next" title="Parameters Initialization">
+                <i class="fa fa-chevron-left"></i> Parameters Initialization
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -304,6 +535,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -324,8 +559,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -424,6 +668,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Dropout"><span class="nav-number">1.</span> <span class="nav-text">Dropout</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Directly-Dropout"><span class="nav-number">1.1.</span> <span class="nav-text">Directly Dropout</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Inverted-Dropout"><span class="nav-number">1.2.</span> <span class="nav-text">Inverted Dropout</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实现"><span class="nav-number">2.</span> <span class="nav-text">实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前向运算"><span class="nav-number">2.1.</span> <span class="nav-text">前向运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后向运算"><span class="nav-number">2.2.</span> <span class="nav-text">后向运算</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -564,6 +824,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
