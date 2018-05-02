@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://conghuai.me/2018/04/18/Optimization-for-Machine-Learning/</loc>
+    
+    <lastmod>2018-05-02T08:07:37.747Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://conghuai.me/2018/04/25/Activation-Functions/</loc>
+    
+    <lastmod>2018-05-02T06:33:10.132Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://conghuai.me/2018/04/27/Building-blocks-of-deep-neural-networks/</loc>
+    
+    <lastmod>2018-05-02T06:32:58.243Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://conghuai.me/2018/05/01/Dropout/</loc>
     
     <lastmod>2018-05-01T04:08:51.000Z</lastmod>
@@ -16,23 +37,9 @@
   </url>
   
   <url>
-    <loc>http://conghuai.me/2018/04/25/Activation-Functions/</loc>
-    
-    <lastmod>2018-05-01T03:33:05.873Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://conghuai.me/2018/04/24/Neural-Networks-and-Deep-Learning-Foundation/</loc>
     
     <lastmod>2018-04-30T07:18:08.868Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://conghuai.me/2018/04/27/Building-blocks-of-deep-neural-networks/</loc>
-    
-    <lastmod>2018-04-29T07:47:43.118Z</lastmod>
     
   </url>
   
@@ -75,13 +82,6 @@
     <loc>http://conghuai.me/2018/04/18/Expectation-Maximization/</loc>
     
     <lastmod>2018-04-18T10:00:36.865Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://conghuai.me/2018/04/18/Optimization-for-Machine-Learning/</loc>
-    
-    <lastmod>2018-04-18T09:08:54.198Z</lastmod>
     
   </url>
   
