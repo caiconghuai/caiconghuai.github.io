@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://conghuai.me/about/index.html</loc>
+    
+    <lastmod>2018-05-03T14:20:33.809Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://conghuai.me/2018/04/18/Optimization-for-Machine-Learning/</loc>
     
     <lastmod>2018-05-02T08:07:37.747Z</lastmod>
@@ -145,13 +152,6 @@
     <loc>http://conghuai.me/2016/10/05/%E7%BD%91%E9%A1%B5%E6%AD%A3%E6%96%87%E6%8A%BD%E5%8F%96%E7%AE%97%E6%B3%95/</loc>
     
     <lastmod>2018-04-09T05:47:24.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://conghuai.me/about/index.html</loc>
-    
-    <lastmod>2018-04-09T05:46:50.000Z</lastmod>
     
   </url>
   
