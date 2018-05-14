@@ -94,7 +94,7 @@
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fraoxl6lrdj30gy09m75m.jpg">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fraoxj7dwaj31gi0tq44q.jpg">
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fraoxjtpyxj30iy0aq403.jpg">
-<meta property="og:updated_time" content="2018-05-14T03:07:56.829Z">
+<meta property="og:updated_time" content="2018-05-14T03:48:02.023Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Convolutional Neural Networks Operations">
 <meta name="twitter:description" content="计算机视觉是深度学习应用的比较成功的一个领域。卷积神经网络这种神经网络结构在计算机视觉很多方面的做得非常出色，比如图片分类、目标检测和图片风格转换。 Convolution 上图比较清晰的反映出图片中的一个区域与一个卷积核进行卷积操作后得到的结果，我们将区域对应位置的值与卷积核对应位置的值进行相乘，最后将所有相乘后的结果累加，得到最终的结果。 那么卷积操作有什么意义呢？在吴恩达的deeplearn">
@@ -376,7 +376,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  713 字
+                  844 字
                 </span>
               
 
@@ -438,6 +438,11 @@
 </ul>
 </li>
 </ul>
+<p>使用Padding操作的好处：</p>
+<ul>
+<li>它允许您使用CONV层，而不必缩小卷的高度和宽度。这对于建立更深的网络非常重要，否则当你走向更深层时，高度/宽度会缩小。一个重要的特例是“Same”卷积，其中高度/宽度在一层之后被完全保留。</li>
+<li><strong>它可以帮助我们将更多的信息保存在图像的边界。如果没有填充，下一层的极少数值将受到像素边缘的影响。</strong></li>
+</ul>
 <h1 id="Strided-Convolutions"><a href="#Strided-Convolutions" class="headerlink" title="Strided Convolutions"></a>Strided Convolutions</h1><p>步长是指，我们每次移动卷积核的步数，比如1、2、5等。</p>
 <h1 id="Convolutions-Over-Volume"><a href="#Convolutions-Over-Volume" class="headerlink" title="Convolutions Over Volume"></a>Convolutions Over Volume</h1><p>上面的例子中，卷积操作都是只在一个通道上进行的。但是，图片可以使多通道的，如RGB三个通道。所以，卷积操作也可以是多通道的卷积操作。</p>
 <p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fraoxj7dwaj31gi0tq44q.jpg" alt="Screen Shot 2018-05-14 at 10.40.36"></p>
@@ -494,6 +499,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/14/Convolutional-Network/" rel="prev" title="Convolutional Network">
+                Convolutional Network <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -574,7 +583,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
