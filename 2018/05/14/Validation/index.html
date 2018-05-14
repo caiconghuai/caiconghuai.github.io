@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="ml," />
 
 
 
@@ -81,17 +81,21 @@
 
 
 
-<meta name="description" content="Algorithm/Machine Learning/Deep Learning/NLP">
-<meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="http://conghuai.me/tags/index.html">
+<meta name="description" content="在机器学习模型训练过程中，我们将面临有关使用预测变量的选择，使用何种类型的模型，提供这些模型的参数等。我们通过测量各种替代方案的模型质量，以数据驱动的方式做出这些选择。通常有如下四种验证模型性能的方法：  Hold Out Method K-Fold Cross Validation Bootstrap  Hold Out Method这种方法应该是最简单的验证方法，我们将训练样本随机分配数据点到">
+<meta name="keywords" content="ml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Validation">
+<meta property="og:url" content="http://conghuai.me/2018/05/14/Validation/index.html">
 <meta property="og:site_name" content="蔡聪怀">
-<meta property="og:description" content="Algorithm/Machine Learning/Deep Learning/NLP">
+<meta property="og:description" content="在机器学习模型训练过程中，我们将面临有关使用预测变量的选择，使用何种类型的模型，提供这些模型的参数等。我们通过测量各种替代方案的模型质量，以数据驱动的方式做出这些选择。通常有如下四种验证模型性能的方法：  Hold Out Method K-Fold Cross Validation Bootstrap  Hold Out Method这种方法应该是最简单的验证方法，我们将训练样本随机分配数据点到">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-04-10T13:41:50.507Z">
+<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-14-073059.jpg">
+<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-14-075003.jpg">
+<meta property="og:updated_time" content="2018-05-14T08:22:03.937Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tags">
-<meta name="twitter:description" content="Algorithm/Machine Learning/Deep Learning/NLP">
+<meta name="twitter:title" content="Validation">
+<meta name="twitter:description" content="在机器学习模型训练过程中，我们将面临有关使用预测变量的选择，使用何种类型的模型，提供这些模型的参数等。我们通过测量各种替代方案的模型质量，以数据驱动的方式做出这些选择。通常有如下四种验证模型性能的方法：  Hold Out Method K-Fold Cross Validation Bootstrap  Hold Out Method这种方法应该是最简单的验证方法，我们将训练样本随机分配数据点到">
+<meta name="twitter:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-14-073059.jpg">
 
 
 
@@ -121,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://conghuai.me/tags/"/>
+  <link rel="canonical" href="http://conghuai.me/2018/05/14/Validation/"/>
 
 
 
 
 
-  <title>tags | 蔡聪怀</title>
+  <title>Validation | 蔡聪怀</title>
   
 
 
@@ -252,40 +256,243 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://conghuai.me/2018/05/14/Validation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Conghuai Cai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="蔡聪怀">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">tags</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
-                14 tags in total
+          <h1 class="post-title" itemprop="name headline">Validation</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-14T15:20:12+08:00">
+                2018-05-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Machine Learning</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/Performance/" itemprop="url" rel="index">
+                    <span itemprop="name">Performance</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/05/14/Validation/" class="leancloud_visitors" data-flag-title="Validation">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  1,000 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  3 分钟
+                </span>
+              
             </div>
-            <div class="tag-cloud-tags">
-              <a href="/tags/algorithm/" style="font-size: 21px; color: #6f6f6f">algorithm</a> <a href="/tags/cnn/" style="font-size: 16.5px; color: #9d9d9d">cnn</a> <a href="/tags/dl/" style="font-size: 25.5px; color: #404040">dl</a> <a href="/tags/ensemble/" style="font-size: 12px; color: #ccc">ensemble</a> <a href="/tags/entropy/" style="font-size: 12px; color: #ccc">entropy</a> <a href="/tags/hyperparameter-tuning/" style="font-size: 12px; color: #ccc">hyperparameter tuning</a> <a href="/tags/java/" style="font-size: 12px; color: #ccc">java</a> <a href="/tags/linear-model/" style="font-size: 12px; color: #ccc">linear model</a> <a href="/tags/math/" style="font-size: 25.5px; color: #404040">math</a> <a href="/tags/ml/" style="font-size: 30px; color: #111">ml</a> <a href="/tags/optimization/" style="font-size: 16.5px; color: #9d9d9d">optimization</a> <a href="/tags/overfiting/" style="font-size: 12px; color: #ccc">overfiting</a> <a href="/tags/regularization/" style="font-size: 12px; color: #ccc">regularization</a> <a href="/tags/svm/" style="font-size: 12px; color: #ccc">svm</a>
-            </div>
-          </div>
-        
-      </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <p>在机器学习模型训练过程中，我们将面临有关使用预测变量的选择，使用何种类型的模型，提供这些模型的参数等。我们通过测量各种替代方案的模型质量，以数据驱动的方式做出这些选择。通常有如下四种验证模型性能的方法：</p>
+<ul>
+<li>Hold Out Method</li>
+<li>K-Fold Cross Validation</li>
+<li>Bootstrap</li>
+</ul>
+<h1 id="Hold-Out-Method"><a href="#Hold-Out-Method" class="headerlink" title="Hold Out Method"></a>Hold Out Method</h1><p>这种方法应该是最简单的验证方法，我们将训练样本随机分配数据点到两个集合<code>train</code>和<code>test</code>，通常分别称为训练集和测试集。每个集合的大小是任意的，尽管通常测试集合比训练集合小。然后我们在<code>train</code>上训练并在<code>test</code>上测试，所以该方法也称为<code>train_test_split</code>。</p>
+<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-05-14-073059.jpg" alt="Screen Shot 2018-05-14 at 15.25.04"></p>
+<p>但是，这种方法是有缺点的，缺点如下：</p>
+<p>想象一下你有一个包含5000行的数据集。train_test_split函数有一个test_size参数，您可以使用它来确定有多少行到达训练集以及有多少行进入测试集。测试集越大，您的模型质量测量值就越可靠。在极端情况下，您可以想象测试集中只有一行数据。如果您比较替代模型，哪一个模型能够在单个数据点上进行最佳预测，那么结果主要是运气问题。您通常会保留约20％作为测试数据集。但是即使在测试集中有1000行，在确定模型评分时也有一些随机的机会。一个模型可能在一组1000行上表现不错，即使它在不同的1000行上不准确。测试集越大，我们测量模型质量的随机性（又称“噪声”）就越少。但是我们只能通过从我们的训练数据中删除数据来获得大型测试集，而较小的训练数据集意味着更差的模型。事实上，对小数据集的理想建模决策通常不是大数据集上的最佳建模决策。</p>
+<h1 id="K-Fold-Cross-Validation"><a href="#K-Fold-Cross-Validation" class="headerlink" title="K-Fold Cross Validation"></a>K-Fold Cross Validation</h1><p>由于没有足够的数据来训练模型，因此删除其中的一部分以进行验证会带来训练数据不足的问题。通过减少训练数据，我们有可能失去数据集中的重要模式/趋势，从而增加偏差导致的误差。所以，我们需要的是一种为训练模型提供充足数据的方法，同时也为验证集留下了充足的数据，K折交叉验证就是这样一种方法。</p>
+<p>在交叉验证中，我们在不同的数据子集上运行我们的建模过程，以获得多个模型质量度量。例如，我们可以进行5次折叠或实验。我们将数据分成5个部分，每个部分占整个数据集的20％。</p>
+<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-05-14-075003.jpg" alt="1fXzJ"></p>
+<p>我们运行实验一，其中第一折数据子集保留作为验证集，其他的数据子集作为训练数据。然后我们进行第二次实验，在第二次实验中我们保留第二折数据子集作为验证集，其他的数据子集作为训练数据。我们重复这个过程，使用每一折数据作为一次验证集。这样能保证模型在所有的数据上都训练过。最后，模型的误差为上面5个实验的误差的平均。</p>
+<p>交叉验证提供了更准确的模型质量度量，如果我们正在做出大量建模决策，这一点尤其重要。但是，它可能需要更多时间才能运行，因为它每次估计一次模型。</p>
+<h1 id="Bootstrap"><a href="#Bootstrap" class="headerlink" title="Bootstrap"></a>Bootstrap</h1><ul>
+<li>随机有放回的从训练集中采样；</li>
+<li>每个样本的大小与训练集数据一样；</li>
+<li>用采样后的数据集训练模型；</li>
+<li>评估模型的误差。</li>
+</ul>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
+<li><a href="https://www.kaggle.com/dansbecker/cross-validation/code" target="_blank" rel="noopener">Kaggle Cross-Validation</a></li>
+<li><a href="https://towardsdatascience.com/cross-validation-in-machine-learning-72924a69872f" target="_blank" rel="noopener">Cross-Validation in Machine Learning</a></li>
+</ol>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ml/" rel="tag"># ml</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/14/Convolutional-Network/" rel="next" title="Convolutional Network">
+                <i class="fa fa-chevron-left"></i> Convolutional Network
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -318,8 +525,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -418,6 +634,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Hold-Out-Method"><span class="nav-number">1.</span> <span class="nav-text">Hold Out Method</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#K-Fold-Cross-Validation"><span class="nav-number">2.</span> <span class="nav-text">K-Fold Cross Validation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Bootstrap"><span class="nav-number">3.</span> <span class="nav-text">Bootstrap</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
