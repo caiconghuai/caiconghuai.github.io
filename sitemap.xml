@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://conghuai.me/2018/05/14/Convolutional%20Neural%20Networks%20Operations/</loc>
+    
+    <lastmod>2018-05-14T03:07:26.583Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://conghuai.me/2018/04/25/Activation-Functions/</loc>
+    
+    <lastmod>2018-05-14T01:51:40.287Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://conghuai.me/about/index.html</loc>
     
     <lastmod>2018-05-12T09:06:23.545Z</lastmod>
@@ -16,13 +30,6 @@
   </url>
   
   <url>
-    <loc>http://conghuai.me/2018/04/25/Activation-Functions/</loc>
-    
-    <lastmod>2018-05-02T06:33:10.132Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://conghuai.me/2018/04/27/Building-blocks-of-deep-neural-networks/</loc>
     
     <lastmod>2018-05-02T06:32:58.243Z</lastmod>
@@ -32,7 +39,7 @@
   <url>
     <loc>http://conghuai.me/2018/05/01/Dropout/</loc>
     
-    <lastmod>2018-05-01T04:08:51.000Z</lastmod>
+    <lastmod>2018-05-01T04:10:56.923Z</lastmod>
     
   </url>
   

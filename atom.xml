@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://conghuai.me/"/>
-  <updated>2018-05-01T04:08:51.000Z</updated>
+  <updated>2018-05-14T03:07:26.583Z</updated>
   <id>http://conghuai.me/</id>
   
   <author>
@@ -17,11 +17,41 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Convolutional Neural Networks Operations</title>
+    <link href="http://conghuai.me/2018/05/14/Convolutional%20Neural%20Networks%20Operations/"/>
+    <id>http://conghuai.me/2018/05/14/Convolutional Neural Networks Operations/</id>
+    <published>2018-05-14T01:51:03.000Z</published>
+    <updated>2018-05-14T03:07:26.583Z</updated>
+    
+    <content type="html"><![CDATA[<p>计算机视觉是深度学习应用的比较成功的一个领域。卷积神经网络这种神经网络结构在计算机视觉很多方面的做得非常出色，比如图片分类、目标检测和图片风格转换。</p><h1 id="Convolution"><a href="#Convolution" class="headerlink" title="Convolution"></a>Convolution</h1><p><img src="../../../../../../../Desktop/download.png" alt="download"></p><p>上图比较清晰的反映出图片中的一个区域与一个卷积核进行卷积操作后得到的结果，我们将区域对应位置的值与卷积核对应位置的值进行相乘，最后将所有相乘后的结果累加，得到最终的结果。</p><p>那么卷积操作有什么意义呢？在吴恩达的deeplearning.ai课程上，通过一个例子来直观理解卷积操作的在边缘检测上的意义：</p><p><img src="../../../../../../../Desktop/Screen Shot 2018-05-14 at 10.06.30.png" alt="Screen Shot 2018-05-14 at 10.06.30"></p><p>如果我们要检测不同的边缘，我们可以采用不同的卷积核来进行卷积操作：</p><p><img src="../../../../../../../Desktop/Screen Shot 2018-05-14 at 10.09.04.png" alt="Screen Shot 2018-05-14 at 10.09.04"></p><p>卷积操作后得到的图片大小：</p><p>$$n’=\frac{n+2p-f}{s}+1$$</p><ul><li>$n$ : 原始输入大小；</li><li>$p$ : 填充的大小；</li><li>$f$：卷积核（filter）的大小；</li><li>$s$：步长。</li></ul><h1 id="Padding"><a href="#Padding" class="headerlink" title="Padding"></a>Padding</h1><p>Padding这种操作是指我们对输入图片按照某种策略进行填充，使之成为更大的图片，这样做的一个目的在于使得卷积后的图片的大小和原始图片大小是一样的， 这样就不会使得图片在逐次的卷积操作中越变越小。</p><p>一般采用Padding的策略都是<code>constant</code>填充，即用一个固定值来填充输入图片的四周。</p><p>根据填充后图片的大小，有两种比较特别的填充方式：</p><ul><li>“Valid” ：表示没有进行padding操作；</li><li>“Same”：表示进行填充，使得卷积后的图片大小和原始图片大小是一样的。<ul><li>$$n’=\frac{n+2p-f}{s}+1 = n =&gt; p=\frac{f-1}{2}$$</li></ul></li></ul><h1 id="Strided-Convolutions"><a href="#Strided-Convolutions" class="headerlink" title="Strided Convolutions"></a>Strided Convolutions</h1><p>步长是指，我们每次移动卷积核的步数，比如1、2、5等。</p><h1 id="Convolutions-Over-Volume"><a href="#Convolutions-Over-Volume" class="headerlink" title="Convolutions Over Volume"></a>Convolutions Over Volume</h1><p>上面的例子中，卷积操作都是只在一个通道上进行的。但是，图片可以使多通道的，如RGB三个通道。所以，卷积操作也可以是多通道的卷积操作。</p><p><img src="../../../../../../../Desktop/Screen Shot 2018-05-14 at 10.40.36.png" alt="Screen Shot 2018-05-14 at 10.40.36"></p><p>对于多个通道得到的多个结果，将多个结果进行线性相加，得到一个结果。</p><h1 id="Multiple-filters"><a href="#Multiple-filters" class="headerlink" title="Multiple filters"></a>Multiple filters</h1><p>除了输入可能有多个通道外，进行卷积操作涉及的卷积核也可能有多个，这样得到的结果就会有多个，不同的卷积核通常会抽取不同的特征。</p><p><img src="../../../../../../../Desktop/Screen Shot 2018-05-14 at 10.51.12.png" alt="Screen Shot 2018-05-14 at 10.51.12"></p><h1 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h1><p>$$n\cdot n \cdot n_c\ *\ f\cdot f\cdot n_c\cdot n’_c\rightarrow \left \lfloor \frac{n+2p-f}{s}+1 \right \rfloor\cdot \left \lfloor \frac{n+2p-f}{s}+1 \right \rfloor\cdot n’_c $$</p><ul><li>$n$：输入数据大小；</li><li>$n_c$：输入数据的通道数；</li><li>$f$：卷积核大小；</li><li>$n’_c$：卷积核数量；</li><li>$p$：padding的大小；</li><li>$s$：步长。</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;计算机视觉是深度学习应用的比较成功的一个领域。卷积神经网络这种神经网络结构在计算机视觉很多方面的做得非常出色，比如图片分类、目标检测和图片风格转换。&lt;/p&gt;
+&lt;h1 id=&quot;Convolution&quot;&gt;&lt;a href=&quot;#Convolution&quot; class=&quot;headerl
+      
+    
+    </summary>
+    
+      <category term="Deep Learning" scheme="http://conghuai.me/categories/Deep-Learning/"/>
+    
+      <category term="CNN" scheme="http://conghuai.me/categories/Deep-Learning/CNN/"/>
+    
+    
+      <category term="dl" scheme="http://conghuai.me/tags/dl/"/>
+    
+      <category term="cnn" scheme="http://conghuai.me/tags/cnn/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Dropout</title>
     <link href="http://conghuai.me/2018/05/01/Dropout/"/>
     <id>http://conghuai.me/2018/05/01/Dropout/</id>
     <published>2018-05-01T03:26:03.000Z</published>
-    <updated>2018-05-01T04:08:51.000Z</updated>
+    <updated>2018-05-01T04:10:56.923Z</updated>
     
     <content type="html"><![CDATA[<p>过拟合是机器学习和深度学习的一个比较重要的问题，模型一旦过拟合，就会出现在训练样本上表现很好，但是在测试样本上表现很差的情况。所以，过拟合导致模型变得不可用。</p><h1 id="Dropout"><a href="#Dropout" class="headerlink" title="Dropout"></a>Dropout</h1><p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fqvphars2ej30h209475u.jpg" alt="dropout"></p><blockquote><p>In a standard neural network, the derivative received by each parameter tells it how it should change so the final loss function is reduced, given what all other units are doing. Therefore, units may change in a way that they fix up the mistakes of the other units. This may lead to complex co-adaptations. This in turn leads to overfitting because these co-adaptations do not generalize to unseen data. We hypothesize that for each hidden unit, Dropout prevents co-adaptation by making the presence of other hidden units unreliable. Therefore, a hidden unit cannot rely on other specific units to correct its mistakes.</p></blockquote><p>Dropout方法在每次迭代中都会随机关闭一部分的神经元，这就相当于修改了模型，所以在每次迭代中，实际上训练的就是不同的模型，每个模型都只用到一部分的神经元。这样做的好处在于，使得某个神经元不会过于依赖另一个神经元，避免了互相适应的效果，所以有效的防止了过拟合。</p><p>被关闭的神经元对于前向传播和反向传播都不起作用。</p><h2 id="Directly-Dropout"><a href="#Directly-Dropout" class="headerlink" title="Directly Dropout"></a>Directly Dropout</h2><p>因为在训练阶段，某个神经元被保留的概率为$p$，在测试阶段，为了模拟组合不同神经网络的结果，我们需要对激活函数值乘以概率$p$。</p><ul><li>Train phase : $O_i = X_i a(\sum_{k=1}^{d_i}w_kx_k+b)$</li><li>Test phase : $O_i = pa(\sum_{k=1}^{d_i}w_kx_k+b)$</li></ul><h2 id="Inverted-Dropout"><a href="#Inverted-Dropout" class="headerlink" title="Inverted Dropout"></a>Inverted Dropout</h2><p>与上面方式不同是，该方法在训练过程就考虑的缩放因子，所以在测试阶段就不需要做任何处理。</p><ul><li>Train phase : $O_i = \frac{1}{p}X_i a(\sum_{k=1}^{d_i}w_kx_k+b)$</li><li>Test phase：$O_i = a(\sum_{k=1}^{d_i}w_kx_k+b)$</li></ul><h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><h2 id="前向运算"><a href="#前向运算" class="headerlink" title="前向运算"></a>前向运算</h2><ol><li>对于每层神经元$a^{[l]}$，我们创建一个维度一样的变量$d^{[l]}$，其中$d^{[l]}_i\in(0,1)$。因为每一层的输入有多个，我们采用向量化方式来处理，将$d^{[l]}$进行扩充得，$D^{[l]}=[d^{[l]1},d^{[l]2},…,d^{[l]m}]$，该维度与$A^{[l]}$的维度一致；</li><li>将$D^{[l]}$中的每个元素根据与keep_prob相比，置位0或1；</li><li>$A^{[l]} = A^{[l]}*D^{[l]}$；</li><li>$A^{[l]} /= keep\_prob$</li></ol><h2 id="后向运算"><a href="#后向运算" class="headerlink" title="后向运算"></a>后向运算</h2><ol><li>在前向运算中，我们利用$D^{[l]}$关闭了某些神经元的前向传播，在后向运算的时候，我们同样关闭该神经元的后向传播：$dA^{[l]} = dA^{[l]}*D^{[l]}$;</li><li>$dA^{[l]} /= keep\_prob$</li></ol><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul><li>Dropout是一种防止过拟合的技术，通常用于神经网络中；</li><li>在训练阶段使用Dropout，而不要在测试阶段使用它；</li><li>在前向运算和后向运算都使用Dropout；</li><li>Dropout存在两种版本：direct 和 inverted。</li></ul><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1] . <a href="https://pgaleone.eu/deep-learning/regularization/2017/01/10/anaysis-of-dropout/" target="_blank" rel="noopener">Analysis of Dropout</a></p>]]></content>
     
@@ -35,18 +65,18 @@
     
     </summary>
     
+      <category term="Deep Learning" scheme="http://conghuai.me/categories/Deep-Learning/"/>
+    
       <category term="Machine Learning" scheme="http://conghuai.me/categories/Machine-Learning/"/>
     
       <category term="Overfiting" scheme="http://conghuai.me/categories/Machine-Learning/Overfiting/"/>
     
-      <category term="Deep Learning" scheme="http://conghuai.me/categories/Deep-Learning/"/>
-    
       <category term="Overfiting" scheme="http://conghuai.me/categories/Deep-Learning/Overfiting/"/>
     
     
-      <category term="ml" scheme="http://conghuai.me/tags/ml/"/>
-    
       <category term="dl" scheme="http://conghuai.me/tags/dl/"/>
+    
+      <category term="ml" scheme="http://conghuai.me/tags/ml/"/>
     
       <category term="overfiting" scheme="http://conghuai.me/tags/overfiting/"/>
     
@@ -117,7 +147,7 @@
     <link href="http://conghuai.me/2018/04/25/Activation-Functions/"/>
     <id>http://conghuai.me/2018/04/25/Activation-Functions/</id>
     <published>2018-04-25T07:38:44.000Z</published>
-    <updated>2018-05-02T06:33:10.132Z</updated>
+    <updated>2018-05-14T01:51:40.287Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fqp0idk6d0j315o0p0tc4.jpg" alt="nural-network_3"></p><p>激活函数是神经网络中一个比较重要的概念，激活函数首先计算输入的线性值，然后决定是否“激活”该值。</p><p>$$Y=Activation(\sum(weight\ *\ input ) + bias)$$</p><p>上面的线性组合的值的范围为$[-\infty, +\infty]$，激活函数根据上一层输出的线性组合值来决定是否将该值传到下一层，并决定以何种方式传到下一层。</p><p>正如绝大多数神经网络借助某种形式的梯度下降进行优化，激活函数需要是可微分的。此外，复杂的激活函数也许产生一些梯度消失或梯度爆炸的问题。常见的激活函数有很多，我们该如何选择合适的激活函数呢？我们先来分析一下每种激活函数的特点和性质。</p><h1 id="激活函数的作用"><a href="#激活函数的作用" class="headerlink" title="激活函数的作用"></a>激活函数的作用</h1><p>激活函数显然增加了神经网络的复杂度，那么 ，我们是否可以不同激活函数呢？答案是不可行的，如果不用激活函数，那么神经网络模型最终将会只是一个线性模型。而线性模型由于其模型的复杂度不够，在解决很多复杂问题上都显得力不从心。</p><h1 id="常见的激活函数"><a href="#常见的激活函数" class="headerlink" title="常见的激活函数"></a>常见的激活函数</h1><h2 id="Sigmoid"><a href="#Sigmoid" class="headerlink" title="Sigmoid"></a>Sigmoid</h2><h3 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h3><p>$$g(z) = \frac{1}{1+e^{-z}}$$</p><h3 id="导数"><a href="#导数" class="headerlink" title="导数"></a>导数</h3><p>$$g’(z) = g(z)(1-g(z))$$</p><h3 id="函数性质"><a href="#函数性质" class="headerlink" title="函数性质"></a>函数性质</h3><p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fqp0icy6xwj311z0moacm.jpg" alt="5561420171010093434"></p><h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sigmoid</span><span class="params">(x, derivative=False)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> (derivative == <span class="keyword">True</span>):</span><br><span class="line">        <span class="keyword">return</span> x * (<span class="number">1</span> - x)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> / (<span class="number">1</span> + np.exp(-x))</span><br></pre></td></tr></table></figure><h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ol><li>梯度消失问题</li></ol><p>在导函数的两端，函数值非常的小，这意味着在做梯度下降时，参数的改变量将非常小。这就可能带来梯度消失的问题。</p><ol><li>饱和问题。</li></ol><p>饱和问题是指当初始参数过大时，会导致sigmoid导数值很小，造成学习速率非常慢。</p><h2 id="Tanh"><a href="#Tanh" class="headerlink" title="Tanh"></a>Tanh</h2><h3 id="表达式-1"><a href="#表达式-1" class="headerlink" title="表达式"></a>表达式</h3><p>$$g(z) = tanh(z) = \frac{e^z-e^{-z}}{e^z+e^{-z}}$$</p><h3 id="导数-1"><a href="#导数-1" class="headerlink" title="导数"></a>导数</h3><p>$$g’(z)= 1-g(z)^2$$</p><h3 id="函数性质-1"><a href="#函数性质-1" class="headerlink" title="函数性质"></a>函数性质</h3><p>在分类任务中，双曲正切函数（Tanh）逐渐取代Sigmoid函数作为标准的激活函数。<img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fqp0ig26d5j311m0jy0vf.jpg" alt="8940520171010093544"></p><h3 id="实现-1"><a href="#实现-1" class="headerlink" title="实现"></a>实现</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">tanh</span><span class="params">(x, derivative=False)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> (derivative == <span class="keyword">True</span>):</span><br><span class="line">        <span class="keyword">return</span> (<span class="number">1</span> - (x ** <span class="number">2</span>))</span><br><span class="line">    <span class="keyword">return</span> np.tanh(x)</span><br></pre></td></tr></table></figure><h2 id="ReLU"><a href="#ReLU" class="headerlink" title="ReLU"></a>ReLU</h2><p>修正线性单元（Rectified linear unit，ReLU）是神经网络中最常用的激活函数。它保留了 step 函数的生物学启发（只有输入超出阈值时神经元才激活），不过当输入为正的时候，导数不为零，从而允许基于梯度的学习（尽管在 x=0 的时候，导数是未定义的）。使用这个函数能使计算变得很快，因为无论是函数还是其导数都不包含复杂的数学运算。然而，当输入为负值的时候，ReLU 的学习速度可能会变得很慢，甚至使神经元直接无效，因为此时输入小于零而梯度为零，从而其权重无法得到更新，在剩下的训练过程中会一直保持静默。</p><h3 id="表达式-2"><a href="#表达式-2" class="headerlink" title="表达式"></a>表达式</h3><p>$$\begin{split} f(x)=\begin{cases} x, &amp; \text{$x\geq 0$} \\ 0, &amp; \text{$x&lt;0$}\end{cases}\end{split}$$</p><h3 id="导数-2"><a href="#导数-2" class="headerlink" title="导数"></a>导数</h3><p>$$\begin{split} f’(x)=\begin{cases} 1, &amp; \text{$x\geq 0$} \\ 0, &amp; \text{$x&lt;0$}\end{cases}\end{split}$$</p><h3 id="函数性质-2"><a href="#函数性质-2" class="headerlink" title="函数性质"></a>函数性质</h3><p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fqp0if00ohj31240mujtv.jpg" alt="4217520171010093357"></p><h3 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h3><ol><li>静默神经元。</li></ol><p>由于该激活函数在$x&lt;0$的时候，其导数值为0，就会使得一些神经元一直得不到更新。</p><ol><li>只能用于隐藏层。</li></ol><h2 id="Leaky-ReLU"><a href="#Leaky-ReLU" class="headerlink" title="Leaky ReLU"></a>Leaky ReLU</h2><p>经典（以及广泛使用的）ReLU 激活函数的变体，带泄露修正线性单元（Leaky ReLU）的输出对负值输入有很小的坡度。由于导数总是不为零，这能减少静默神经元的出现，允许基于梯度的学习（虽然会很慢）。</p><h3 id="表达式-3"><a href="#表达式-3" class="headerlink" title="表达式"></a>表达式</h3><p>$$\begin{split} f(x)=\begin{cases} x, &amp; \text{$x\geq0$} \\ 0.01x, &amp; \text{$x&lt;0$}\end{cases}\end{split}$$</p><h3 id="求导"><a href="#求导" class="headerlink" title="求导"></a>求导</h3><p>$$\begin{split} f’(x)=\begin{cases} 1, &amp; \text{$x\geq0$} \\ 0.01, &amp; \text{$x&lt;0$}\end{cases}\end{split}$$</p><h3 id="函数性质-3"><a href="#函数性质-3" class="headerlink" title="函数性质"></a>函数性质</h3><p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fqp0ieauwoj311z0mq0ve.jpg" alt="1601520171010093621"></p><h1 id="选择激活函数准则"><a href="#选择激活函数准则" class="headerlink" title="选择激活函数准则"></a>选择激活函数准则</h1><ul><li>Sigmoid激活函数常用于分类任务。</li><li>Sigmoid和Tanh函数会产生梯度消失问题。</li><li>ReLU是目前使用最广泛的激活函数。</li><li>如果在神经网络中，出现了静默神经元，可以考虑使用 Leaky ReLU。</li><li>ReLU激活函数只能用于隐藏层。</li></ul><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1]. <a href="https://medium.com/the-theory-of-everything/understanding-activation-functions-in-neural-networks-9491262884e0" target="_blank" rel="noopener">Understanding Activation Functions in Neural Networks</a></p><p>[2]. <a href="https://www.analyticsvidhya.com/blog/2017/10/fundamentals-deep-learning-activation-functions-when-to-use-them/" target="_blank" rel="noopener">Fundamentals of Deep Learning – Activation Functions and When to Use Them?</a></p><p>[3]. <a href="https://www.wikiwand.com/en/Activation_function" target="_blank" rel="noopener">维基百科Activation Functions</a></p><p>[4]. <a href="https://analyticsindiamag.com/most-common-activation-functions-in-neural-networks-and-rationale-behind-it/" target="_blank" rel="noopener">Types Of Activation Functions In Neural Networks And Rationale Behind It</a></p><p>[5]. <a href="https://dashee87.github.io/data%20science/deep%20learning/visualising-activation-functions-in-neural-networks/" target="_blank" rel="noopener">Visualising Activation Functions in Neural Networks</a></p>]]></content>
     
@@ -303,18 +333,18 @@
     
     </summary>
     
+      <category term="Deep Learning" scheme="http://conghuai.me/categories/Deep-Learning/"/>
+    
       <category term="Machine Learning" scheme="http://conghuai.me/categories/Machine-Learning/"/>
     
       <category term="Optimization" scheme="http://conghuai.me/categories/Machine-Learning/Optimization/"/>
     
-      <category term="Deep Learning" scheme="http://conghuai.me/categories/Deep-Learning/"/>
-    
       <category term="Optimization" scheme="http://conghuai.me/categories/Deep-Learning/Optimization/"/>
     
     
-      <category term="ml" scheme="http://conghuai.me/tags/ml/"/>
-    
       <category term="dl" scheme="http://conghuai.me/tags/dl/"/>
+    
+      <category term="ml" scheme="http://conghuai.me/tags/ml/"/>
     
       <category term="math" scheme="http://conghuai.me/tags/math/"/>
     

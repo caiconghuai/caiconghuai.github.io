@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="math," />
+  <meta name="keywords" content="dl,cnn," />
 
 
 
@@ -81,21 +81,24 @@
 
 
 
-<meta name="description" content="这篇文章中，讨论的Cross Entropy损失函数常用于分类问题中，但是为什么它会在分类问题中这么有效呢？我们先从一个简单的分类例子来入手。 预测政治倾向例子我们希望根据一个人的年龄、性别、年收入等相互独立的特征，来预测一个人的政治倾向，有三种可预测结果：民主党、共和党、其他党。假设我们当前有两个模型，这两个模型最后输出都是通过softmax的方式得到对于每个预测结果的概率： 模型1：    C">
-<meta name="keywords" content="math">
+<meta name="description" content="计算机视觉是深度学习应用的比较成功的一个领域。卷积神经网络这种神经网络结构在计算机视觉很多方面的做得非常出色，比如图片分类、目标检测和图片风格转换。 Convolution 上图比较清晰的反映出图片中的一个区域与一个卷积核进行卷积操作后得到的结果，我们将区域对应位置的值与卷积核对应位置的值进行相乘，最后将所有相乘后的结果累加，得到最终的结果。 那么卷积操作有什么意义呢？在吴恩达的deeplearn">
+<meta name="keywords" content="dl,cnn">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Cross Entropy Loss Function">
-<meta property="og:url" content="http://conghuai.me/2018/04/08/Cross Entropy Loss Function/index.html">
+<meta property="og:title" content="Convolutional Neural Networks Operations">
+<meta property="og:url" content="http://conghuai.me/2018/05/14/Convolutional Neural Networks Operations/index.html">
 <meta property="og:site_name" content="蔡聪怀">
-<meta property="og:description" content="这篇文章中，讨论的Cross Entropy损失函数常用于分类问题中，但是为什么它会在分类问题中这么有效呢？我们先从一个简单的分类例子来入手。 预测政治倾向例子我们希望根据一个人的年龄、性别、年收入等相互独立的特征，来预测一个人的政治倾向，有三种可预测结果：民主党、共和党、其他党。假设我们当前有两个模型，这两个模型最后输出都是通过softmax的方式得到对于每个预测结果的概率： 模型1：    C">
+<meta property="og:description" content="计算机视觉是深度学习应用的比较成功的一个领域。卷积神经网络这种神经网络结构在计算机视觉很多方面的做得非常出色，比如图片分类、目标检测和图片风格转换。 Convolution 上图比较清晰的反映出图片中的一个区域与一个卷积核进行卷积操作后得到的结果，我们将区域对应位置的值与卷积核对应位置的值进行相乘，最后将所有相乘后的结果累加，得到最终的结果。 那么卷积操作有什么意义呢？在吴恩达的deeplearn">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-08-024353.jpg">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-08-064410.jpg">
-<meta property="og:updated_time" content="2018-04-14T13:58:29.941Z">
+<meta property="og:image" content="http://conghuai.me/Desktop/download.png">
+<meta property="og:image" content="http://conghuai.me/Desktop/Screen%20Shot%202018-05-14%20at%2010.06.30.png">
+<meta property="og:image" content="http://conghuai.me/Desktop/Screen%20Shot%202018-05-14%20at%2010.09.04.png">
+<meta property="og:image" content="http://conghuai.me/Desktop/Screen%20Shot%202018-05-14%20at%2010.40.36.png">
+<meta property="og:image" content="http://conghuai.me/Desktop/Screen%20Shot%202018-05-14%20at%2010.51.12.png">
+<meta property="og:updated_time" content="2018-05-14T03:07:26.583Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Cross Entropy Loss Function">
-<meta name="twitter:description" content="这篇文章中，讨论的Cross Entropy损失函数常用于分类问题中，但是为什么它会在分类问题中这么有效呢？我们先从一个简单的分类例子来入手。 预测政治倾向例子我们希望根据一个人的年龄、性别、年收入等相互独立的特征，来预测一个人的政治倾向，有三种可预测结果：民主党、共和党、其他党。假设我们当前有两个模型，这两个模型最后输出都是通过softmax的方式得到对于每个预测结果的概率： 模型1：    C">
-<meta name="twitter:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-08-024353.jpg">
+<meta name="twitter:title" content="Convolutional Neural Networks Operations">
+<meta name="twitter:description" content="计算机视觉是深度学习应用的比较成功的一个领域。卷积神经网络这种神经网络结构在计算机视觉很多方面的做得非常出色，比如图片分类、目标检测和图片风格转换。 Convolution 上图比较清晰的反映出图片中的一个区域与一个卷积核进行卷积操作后得到的结果，我们将区域对应位置的值与卷积核对应位置的值进行相乘，最后将所有相乘后的结果累加，得到最终的结果。 那么卷积操作有什么意义呢？在吴恩达的deeplearn">
+<meta name="twitter:image" content="http://conghuai.me/Desktop/download.png">
 
 
 
@@ -125,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://conghuai.me/2018/04/08/Cross Entropy Loss Function/"/>
+  <link rel="canonical" href="http://conghuai.me/2018/05/14/Convolutional Neural Networks Operations/"/>
 
 
 
 
 
-  <title>Cross Entropy Loss Function | 蔡聪怀</title>
+  <title>Convolutional Neural Networks Operations | 蔡聪怀</title>
   
 
 
@@ -268,7 +271,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://conghuai.me/2018/04/08/Cross Entropy Loss Function/">
+    <link itemprop="mainEntityOfPage" href="http://conghuai.me/2018/05/14/Convolutional Neural Networks Operations/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Conghuai Cai">
@@ -285,7 +288,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Cross Entropy Loss Function</h1>
+          <h1 class="post-title" itemprop="name headline">Convolutional Neural Networks Operations</h1>
         
 
         <div class="post-meta">
@@ -297,8 +300,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-08T10:54:16+08:00">
-                2018-04-08
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-14T09:51:03+08:00">
+                2018-05-14
               </time>
             
 
@@ -320,8 +323,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index">
-                    <span itemprop="name">Machine Learning</span>
+                  <a href="/categories/Deep-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Deep Learning</span>
                   </a>
                 </span>
 
@@ -331,8 +334,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Machine-Learning/Loss-Function/" itemprop="url" rel="index">
-                    <span itemprop="name">Loss Function</span>
+                  <a href="/categories/Deep-Learning/CNN/" itemprop="url" rel="index">
+                    <span itemprop="name">CNN</span>
                   </a>
                 </span>
 
@@ -348,7 +351,7 @@
 
           
           
-             <span id="/2018/04/08/Cross Entropy Loss Function/" class="leancloud_visitors" data-flag-title="Cross Entropy Loss Function">
+             <span id="/2018/05/14/Convolutional Neural Networks Operations/" class="leancloud_visitors" data-flag-title="Convolutional Neural Networks Operations">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -373,7 +376,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  1,854 字
+                  713 字
                 </span>
               
 
@@ -389,7 +392,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  8 分钟
+                  3 分钟
                 </span>
               
             </div>
@@ -410,112 +413,46 @@
       
 
       
-        <p>这篇文章中，讨论的Cross Entropy损失函数常用于分类问题中，但是为什么它会在分类问题中这么有效呢？我们先从一个简单的分类例子来入手。</p>
-<h1 id="预测政治倾向例子"><a href="#预测政治倾向例子" class="headerlink" title="预测政治倾向例子"></a>预测政治倾向例子</h1><p>我们希望根据一个人的年龄、性别、年收入等相互独立的特征，来预测一个人的政治倾向，有三种可预测结果：民主党、共和党、其他党。假设我们当前有两个模型，这两个模型最后输出都是通过softmax的方式得到对于每个预测结果的概率：</p>
-<p><strong>模型1</strong>：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">COMPUTED</th>
-<th style="text-align:center">TARGETS</th>
-<th style="text-align:center">CORRECT?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">0.3 0.3 0.4</td>
-<td style="text-align:center">0 0 1（民主党）</td>
-<td style="text-align:center">正确</td>
-</tr>
-<tr>
-<td style="text-align:center">0.3 0.4 0.3</td>
-<td style="text-align:center">0 1 0（共和党）</td>
-<td style="text-align:center">正确</td>
-</tr>
-<tr>
-<td style="text-align:center">0.1 0.2 0.7</td>
-<td style="text-align:center">1 0 0 （其他党）</td>
-<td style="text-align:center">错误</td>
-</tr>
-</tbody>
-</table>
-<p><strong>模型1</strong>对于样本1和样本2以非常微弱的优势判断正确，对于样本3的判断则彻底错误。</p>
-<p><strong>模型2</strong>：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">COMPUTED</th>
-<th style="text-align:center">TARGETS</th>
-<th style="text-align:center">CORRECT?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">0.1 0.2 0.7</td>
-<td style="text-align:center">0 0 1（民主党）</td>
-<td style="text-align:center">正确</td>
-</tr>
-<tr>
-<td style="text-align:center">0.1 0.7 0.2</td>
-<td style="text-align:center">0 1 0（共和党）</td>
-<td style="text-align:center">正确</td>
-</tr>
-<tr>
-<td style="text-align:center">0.3 0.4 0.3</td>
-<td style="text-align:center">1 0 0 （其他党）</td>
-<td style="text-align:center">错误</td>
-</tr>
-</tbody>
-</table>
-<p><strong>模型2</strong>对于样本1和样本2判断非常准确，对于样本3判断错误，但是相对来说没有错得太离谱。</p>
-<p>好了，有了模型之后，我们需要通过定义损失函数来判断模型在样本上的表现了，那么我们可以定义哪些损失函数呢？</p>
-<h2 id="Classification-Error（分类错误率）"><a href="#Classification-Error（分类错误率）" class="headerlink" title="Classification Error（分类错误率）"></a>Classification Error（分类错误率）</h2><p>最为直接的损失函数定义为：$classification\ error=\frac{count\ of\ error\ items}{count\ of \ all\ items}$</p>
-<p><strong>模型1：</strong>$classification\ error=\frac{1}{3}$</p>
-<p><strong>模型2：</strong>$classification\ error=\frac{1}{3}$</p>
-<p>我们知道，<strong>模型1</strong>和<strong>模型2</strong>虽然都是预测错了1个，但是相对来说<strong>模型2</strong>表现的更好，损失函数值照理来说应该更小，但是，很遗憾的是，$classification\ error$并不能判断出来，所以这种损失函数虽然好理解，但表现不太好。</p>
-<h2 id="Mean-Squared-Error-平方和"><a href="#Mean-Squared-Error-平方和" class="headerlink" title="Mean Squared Error (平方和)"></a>Mean Squared Error (平方和)</h2><p>平方和损失也是一种比较常见的损失函数，其定义为：$MSE=\frac{1}{n}\sum_{i}^n(\hat{y_i}-y_i)$</p>
-<p><strong>模型1：</strong>$MSE=\frac{0.54+0.54+1.34}{3}=0.81$</p>
-<p><strong>模型2：</strong>$MSE=\frac{0.14+0.14+0.74}{3}=0.34$</p>
-<p>MSE能够判断出来<strong>模型2</strong>优于<strong>模型1</strong>，那为什么不采样这种损失函数呢？原因在于，使用该损失函数时，得到的表达式是非凸函数，有很多局部的极值点。在做优化的时候不太好处理。</p>
-<p>有了上面的直观分析，我们可以清楚的看到，对于分类问题的损失函数来说，分类错误率和平方和损失都不是很好的损失函数，下面我们来看一下交叉熵损失函数是怎么解决这个问题的。</p>
-<h1 id="Cross-Entropy-Error-Function"><a href="#Cross-Entropy-Error-Function" class="headerlink" title="Cross Entropy Error Function"></a>Cross Entropy Error Function</h1><p>交叉熵损失函数经常用于分类问题中，特别是在神经网络做分类问题时，也经常使用交叉熵作为损失函数，此外，由于交叉熵涉及到计算每个类别的概率，所以交叉熵几乎每次都和softmax函数一起出现。</p>
-<h2 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h2><h3 id="二分类"><a href="#二分类" class="headerlink" title="二分类"></a>二分类</h3><p>在二分的情况下，模型最后需要预测的结果只有两种情况，对于每个类别我们的预测得到的概率为$p$和$1-p$。此时表达式为：$−(ylog(p)+(1−y)log(1−p))$</p>
-<h3 id="多分类"><a href="#多分类" class="headerlink" title="多分类"></a>多分类</h3><p>多分类的情况实际上就是对二分类的扩展：$-\sum_{c=1}^My_{o,c}\log(p_{o,c})$</p>
-<p>其中：</p>
+        <p>计算机视觉是深度学习应用的比较成功的一个领域。卷积神经网络这种神经网络结构在计算机视觉很多方面的做得非常出色，比如图片分类、目标检测和图片风格转换。</p>
+<h1 id="Convolution"><a href="#Convolution" class="headerlink" title="Convolution"></a>Convolution</h1><p><img src="../../../../../../../Desktop/download.png" alt="download"></p>
+<p>上图比较清晰的反映出图片中的一个区域与一个卷积核进行卷积操作后得到的结果，我们将区域对应位置的值与卷积核对应位置的值进行相乘，最后将所有相乘后的结果累加，得到最终的结果。</p>
+<p>那么卷积操作有什么意义呢？在吴恩达的deeplearning.ai课程上，通过一个例子来直观理解卷积操作的在边缘检测上的意义：</p>
+<p><img src="../../../../../../../Desktop/Screen Shot 2018-05-14 at 10.06.30.png" alt="Screen Shot 2018-05-14 at 10.06.30"></p>
+<p>如果我们要检测不同的边缘，我们可以采用不同的卷积核来进行卷积操作：</p>
+<p><img src="../../../../../../../Desktop/Screen Shot 2018-05-14 at 10.09.04.png" alt="Screen Shot 2018-05-14 at 10.09.04"></p>
+<p>卷积操作后得到的图片大小：</p>
+<p>$$n’=\frac{n+2p-f}{s}+1$$</p>
 <ul>
-<li>$M$——类别的数量；</li>
-<li>$y$——指示变量（0或1）,如果该类别和样本观测到的类别相同就是1，否则是0；</li>
-<li>$p$——对于观测样本属于类别c的预测概率。</li>
+<li>$n$ : 原始输入大小；</li>
+<li>$p$ : 填充的大小；</li>
+<li>$f$：卷积核（filter）的大小；</li>
+<li>$s$：步长。</li>
 </ul>
-<h2 id="函数图像"><a href="#函数图像" class="headerlink" title="函数图像"></a>函数图像</h2><p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-08-024353.jpg" alt="cross_entropy"></p>
-<p>可以看出，该函数是凸函数，求导时能够得到全局最优值。</p>
-<h2 id="求导"><a href="#求导" class="headerlink" title="求导"></a>求导</h2><p>我们用神经网络最后一层输出的情况，来看一眼整个模型预测及获得损失的的流程：</p>
-<ol>
-<li>神经网络最后一层得到每个类别的得分<strong>scores</strong>；</li>
-<li>该得分经过softmax转换为概率输出；</li>
-<li>模型预测的类别概率输出与真实类别的one hot形式进行cross entropy损失函数的计算。</li>
-</ol>
-<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-08-064410.jpg" alt="Screen Shot 2018-04-08 at 11.56.55"></p>
-<p>下面，我们以二分类的情形来推导一下整个求导公式，我们将求导分成两个过程，即拆成两项偏导的乘积。：</p>
-<p>$$\frac{\partial E}{\partial score_i}=\frac{\partial E}{\partial p_i}\cdot \frac{\partial p_i}{\partial score_i}$$</p>
-<h3 id="计算第一项：-frac-partial-E-partial-p-i"><a href="#计算第一项：-frac-partial-E-partial-p-i" class="headerlink" title="计算第一项：$\frac{\partial E}{\partial p_i}$"></a>计算第一项：$\frac{\partial E}{\partial p_i}$</h3><p>\begin{align}<br>\frac{\partial E}{\partial p_i} &amp;= \frac{\partial −(ylog(p)+(1−y)log(1−p))}{\partial p_i} \\<br> &amp;= -\frac{\partial y_ilogp_i}{\partial p_i}-\frac{\partial (1-y_i)log(1-p_i)}{\partial p_i} \\<br> &amp;= -\frac{y_i}{p_i}-[(1-y_i)\cdot \frac{1}{1-p_i}\cdot (-1)] \\<br> &amp;= -\frac{y_i}{p_i}-\frac{1-y_i}{1-p_i} \\<br>\end{align}</p>
-<h3 id="计算第二项：-frac-partial-p-i-partial-score-i"><a href="#计算第二项：-frac-partial-p-i-partial-score-i" class="headerlink" title="计算第二项：$\frac{\partial p_i}{\partial score_i}$"></a>计算第二项：$\frac{\partial p_i}{\partial score_i}$</h3><p>这一项要计算的是softmax函数对于score的导数，我们先回顾一下分数求导的公式：</p>
-<blockquote>
-<p>$$f(x) = \frac{g(x)}{h(x)}=\frac{g’(x)h(x)-g(x){h}’(x)}{h^2(x)}$$</p>
-</blockquote>
-<p>考虑$k$等于$i$的情况：</p>
-<p>\begin{align}<br>\frac{\partial p_i}{\partial score_i} &amp;= \frac{({e^{y_i}})’\cdot (\sum_ie^{y_i})-e^{y_i}\cdot {(\sum_j e^{y_i})}’}{(\sum_je^{y_i})^2} \\<br> &amp;= \frac{e^{y_i}\cdot \sum_ie^{y_i}-{(e^{y_i})}^2}{(\sum_je^{y_i})^2} \\<br> &amp;= \frac{e^{y_i}}{\sum_je^{y_i}} - \frac{(e^{y_i})^2}{(\sum_je^{y_i})^2} \\<br> &amp;= \frac{e^{y_i}}{\sum_je^{y_i}}\cdot (1 - \frac{e^{y_i}}{\sum_je^{y_i}}) \\<br> &amp;= \sigma(y_i)(1-\sigma(y_i)) \\<br>\end{align}</p>
-<p>考虑k不等于i的情况：</p>
-<p>\begin{align}<br>\frac{\partial p_i}{\partial score_i} &amp;= \frac{(e^{y_k})’\cdot (\sum_ie^{y_i})-e^{y_i}\cdot {(\sum_j e^{y_i})}’}{(\sum_je^{y_i})^2} \\<br> &amp;= \frac{0\cdot \sum_ie^{y_i}-(e^{y_i})\cdot (e^{y_k})}{(\sum_je^{y_i})^2} \\<br> &amp;= -\frac{e^{y_i}\cdot e^{y_k}}{(\sum_je^{y_i})^2} \\<br> &amp;= -\frac{e^{y_i}}{\sum_je^{y_i} }\cdot \frac{e^{y_k} }{\sum_je^{y_i}} \\<br> &amp;= -\sigma(y_i)\cdot \sigma(y_k) \\<br>\end{align}</p>
-<p>综上可得softmax损失函数的求导结果：</p>
-<p>\begin{split}\frac{\partial pi}{\partial score_i}=\begin{cases} \sigma(y_i)(1-\sigma(y_i)) &amp; \text{$if\ j=k$} \\ -\sigma(y_i)\cdot \sigma(y_k) &amp; \text{$if\ j \neq k$}\end{cases}\end{split}</p>
-<h3 id="计算结果-frac-partial-E-partial-score-i"><a href="#计算结果-frac-partial-E-partial-score-i" class="headerlink" title="计算结果$\frac{\partial E}{\partial score_i}$"></a>计算结果$\frac{\partial E}{\partial score_i}$</h3><p>\begin{align}<br>\frac{\partial E}{\partial score_i} &amp;= \frac{\partial E}{\partial p_i}\cdot \frac{\partial p_i}{\partial score_i} \\<br> &amp;= [-\frac{y_i}{\sigma(y_i)}-\cdot \frac{1-y_i}{1-\sigma(y_i)}]\cdot  \sigma(y_i)(1-\sigma(y_i) \\<br> &amp;= -\frac{c_i}{\sigma(y_i)}\cdot \sigma(y_i)\cdot (1-\sigma(y_i))+\frac{1-c_i}{1-\sigma(y_i)}\cdot \sigma(y_i)\cdot (1-\sigma(y_i)) \\<br> &amp;= -c_i+c_i\cdot \sigma(y_i)+\sigma(y_i)-c_i\cdot \sigma(y_i) \\<br> &amp;= \sigma(y_i)-c_i \\<br>\end{align}</p>
-<p>可以看到，我们得到了一个非常漂亮的结果，所以，Cross Entropy损失函数，不仅可以很好的衡量模型的效果，又可以很容易的的进行求导计算。</p>
-<h1 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h1><p>我们对结果进一步对参数求导：即$\frac{\partial E}{\partial w_i}=\frac{\partial E}{\partial score_i}\cdot \frac{\partial score_i}{\partial w_i}=x_i\cdot [\sigma(y_i)-c_i]$</p>
-<p>在用梯度下降法做参数更新的时候，模型学习的速度取决于两个值：一、学习率；二、偏导值。其中，学习率是我们需要设置的超参数，所以我们重点关注偏导值。从上面的式子中，我们发现，偏导值的大小取决于$x_i$和$[\sigma(y_i)-c_i]$，我们重点关注后者，后者的值大小反映了我们模型的错误程度，该值越大，说明模型效果越差，但是该值越大同时也会使得模型学习速度更快。所以，用交叉熵当损失函数在模型效果差的时候学习速度比较快，在模型效果好的时候学习速度变慢，这是我们希望得到的。</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1]. <a href="http://jackon.me/posts/why-use-cross-entropy-error-for-loss-function/" target="_blank" rel="noopener">神经网络的分类模型 LOSS 函数为什么要用 CROSS ENTROPY</a></p>
-<p>[2]. <a href="http://sefiks.com/2017/11/08/softmax-as-a-neural-networks-activation-function/" target="_blank" rel="noopener">Softmax as a Neural Networks Activation Function</a></p>
-<p>[3]. <a href="https://sefiks.com/2017/12/17/a-gentle-introduction-to-cross-entropy-loss-function/" target="_blank" rel="noopener">A Gentle Introduction to Cross-Entropy Loss Function</a></p>
+<h1 id="Padding"><a href="#Padding" class="headerlink" title="Padding"></a>Padding</h1><p>Padding这种操作是指我们对输入图片按照某种策略进行填充，使之成为更大的图片，这样做的一个目的在于使得卷积后的图片的大小和原始图片大小是一样的， 这样就不会使得图片在逐次的卷积操作中越变越小。</p>
+<p>一般采用Padding的策略都是<code>constant</code>填充，即用一个固定值来填充输入图片的四周。</p>
+<p>根据填充后图片的大小，有两种比较特别的填充方式：</p>
+<ul>
+<li>“Valid” ：表示没有进行padding操作；</li>
+<li>“Same”：表示进行填充，使得卷积后的图片大小和原始图片大小是一样的。<ul>
+<li>$$n’=\frac{n+2p-f}{s}+1 = n =&gt; p=\frac{f-1}{2}$$</li>
+</ul>
+</li>
+</ul>
+<h1 id="Strided-Convolutions"><a href="#Strided-Convolutions" class="headerlink" title="Strided Convolutions"></a>Strided Convolutions</h1><p>步长是指，我们每次移动卷积核的步数，比如1、2、5等。</p>
+<h1 id="Convolutions-Over-Volume"><a href="#Convolutions-Over-Volume" class="headerlink" title="Convolutions Over Volume"></a>Convolutions Over Volume</h1><p>上面的例子中，卷积操作都是只在一个通道上进行的。但是，图片可以使多通道的，如RGB三个通道。所以，卷积操作也可以是多通道的卷积操作。</p>
+<p><img src="../../../../../../../Desktop/Screen Shot 2018-05-14 at 10.40.36.png" alt="Screen Shot 2018-05-14 at 10.40.36"></p>
+<p>对于多个通道得到的多个结果，将多个结果进行线性相加，得到一个结果。</p>
+<h1 id="Multiple-filters"><a href="#Multiple-filters" class="headerlink" title="Multiple filters"></a>Multiple filters</h1><p>除了输入可能有多个通道外，进行卷积操作涉及的卷积核也可能有多个，这样得到的结果就会有多个，不同的卷积核通常会抽取不同的特征。</p>
+<p><img src="../../../../../../../Desktop/Screen Shot 2018-05-14 at 10.51.12.png" alt="Screen Shot 2018-05-14 at 10.51.12"></p>
+<h1 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h1><p>$$n\cdot n \cdot n_c\ *\ f\cdot f\cdot n_c\cdot n’_c\rightarrow \left \lfloor \frac{n+2p-f}{s}+1 \right \rfloor\cdot \left \lfloor \frac{n+2p-f}{s}+1 \right \rfloor\cdot n’_c $$</p>
+<ul>
+<li>$n$：输入数据大小；</li>
+<li>$n_c$：输入数据的通道数；</li>
+<li>$f$：卷积核大小；</li>
+<li>$n’_c$：卷积核数量；</li>
+<li>$p$：padding的大小；</li>
+<li>$s$：步长。</li>
+</ul>
 
       
     </div>
@@ -533,7 +470,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/math/" rel="tag"># math</a>
+            <a href="/tags/dl/" rel="tag"># dl</a>
+          
+            <a href="/tags/cnn/" rel="tag"># cnn</a>
           
         </div>
       
@@ -546,8 +485,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/07/K-Means/" rel="next" title="K-Means">
-                <i class="fa fa-chevron-left"></i> K-Means
+              <a href="/2018/05/01/Dropout/" rel="next" title="Dropout">
+                <i class="fa fa-chevron-left"></i> Dropout
               </a>
             
           </div>
@@ -555,10 +494,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/04/08/Negative-Maximum-Likehood-Loss-Function/" rel="prev" title="Negative Maximum Likehood Loss Function">
-                Negative Maximum Likehood Loss Function <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -729,7 +664,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#预测政治倾向例子"><span class="nav-number">1.</span> <span class="nav-text">预测政治倾向例子</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Classification-Error（分类错误率）"><span class="nav-number">1.1.</span> <span class="nav-text">Classification Error（分类错误率）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mean-Squared-Error-平方和"><span class="nav-number">1.2.</span> <span class="nav-text">Mean Squared Error (平方和)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Cross-Entropy-Error-Function"><span class="nav-number">2.</span> <span class="nav-text">Cross Entropy Error Function</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#表达式"><span class="nav-number">2.1.</span> <span class="nav-text">表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#二分类"><span class="nav-number">2.1.1.</span> <span class="nav-text">二分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多分类"><span class="nav-number">2.1.2.</span> <span class="nav-text">多分类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数图像"><span class="nav-number">2.2.</span> <span class="nav-text">函数图像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求导"><span class="nav-number">2.3.</span> <span class="nav-text">求导</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#计算第一项：-frac-partial-E-partial-p-i"><span class="nav-number">2.3.1.</span> <span class="nav-text">计算第一项：$\frac{\partial E}{\partial p_i}$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算第二项：-frac-partial-p-i-partial-score-i"><span class="nav-number">2.3.2.</span> <span class="nav-text">计算第二项：$\frac{\partial p_i}{\partial score_i}$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算结果-frac-partial-E-partial-score-i"><span class="nav-number">2.3.3.</span> <span class="nav-text">计算结果$\frac{\partial E}{\partial score_i}$</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#优点"><span class="nav-number">3.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Convolution"><span class="nav-number">1.</span> <span class="nav-text">Convolution</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Padding"><span class="nav-number">2.</span> <span class="nav-text">Padding</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Strided-Convolutions"><span class="nav-number">3.</span> <span class="nav-text">Strided Convolutions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Convolutions-Over-Volume"><span class="nav-number">4.</span> <span class="nav-text">Convolutions Over Volume</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Multiple-filters"><span class="nav-number">5.</span> <span class="nav-text">Multiple filters</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Summary"><span class="nav-number">6.</span> <span class="nav-text">Summary</span></a></li></ol></div>
             
 
           </div>
