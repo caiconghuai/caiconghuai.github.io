@@ -89,16 +89,16 @@
 <meta property="og:site_name" content="蔡聪怀">
 <meta property="og:description" content="计算机视觉是深度学习应用的比较成功的一个领域。卷积神经网络这种神经网络结构在计算机视觉很多方面的做得非常出色，比如图片分类、目标检测和图片风格转换。 Convolution 上图比较清晰的反映出图片中的一个区域与一个卷积核进行卷积操作后得到的结果，我们将区域对应位置的值与卷积核对应位置的值进行相乘，最后将所有相乘后的结果累加，得到最终的结果。 那么卷积操作有什么意义呢？在吴恩达的deeplearn">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://conghuai.me/Desktop/download.png">
-<meta property="og:image" content="http://conghuai.me/Desktop/Screen%20Shot%202018-05-14%20at%2010.06.30.png">
-<meta property="og:image" content="http://conghuai.me/Desktop/Screen%20Shot%202018-05-14%20at%2010.09.04.png">
-<meta property="og:image" content="http://conghuai.me/Desktop/Screen%20Shot%202018-05-14%20at%2010.40.36.png">
-<meta property="og:image" content="http://conghuai.me/Desktop/Screen%20Shot%202018-05-14%20at%2010.51.12.png">
-<meta property="og:updated_time" content="2018-05-14T03:07:26.583Z">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fraoxk9dgaj309304at92.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fraoxkrheej30pk0edwh3.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fraoxl6lrdj30gy09m75m.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fraoxj7dwaj31gi0tq44q.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fraoxjtpyxj30iy0aq403.jpg">
+<meta property="og:updated_time" content="2018-05-14T03:07:56.829Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Convolutional Neural Networks Operations">
 <meta name="twitter:description" content="计算机视觉是深度学习应用的比较成功的一个领域。卷积神经网络这种神经网络结构在计算机视觉很多方面的做得非常出色，比如图片分类、目标检测和图片风格转换。 Convolution 上图比较清晰的反映出图片中的一个区域与一个卷积核进行卷积操作后得到的结果，我们将区域对应位置的值与卷积核对应位置的值进行相乘，最后将所有相乘后的结果累加，得到最终的结果。 那么卷积操作有什么意义呢？在吴恩达的deeplearn">
-<meta name="twitter:image" content="http://conghuai.me/Desktop/download.png">
+<meta name="twitter:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fraoxk9dgaj309304at92.jpg">
 
 
 
@@ -414,12 +414,12 @@
 
       
         <p>计算机视觉是深度学习应用的比较成功的一个领域。卷积神经网络这种神经网络结构在计算机视觉很多方面的做得非常出色，比如图片分类、目标检测和图片风格转换。</p>
-<h1 id="Convolution"><a href="#Convolution" class="headerlink" title="Convolution"></a>Convolution</h1><p><img src="../../../../../../../Desktop/download.png" alt="download"></p>
+<h1 id="Convolution"><a href="#Convolution" class="headerlink" title="Convolution"></a>Convolution</h1><p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fraoxk9dgaj309304at92.jpg" alt="download"></p>
 <p>上图比较清晰的反映出图片中的一个区域与一个卷积核进行卷积操作后得到的结果，我们将区域对应位置的值与卷积核对应位置的值进行相乘，最后将所有相乘后的结果累加，得到最终的结果。</p>
 <p>那么卷积操作有什么意义呢？在吴恩达的deeplearning.ai课程上，通过一个例子来直观理解卷积操作的在边缘检测上的意义：</p>
-<p><img src="../../../../../../../Desktop/Screen Shot 2018-05-14 at 10.06.30.png" alt="Screen Shot 2018-05-14 at 10.06.30"></p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fraoxkrheej30pk0edwh3.jpg" alt="Screen Shot 2018-05-14 at 10.06.30"></p>
 <p>如果我们要检测不同的边缘，我们可以采用不同的卷积核来进行卷积操作：</p>
-<p><img src="../../../../../../../Desktop/Screen Shot 2018-05-14 at 10.09.04.png" alt="Screen Shot 2018-05-14 at 10.09.04"></p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fraoxl6lrdj30gy09m75m.jpg" alt="Screen Shot 2018-05-14 at 10.09.04"></p>
 <p>卷积操作后得到的图片大小：</p>
 <p>$$n’=\frac{n+2p-f}{s}+1$$</p>
 <ul>
@@ -440,10 +440,10 @@
 </ul>
 <h1 id="Strided-Convolutions"><a href="#Strided-Convolutions" class="headerlink" title="Strided Convolutions"></a>Strided Convolutions</h1><p>步长是指，我们每次移动卷积核的步数，比如1、2、5等。</p>
 <h1 id="Convolutions-Over-Volume"><a href="#Convolutions-Over-Volume" class="headerlink" title="Convolutions Over Volume"></a>Convolutions Over Volume</h1><p>上面的例子中，卷积操作都是只在一个通道上进行的。但是，图片可以使多通道的，如RGB三个通道。所以，卷积操作也可以是多通道的卷积操作。</p>
-<p><img src="../../../../../../../Desktop/Screen Shot 2018-05-14 at 10.40.36.png" alt="Screen Shot 2018-05-14 at 10.40.36"></p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fraoxj7dwaj31gi0tq44q.jpg" alt="Screen Shot 2018-05-14 at 10.40.36"></p>
 <p>对于多个通道得到的多个结果，将多个结果进行线性相加，得到一个结果。</p>
 <h1 id="Multiple-filters"><a href="#Multiple-filters" class="headerlink" title="Multiple filters"></a>Multiple filters</h1><p>除了输入可能有多个通道外，进行卷积操作涉及的卷积核也可能有多个，这样得到的结果就会有多个，不同的卷积核通常会抽取不同的特征。</p>
-<p><img src="../../../../../../../Desktop/Screen Shot 2018-05-14 at 10.51.12.png" alt="Screen Shot 2018-05-14 at 10.51.12"></p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fraoxjtpyxj30iy0aq403.jpg" alt="Screen Shot 2018-05-14 at 10.51.12"></p>
 <h1 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h1><p>$$n\cdot n \cdot n_c\ *\ f\cdot f\cdot n_c\cdot n’_c\rightarrow \left \lfloor \frac{n+2p-f}{s}+1 \right \rfloor\cdot \left \lfloor \frac{n+2p-f}{s}+1 \right \rfloor\cdot n’_c $$</p>
 <ul>
 <li>$n$：输入数据大小；</li>
