@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="dl,cnn," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="蔡聪怀" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="卷积神经网络中有很多经典的网络模型，通过学习这些网络模型对于有很大的启发作用，经典的模型如下：  LeNet - 5 AlexNet  LeNet-5卷积神经网络是一种特殊的多层神经网络。像几乎所有其他的神经网络一样，它们都使用反向传播算法的版本进行训练。卷积神经网络被设计为以最小的预处理直接从像素图像识别视觉图案。他们可以识别极端变化的模式（如手写字符），以及对失真和简单几何变换的鲁棒性。LeN">
+<meta name="keywords" content="dl,cnn">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Classic Convolutional Network">
+<meta property="og:url" content="http://conghuai.me/2018/05/16/Classic-Convolutional-Network/index.html">
+<meta property="og:site_name" content="蔡聪怀">
+<meta property="og:description" content="卷积神经网络中有很多经典的网络模型，通过学习这些网络模型对于有很大的启发作用，经典的模型如下：  LeNet - 5 AlexNet  LeNet-5卷积神经网络是一种特殊的多层神经网络。像几乎所有其他的神经网络一样，它们都使用反向传播算法的版本进行训练。卷积神经网络被设计为以最小的预处理直接从像素图像识别视觉图案。他们可以识别极端变化的模式（如手写字符），以及对失真和简单几何变换的鲁棒性。LeN">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://conghuai.me/Desktop/asamples.gif">
+<meta property="og:image" content="http://conghuai.me/Desktop/Screen%20Shot%202018-05-16%20at%2010.20.57.png">
+<meta property="og:image" content="http://conghuai.me/Desktop/The-LeNet-5-Architecture-a-convolutional-neural-network.jpg">
+<meta property="og:image" content="http://conghuai.me/Desktop/Screen%20Shot%202018-05-16%20at%2015.54.29.png">
+<meta property="og:updated_time" content="2018-05-16T08:41:43.623Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Classic Convolutional Network">
+<meta name="twitter:description" content="卷积神经网络中有很多经典的网络模型，通过学习这些网络模型对于有很大的启发作用，经典的模型如下：  LeNet - 5 AlexNet  LeNet-5卷积神经网络是一种特殊的多层神经网络。像几乎所有其他的神经网络一样，它们都使用反向传播算法的版本进行训练。卷积神经网络被设计为以最小的预处理直接从像素图像识别视觉图案。他们可以识别极端变化的模式（如手写字符），以及对失真和简单几何变换的鲁棒性。LeN">
+<meta name="twitter:image" content="http://conghuai.me/Desktop/asamples.gif">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://conghuai.me/2018/05/16/Classic-Convolutional-Network/"/>
+
+
+
+
+
+  <title>Classic Convolutional Network | 蔡聪怀</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">蔡聪怀</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://conghuai.me/2018/05/16/Classic-Convolutional-Network/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Conghuai Cai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="蔡聪怀">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Classic Convolutional Network</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-16T10:01:32+08:00">
+                2018-05-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Deep-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Deep Learning</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Deep-Learning/CNN/" itemprop="url" rel="index">
+                    <span itemprop="name">CNN</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/05/16/Classic-Convolutional-Network/" class="leancloud_visitors" data-flag-title="Classic Convolutional Network">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  1,134 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  6 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>卷积神经网络中有很多经典的网络模型，通过学习这些网络模型对于有很大的启发作用，经典的模型如下：</p>
+<ul>
+<li>LeNet - 5</li>
+<li>AlexNet</li>
+</ul>
+<h1 id="LeNet-5"><a href="#LeNet-5" class="headerlink" title="LeNet-5"></a>LeNet-5</h1><p>卷积神经网络是一种特殊的多层神经网络。像几乎所有其他的神经网络一样，它们都使用反向传播算法的版本进行训练。卷积神经网络被设计为以最小的预处理直接从像素图像识别视觉图案。他们可以识别极端变化的模式（如手写字符），以及对失真和简单几何变换的鲁棒性。LeNet-5是最早的的用于手写和机器打印字符识别的卷积网络。这是一个LeNet-5的例子。</p>
+<p><img src="../../../../../../../Desktop/asamples.gif" alt="asamples"></p>
+<h2 id="网络结构"><a href="#网络结构" class="headerlink" title="网络结构"></a>网络结构</h2><p>LeNet-5网络模型结构如下：</p>
+<p><img src="../../../../../../../Desktop/Screen Shot 2018-05-16 at 10.20.57.png" alt="Screen Shot 2018-05-16 at 10.20.57"></p>
+<p><img src="../../../../../../../Desktop/The-LeNet-5-Architecture-a-convolutional-neural-network.jpg" alt="The-LeNet-5-Architecture-a-convolutional-neural-network"></p>
+<h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">LeNet</span><span class="params">(x)</span>:</span>    </span><br><span class="line">    <span class="comment"># Hyperparameters</span></span><br><span class="line">    mu = <span class="number">0</span></span><br><span class="line">    sigma = <span class="number">0.1</span></span><br><span class="line">    layer_depth = &#123;</span><br><span class="line">        <span class="string">'layer_1'</span> : <span class="number">6</span>,</span><br><span class="line">        <span class="string">'layer_2'</span> : <span class="number">16</span>,</span><br><span class="line">        <span class="string">'layer_3'</span> : <span class="number">120</span>,</span><br><span class="line">        <span class="string">'layer_f1'</span> : <span class="number">84</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># <span class="doctag">TODO:</span> Layer 1: Convolutional. Input = 32x32x1. Output = 28x28x6.</span></span><br><span class="line">    conv1_w = tf.Variable(tf.truncated_normal(shape = [<span class="number">5</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">6</span>],mean = mu, stddev = sigma))</span><br><span class="line">    conv1_b = tf.Variable(tf.zeros(<span class="number">6</span>))</span><br><span class="line">    conv1 = tf.nn.conv2d(x,conv1_w, strides = [<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>], padding = <span class="string">'VALID'</span>) + conv1_b </span><br><span class="line">    <span class="comment"># <span class="doctag">TODO:</span> Activation.</span></span><br><span class="line">    conv1 = tf.nn.relu(conv1)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># <span class="doctag">TODO:</span> Pooling. Input = 28x28x6. Output = 14x14x6.</span></span><br><span class="line">    pool_1 = tf.nn.max_pool(conv1,ksize = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">1</span>], strides = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">1</span>], padding = <span class="string">'VALID'</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># <span class="doctag">TODO:</span> Layer 2: Convolutional. Output = 10x10x16.</span></span><br><span class="line">    conv2_w = tf.Variable(tf.truncated_normal(shape = [<span class="number">5</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">16</span>], mean = mu, stddev = sigma))</span><br><span class="line">    conv2_b = tf.Variable(tf.zeros(<span class="number">16</span>))</span><br><span class="line">    conv2 = tf.nn.conv2d(pool_1, conv2_w, strides = [<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>], padding = <span class="string">'VALID'</span>) + conv2_b</span><br><span class="line">    <span class="comment"># <span class="doctag">TODO:</span> Activation.</span></span><br><span class="line">    conv2 = tf.nn.relu(conv2)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># <span class="doctag">TODO:</span> Pooling. Input = 10x10x16. Output = 5x5x16.</span></span><br><span class="line">    pool_2 = tf.nn.max_pool(conv2, ksize = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">1</span>], strides = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">1</span>], padding = <span class="string">'VALID'</span>) </span><br><span class="line">    </span><br><span class="line">    <span class="comment"># <span class="doctag">TODO:</span> Flatten. Input = 5x5x16. Output = 400.</span></span><br><span class="line">    fc1 = flatten(pool_2)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># <span class="doctag">TODO:</span> Layer 3: Fully Connected. Input = 400. Output = 120.</span></span><br><span class="line">    fc1_w = tf.Variable(tf.truncated_normal(shape = (<span class="number">400</span>,<span class="number">120</span>), mean = mu, stddev = sigma))</span><br><span class="line">    fc1_b = tf.Variable(tf.zeros(<span class="number">120</span>))</span><br><span class="line">    fc1 = tf.matmul(fc1,fc1_w) + fc1_b</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># <span class="doctag">TODO:</span> Activation.</span></span><br><span class="line">    fc1 = tf.nn.relu(fc1)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># <span class="doctag">TODO:</span> Layer 4: Fully Connected. Input = 120. Output = 84.</span></span><br><span class="line">    fc2_w = tf.Variable(tf.truncated_normal(shape = (<span class="number">120</span>,<span class="number">84</span>), mean = mu, stddev = sigma))</span><br><span class="line">    fc2_b = tf.Variable(tf.zeros(<span class="number">84</span>))</span><br><span class="line">    fc2 = tf.matmul(fc1,fc2_w) + fc2_b</span><br><span class="line">    <span class="comment"># <span class="doctag">TODO:</span> Activation.</span></span><br><span class="line">    fc2 = tf.nn.relu(fc2)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># <span class="doctag">TODO:</span> Layer 5: Fully Connected. Input = 84. Output = 10.</span></span><br><span class="line">    fc3_w = tf.Variable(tf.truncated_normal(shape = (<span class="number">84</span>,<span class="number">10</span>), mean = mu , stddev = sigma))</span><br><span class="line">    fc3_b = tf.Variable(tf.zeros(<span class="number">10</span>))</span><br><span class="line">    logits = tf.matmul(fc2, fc3_w) + fc3_b</span><br><span class="line">    <span class="keyword">return</span> logits</span><br></pre></td></tr></table></figure>
+<h1 id="AlexNet"><a href="#AlexNet" class="headerlink" title="AlexNet"></a>AlexNet</h1><p>AlexNet以大幅度赢得2012年ImageNet LSVRC-2012大赛（15.3％VS 26.2％（第二名）错误率）而闻名。</p>
+<p>AlexNet网络有如下的几个特点：</p>
+<ol>
+<li>使用<code>ReLU</code>而不是<code>Tanh</code>激活函数，在相同精度下，训练速度提高了6倍；</li>
+<li>使用<code>dropout</code>而不是<code>regularization</code>来防止过拟合。但是，这使得是训练时间增加了1倍，dropout率为0.5；</li>
+<li>将卷积层复制到不同的GPU中，将完全连接的图层分配到不同的GPU中；</li>
+<li>将数据分批、平行的送入到每个GPU的卷积层；</li>
+</ol>
+<h2 id="网络架构"><a href="#网络架构" class="headerlink" title="网络架构"></a>网络架构</h2><p><img src="../../../../../../../Desktop/Screen Shot 2018-05-16 at 15.54.29.png" alt="Screen Shot 2018-05-16 at 15.54.29"></p>
+<h2 id="实战-1"><a href="#实战-1" class="headerlink" title="实战"></a>实战</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AlexNet</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="string">"""Implementation of the AlexNet."""</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, x, keep_prob, num_classes, skip_layer,</span></span></span><br><span class="line"><span class="function"><span class="params">                 weights_path=<span class="string">'DEFAULT'</span>)</span>:</span></span><br><span class="line">        <span class="string">"""Create the graph of the AlexNet model.</span></span><br><span class="line"><span class="string">        Args:</span></span><br><span class="line"><span class="string">            x: Placeholder for the input tensor.</span></span><br><span class="line"><span class="string">            keep_prob: Dropout probability.</span></span><br><span class="line"><span class="string">            num_classes: Number of classes in the dataset.</span></span><br><span class="line"><span class="string">            skip_layer: List of names of the layer, that get trained from</span></span><br><span class="line"><span class="string">                scratch</span></span><br><span class="line"><span class="string">            weights_path: Complete path to the pretrained weight file, if it</span></span><br><span class="line"><span class="string">                isn't in the same folder as this code</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="comment"># Parse input arguments into class variables</span></span><br><span class="line">        self.X = x</span><br><span class="line">        self.NUM_CLASSES = num_classes</span><br><span class="line">        self.KEEP_PROB = keep_prob</span><br><span class="line">        self.SKIP_LAYER = skip_layer</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> weights_path == <span class="string">'DEFAULT'</span>:</span><br><span class="line">            self.WEIGHTS_PATH = <span class="string">'bvlc_alexnet.npy'</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.WEIGHTS_PATH = weights_path</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Call the create function to build the computational graph of AlexNet</span></span><br><span class="line">        self.create()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">create</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""Create the network graph."""</span></span><br><span class="line">        <span class="comment"># 1st Layer: Conv (w ReLu) -&gt; Lrn -&gt; Pool</span></span><br><span class="line">        conv1 = conv(self.X, <span class="number">11</span>, <span class="number">11</span>, <span class="number">96</span>, <span class="number">4</span>, <span class="number">4</span>, padding=<span class="string">'VALID'</span>, name=<span class="string">'conv1'</span>)</span><br><span class="line">        norm1 = lrn(conv1, <span class="number">2</span>, <span class="number">1e-04</span>, <span class="number">0.75</span>, name=<span class="string">'norm1'</span>)</span><br><span class="line">        pool1 = max_pool(norm1, <span class="number">3</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">2</span>, padding=<span class="string">'VALID'</span>, name=<span class="string">'pool1'</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 2nd Layer: Conv (w ReLu)  -&gt; Lrn -&gt; Pool with 2 groups</span></span><br><span class="line">        conv2 = conv(pool1, <span class="number">5</span>, <span class="number">5</span>, <span class="number">256</span>, <span class="number">1</span>, <span class="number">1</span>, groups=<span class="number">2</span>, name=<span class="string">'conv2'</span>)</span><br><span class="line">        norm2 = lrn(conv2, <span class="number">2</span>, <span class="number">1e-04</span>, <span class="number">0.75</span>, name=<span class="string">'norm2'</span>)</span><br><span class="line">        pool2 = max_pool(norm2, <span class="number">3</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">2</span>, padding=<span class="string">'VALID'</span>, name=<span class="string">'pool2'</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 3rd Layer: Conv (w ReLu)</span></span><br><span class="line">        conv3 = conv(pool2, <span class="number">3</span>, <span class="number">3</span>, <span class="number">384</span>, <span class="number">1</span>, <span class="number">1</span>, name=<span class="string">'conv3'</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 4th Layer: Conv (w ReLu) splitted into two groups</span></span><br><span class="line">        conv4 = conv(conv3, <span class="number">3</span>, <span class="number">3</span>, <span class="number">384</span>, <span class="number">1</span>, <span class="number">1</span>, groups=<span class="number">2</span>, name=<span class="string">'conv4'</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 5th Layer: Conv (w ReLu) -&gt; Pool splitted into two groups</span></span><br><span class="line">        conv5 = conv(conv4, <span class="number">3</span>, <span class="number">3</span>, <span class="number">256</span>, <span class="number">1</span>, <span class="number">1</span>, groups=<span class="number">2</span>, name=<span class="string">'conv5'</span>)</span><br><span class="line">        pool5 = max_pool(conv5, <span class="number">3</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">2</span>, padding=<span class="string">'VALID'</span>, name=<span class="string">'pool5'</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 6th Layer: Flatten -&gt; FC (w ReLu) -&gt; Dropout</span></span><br><span class="line">        flattened = tf.reshape(pool5, [<span class="number">-1</span>, <span class="number">6</span>*<span class="number">6</span>*<span class="number">256</span>])</span><br><span class="line">        fc6 = fc(flattened, <span class="number">6</span>*<span class="number">6</span>*<span class="number">256</span>, <span class="number">4096</span>, name=<span class="string">'fc6'</span>)</span><br><span class="line">        dropout6 = dropout(fc6, self.KEEP_PROB)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 7th Layer: FC (w ReLu) -&gt; Dropout</span></span><br><span class="line">        fc7 = fc(dropout6, <span class="number">4096</span>, <span class="number">4096</span>, name=<span class="string">'fc7'</span>)</span><br><span class="line">        dropout7 = dropout(fc7, self.KEEP_PROB)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 8th Layer: FC and return unscaled activations</span></span><br><span class="line">        self.fc8 = fc(dropout7, <span class="number">4096</span>, self.NUM_CLASSES, relu=<span class="keyword">False</span>, name=<span class="string">'fc8'</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1] . <a href="http://yann.lecun.com/exdb/lenet/" target="_blank" rel="noopener">Yann Lecun LeNet-5</a></p>
+<p>[2]. <a href="https://medium.com/@siddharthdas_32104/cnns-architectures-lenet-alexnet-vgg-googlenet-resnet-and-more-666091488df5" target="_blank" rel="noopener">CNNs Architectures: LeNet, AlexNet, VGG, GoogLeNet, ResNet and more …</a></p>
+<p>[3]. <a href="https://www.kaggle.com/malekbadreddine/tensorflow-convnet-lenet-5/code" target="_blank" rel="noopener">Tensorflow convNet (leNet-5)</a></p>
+<p>[4]. <a href="https://github.com/sujaybabruwad/LeNet-in-Tensorflow" target="_blank" rel="noopener"><strong>LeNet-in-Tensorflow</strong></a></p>
+<p>[5]. <a href="https://medium.com/@smallfishbigsea/a-walk-through-of-alexnet-6cbd137a5637" target="_blank" rel="noopener">A Walk-through of AlexNet</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/dl/" rel="tag"># dl</a>
+          
+            <a href="/tags/cnn/" rel="tag"># cnn</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/14/Validation/" rel="next" title="Validation">
+                <i class="fa fa-chevron-left"></i> Validation
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Conghuai Cai" />
+            
+              <p class="site-author-name" itemprop="name">Conghuai Cai</p>
+              <p class="site-description motion-element" itemprop="description">Algorithm/Machine Learning/Deep Learning/NLP</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/conghuaicai" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:caiconghuai@gmail.com" target="_blank" title="Email">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>Email</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/6383237207/profile?topnav=1&wvr=6" target="_blank" title="Weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/caiconghuai" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#LeNet-5"><span class="nav-number">1.</span> <span class="nav-text">LeNet-5</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#网络结构"><span class="nav-number">1.1.</span> <span class="nav-text">网络结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实战"><span class="nav-number">1.2.</span> <span class="nav-text">实战</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AlexNet"><span class="nav-number">2.</span> <span class="nav-text">AlexNet</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#网络架构"><span class="nav-number">2.1.</span> <span class="nav-text">网络架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实战-1"><span class="nav-number">2.2.</span> <span class="nav-text">实战</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Conghuai Cai</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("gDGQAvMXvJB5uSIhpUvw90hy-gzGzoHsz", "36U43UE0rMrmve1e0J8NOBhA");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
