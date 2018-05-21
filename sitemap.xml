@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://conghuai.me/2018/05/14/Convolutional%20Neural%20Networks%20Operations/</loc>
+    <loc>http://conghuai.me/2018/05/20/Recurrent-Neural-Network-Foundation/</loc>
     
-    <lastmod>2018-05-18T01:18:05.729Z</lastmod>
+    <lastmod>2018-05-21T06:43:54.243Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://conghuai.me/2018/05/17/Decision-Tree/</loc>
     
-    <lastmod>2018-05-18T01:15:43.302Z</lastmod>
+    <lastmod>2018-05-20T08:07:46.622Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://conghuai.me/2018/05/14/Convolutional%20Neural%20Networks%20Operations/</loc>
+    
+    <lastmod>2018-05-18T01:18:05.729Z</lastmod>
     
   </url>
   

@@ -81,18 +81,20 @@
 
 
 
-<meta name="description" content="决策树模型呈树形结构，在分类问题中，表示基于特征对实例进行分类的过程。它可以认为是if-then规则的集合，也可以认为是定义在特征空间与类空间上的条件概率分布。其主要优点是模型具有可读性，分类速度快，学习时，利用训练数据，根据损失函数最小化的原则建立决策树模型。决策树学习通常包括3个步骤：特征选择、决策树的生成和决策树的修剪。 参考[1]. 李航. “统计学习方法.” 清华大学出版社, 北京 (2">
+<meta name="description" content="决策树模型呈树形结构，在分类问题中，表示基于特征对实例进行分类的过程。它可以认为是if-then规则的集合，也可以认为是定义在特征空间与类空间上的条件概率分布。其主要优点是模型具有可读性，分类速度快，学习时，利用训练数据，根据损失函数最小化的原则建立决策树模型。决策树学习通常包括3个步骤：特征选择、决策树的生成和决策树的修剪。 决策树模型 分类决策树模型是一种描述对实例进行分类的树形结构。决策树由">
 <meta name="keywords" content="tree">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Decision Tree">
 <meta property="og:url" content="http://conghuai.me/2018/05/17/Decision-Tree/index.html">
 <meta property="og:site_name" content="蔡聪怀">
-<meta property="og:description" content="决策树模型呈树形结构，在分类问题中，表示基于特征对实例进行分类的过程。它可以认为是if-then规则的集合，也可以认为是定义在特征空间与类空间上的条件概率分布。其主要优点是模型具有可读性，分类速度快，学习时，利用训练数据，根据损失函数最小化的原则建立决策树模型。决策树学习通常包括3个步骤：特征选择、决策树的生成和决策树的修剪。 参考[1]. 李航. “统计学习方法.” 清华大学出版社, 北京 (2">
+<meta property="og:description" content="决策树模型呈树形结构，在分类问题中，表示基于特征对实例进行分类的过程。它可以认为是if-then规则的集合，也可以认为是定义在特征空间与类空间上的条件概率分布。其主要优点是模型具有可读性，分类速度快，学习时，利用训练数据，根据损失函数最小化的原则建立决策树模型。决策树学习通常包括3个步骤：特征选择、决策树的生成和决策树的修剪。 决策树模型 分类决策树模型是一种描述对实例进行分类的树形结构。决策树由">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-05-18T01:15:43.302Z">
+<meta property="og:image" content="http://conghuai.me/Desktop/Screen%20Shot%202018-05-19%20at%2015.33.07.png">
+<meta property="og:updated_time" content="2018-05-20T08:07:46.622Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Decision Tree">
-<meta name="twitter:description" content="决策树模型呈树形结构，在分类问题中，表示基于特征对实例进行分类的过程。它可以认为是if-then规则的集合，也可以认为是定义在特征空间与类空间上的条件概率分布。其主要优点是模型具有可读性，分类速度快，学习时，利用训练数据，根据损失函数最小化的原则建立决策树模型。决策树学习通常包括3个步骤：特征选择、决策树的生成和决策树的修剪。 参考[1]. 李航. “统计学习方法.” 清华大学出版社, 北京 (2">
+<meta name="twitter:description" content="决策树模型呈树形结构，在分类问题中，表示基于特征对实例进行分类的过程。它可以认为是if-then规则的集合，也可以认为是定义在特征空间与类空间上的条件概率分布。其主要优点是模型具有可读性，分类速度快，学习时，利用训练数据，根据损失函数最小化的原则建立决策树模型。决策树学习通常包括3个步骤：特征选择、决策树的生成和决策树的修剪。 决策树模型 分类决策树模型是一种描述对实例进行分类的树形结构。决策树由">
+<meta name="twitter:image" content="http://conghuai.me/Desktop/Screen%20Shot%202018-05-19%20at%2015.33.07.png">
 
 
 
@@ -359,7 +361,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  167 字
+                  1,491 字
                 </span>
               
 
@@ -375,7 +377,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  1 分钟
+                  6 分钟
                 </span>
               
             </div>
@@ -397,6 +399,43 @@
 
       
         <p>决策树模型呈树形结构，在分类问题中，表示基于特征对实例进行分类的过程。它可以认为是if-then规则的集合，也可以认为是定义在特征空间与类空间上的条件概率分布。其主要优点是模型具有可读性，分类速度快，学习时，利用训练数据，根据损失函数最小化的原则建立决策树模型。决策树学习通常包括3个步骤：特征选择、决策树的生成和决策树的修剪。</p>
+<h1 id="决策树模型"><a href="#决策树模型" class="headerlink" title="决策树模型"></a>决策树模型</h1><blockquote>
+<p>分类决策树模型是一种描述对实例进行分类的树形结构。决策树由节点和有向边组成。结点有两种类型：内部结点和叶结点。内部结点表示一个特征或属性，叶结点表示一个类。</p>
+</blockquote>
+<h2 id="决策树与if-then规则"><a href="#决策树与if-then规则" class="headerlink" title="决策树与if-then规则"></a>决策树与if-then规则</h2><p>将决策树转换成if-then规则的过程是这样的：由决策树的根结点到叶结点的每一条路径构建一条规则；路径上的内部结点的特征对应着规则的条件，而叶结点的类对应着规则的结论。决策树的路径或其对应的if-then规则集合具有一个重要的性质：互斥并且完备。</p>
+<h2 id="决策树与条件概率分布"><a href="#决策树与条件概率分布" class="headerlink" title="决策树与条件概率分布"></a>决策树与条件概率分布</h2><p>决策树还表示给定特征条件下类的概率分布，这一条件概率分布定义在特征空间的一个划分上，将特征空间划分为互不相交的单元或区域，并在每个单元定义一个类的概率分布就构成了一个条件概率分布。决策树所表示的条件概率分布由各个单元给定条件下类的条件概率分布组成。假设X为表示特征的随机变量，Y为表示类的随机变量，那么这个条件概率分布可以表示为$P(Y|X)$，X取值于给定划分下单元的集合，Y取值于类的集合。各叶节点上的条件概率往往偏向某一个类，即属于某一类的概率较大。决策树分类时将该结点的实例强行分到条件概率大的那一类去。</p>
+<h2 id="决策树的学习"><a href="#决策树的学习" class="headerlink" title="决策树的学习"></a>决策树的学习</h2><p>决策树学习的算法通常是一个递归地选择最优特征，并根据该特征对训练数据进行分割，使得对各个子数据集有一个最好的分类的过程，这一个过程对应着对特征空间的划分，也对应着决策树的构建。开始，构建根结点，将所有训练数据都放在根节点，选择一个最优特征，按照这一特征训练数据集分割成子集，使得各个子集有一个在当前条件下最好的分类。如果这些子集已经能够被基本正确分类，那么构建叶结点，并将这些子集分到对应的叶结点中取；如果还有子集不能被基本正确分类，那么就对这些子集选择新的最优特征，继续对其进行分割，构建相应的结点，如此递归地进行下去，直至所有训练数据子集被基本正确分类，或者没有合适的特征为止。</p>
+<h1 id="特征选择"><a href="#特征选择" class="headerlink" title="特征选择"></a>特征选择</h1><p>特征选择在于选取对训练数据具有分类能力的特征，这样可以提高决策树学习的效率。给出例子为如下</p>
+<p><img src="../../../../../../../Desktop/Screen Shot 2018-05-19 at 15.33.07.png" alt="Screen Shot 2018-05-19 at 15.33.07"></p>
+<h2 id="熵"><a href="#熵" class="headerlink" title="熵"></a>熵</h2><p>在信息论与概率统计中，熵是表示随机变量不确定性的度量，设$X$是一个取有限个值的离散随机变量，其概率分布为：</p>
+<p>$$P(X = x_i)=p_i,i=1,2,…,n$$</p>
+<p>则随机变量$X$的熵定义为</p>
+<p>$$H(X)  - \sum_{i=1}^np_ilogp_i$$</p>
+<p>熵越大，随机变量的不确定性就越大，从定义可验证</p>
+<p>$$0\leq H(p)\leq logn$$</p>
+<h2 id="条件熵"><a href="#条件熵" class="headerlink" title="条件熵"></a>条件熵</h2><p>设随机变量$(X,Y)$，其联合概率分布为</p>
+<p>$$P(X=x_i,Y=y_j)=p_{ij}\text{ , i=1,2,…,n; j=1,2,…,m}$$</p>
+<p>条件熵$H(Y|X)$表示在已知随机变量$X$的条件下随机变量$Y$的不确定性，随机变量$X$给定的条件下随机变量$Y$的条件熵$H(Y|X)$，定义为$X$给定条件下$Y$的条件概率分布的上对$X$的数学期望</p>
+<p>$$H(Y|X)=\sum_{i=1}^np_iH(Y|X=x_i)$$</p>
+<p>这里，$p_i=P(X=x_i)\text{ i=1,2,..,n}$</p>
+<h2 id="信息增益"><a href="#信息增益" class="headerlink" title="信息增益"></a>信息增益</h2><p>特征A对训练数据集D的信息增益g(D,A)，定义为集合D的经验熵H(D)与特征A给定条件下D的经验条件熵H(D|A)之差，即</p>
+<p>$$g(D,A)=H(D)-H(D|A)$$</p>
+<p>一般地，熵$H(Y)$与条件熵$H(Y|X)$之差称为互信息。决策树学习中的信息增益等价于训练数据集中类的特征的互信息。</p>
+<p>计算步骤：</p>
+<ol>
+<li><p>计算数据集D的经验熵$H(D)$</p>
+<p>$$H(D)=-\sum_{k=1}^K\frac{|C_k|}{|D|}log_2\frac{|C_k|}{D}$$</p>
+<p>套用上面的公式得：$H(D)=-\frac{9}{15}log_2\frac{9}{15}-\frac{6}{15}log_2\frac{6}{15}=0.971$</p>
+</li>
+<li><p>计算特征A对数据集D的经验条件熵$H(D|A)$</p>
+<p>$$H(D|A)=\sum_{i=1}^n\frac{|D_i|}{|D|}H(D_i)=-\sum_{i=1}^n\frac{|D_i|}{|D|}\sum_{k=1}^K\frac{|D_{ik}|}{|D_i|}log_2\frac{|D_{ik}|}{|D_i|}$$</p>
+<p>特征有$A_1,A_2,A_3,A_4$分别表示年龄、有工作、有自己的房子和信贷情况，则</p>
+<p>$$\begin{align} g(D,A_1) &amp;= H(D)-[\frac{5}{15}H(D_1)+\frac{5}{15}H(D_2)+\frac{5}{15}H(D_3)] \  &amp;= 0.971-[\frac{5}{15}(-\frac{2}{5}log_2\frac{2}{5}-\frac{3}{5}log_2\frac{3}{5})+\frac{5}{15}(-\frac{3}{5}log_2\frac{3}{5}-\frac{2}{5}log_2\frac{2}{5})+\frac{5}{15}(-\frac{4}{5}log_2\frac{4}{5}-\frac{1}{5}log_2\frac{1}{5})] \&amp;= 0.971-0.888 \&amp;=0.083   \ \end{align}$$</p>
+<p>​</p>
+</li>
+<li><p>​</p>
+</li>
+</ol>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1]. 李航. “统计学习方法.” <em>清华大学出版社, 北京</em> (2012).</p>
 
       
@@ -437,6 +476,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/20/Recurrent-Neural-Network-Foundation/" rel="prev" title="Recurrent Neural Network Foundation">
+                Recurrent Neural Network Foundation <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -517,7 +560,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -528,7 +571,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -539,7 +582,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -607,7 +650,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">1.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#决策树模型"><span class="nav-number">1.</span> <span class="nav-text">决策树模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#决策树与if-then规则"><span class="nav-number">1.1.</span> <span class="nav-text">决策树与if-then规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#决策树与条件概率分布"><span class="nav-number">1.2.</span> <span class="nav-text">决策树与条件概率分布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#决策树的学习"><span class="nav-number">1.3.</span> <span class="nav-text">决策树的学习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#特征选择"><span class="nav-number">2.</span> <span class="nav-text">特征选择</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#熵"><span class="nav-number">2.1.</span> <span class="nav-text">熵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#条件熵"><span class="nav-number">2.2.</span> <span class="nav-text">条件熵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#信息增益"><span class="nav-number">2.3.</span> <span class="nav-text">信息增益</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
