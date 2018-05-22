@@ -94,7 +94,7 @@
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-22-160936.jpg">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-22-160934.jpg">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-22-160938.jpg">
-<meta property="og:updated_time" content="2018-05-22T16:10:54.440Z">
+<meta property="og:updated_time" content="2018-05-22T16:17:17.256Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Decision Tree">
 <meta name="twitter:description" content="决策树模型呈树形结构，在分类问题中，表示基于特征对实例进行分类的过程。它可以认为是if-then规则的集合，也可以认为是定义在特征空间与类空间上的条件概率分布。其主要优点是模型具有可读性，分类速度快，学习时，利用训练数据，根据损失函数最小化的原则建立决策树模型。决策树学习通常包括3个步骤：特征选择、决策树的生成和决策树的修剪。 决策树介绍通俗来说，决策树分类的思想类似于找对象，先想象一个女孩的母亲">
@@ -630,7 +630,7 @@
 </blockquote>
 <p>问题是怎样对输入空间进行划分呢？</p>
 <p>这里采用启发式的方法，选择第j个变量$x^{(j)}$和它取的值$s$，作为切分变量和切分点，并定义两个区域：</p>
-<p>$$R_1(j,s)={x|x^{(j)}\leq s}\text{ 和 } R_2(j,s)={x|x^{(j)}&gt;s}$$</p>
+<p>$$R_1(j,s)=\{x|x^{(j)}\leq s\}\text{ 和 } R_2(j,s)=\{x|x^{(j)}&gt;s\}$$</p>
 <p>然后寻找最优切分变量$j$和最优切分点$s$，具体的，求解：</p>
 <p>$$min_{j,s}[min_{c_1}\sum_{x_1\in R_1(j,s)}(y_i-c_1)^2+min_{c_2}\sum_{x_i\in R_2(j,s)}(y_i-c_2)^2]$$</p>
 <p>对固定输入变量$j$可以找到最优切分点$s$：</p>
