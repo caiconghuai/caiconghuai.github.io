@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://conghuai.me/"/>
-  <updated>2018-05-21T06:43:54.243Z</updated>
+  <updated>2018-05-21T06:55:42.394Z</updated>
   <id>http://conghuai.me/</id>
   
   <author>
@@ -15,6 +15,40 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LSTM and GRU</title>
+    <link href="http://conghuai.me/2018/05/21/LSTM-and-GRU/"/>
+    <id>http://conghuai.me/2018/05/21/LSTM-and-GRU/</id>
+    <published>2018-05-21T06:52:31.000Z</published>
+    <updated>2018-05-21T06:55:42.394Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="../../../../../../../Desktop/Screen Shot 2018-05-21 at 14.53.54.png" alt="Screen Shot 2018-05-21 at 14.53.54"></p><p><img src="../../../../../../../Desktop/Screen Shot 2018-05-21 at 14.54.16.png" alt="Screen Shot 2018-05-21 at 14.54.16"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;img src=&quot;../../../../../../../Desktop/Screen Shot 2018-05-21 at 14.53.54.png&quot; alt=&quot;Screen Shot 2018-05-21 at 14.53.54&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=
+      
+    
+    </summary>
+    
+      <category term="Deep Learning" scheme="http://conghuai.me/categories/Deep-Learning/"/>
+    
+      <category term="RNN" scheme="http://conghuai.me/categories/Deep-Learning/RNN/"/>
+    
+    
+      <category term="dl" scheme="http://conghuai.me/tags/dl/"/>
+    
+      <category term="lstm" scheme="http://conghuai.me/tags/lstm/"/>
+    
+      <category term="gru" scheme="http://conghuai.me/tags/gru/"/>
+    
+      <category term="rnn" scheme="http://conghuai.me/tags/rnn/"/>
+    
+  </entry>
   
   <entry>
     <title>Recurrent Neural Network Foundation</title>
@@ -212,18 +246,18 @@
     
     </summary>
     
-      <category term="Machine Learning" scheme="http://conghuai.me/categories/Machine-Learning/"/>
-    
       <category term="Deep Learning" scheme="http://conghuai.me/categories/Deep-Learning/"/>
+    
+      <category term="Machine Learning" scheme="http://conghuai.me/categories/Machine-Learning/"/>
     
       <category term="Overfiting" scheme="http://conghuai.me/categories/Machine-Learning/Overfiting/"/>
     
       <category term="Overfiting" scheme="http://conghuai.me/categories/Deep-Learning/Overfiting/"/>
     
     
-      <category term="ml" scheme="http://conghuai.me/tags/ml/"/>
-    
       <category term="dl" scheme="http://conghuai.me/tags/dl/"/>
+    
+      <category term="ml" scheme="http://conghuai.me/tags/ml/"/>
     
       <category term="overfiting" scheme="http://conghuai.me/tags/overfiting/"/>
     
@@ -480,18 +514,18 @@
     
     </summary>
     
-      <category term="Machine Learning" scheme="http://conghuai.me/categories/Machine-Learning/"/>
-    
       <category term="Deep Learning" scheme="http://conghuai.me/categories/Deep-Learning/"/>
+    
+      <category term="Machine Learning" scheme="http://conghuai.me/categories/Machine-Learning/"/>
     
       <category term="Optimization" scheme="http://conghuai.me/categories/Machine-Learning/Optimization/"/>
     
       <category term="Optimization" scheme="http://conghuai.me/categories/Deep-Learning/Optimization/"/>
     
     
-      <category term="ml" scheme="http://conghuai.me/tags/ml/"/>
-    
       <category term="dl" scheme="http://conghuai.me/tags/dl/"/>
+    
+      <category term="ml" scheme="http://conghuai.me/tags/ml/"/>
     
       <category term="math" scheme="http://conghuai.me/tags/math/"/>
     
