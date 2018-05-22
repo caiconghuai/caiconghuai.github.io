@@ -97,7 +97,7 @@
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-21-064352.jpg">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-21-064347.jpg">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-21-064344.jpg">
-<meta property="og:updated_time" content="2018-05-21T06:43:54.243Z">
+<meta property="og:updated_time" content="2018-05-22T02:54:26.108Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Recurrent Neural Network Foundation">
 <meta name="twitter:description" content="序列模型是深度学习中最令人兴奋的领域之一。像递归神经网络或RNN这样的模型应用在语音识别，自然语言处理和其他领域。那么不能用传统的神经网络来解决自然语言领域的问题呢？主要有两个原因：1. 自然语言问题中不同实例数据的输入和输出长度往往都是不同的，例如在情感分类问题中，输入可以使评论数据，而不同评论数据的长度是不一样的。对于机器翻译任务，针对不同的输入，翻译后的结果长度也往往不同；2. 如果对于不同">
@@ -379,7 +379,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  2,367 字
+                  2,378 字
                 </span>
               
 
@@ -463,8 +463,8 @@
 <p>$$a_t = tanh(Ux_t + Wa_{t-1})$$</p>
 <p>$$\hat{y_t}=softmax(Vs_t)$$</p>
 <p>我们定义交叉熵损失函数为：</p>
-<p>$$L^{<t>}(\hat{y}^{<t>}, y^{<t>})=-y^{<t>}log\hat{y}^{<t>}-(1-y^{<t>})log(1-\hat{y}^{<t>})$$</t></t></t></t></t></t></t></p>
-<p>$$L(\hat{y}, y) = \sum_{t=1}^{T_x}L^{}(\hat{y}^{<t>}, y^{<t>})$$</t></t></p>
+<p>$$L^{&lt; t &gt;}(\hat{y}^{&lt; t &gt;}, y^{&lt; t &gt;})=-y^{&lt; t &gt;}log\hat{y}^{&lt; t &gt;}-(1-y^{&lt; t &gt;})log(1-\hat{y}^{&lt; t &gt;})$$</p>
+<p>$$L(\hat{y}, y) = \sum_{t=1}^{T_x}L^{}(\hat{y}^{&lt; t &gt;}, y^{&lt; t &gt;})$$</p>
 <p>这里，$y_t​$是时刻$t​$正确的输出值，而$\hat{y}_t​$是我们的预测值。我们通常把整个序列（句子）当做一个训练样本，所以总误差可看做是每个时刻（单词）误差的总和。<img src="http://p6sh0jwf6.bkt.clouddn.com/2018-05-21-064352.jpg" alt="Screen Shot 2018-05-21 at 10.50.07"></p>
 <p>我们的目标是根据参数计算误差的梯度，然后使用随机梯度下降来学习好的参数，由于我们将每个时刻的误差累加，我们将求导展开到每个时刻：$\frac{\partial L}{\partial W}=\sum_t\frac{\partial L^{<t>}}{\partial W}$</t></p>
 <p>下面，以计算上图的$L^{<3>}$来说明BPTT的计算过程：</3></p>
@@ -479,7 +479,7 @@
 <p>注意到，上面的计算过程与深度前馈神经网络中使用的标准反向传播算法是完全相同的，关键的区别是我们将每个时刻的梯度进行累加。在传统的神经网络中，我们不会跨层共享参数，所以我们不需要累加任何内容。</p>
 <h2 id="梯度消失、梯度爆炸"><a href="#梯度消失、梯度爆炸" class="headerlink" title="梯度消失、梯度爆炸"></a>梯度消失、梯度爆炸</h2><p>RNN在学习长距离依赖性方面存在困难，在自然语言问题中，这个依赖就是指相隔几个词距离的单词之间的相互作用关系，比如这样一句话：“The man who wore a wig on his head went inside”，当我们看到went inside的时候，我们需要知道主语是”The man”而不是”wig”，这需要我们捕捉住长依赖的信息。</p>
 <p>我们通过分析数学表达式来看一下为什么RNN在捕捉该信息上存在困难，我们有如下求导公式</p>
-<p>$$\frac{\partial L^{<3>}}{\partial W}=\sum_{t=0}^3\frac{\partial L^{<3>}}{\partial \hat{y}^{<3>}}\cdot \frac{\partial \hat{y}^{<3>}}{\partial a^{<3>}}\cdot \frac{\partial a^{<3>}}{\partial a^{<k>}}\cdot \frac{\partial a^{<k>}}{\partial W}$$</k></k></3></3></3></3></3></3></p>
+<p>$$\frac{\partial L^{<3>}}{\partial W}=\sum_{t=0}^3\frac{\partial L^{<3>}}{\partial \hat{y}^{<3>}}\cdot \frac{\partial \hat{y}^{<3>}}{\partial a^{<3>}}\cdot \frac{\partial a^{<3>}}{\partial a^{&lt; k &gt;}}\cdot \frac{\partial a^{&lt; k &gt;}}{\partial W}$$</3></3></3></3></3></3></p>
 <p>其中，$\frac{\partial a^{<3>}}{\partial a^{<k>}}$又可以用链式法则展开求导，例如$\frac{\partial a^{<3>}}{\partial a^{<2>}}\cdot \frac{\partial a^{<2>}}{\partial a^{<1>}}$。注意到，因为我们正在考虑向量函数相对于向量的导数，所以其结果是一个矩阵（称为Jacobian matrix），其元素是所有的逐点导数，我们用链式法则将上述重写为：</1></2></2></3></k></3></p>
 <p>$$\frac{\partial L^{<3>}}{\partial W}=\sum_{t=0}^3\frac{\partial L^{<3>}}{\partial \hat{y}^{<3>}}\cdot \frac{\partial \hat{y}^{<3>}}{\partial a^{<3>}}\cdot (\prod_{j=k+1}^3 \frac{\partial a^{<j>}}{\partial a^{<j-1>}} )\cdot \frac{\partial a^{<k>}}{\partial W}$$</k></j-1></j></3></3></3></3></3></p>
 <p>事实证明，上述雅可比矩阵的2范数，你可以认为它是一个绝对值，其上限为1。这是非常直观的，因为tanh（或S形）激活函数将所有值映射到-1和1之间的范围内，并且导数也限制在1（在sigmoid情况下为1/4）：<img src="http://p6sh0jwf6.bkt.clouddn.com/2018-05-21-064344.jpg" alt="tanh"></p>
