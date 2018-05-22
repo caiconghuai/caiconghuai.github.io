@@ -94,7 +94,8 @@
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-22-160936.jpg">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-22-160934.jpg">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-22-160938.jpg">
-<meta property="og:updated_time" content="2018-05-22T16:17:17.256Z">
+<meta property="og:image" content="http://scikit-learn.org/stable/_images/sphx_glr_plot_tree_regression_0011.png">
+<meta property="og:updated_time" content="2018-05-22T16:21:03.901Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Decision Tree">
 <meta name="twitter:description" content="决策树模型呈树形结构，在分类问题中，表示基于特征对实例进行分类的过程。它可以认为是if-then规则的集合，也可以认为是定义在特征空间与类空间上的条件概率分布。其主要优点是模型具有可读性，分类速度快，学习时，利用训练数据，根据损失函数最小化的原则建立决策树模型。决策树学习通常包括3个步骤：特征选择、决策树的生成和决策树的修剪。 决策树介绍通俗来说，决策树分类的思想类似于找对象，先想象一个女孩的母亲">
@@ -387,7 +388,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  4,464 字
+                  5,899 字
                 </span>
               
 
@@ -403,7 +404,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  16 分钟
+                  22 分钟
                 </span>
               
             </div>
@@ -666,6 +667,142 @@
 </ul>
 <p>REP是最简单的后剪枝方法之一，不过在数据量比较少的情况下，REP方法趋于过拟合而较少使用。这是因为训练数据集合中的特性在剪枝过程中被忽略，所以在验证数据集合比训练数据集合小的多时，要注意这个问题。尽管REP有这个缺点，不过REP仍然作为一种基准来评价其他剪枝算法的性能。它对于两阶段决策树学习方法的优点和缺点提供了一种很好的学习思路。由于验证集合没有参与决策树的创建，所以用REP剪枝后的决策树对于测试样例的偏差要好很多，能够解决一定程度的过拟合问题。</p>
 <h2 id="Pessimistic-Error-Pruning-PEP-悲观剪枝"><a href="#Pessimistic-Error-Pruning-PEP-悲观剪枝" class="headerlink" title="Pessimistic Error Pruning(PEP, 悲观剪枝)"></a>Pessimistic Error Pruning(PEP, 悲观剪枝)</h2><p>PEP剪枝算法是在C4.5决策树算法中提出的，把一颗子树(具有多个叶子节点)用一个叶子节点来替代的话，比起REP剪枝法，它不需要一个单独的测试数据集。对于这一部分，仍然需要更进一步的学习，后续如果有时间在进行相关的研究。</p>
+<h1 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h1><p>前面对决策树的概念，分类进行了介绍，并扩展了集成学习的一些思想和算法。这里我们来学习一下sklearn这个机器学习类库中的关于决策树的一些说明和工具。后面会用一些例子在实际项目中使用决策树这个算法，以及算法融合的思想。之前介绍的决策树算法有ID3，C4.5和CART，sklearn中采用的是最佳的CART算法。</p>
+<h1 id="实战sklearn"><a href="#实战sklearn" class="headerlink" title="实战sklearn"></a>实战sklearn</h1><p>决策树是一个非参数的监督式学习方法，主要用于分类和回归。算法的目标是通过推断数据特征，学习决策规则从而创建一个预测目标变量的模型。如下所示，决策树通过一系列if-then-else决策规则，近似估计一个正弦曲线。</p>
+<p><img src="http://scikit-learn.org/stable/_images/sphx_glr_plot_tree_regression_0011.png" alt=""></p>
+<p>决策树的优势:</p>
+<ul>
+<li>简单易懂，原理清晰，决策树可以实现可视化。</li>
+<li>数据准备简单。其他的方法需要实现数据归一化，创建虚拟变量，删除空白变量。(注意：这个模块不支持缺失值)</li>
+<li>使用决策树的代价是数据点的对数级别。</li>
+<li>能够处理数值和分类数据</li>
+<li>能够处理多路输出问题</li>
+<li>使用白盒子模型(内部结构可以直接观测的模型)。一个给定的情况是可以观测的，那么就可以用布尔逻辑解释这个结果。相反，如果在一个黑盒模型(ANN)，结果可能很难解释</li>
+<li>可以通过统计学检验验证模型。这也使得模型的可靠性计算变得可能</li>
+<li>即使模型假设违反产生数据的真实模型，表现性能依旧很好。</li>
+</ul>
+<p>决策树劣势:</p>
+<ul>
+<li>可能会建立过于复杂的规则，即过拟合。为避免这个问题，剪枝、设置叶节点的最小样本数量、设置决策树的最大深度有时候是必要的。</li>
+<li>决策树有时候是不稳定的，因为数据微小的变动，可能生成完全不同的决策树。 可以通过总体平均(ensemble)减缓这个问题。应该指的是多次实验。</li>
+<li>学习最优决策树是一个NP完全问题。所以，实际决策树学习算法是基于试探性算法，例如在每个节点实现局部最优值的贪心算法。这样的算法是无法保证返回一个全局最优的决策树。可以通过随机选择特征和样本训练多个决策树来缓解这个问题。</li>
+<li>有些问题学习起来非常难，因为决策树很难表达。如：异或问题、奇偶校验或多路复用器问题</li>
+<li>如果有些因素占据支配地位，决策树是有偏的。因此建议在拟合决策树之前先平衡数据的影响因子。</li>
+</ul>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>我们先介绍一下DecisionTreeClassifier这个类，它用于多分类问题。</p>
+<h3 id="类签名"><a href="#类签名" class="headerlink" title="类签名"></a>类签名</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">sklearn</span>.<span class="title">tree</span>.<span class="title">DecisionTreeClassifier</span><span class="params">(criterion=’gini’, splitter=’best’, max_depth=None, min_samples_split=<span class="number">2</span>, min_samples_leaf=<span class="number">1</span>, min_weight_fraction_leaf=<span class="number">0.0</span>, max_features=None, random_state=None, max_leaf_nodes=None, min_impurity_decrease=<span class="number">0.0</span>, min_impurity_split=None, class_weight=None, presort=False)</span></span></span><br></pre></td></tr></table></figure>
+<h3 id="构造器参数说明"><a href="#构造器参数说明" class="headerlink" title="构造器参数说明"></a>构造器参数说明</h3><ul>
+<li><p><code>criterion</code>: string, optional(default=’gini’)</p>
+<p>度量划分属性质量:”gini”指基尼不纯度;”entropy”指信息增益。</p>
+</li>
+<li><p><code>splitter</code>: string, optional(default=”best”)</p>
+<p>每个节点选择划分属性的策略: “best”选择最好的划分，”random”选择最好的随机划分</p>
+</li>
+<li><p><code>max_depth</code> : int or None, optional(default=None)</p>
+<p>树的最大深度</p>
+</li>
+<li><p><code>min_samples_split</code> : int, float, optional(default=2)</p>
+<p>划分一个内部节点所需的最少样本数。</p>
+</li>
+<li><p><code>min_samples_leaf</code> ：int, float, optional(default=1)</p>
+<p>划分一个叶子节点所需的最少样本数。</p>
+</li>
+<li><p><code>min_weight_fraction_leaf</code> : float, optional(default=0)</p>
+<p>限制了叶子节点所有样本权重和的最小值，如果小于这个值，则会和兄弟节点一起被剪枝。</p>
+</li>
+<li><p><code>max_features</code>: int, float, string or None, optional(default=None)</p>
+<p>选择划分时所用的最大特征数目</p>
+</li>
+<li><p><code>random_state</code>: int, RandomState instances o None, optional(default=None)</p>
+<p>随机种子</p>
+</li>
+<li><p><code>max_leaf_nodes</code>: int or None, optional(default=None)</p>
+<p>最大的叶子数量。</p>
+</li>
+<li><p><code>min_impurity_decrease</code> : float, optional(default=0)</p>
+<p>如果划分后的纯度减少量大于这个值，那么这个节点就会被划分。</p>
+</li>
+<li><p><code>min_impurity_split</code>: float</p>
+<p>阈值，用于控制节点是否进一步划分，如果大于这个值则需要进一步划分，否则就停止划分。已经deprecated掉了，用上面那个参数。</p>
+</li>
+<li><p><code>class_weight</code> :dict, list of dicts, “balanced” or None, default=None</p>
+<p>与预测类别相关的权重dict, 以{class_label: weight}这种方式传入，当然了，如果有多个类别输出，那就传入这种dict的list。如果传入的是balance，那么将用根据样本数来决定类别的权重。</p>
+<p>n_samples / (n_classes * np.bincount(y))</p>
+</li>
+<li><p><code>presort</code>: bool, optional(default=None)</p>
+<p>是否预划分。如果预划分，那么在小数据集上可能加快速度，在大数据集上可能会变慢。</p>
+</li>
+</ul>
+<h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><ul>
+<li><code>classes_</code><ul>
+<li>类标</li>
+</ul>
+</li>
+<li><code>feature_importances_</code><ul>
+<li>特征的重要性。越高，特征越重要。</li>
+</ul>
+</li>
+<li><code>max_featrues_</code><ul>
+<li>推断的价值  不知道是啥</li>
+</ul>
+</li>
+<li><code>n_classes_</code><ul>
+<li>类的数量</li>
+</ul>
+</li>
+<li><code>n_features_</code><ul>
+<li>特征的数量</li>
+</ul>
+</li>
+<li><code>n_outputs_</code><ul>
+<li>输出的数量</li>
+</ul>
+</li>
+<li><code>tree_</code><ul>
+<li>底层树对象</li>
+</ul>
+</li>
+</ul>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><ul>
+<li><code>apply(X[, check_input])</code><ul>
+<li>返回样本被预测为叶子的索引</li>
+</ul>
+</li>
+<li><code>decision_path(X[, check_input])</code><ul>
+<li>返回样本的决策路径</li>
+</ul>
+</li>
+<li><code>fit(X, y[, sample_weight, check_input, …])</code><ul>
+<li>从(X,y)训练数据中创建一颗决策树</li>
+</ul>
+</li>
+<li><code>get_params([deep])</code><ul>
+<li>获得参数</li>
+</ul>
+</li>
+<li><code>predict(X[, check_input])</code><ul>
+<li>预测样本类别或连续值</li>
+</ul>
+</li>
+<li><code>predict_log_proba(X)</code><ul>
+<li>预测输入数据的log概率</li>
+</ul>
+</li>
+<li><code>predict_proba(X,[, check_input])</code><ul>
+<li>预测输入数据的概率</li>
+</ul>
+</li>
+<li>score(X,y[, sample_weight])<ul>
+<li>返回平均正确率</li>
+</ul>
+</li>
+<li>set_params(**params)<ul>
+<li>设置参数</li>
+</ul>
+</li>
+</ul>
+<h2 id="回归"><a href="#回归" class="headerlink" title="回归"></a>回归</h2><h3 id="类签名-1"><a href="#类签名-1" class="headerlink" title="类签名"></a>类签名</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">sklearn</span>.<span class="title">tree</span>.<span class="title">DecisionTreeRegressor</span><span class="params">(criterion=’mse’, splitter=’best’, max_depth=None, min_samples_split=<span class="number">2</span>, min_samples_leaf=<span class="number">1</span>, min_weight_fraction_leaf=<span class="number">0.0</span>, max_features=None, random_state=None, max_leaf_nodes=None, min_impurity_decrease=<span class="number">0.0</span>, min_impurity_split=None, presort=False)</span>[<span class="title">source</span>]</span></span><br></pre></td></tr></table></figure>
+<p>这些参数，属性和方法与上面介绍的类似。</p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1]. 李航. “统计学习方法.” <em>清华大学出版社, 北京</em> (2012).</p>
 <p>[2]. <a href="http://www.cnblogs.com/leoo2sk/archive/2010/09/19/decision-tree.html" target="_blank" rel="noopener">算法杂货铺——分类算法之决策树(Decision tree)</a></p>
 <p>[3]. <a href="https://zhuanlan.zhihu.com/p/26760551" target="_blank" rel="noopener">知乎专栏</a></p>
@@ -884,7 +1021,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#决策树介绍"><span class="nav-number">1.</span> <span class="nav-text">决策树介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#决策树模型"><span class="nav-number">2.</span> <span class="nav-text">决策树模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#决策树与if-then规则"><span class="nav-number">2.1.</span> <span class="nav-text">决策树与if-then规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#决策树与条件概率分布"><span class="nav-number">2.2.</span> <span class="nav-text">决策树与条件概率分布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#决策树的学习"><span class="nav-number">2.3.</span> <span class="nav-text">决策树的学习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#特征选择"><span class="nav-number">3.</span> <span class="nav-text">特征选择</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#熵"><span class="nav-number">3.1.</span> <span class="nav-text">熵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#条件熵"><span class="nav-number">3.2.</span> <span class="nav-text">条件熵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#信息增益值"><span class="nav-number">3.3.</span> <span class="nav-text">信息增益值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#信息增益比"><span class="nav-number">3.4.</span> <span class="nav-text">信息增益比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基尼指数"><span class="nav-number">3.5.</span> <span class="nav-text">基尼指数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常见算法"><span class="nav-number">4.</span> <span class="nav-text">常见算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ID3"><span class="nav-number">4.1.</span> <span class="nav-text">ID3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C4-5"><span class="nav-number">4.2.</span> <span class="nav-text">C4.5</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CART"><span class="nav-number">4.3.</span> <span class="nav-text">CART</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#回归树的生成"><span class="nav-number">4.3.1.</span> <span class="nav-text">回归树的生成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分类树的生成"><span class="nav-number">4.3.2.</span> <span class="nav-text">分类树的生成</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#剪枝"><span class="nav-number">4.4.</span> <span class="nav-text">剪枝</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reduced-Error-Pruning-REP-错误率降低剪枝"><span class="nav-number">4.5.</span> <span class="nav-text">Reduced-Error Pruning(REP, 错误率降低剪枝)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pessimistic-Error-Pruning-PEP-悲观剪枝"><span class="nav-number">4.6.</span> <span class="nav-text">Pessimistic Error Pruning(PEP, 悲观剪枝)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#决策树介绍"><span class="nav-number">1.</span> <span class="nav-text">决策树介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#决策树模型"><span class="nav-number">2.</span> <span class="nav-text">决策树模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#决策树与if-then规则"><span class="nav-number">2.1.</span> <span class="nav-text">决策树与if-then规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#决策树与条件概率分布"><span class="nav-number">2.2.</span> <span class="nav-text">决策树与条件概率分布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#决策树的学习"><span class="nav-number">2.3.</span> <span class="nav-text">决策树的学习</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#特征选择"><span class="nav-number">3.</span> <span class="nav-text">特征选择</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#熵"><span class="nav-number">3.1.</span> <span class="nav-text">熵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#条件熵"><span class="nav-number">3.2.</span> <span class="nav-text">条件熵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#信息增益值"><span class="nav-number">3.3.</span> <span class="nav-text">信息增益值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#信息增益比"><span class="nav-number">3.4.</span> <span class="nav-text">信息增益比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基尼指数"><span class="nav-number">3.5.</span> <span class="nav-text">基尼指数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常见算法"><span class="nav-number">4.</span> <span class="nav-text">常见算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ID3"><span class="nav-number">4.1.</span> <span class="nav-text">ID3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C4-5"><span class="nav-number">4.2.</span> <span class="nav-text">C4.5</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CART"><span class="nav-number">4.3.</span> <span class="nav-text">CART</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#回归树的生成"><span class="nav-number">4.3.1.</span> <span class="nav-text">回归树的生成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分类树的生成"><span class="nav-number">4.3.2.</span> <span class="nav-text">分类树的生成</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#剪枝"><span class="nav-number">4.4.</span> <span class="nav-text">剪枝</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reduced-Error-Pruning-REP-错误率降低剪枝"><span class="nav-number">4.5.</span> <span class="nav-text">Reduced-Error Pruning(REP, 错误率降低剪枝)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pessimistic-Error-Pruning-PEP-悲观剪枝"><span class="nav-number">4.6.</span> <span class="nav-text">Pessimistic Error Pruning(PEP, 悲观剪枝)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Preface"><span class="nav-number">5.</span> <span class="nav-text">Preface</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实战sklearn"><span class="nav-number">6.</span> <span class="nav-text">实战sklearn</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#分类"><span class="nav-number">6.1.</span> <span class="nav-text">分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#类签名"><span class="nav-number">6.1.1.</span> <span class="nav-text">类签名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构造器参数说明"><span class="nav-number">6.1.2.</span> <span class="nav-text">构造器参数说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#属性"><span class="nav-number">6.1.3.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法"><span class="nav-number">6.1.4.</span> <span class="nav-text">方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回归"><span class="nav-number">6.2.</span> <span class="nav-text">回归</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#类签名-1"><span class="nav-number">6.2.1.</span> <span class="nav-text">类签名</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">7.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
