@@ -97,7 +97,7 @@
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-21-064352.jpg">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-21-064347.jpg">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-21-064344.jpg">
-<meta property="og:updated_time" content="2018-05-22T02:54:26.108Z">
+<meta property="og:updated_time" content="2018-05-22T03:01:40.510Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Recurrent Neural Network Foundation">
 <meta name="twitter:description" content="序列模型是深度学习中最令人兴奋的领域之一。像递归神经网络或RNN这样的模型应用在语音识别，自然语言处理和其他领域。那么不能用传统的神经网络来解决自然语言领域的问题呢？主要有两个原因：1. 自然语言问题中不同实例数据的输入和输出长度往往都是不同的，例如在情感分类问题中，输入可以使评论数据，而不同评论数据的长度是不一样的。对于机器翻译任务，针对不同的输入，翻译后的结果长度也往往不同；2. 如果对于不同">
@@ -379,7 +379,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  2,378 字
+                  2,387 字
                 </span>
               
 
@@ -425,7 +425,7 @@
 <li><strong>One-to-One</strong>：输入是单个，输出也是单个，这其实是一种最特殊的序列模型；</li>
 <li><strong>One-to-Many</strong>：当个输入，得到多个输出，类似的任务如文本生成或者音乐生成；</li>
 <li><strong>Many-to-one</strong>：多个输入，得到单个输出，如情感分析，我们的输入是评论数据，对于每个评分输出一个类别变量，而这个评论对应对个多个词，也即多个输入序列；</li>
-<li><strong>Many-to-Many</strong>：</li>
+<li><strong>Many-to-Many</strong>： 机器翻译。</li>
 </ol>
 <h1 id="Recurrent-Neural-Network"><a href="#Recurrent-Neural-Network" class="headerlink" title="Recurrent Neural Network"></a>Recurrent Neural Network</h1><p>假设我们的输入为：$\text{x : Harry Potter and Hermione Granger invented a new spell.}$</p>
 <p>我们的任务是识别x中每个词是否是实体，现在我们建立一个序列模型来对这个问题进行建立，如下图所示</p>
@@ -433,12 +433,12 @@
 <ul>
 <li>$x$：输入数据集；</li>
 <li>$x^{(i)}$：第$i$个输入数据；</li>
-<li>$x^{<t>}$：第$t$时刻的输入数据；</t></li>
-<li>$x^{(i)<t>}$：第$i$个样本在第$t$时刻的输出；</t></li>
+<li>$x^{&lt; t &gt;}$：第$t$时刻的输入数据；</li>
+<li>$x^{(i)&lt; t &gt;}$：第$i$个样本在第$t$时刻的输出；</li>
 <li>$y$：输出数据集；</li>
 <li>$y^{(i)}$：第$i$个样本的输出数据；</li>
-<li>$y^{<t>}$：第t时刻的输出数据；</t></li>
-<li>$y^{(i)<t>}$：第$i$个样本在第$t$时刻的输出。</t></li>
+<li>$y^{&lt; t &gt;}$：第t时刻的输出数据；</li>
+<li>$y^{(i)&lt; t &gt;}$：第$i$个样本在第$t$时刻的输出。</li>
 </ul>
 <p>对于上述的问题，我们可以试着使用标准的神经网络来求解，其结构图如下所示：</p>
 <p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-05-21-064343.jpg" alt="Screen Shot 2018-05-20 at 17.40.54"></p>
@@ -466,7 +466,7 @@
 <p>$$L^{&lt; t &gt;}(\hat{y}^{&lt; t &gt;}, y^{&lt; t &gt;})=-y^{&lt; t &gt;}log\hat{y}^{&lt; t &gt;}-(1-y^{&lt; t &gt;})log(1-\hat{y}^{&lt; t &gt;})$$</p>
 <p>$$L(\hat{y}, y) = \sum_{t=1}^{T_x}L^{}(\hat{y}^{&lt; t &gt;}, y^{&lt; t &gt;})$$</p>
 <p>这里，$y_t​$是时刻$t​$正确的输出值，而$\hat{y}_t​$是我们的预测值。我们通常把整个序列（句子）当做一个训练样本，所以总误差可看做是每个时刻（单词）误差的总和。<img src="http://p6sh0jwf6.bkt.clouddn.com/2018-05-21-064352.jpg" alt="Screen Shot 2018-05-21 at 10.50.07"></p>
-<p>我们的目标是根据参数计算误差的梯度，然后使用随机梯度下降来学习好的参数，由于我们将每个时刻的误差累加，我们将求导展开到每个时刻：$\frac{\partial L}{\partial W}=\sum_t\frac{\partial L^{<t>}}{\partial W}$</t></p>
+<p>我们的目标是根据参数计算误差的梯度，然后使用随机梯度下降来学习好的参数，由于我们将每个时刻的误差累加，我们将求导展开到每个时刻：$\frac{\partial L}{\partial W}=\sum_t\frac{\partial L^{&lt; t &gt;}}{\partial W}$</p>
 <p>下面，以计算上图的$L^{<3>}$来说明BPTT的计算过程：</3></p>
 <h3 id="计算-frac-partial-L-partial-V"><a href="#计算-frac-partial-L-partial-V" class="headerlink" title="计算$\frac{\partial L^{}}{\partial V}$"></a>计算$\frac{\partial L^{<3>}}{\partial V}$</3></h3><p>$$\begin{align} \frac{\partial L^{<3>}}{\partial V} &amp;= \frac{\partial L^{<3>}}{\partial \hat{y}^{<3>}}\cdot \frac{\partial \hat{y}^{<3>}}{\partial V} \  &amp;= \frac{\partial L^{<3>}}{\partial \hat{y}^{<3>}}\cdot \frac{\partial \hat{y}^{<3>}}{\partial z^{<3>}}\cdot \frac{\partial z^{<3>}}{\partial V} \  &amp;= (\hat{y}^{<3>}-y^{<3>})\otimes a^{<3>}  \end{align}$$</3></3></3></3></3></3></3></3></3></3></3></3></p>
 <ul>
