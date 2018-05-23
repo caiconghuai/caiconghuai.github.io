@@ -95,7 +95,7 @@
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-22-160934.jpg">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-22-160938.jpg">
 <meta property="og:image" content="http://scikit-learn.org/stable/_images/sphx_glr_plot_tree_regression_0011.png">
-<meta property="og:updated_time" content="2018-05-22T16:21:03.901Z">
+<meta property="og:updated_time" content="2018-05-23T01:04:38.595Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Decision Tree">
 <meta name="twitter:description" content="决策树模型呈树形结构，在分类问题中，表示基于特征对实例进行分类的过程。它可以认为是if-then规则的集合，也可以认为是定义在特征空间与类空间上的条件概率分布。其主要优点是模型具有可读性，分类速度快，学习时，利用训练数据，根据损失函数最小化的原则建立决策树模型。决策树学习通常包括3个步骤：特征选择、决策树的生成和决策树的修剪。 决策树介绍通俗来说，决策树分类的思想类似于找对象，先想象一个女孩的母亲">
@@ -388,7 +388,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  5,899 字
+                  5,898 字
                 </span>
               
 
@@ -439,7 +439,7 @@
 <p>这个女孩的决策过程就是典型的分类树决策。相当于通过年龄、长相、收入和是否公务员将男人分为两个类别：见或不见。我们可以将上面的决策过程抽象成一颗决策树:</p>
 <p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-05-22-160930.jpg" alt="1_3"></p>
 <p>上图完整表达了这个女孩决定是否见一个约会对象的策略， 其中绿色节点表示判断条件，橙色节点表示决策过程，箭头表示在一个判断条件在不同情况下的决策路径，途中红色表示了上面例子中女孩的决策过程。有了上面的直观的认识，我们可以正式定义决策树：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">决策树是一个树结构。其每个非叶节点表示一个特征属性上的测试，每个分支代表这个特征属性在某个值域上的输出，而每个叶节点存放一个类别。使用决策树进行决策的过程就是从根节点开始，测试待分类项中相应的特征属性，并按照其值选择输出分支，直到到达叶子节点，将叶子节点存放的类别作为决策结果。</span><br></pre></td></tr></table></figure>
+<p>决策树是一个树结构。其每个非叶节点表示一个特征属性上的测试，每个分支代表这个特征属性在某个值域上的输出，而每个叶节点存放一个类别。使用决策树进行决策的过程就是从根节点开始，测试待分类项中相应的特征属性，并按照其值选择输出分支，直到到达叶子节点，将叶子节点存放的类别作为决策结果。</p>
 <p>不同于贝叶斯算法，决策树的构造过程不依赖领域知识，它使用属性选择度量来选择将元组最好的划分成不同的属性。所谓决策树的构造就是进行属性选择度量确定各个特征属性之间的拓扑结构。</p>
 <p>构造决策树的关键步骤是分裂属性。所谓分类属性就是在某个节点处按照某一特征属性的不同划分构造不同的分支，其目标是让各个分裂子集尽可能的“纯”。也就是尽量让一个分裂子集中待分裂项属于同一类别。分裂属性分为三种不同情况:</p>
 <ol>
