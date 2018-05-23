@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://conghuai.me/"/>
-  <updated>2018-05-21T06:55:42.394Z</updated>
+  <updated>2018-05-23T14:46:35.994Z</updated>
   <id>http://conghuai.me/</id>
   
   <author>
@@ -15,6 +15,71 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Random Forest</title>
+    <link href="http://conghuai.me/2018/05/23/Random-Forest/"/>
+    <id>http://conghuai.me/2018/05/23/Random-Forest/</id>
+    <published>2018-05-23T14:45:06.000Z</published>
+    <updated>2018-05-23T14:46:35.994Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Random-Forest"><a href="#Random-Forest" class="headerlink" title="Random Forest"></a>Random Forest</h2><p>在模型融合里，blending方式通过组合不同模型投票的结果，来使得融合后的模型variance变小。而决策树，通常variance比较大，我们是否能够结合这两种思路呢？答案是可以，这就是随机森林。</p><p>Random Forest(RF) = bagging + fully-grown C&amp;RT decision tree.</p><p>基本做法：</p><ol><li>通过Bootstrap的方式取得不同数据和特征，输入到决策树中训练得到不同的决策树。</li><li>组合不同的决策树，构成最终的分类器。</li></ol><p>随机性的体现：</p><ol><li>Bootstrap采用</li><li>特征投影<ol><li>选择不同的特征</li><li>随机的方向</li></ol></li></ol><h1 id="特征选择"><a href="#特征选择" class="headerlink" title="特征选择"></a>特征选择</h1><p>假设我们资料里面特征具有依赖性，比如生日和年龄（用生日可以推出年龄），或者说有一些特征对于最后的分类结果没有什么作用。</p><p>如果模型是线性的，那么我们通过w分量大小就可以判断出哪个模型比较重要，因为$score = wx$，但是如果是非线性的模型，那么这个问题就比较复杂，但是Random Forest由于其模型的特性，也可以用来做特征选择。</p><h5 id="permutation-test进行特征重要性衡量"><a href="#permutation-test进行特征重要性衡量" class="headerlink" title="permutation test进行特征重要性衡量:"></a>permutation test进行特征重要性衡量:</h5><ul><li>对于第i个特征的所有样本，我们进行重排列（即甲的身高值给乙的身高值，乙的身高值给甲的身高值）。</li><li>计算重排序后的<strong>performance</strong>：<ul><li>$importance(i) = performance(D) - performance(D^p)$ with $D^p$ is D with ${x_n, i}$ replaced by permuted ${x_n, i}_{n=1}^N$</li><li>正常来说，performance应该怎么得到呢？我们应该对资料为D的模型进行训练，然后获得交叉验证的结果，作为performance(D)。并且对资料为$D^p$的模型进行训练，然后获得交叉验证的结果，作为performance($D^p$)。<strong>注意</strong>，由于训练样本的获取是采样bootstrap，所以可以利用out-of-bag样本做验证集。即，上面的式子就变成了 importance(i) = $E_{oob}(G) - E_{oob}(G^p)$</li><li>但是，原始的随机森林的作者， 提出了在验证的过程中做permutation而不是训练的过程中，这样的话，我们只需要做一次训练，两次验证即可。这样的话，结果就变成了importance(i) = $E_{oob}(G) - E_{oob}^p(G)$</li></ul></li></ul><h1 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h1><ul><li>由于每次选择不是在全部的特征上选择最佳切分点，所有bias会有一些上升。</li><li>由于平均化，所有variance会有所下降。</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;Random-Forest&quot;&gt;&lt;a href=&quot;#Random-Forest&quot; class=&quot;headerlink&quot; title=&quot;Random Forest&quot;&gt;&lt;/a&gt;Random Forest&lt;/h2&gt;&lt;p&gt;在模型融合里，blending方式通过组合不同模型投
+      
+    
+    </summary>
+    
+      <category term="Machine Learning" scheme="http://conghuai.me/categories/Machine-Learning/"/>
+    
+      <category term="Classification" scheme="http://conghuai.me/categories/Machine-Learning/Classification/"/>
+    
+      <category term="Regression" scheme="http://conghuai.me/categories/Machine-Learning/Regression/"/>
+    
+    
+      <category term="ml" scheme="http://conghuai.me/tags/ml/"/>
+    
+      <category term="tree" scheme="http://conghuai.me/tags/tree/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>词向量总结</title>
+    <link href="http://conghuai.me/2018/05/23/%E8%AF%8D%E5%90%91%E9%87%8F%E6%80%BB%E7%BB%93/"/>
+    <id>http://conghuai.me/2018/05/23/词向量总结/</id>
+    <published>2018-05-23T03:26:25.000Z</published>
+    <updated>2018-05-23T07:24:02.684Z</updated>
+    
+    <content type="html"><![CDATA[<p>自然语言处理任务中，词通常作为最小的基本单位，如何提取词的特征也成为非常重要的话题。常见的提取特征的方式有：one-hot表示、tf-idf表示、word class和word embedding方式。</p><h1 id="词袋模型"><a href="#词袋模型" class="headerlink" title="词袋模型"></a>词袋模型</h1><h2 id="One-Hot"><a href="#One-Hot" class="headerlink" title="One-Hot"></a>One-Hot</h2><p>这种方式对词的表征方式非常的简单直接，首先收集样本中的词，构建词表，假设总共收集了10,000个单词，那么每个单词的就是10,000维的向量。该向量上只有一个是1，其他位置是0：</p><p><img src="../../../../../../../Desktop/Screen Shot 2018-01-25 at 22.42.41.png" alt="Screen Shot 2018-01-25 at 22.42.41"></p><p>这种处理方式虽然简单，但是往往会造成词维度太大，而且很难捕捉两个近义词之间的关系，所以one-hot表示方法效果往往不是特别好。</p><h2 id="TF-IDF"><a href="#TF-IDF" class="headerlink" title="TF-IDF"></a>TF-IDF</h2><p>字词的重要性随着它在该文档中出现的次数成正比例增加，但同时会随着它在预料库中出现的频率成反比下降。TF-IDF提取词特征方式能够捕捉这一特征，进而赋予重要词语较高的权值。</p><ol><li><p>词频（term frequence TF）: 词语在文档中出现的次数。</p><p>这个数字是对词数的归一化，以防止它偏向长的文件，其表达式如下：</p><p>$$tf_{i,j}=\frac{n_{i,j}}{\sum_kn_{k,j}} \text{，其中i表示第i个词，j表示第j篇文档}$$</p></li><li><p>逆向文件频率（inverse document frequency IDF）：总文件数目除以包含该词语的文件数目。</p><p>这一指标是词语普遍重要性的度量，其表达式如下：</p><p>$$idf_i=log\frac{|D|}{|{j:w_i\in d_j}|}$$</p><ul><li>$|D|$：语料库中总的文件数；</li><li>$|{j:w_i\in d_j}|$：包含该词语的文件数目，如果词语不在预料库中，就会导致除数为0，因此做平滑处理。</li></ul></li><li><p>$tfidf_{i,j}=tf_{i,j}\cdot idf_i$</p></li></ol><ul><li>$tf_{i,j}$指标与具体的文档有关，是局部指标；</li><li>$idf_i$与具体文档无关，只与全体文档和目标词有关，是一个全局指标。</li></ul><h1 id="分布式表示"><a href="#分布式表示" class="headerlink" title="分布式表示"></a>分布式表示</h1><p>分布式表示方法的基本想法就是将词嵌入到一个数值空间中， 表示成向量形式。</p><p><img src="../../../../../../../Desktop/Screen Shot 2018-01-25 at 22.44.53.png" alt="Screen Shot 2018-01-25 at 22.44.53"></p><h2 id="共现矩阵"><a href="#共现矩阵" class="headerlink" title="共现矩阵"></a>共现矩阵</h2><p><img src="../../../../../../../Desktop/Screen Shot 2018-03-16 at 20.35.39.png" alt="Screen Shot 2018-03-16 at 20.35.39"></p><ul><li>将共现矩阵行（列）作为 词向量；</li><li>向量维数随着词典大小线性增大，可以考虑用SVD对共现矩阵进行降维；</li><li>存储整个词典的空间，消耗非常大；</li><li>一些模型，如文本分类模型，会面临稀疏性问题；</li><li>模型欠稳点。</li></ul><h2 id="Word2Vec"><a href="#Word2Vec" class="headerlink" title="Word2Vec"></a>Word2Vec</h2><h3 id="Skip-Gram-Model"><a href="#Skip-Gram-Model" class="headerlink" title="Skip-Gram Model"></a>Skip-Gram Model</h3><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1]. 台湾大学 李宏毅 机器学习课程</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;自然语言处理任务中，词通常作为最小的基本单位，如何提取词的特征也成为非常重要的话题。常见的提取特征的方式有：one-hot表示、tf-idf表示、word class和word embedding方式。&lt;/p&gt;
+&lt;h1 id=&quot;词袋模型&quot;&gt;&lt;a href=&quot;#词袋模型&quot; c
+      
+    
+    </summary>
+    
+      <category term="Deep Learning" scheme="http://conghuai.me/categories/Deep-Learning/"/>
+    
+      <category term="Natural Language Processing" scheme="http://conghuai.me/categories/Natural-Language-Processing/"/>
+    
+      <category term="Feature Extraction" scheme="http://conghuai.me/categories/Natural-Language-Processing/Feature-Extraction/"/>
+    
+    
+      <category term="dl" scheme="http://conghuai.me/tags/dl/"/>
+    
+      <category term="nlp" scheme="http://conghuai.me/tags/nlp/"/>
+    
+      <category term="word2vec" scheme="http://conghuai.me/tags/word2vec/"/>
+    
+  </entry>
   
   <entry>
     <title>LSTM and GRU</title>
