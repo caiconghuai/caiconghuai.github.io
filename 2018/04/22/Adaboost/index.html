@@ -90,7 +90,7 @@
 <meta property="og:description" content="提升方法是一种常用的统计学习方法，应用广泛且有效。在分类问题中，它通过改变训练样本的权重，学习多个分类器，并将这些分类器进行线性组合，提高分类的性能。提升方法就是从弱学习算法出发，反复学习，得到一系列弱分类器（又称为基本分类器），然后组合这些弱分类器，构成一个强分类器。大多数提升方法就是改变训练数据的概率分布，针对不同的训练数据分布调用弱学习算法学习一系列弱分类器。 这样，对提升方法来说，有两个问">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-24-080234.jpg">
-<meta property="og:updated_time" content="2018-05-24T08:02:35.893Z">
+<meta property="og:updated_time" content="2018-05-24T08:37:55.250Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Adaboost">
 <meta name="twitter:description" content="提升方法是一种常用的统计学习方法，应用广泛且有效。在分类问题中，它通过改变训练样本的权重，学习多个分类器，并将这些分类器进行线性组合，提高分类的性能。提升方法就是从弱学习算法出发，反复学习，得到一系列弱分类器（又称为基本分类器），然后组合这些弱分类器，构成一个强分类器。大多数提升方法就是改变训练数据的概率分布，针对不同的训练数据分布调用弱学习算法学习一系列弱分类器。 这样，对提升方法来说，有两个问">
@@ -372,7 +372,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  833 字
+                  880 字
                 </span>
               
 
@@ -422,13 +422,11 @@
 <p>(b) 计算$G_m(x)$在训练数据集上的分类误差率</p>
 <p>$$e_m=P(G_m(x_i)\neq y_i)=\sum_{i=1}^Nw_{mi}I(G_m(x_i)\neq y_i)$$</p>
 <p>上式，表示的其实就是计算被$G_m(x)$模型误分类样本的权值之和。</p>
-</li>
-<li><p>计算$G_m(x)$在最终决策中所占的系数</p>
+<p>(c) 计算$G_m(x)$在最终决策中所占的系数</p>
 <p>$$\alpha_m=\frac{1}{2}log\frac{1-e_m}{e_m}$$</p>
 <p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-05-24-080234.jpg" alt="Untitled"></p>
 <p>从图像可以看出，$e_m$越大，权重越小；$e_m$越小，权重越大。</p>
-</li>
-<li><p>更新训练数据的权值分布：$D_{m+1}=(w_{m+1,1},…,w_{m+1,i},…,w_{m+1,N})$</p>
+<p>(d) 更新训练数据的权值分布：$D_{m+1}=(w_{m+1,1},…,w_{m+1,i},…,w_{m+1,N})$</p>
 <p>$$\begin{split} w_{m+1,i}=\begin{cases} \frac{w_{mi}}{Z_m}e^{-\alpha_m}, &amp; \text{ $G_m(x_i)=y_i$ } \ \frac{w_{mi}}{Z_m}e^{\alpha_m}, &amp; \text{$G_m(x_i)\neq y_i$}\end{cases}\end{split}$$</p>
 <p>其中，$Z_m=\sum_{i=1}^Nw_{m,i}e^{-\alpha_my_iG_m(x_i)}$</p>
 <p>将上面表达式写成一个，$w_{m+1,i}=\frac{w_{mi}}{Z_m}e^{-\alpha_my_iG_m(x_i)}$</p>
@@ -439,9 +437,11 @@
 <li>$y_iG_m(x_i)$，预测是否正确，该值越大，如果正确的话，该值越大，则权重越小；如果不正确，该值越小，则权值越大。</li>
 </ul>
 </li>
-<li><p>​</p>
+<li><p>得到最终分类器</p>
+<p>$$f(x) = \sum_{m=1}^M\alpha_mG_m(x)$$，即将每一轮的弱分类器进行组合。</p>
 </li>
 </ol>
+<p>AdaBoost在迭代的时候，会期望样本权值越来越低。</p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1]. 李航 统计学习方法</p>
 
       
