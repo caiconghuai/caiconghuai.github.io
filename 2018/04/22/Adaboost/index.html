@@ -90,7 +90,7 @@
 <meta property="og:description" content="提升方法是一种常用的统计学习方法，应用广泛且有效。在分类问题中，它通过改变训练样本的权重，学习多个分类器，并将这些分类器进行线性组合，提高分类的性能。提升方法就是从弱学习算法出发，反复学习，得到一系列弱分类器（又称为基本分类器），然后组合这些弱分类器，构成一个强分类器。大多数提升方法就是改变训练数据的概率分布，针对不同的训练数据分布调用弱学习算法学习一系列弱分类器。 这样，对提升方法来说，有两个问">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-24-080234.jpg">
-<meta property="og:updated_time" content="2018-05-24T08:37:55.250Z">
+<meta property="og:updated_time" content="2018-05-24T08:40:40.118Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Adaboost">
 <meta name="twitter:description" content="提升方法是一种常用的统计学习方法，应用广泛且有效。在分类问题中，它通过改变训练样本的权重，学习多个分类器，并将这些分类器进行线性组合，提高分类的性能。提升方法就是从弱学习算法出发，反复学习，得到一系列弱分类器（又称为基本分类器），然后组合这些弱分类器，构成一个强分类器。大多数提升方法就是改变训练数据的概率分布，针对不同的训练数据分布调用弱学习算法学习一系列弱分类器。 这样，对提升方法来说，有两个问">
@@ -418,7 +418,7 @@
 </li>
 <li><p>对$m=1,2,…,M$迭代轮次，每一轮做如下操作</p>
 <p>(a) 使用具有权值分布$D_m$的训练数据集学习，得到基本分类器</p>
-<p>​    $$G_m(x):X\rightarrow {-1, +1}$$</p>
+<p>$$G_m(x):X\rightarrow {-1, +1}$$</p>
 <p>(b) 计算$G_m(x)$在训练数据集上的分类误差率</p>
 <p>$$e_m=P(G_m(x_i)\neq y_i)=\sum_{i=1}^Nw_{mi}I(G_m(x_i)\neq y_i)$$</p>
 <p>上式，表示的其实就是计算被$G_m(x)$模型误分类样本的权值之和。</p>
