@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="ml,blending,stacking," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="蔡聪怀" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="模型融合策略是指我们对多个机器学习算法模型进行组合，以构造出一个更强大的分类器，组合多个模型后得到的结果往往比单个模型的效果要好。这里涉及两个概念，1. 如何得到多个不同的基模型？2. 有了多个基模型后，如何组合？针对此，Bagging强调产生模型的方式，即如何获得不同的基模型，而Blending是假设模型都有了，采用哪种组合策略。 Bagging我们要得到不同的模型，我们通常有两种思路，一种就是">
+<meta name="keywords" content="ml,blending,stacking">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Bagging &amp; Blendding">
+<meta property="og:url" content="http://conghuai.me/2018/05/24/模型融合/index.html">
+<meta property="og:site_name" content="蔡聪怀">
+<meta property="og:description" content="模型融合策略是指我们对多个机器学习算法模型进行组合，以构造出一个更强大的分类器，组合多个模型后得到的结果往往比单个模型的效果要好。这里涉及两个概念，1. 如何得到多个不同的基模型？2. 有了多个基模型后，如何组合？针对此，Bagging强调产生模型的方式，即如何获得不同的基模型，而Blending是假设模型都有了，采用哪种组合策略。 Bagging我们要得到不同的模型，我们通常有两种思路，一种就是">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-24-032158.jpg">
+<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-24-032134.jpg">
+<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-24-031151.jpg">
+<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-24-042805.jpg">
+<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-24-042807.jpg">
+<meta property="og:updated_time" content="2018-05-24T06:35:55.141Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Bagging &amp; Blendding">
+<meta name="twitter:description" content="模型融合策略是指我们对多个机器学习算法模型进行组合，以构造出一个更强大的分类器，组合多个模型后得到的结果往往比单个模型的效果要好。这里涉及两个概念，1. 如何得到多个不同的基模型？2. 有了多个基模型后，如何组合？针对此，Bagging强调产生模型的方式，即如何获得不同的基模型，而Blending是假设模型都有了，采用哪种组合策略。 Bagging我们要得到不同的模型，我们通常有两种思路，一种就是">
+<meta name="twitter:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-24-032158.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://conghuai.me/2018/05/24/模型融合/"/>
+
+
+
+
+
+  <title>Bagging & Blendding | 蔡聪怀</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">蔡聪怀</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://conghuai.me/2018/05/24/模型融合/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Conghuai Cai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="蔡聪怀">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Bagging & Blendding</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-24T11:10:15+08:00">
+                2018-05-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Machine Learning</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/Ensemble/" itemprop="url" rel="index">
+                    <span itemprop="name">Ensemble</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/05/24/模型融合/" class="leancloud_visitors" data-flag-title="Bagging & Blendding">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  1,638 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  6 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>模型融合策略是指我们对多个机器学习算法模型进行组合，以构造出一个更强大的分类器，组合多个模型后得到的结果往往比单个模型的效果要好。这里涉及两个概念，1. 如何得到多个不同的基模型？2. 有了多个基模型后，如何组合？针对此，Bagging强调产生模型的方式，即如何获得不同的基模型，而Blending是假设模型都有了，采用哪种组合策略。</p>
+<h1 id="Bagging"><a href="#Bagging" class="headerlink" title="Bagging"></a>Bagging</h1><p>我们要得到不同的模型，我们通常有两种思路，一种就是用同一套模型，但是训练数据不一样，另外一种就是用不一样的模型。后者一般比较直接，只需要在同一份数据集上训练不同的模型即可，这里不再赘述。对于前者，我们需要考虑如何用已有的训练数据，产生出不一样的样本呢？一般都是采用<code>Bootstrap</code>的方式：先抓一个，记录下来，放回去，摇一摇，在抓一个…（注意这种抓取方式可能使得同一笔资料被抓取多次）。</p>
+<p>通过根据训练子集获取方式的不同，可以分为以下几类：</p>
+<ul>
+<li>随机取样——Pasting</li>
+<li><strong>有放回取样（Bootstrap）——Bagging</strong> 这种采样方式，有$N!/N^N$种几率从N个样本抽取出来的样本和原来样本一样。</li>
+<li>特征子集——Random Subspaces</li>
+<li>样本和特征都是子集——Random Patches</li>
+</ul>
+<p>所有选取样本子集的时候有两个方面要考虑，是否选取特征，是否为有放回选取。</p>
+<p>在取样的时候，我们有时候拿袋外的样本当做测试样本。</p>
+<p>那么这个袋外的资料有多少呢：</p>
+<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-05-24-032158.jpg" alt="3"></p>
+<p><strong>是否可以用来做验证集？</strong></p>
+<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-05-24-032134.jpg" alt="2"></p>
+<p>是的，但是要记住，在模型融合中，我们要的不是单个模型的最优，而是所有模型融合后的最优，所以我们希望用这些袋外数据来对G做验证集，具体如下:</p>
+<p>对于$(x_i, y_i)$然后来交叉验证$G_{N}^-(x) = average(g_i, g_j, …, g_t)$，其中，这些g是单个模型，而且$(x_i, y_i)$对于这些模型是袋外。最后求总的验证误差 ： $E_{oob}(G) = \frac{1}{N}\sum_{n=1}^Nerr(y_n, G^-_n(x_n))$</p>
+<h1 id="Blending"><a href="#Blending" class="headerlink" title="Blending"></a>Blending</h1><p>Blending强调的是组合弱分类器的策略，而不强调产生不同模型的方式。组合模型的策略有线性组合，此时每个模型都有一个投票权重，当权重都一样的时候，即都是1时，称为Uniform Blending，如果权重不一样呢，我们一般称为Linear Blending；当然也有非线性组合，我们一般称为Stacking，决策树模型实际上就是这种方式。</p>
+<h2 id="Uniform-Blending-Voting"><a href="#Uniform-Blending-Voting" class="headerlink" title="Uniform Blending(Voting)"></a>Uniform Blending(Voting)</h2><p>这种方式有称为投票的方式，我们给每个模型的权重是一样的，都是1票：</p>
+<ul>
+<li>对于二分类问题 $G(x) = sign(\sum_{t=1}^Tg_t(x))$，对于多分类问题 $G(x) = argmax_{1&lt;=k&lt;=K}\sum_{t=1}^T[g_t(x) = k]$</li>
+<li>对于回归问题，我们对所有结果相加然后求平均：$G(x) = \frac{1}{T} \sum_{t=1}^T g_t(x)$</li>
+</ul>
+<h3 id="数学推导证明有效性"><a href="#数学推导证明有效性" class="headerlink" title="数学推导证明有效性"></a>数学推导证明有效性</h3><p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-05-24-031151.jpg" alt="1"></p>
+<p>我们可以认为右边的第一项为variance，第二项为bias，我们希望通过降低variance的方式来是的模型的误差变小。</p>
+<h2 id="Linear-Blending"><a href="#Linear-Blending" class="headerlink" title="Linear Blending"></a>Linear Blending</h2><p>上面讨论的是均匀组合，但是，有时候我们需要给不同的模型以不同的权值。</p>
+<p>即，$G(x) = sign(\sum_{t=1}^T \alpha_t g_t(x)) with \alpha_t &gt;= 0 $</p>
+<p>这时候我们需要通过计算，求得是的$E_{in}$最小的$\alpha$，如果选择损失函数为均方损失函数，我们就可以得到如下的表达式：$min_{\alpha_t &gt;= 0} \frac{1}{N}\sum_{n=1}^N(y_n - \sum_{t=1}^T \alpha_t g_t(x_x))^2$</p>
+<p>实践中，我们的做法都是，先在训练数据上选出最佳的单个模型，然后在验证集上进行权值的选择。</p>
+<h2 id="Any-Blending（Stacking）"><a href="#Any-Blending（Stacking）" class="headerlink" title="Any Blending（Stacking）"></a>Any Blending（Stacking）</h2><p>我们可以不用线性组合的方式，而是进行其他的组合方式，这样的方式的另一个名称叫做Stacking</p>
+<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-05-24-042805.jpg" alt="workflow"></p>
+<ul>
+<li>初始训练数据$X$包含$m$个观察值和$n$个特征（所以它是$m\times n$。</li>
+<li>有$M$个不同的模型在$X$（通过某种训练方法，如交叉验证）进行训练。</li>
+<li>每个模型提供对结果$y$的预测，然后将其转换为$m\times M$的第二级训练数据$X^{(l_2)}$。即，$M$个预测成为该第二级数据的特征。然后可以对这些数据进行二级模型（或多个模型）的训练，以产生将用于预测的最终结果。</li>
+</ul>
+<p>现在研究用Stacking方式构建二级训练数据的，这里的关键词是out-of-sample，因为如果我们使用适合所有训练数据的$M$模型的预测，那么第二级模型将偏向$M$模型中的最佳模型，这将是没用的。</p>
+<p>这个想法是将训练集分成几部分，就像你在k-fold交叉验证中所做的一样。对于每折数据，其余的数据在模型1 … M获得预测，并在该折上做预测。解释这个最好的方法是通过下图：</p>
+<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-05-24-042807.jpg" alt="stacking"></p>
+<p>最后这个预测矩阵将用于二级训练数据。</p>
+<h1 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h1><p>在天池、Kaggle等机器学习比赛中，要想提高得分，一个重要的技巧就是模型融合，在实际使用中，我们一般会采用哪些做法呢？</p>
+<h2 id="对submmison文件进行融合"><a href="#对submmison文件进行融合" class="headerlink" title="对submmison文件进行融合"></a>对submmison文件进行融合</h2><p>模型融合的最基本和最方便的方式是融合Kaggle提交CSV文件。您只需要对这些方法的测试集进行预测 - 无需重新训练模型。这使得它可以快速集成已经存在的模型预测，是组队时的理想选择。</p>
+<h2 id="Stacking"><a href="#Stacking" class="headerlink" title="Stacking"></a>Stacking</h2><p>对预测文件进行平均并不困难，但它并不是顶级Kagglers使用的唯一方法。更好的收益始于Stacking和Blending。</p>
+<p>原理在上面已经描述过，以2折为例子，说明一下：</p>
+<ul>
+<li>Split the train set in 2 parts: train_a and train_b</li>
+<li>Fit a first-stage model on train_a and create predictions for train_b</li>
+<li>Fit the same model on train_b and create predictions for train_a</li>
+<li>Finally fit the model on the entire train set and create predictions for the test set.</li>
+<li>Now train a second-stage stacker model on the probabilities from the first-stage model(s).</li>
+</ul>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1]. 李航 统计学习方法</p>
+<p>[2]. <a href="https://mlwave.com/kaggle-ensembling-guide/" target="_blank" rel="noopener">Kaggle Ensembling Guide | MLWave</a></p>
+<p>[3]. <a href="https://www.kdnuggets.com/2017/02/stacking-models-imropved-predictions.html" target="_blank" rel="noopener">Stacking Models for Improved Predictions</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ml/" rel="tag"># ml</a>
+          
+            <a href="/tags/blending/" rel="tag"># blending</a>
+          
+            <a href="/tags/stacking/" rel="tag"># stacking</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/23/Random-Forest/" rel="next" title="Random Forest">
+                <i class="fa fa-chevron-left"></i> Random Forest
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Conghuai Cai" />
+            
+              <p class="site-author-name" itemprop="name">Conghuai Cai</p>
+              <p class="site-description motion-element" itemprop="description">Algorithm/Machine Learning/Deep Learning/NLP</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/conghuaicai" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:caiconghuai@gmail.com" target="_blank" title="Email">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>Email</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/6383237207/profile?topnav=1&wvr=6" target="_blank" title="Weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/caiconghuai" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Bagging"><span class="nav-number">1.</span> <span class="nav-text">Bagging</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Blending"><span class="nav-number">2.</span> <span class="nav-text">Blending</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Uniform-Blending-Voting"><span class="nav-number">2.1.</span> <span class="nav-text">Uniform Blending(Voting)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数学推导证明有效性"><span class="nav-number">2.1.1.</span> <span class="nav-text">数学推导证明有效性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linear-Blending"><span class="nav-number">2.2.</span> <span class="nav-text">Linear Blending</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Any-Blending（Stacking）"><span class="nav-number">2.3.</span> <span class="nav-text">Any Blending（Stacking）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实战"><span class="nav-number">3.</span> <span class="nav-text">实战</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#对submmison文件进行融合"><span class="nav-number">3.1.</span> <span class="nav-text">对submmison文件进行融合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Stacking"><span class="nav-number">3.2.</span> <span class="nav-text">Stacking</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Conghuai Cai</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("gDGQAvMXvJB5uSIhpUvw90hy-gzGzoHsz", "36U43UE0rMrmve1e0J8NOBhA");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
