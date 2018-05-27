@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://conghuai.me/about/index.html</loc>
+    
+    <lastmod>2018-05-27T13:27:57.621Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://conghuai.me/2018/04/22/Adaboost/</loc>
     
     <lastmod>2018-05-24T08:41:30.485Z</lastmod>
@@ -82,13 +89,6 @@
     <loc>http://conghuai.me/2018/04/25/Activation-Functions/</loc>
     
     <lastmod>2018-05-14T01:51:40.287Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://conghuai.me/about/index.html</loc>
-    
-    <lastmod>2018-05-12T09:06:23.545Z</lastmod>
     
   </url>
   
