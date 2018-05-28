@@ -90,7 +90,7 @@
 <meta property="og:description" content="逻辑斯蒂回归（logistic regression）是统计学习中的经典方法，逻辑斯蒂回归模型与最大熵模型都属于对数线性模型。 Logistic Function逻辑函数（逻辑曲线、sigmoid函数）表达式如下： $$f(x)=\frac{L}{1+e^{-k(x-x_0)}}$$ 其中：  $e$是自然对数； $x_0$是sigmoid曲线的中点； $L$是曲线的最大值； $k$是曲线的坡度">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-17-040033.jpg">
-<meta property="og:updated_time" content="2018-04-24T06:17:57.191Z">
+<meta property="og:updated_time" content="2018-05-28T15:51:17.573Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Logistic Regression">
 <meta name="twitter:description" content="逻辑斯蒂回归（logistic regression）是统计学习中的经典方法，逻辑斯蒂回归模型与最大熵模型都属于对数线性模型。 Logistic Function逻辑函数（逻辑曲线、sigmoid函数）表达式如下： $$f(x)=\frac{L}{1+e^{-k(x-x_0)}}$$ 其中：  $e$是自然对数； $x_0$是sigmoid曲线的中点； $L$是曲线的最大值； $k$是曲线的坡度">
@@ -372,7 +372,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  3,865 字
+                  3,914 字
                 </span>
               
 
@@ -388,7 +388,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  20 分钟
+                  21 分钟
                 </span>
               
             </div>
@@ -498,6 +498,97 @@
 <p>当$y=y_0$时，得</p>
 <p>$$\begin{align} P(y_0|x) &amp;= \frac{e^{w\cdot f(x,y_0)}}{e^{w\cdot f(x,y_0)}+e^{w\cdot f(x,y_1)}} \\  &amp;= \frac{e^{w\cdot 0}}{e^{w\cdot 0}+e^{w\cdot g(x)}} \\  &amp;= \frac{1}{1+e^{w\cdot g(x)}}  \\ &amp;= \sigma(-w\cdot g(x)) \\&amp;=1-\sigma(w\cdot x) \\ \end{align}$$</p>
 <p>我们发现，当类别标签只有两个时，最大熵模型就是logistic回归模型，表面上看，logistic回归模型里面的特征函数的确只考虑$x$不考虑$y$，然而通过上面的推导，我们发现其实$g$抽取的特征及仅仅在$y=y_1$时被用到。</p>
+<h1 id="逻辑回归与GBDT"><a href="#逻辑回归与GBDT" class="headerlink" title="逻辑回归与GBDT"></a>逻辑回归与GBDT</h1><table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">GBDT</th>
+<th style="text-align:center">LR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">linearity</td>
+<td style="text-align:center">nonlinear</td>
+<td style="text-align:center">linear</td>
+</tr>
+<tr>
+<td style="text-align:center">fitting capability</td>
+<td style="text-align:center">good</td>
+<td style="text-align:center">less good</td>
+</tr>
+<tr>
+<td style="text-align:center">feature selection</td>
+<td style="text-align:center">naturally</td>
+<td style="text-align:center">only l1-reg</td>
+</tr>
+<tr>
+<td style="text-align:center">feature combination</td>
+<td style="text-align:center">naturally</td>
+<td style="text-align:center">no</td>
+</tr>
+<tr>
+<td style="text-align:center">regression</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">no</td>
+</tr>
+<tr>
+<td style="text-align:center">classification</td>
+<td style="text-align:center">yes</td>
+<td style="text-align:center">yes</td>
+</tr>
+<tr>
+<td style="text-align:center">multi-class classification</td>
+<td style="text-align:center">support</td>
+<td style="text-align:center">support</td>
+</tr>
+<tr>
+<td style="text-align:center">Output probability</td>
+<td style="text-align:center">support</td>
+<td style="text-align:center">support</td>
+</tr>
+<tr>
+<td style="text-align:center">parallelization</td>
+<td style="text-align:center">hard and less beneficial</td>
+<td style="text-align:center">easy</td>
+</tr>
+<tr>
+<td style="text-align:center">speed</td>
+<td style="text-align:center">slow</td>
+<td style="text-align:center">fast</td>
+</tr>
+<tr>
+<td style="text-align:center">memory(training)</td>
+<td style="text-align:center">O(N) + O(KJ)</td>
+<td style="text-align:center">O(N)+O(M)</td>
+</tr>
+<tr>
+<td style="text-align:center">cpu(traing)</td>
+<td style="text-align:center">O(KJMN log N)</td>
+<td style="text-align:center">O(KN)</td>
+</tr>
+<tr>
+<td style="text-align:center">memory(predicting)</td>
+<td style="text-align:center">O(KJ)</td>
+<td style="text-align:center">O(M)</td>
+</tr>
+<tr>
+<td style="text-align:center">cpu(predicting)</td>
+<td style="text-align:center">O(KJ)</td>
+<td style="text-align:center">O(M)</td>
+</tr>
+<tr>
+<td style="text-align:center">N</td>
+<td style="text-align:center">large</td>
+<td style="text-align:center">huge</td>
+</tr>
+<tr>
+<td style="text-align:center">M</td>
+<td style="text-align:center">medium</td>
+<td style="text-align:center">huge</td>
+</tr>
+</tbody>
+</table>
 <h1 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h1><h2 id="自己实现LR模型"><a href="#自己实现LR模型" class="headerlink" title="自己实现LR模型"></a>自己实现LR模型</h2><h3 id="sigmoid函数"><a href="#sigmoid函数" class="headerlink" title="sigmoid函数"></a>sigmoid函数</h3><p>$$sigmoid(w^Tx+b)=\frac{1}{1+e^{-(w^Tx+b)}}$$</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># GRADED FUNCTION: sigmoid</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sigmoid</span><span class="params">(z)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Compute the sigmoid of z</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Arguments:</span></span><br><span class="line"><span class="string">    z -- A scalar or numpy array of any size.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Return:</span></span><br><span class="line"><span class="string">    s -- sigmoid(z)</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">### START CODE HERE ### (≈ 1 line of code)</span></span><br><span class="line">    s = <span class="number">1</span>/(<span class="number">1</span>+np.exp(-z))</span><br><span class="line">    <span class="comment">### END CODE HERE ###</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> s</span><br></pre></td></tr></table></figure>
 <h3 id="初始化参数"><a href="#初始化参数" class="headerlink" title="初始化参数"></a>初始化参数</h3><ul>
@@ -740,7 +831,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Logistic-Function"><span class="nav-number">1.</span> <span class="nav-text">Logistic Function</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#函数性质"><span class="nav-number">1.1.</span> <span class="nav-text">函数性质</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求导"><span class="nav-number">1.2.</span> <span class="nav-text">求导</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#逻辑斯蒂回归模型"><span class="nav-number">2.</span> <span class="nav-text">逻辑斯蒂回归模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#二项逻辑斯蒂回归模型"><span class="nav-number">2.1.</span> <span class="nav-text">二项逻辑斯蒂回归模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#对数几率"><span class="nav-number">2.1.1.</span> <span class="nav-text">对数几率</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模型参数估计"><span class="nav-number">2.2.</span> <span class="nav-text">模型参数估计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#损失函数"><span class="nav-number">2.2.1.</span> <span class="nav-text">损失函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#证明损失函数为交叉熵"><span class="nav-number">2.2.2.</span> <span class="nav-text">证明损失函数为交叉熵</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-从交叉熵公式推导到逻辑损失的cost-function"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">(1) 从交叉熵公式推导到逻辑损失的cost function</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-直接定义逻辑回归的loss-function为交叉熵"><span class="nav-number">2.2.2.2.</span> <span class="nav-text">(2) 直接定义逻辑回归的loss function为交叉熵</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优化"><span class="nav-number">2.2.3.</span> <span class="nav-text">优化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一项-frac-partial-lnA-partial-A"><span class="nav-number">2.2.3.1.</span> <span class="nav-text">第一项 $\frac{\partial lnA}{\partial A}$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二项-frac-partial-1-e-B-partial-B"><span class="nav-number">2.2.3.2.</span> <span class="nav-text">第二项 $\frac{\partial (1+e^B)}{\partial B}$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第三项-frac-partial-y-nw-Tx-n-partial-w-i"><span class="nav-number">2.2.3.3.</span> <span class="nav-text">第三项 $\frac{\partial -y_nw^Tx_n}{\partial w_i}$</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多项逻辑回归"><span class="nav-number">2.3.</span> <span class="nav-text">多项逻辑回归</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#逻辑回归与最大熵"><span class="nav-number">3.</span> <span class="nav-text">逻辑回归与最大熵</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实战"><span class="nav-number">4.</span> <span class="nav-text">实战</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#自己实现LR模型"><span class="nav-number">4.1.</span> <span class="nav-text">自己实现LR模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sigmoid函数"><span class="nav-number">4.1.1.</span> <span class="nav-text">sigmoid函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化参数"><span class="nav-number">4.1.2.</span> <span class="nav-text">初始化参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算图"><span class="nav-number">4.1.3.</span> <span class="nav-text">计算图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#学习算法"><span class="nav-number">4.1.4.</span> <span class="nav-text">学习算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#预测"><span class="nav-number">4.1.5.</span> <span class="nav-text">预测</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#完整模型"><span class="nav-number">4.1.6.</span> <span class="nav-text">完整模型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Logistic-Function"><span class="nav-number">1.</span> <span class="nav-text">Logistic Function</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#函数性质"><span class="nav-number">1.1.</span> <span class="nav-text">函数性质</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求导"><span class="nav-number">1.2.</span> <span class="nav-text">求导</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#逻辑斯蒂回归模型"><span class="nav-number">2.</span> <span class="nav-text">逻辑斯蒂回归模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#二项逻辑斯蒂回归模型"><span class="nav-number">2.1.</span> <span class="nav-text">二项逻辑斯蒂回归模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#对数几率"><span class="nav-number">2.1.1.</span> <span class="nav-text">对数几率</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模型参数估计"><span class="nav-number">2.2.</span> <span class="nav-text">模型参数估计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#损失函数"><span class="nav-number">2.2.1.</span> <span class="nav-text">损失函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#证明损失函数为交叉熵"><span class="nav-number">2.2.2.</span> <span class="nav-text">证明损失函数为交叉熵</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-从交叉熵公式推导到逻辑损失的cost-function"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">(1) 从交叉熵公式推导到逻辑损失的cost function</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-直接定义逻辑回归的loss-function为交叉熵"><span class="nav-number">2.2.2.2.</span> <span class="nav-text">(2) 直接定义逻辑回归的loss function为交叉熵</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优化"><span class="nav-number">2.2.3.</span> <span class="nav-text">优化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一项-frac-partial-lnA-partial-A"><span class="nav-number">2.2.3.1.</span> <span class="nav-text">第一项 $\frac{\partial lnA}{\partial A}$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二项-frac-partial-1-e-B-partial-B"><span class="nav-number">2.2.3.2.</span> <span class="nav-text">第二项 $\frac{\partial (1+e^B)}{\partial B}$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第三项-frac-partial-y-nw-Tx-n-partial-w-i"><span class="nav-number">2.2.3.3.</span> <span class="nav-text">第三项 $\frac{\partial -y_nw^Tx_n}{\partial w_i}$</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多项逻辑回归"><span class="nav-number">2.3.</span> <span class="nav-text">多项逻辑回归</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#逻辑回归与最大熵"><span class="nav-number">3.</span> <span class="nav-text">逻辑回归与最大熵</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#逻辑回归与GBDT"><span class="nav-number">4.</span> <span class="nav-text">逻辑回归与GBDT</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实战"><span class="nav-number">5.</span> <span class="nav-text">实战</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#自己实现LR模型"><span class="nav-number">5.1.</span> <span class="nav-text">自己实现LR模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sigmoid函数"><span class="nav-number">5.1.1.</span> <span class="nav-text">sigmoid函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化参数"><span class="nav-number">5.1.2.</span> <span class="nav-text">初始化参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算图"><span class="nav-number">5.1.3.</span> <span class="nav-text">计算图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#学习算法"><span class="nav-number">5.1.4.</span> <span class="nav-text">学习算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#预测"><span class="nav-number">5.1.5.</span> <span class="nav-text">预测</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#完整模型"><span class="nav-number">5.1.6.</span> <span class="nav-text">完整模型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>

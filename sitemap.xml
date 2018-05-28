@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://conghuai.me/2017/09/17/Logistic-Regression/</loc>
+    
+    <lastmod>2018-05-28T15:51:17.573Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://conghuai.me/2018/05/17/Decision-Tree/</loc>
+    
+    <lastmod>2018-05-28T15:45:46.895Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://conghuai.me/about/index.html</loc>
     
     <lastmod>2018-05-27T13:31:06.042Z</lastmod>
@@ -33,13 +47,6 @@
     <loc>http://conghuai.me/2018/05/23/%E8%AF%8D%E5%90%91%E9%87%8F%E6%80%BB%E7%BB%93/</loc>
     
     <lastmod>2018-05-23T07:24:02.684Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://conghuai.me/2018/05/17/Decision-Tree/</loc>
-    
-    <lastmod>2018-05-23T01:12:02.621Z</lastmod>
     
   </url>
   
@@ -124,13 +131,6 @@
     <loc>http://conghuai.me/2018/04/24/Neural-Networks-and-Deep-Learning-Foundation/</loc>
     
     <lastmod>2018-04-30T07:18:08.868Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://conghuai.me/2017/09/17/Logistic-Regression/</loc>
-    
-    <lastmod>2018-04-24T06:17:57.191Z</lastmod>
     
   </url>
   
