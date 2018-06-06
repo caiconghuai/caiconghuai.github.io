@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://conghuai.me/about/index.html</loc>
+    
+    <lastmod>2018-06-06T03:46:35.758Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://conghuai.me/2017/09/17/Logistic-Regression/</loc>
     
     <lastmod>2018-05-28T15:51:17.573Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>http://conghuai.me/2018/05/17/Decision-Tree/</loc>
     
     <lastmod>2018-05-28T15:45:46.895Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://conghuai.me/about/index.html</loc>
-    
-    <lastmod>2018-05-27T13:31:06.042Z</lastmod>
     
   </url>
   
