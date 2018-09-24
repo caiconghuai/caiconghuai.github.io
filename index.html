@@ -283,7 +283,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/09/24/逻辑回归 1-2：逻辑回归由来/" itemprop="url">逻辑回归 1-1：逻辑函数</a></h1>
+                <a class="post-title-link" href="/2018/09/24/逻辑回归 1-2：逻辑回归由来/" itemprop="url">逻辑回归 1-2：逻辑回归由来</a></h1>
         
 
         <div class="post-meta">
@@ -346,7 +346,7 @@
 
           
           
-             <span id="/2018/09/24/逻辑回归 1-2：逻辑回归由来/" class="leancloud_visitors" data-flag-title="逻辑回归 1-1：逻辑函数">
+             <span id="/2018/09/24/逻辑回归 1-2：逻辑回归由来/" class="leancloud_visitors" data-flag-title="逻辑回归 1-2：逻辑回归由来">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -371,7 +371,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  241 字
+                  1,793 字
                 </span>
               
 
@@ -387,7 +387,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  1 分钟
+                  8 分钟
                 </span>
               
             </div>
@@ -410,17 +410,10 @@
       
         
           
-          [toc]
-1 表达式逻辑函数（逻辑曲线、sigmoid函数）表达式如下：
-$$\sigma(x)=\frac{L}{1+e^{-k(x-x_0)}}$$
-其中：
-
-$e$是自然对数；
-$x_0$是sigmoid曲线的中点；
-$L$是曲线的最大值；
-$k$是曲线的坡度
-
-其标准形式为：$L=1,k=
+          1 高斯分布首先，LR的假设只有一个，就是两个类别的特征服从均值不等，方差相等的高斯分布，也就是
+$$p(x|y=0)\sim N(\mu_0,\sigma)$$
+$$p(x|y=1)\sim N(\mu_1,\sigma)$$
+为什么会假设它们服从高斯分布？一方面是因为高斯分布是比较容易处理的分布
           ...
           <!--noindex-->
           <div class="post-button text-center">
