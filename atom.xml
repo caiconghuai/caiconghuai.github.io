@@ -18,6 +18,35 @@
   
   <entry>
     <title>逻辑回归 1-1：逻辑函数</title>
+    <link href="http://conghuai.me/2018/09/24/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%201-2%EF%BC%9A%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E7%94%B1%E6%9D%A5/"/>
+    <id>http://conghuai.me/2018/09/24/逻辑回归 1-2：逻辑回归由来/</id>
+    <published>2018-09-24T07:20:12.000Z</published>
+    <updated>2018-09-24T08:28:32.128Z</updated>
+    
+    <content type="html"><![CDATA[<p>[toc]</p><h1 id="1-表达式"><a href="#1-表达式" class="headerlink" title="1 表达式"></a>1 表达式</h1><p>逻辑函数（逻辑曲线、sigmoid函数）表达式如下：</p><p>$$\sigma(x)=\frac{L}{1+e^{-k(x-x_0)}}$$</p><p>其中：</p><ul><li>$e$是自然对数；</li><li>$x_0$是sigmoid曲线的中点；</li><li>$L$是曲线的最大值；</li><li>$k$是曲线的坡度</li></ul><p>其标准形式为：$L=1,k=1,x_0=0$</p><p>标准的逻辑函数表达式如下：</p><p>$$\begin{aligned} \sigma(x) &amp;= \frac{1}{1+e^{-x}} \\  &amp;= \frac{e^x}{1+e^x} \\  &amp;= \frac{1}{2}+\frac{1}{2}\cdot tanh(\frac{x}{2}) \end{aligned}$$</p><h1 id="2-函数性质"><a href="#2-函数性质" class="headerlink" title="2 函数性质"></a>2 函数性质</h1><p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-17-040033.jpg" alt="logistics function函数图像"></p><ul><li>对称性：$1-\sigma(x) = \sigma(-x)$</li><li>输出值不是关于0对称的</li></ul><h1 id="3-导函数"><a href="#3-导函数" class="headerlink" title="3 导函数"></a>3 导函数</h1><p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-09-23-114422.png" alt=""></p><p>逻辑函数的一个优点在于其容易求导：</p><p>$$\begin{aligned} \frac{d\sigma(x)}{dx} &amp;= \frac{e^x(1+e^x)-e^x\cdot e^x}{(1+e^{-x})^2} \\  &amp;= \frac{e^x}{(1+e^x)^2} \\  &amp;= \sigma(x)\cdot (1-\sigma(x)) \end{aligned}$$</p><p>但是其缺点在于导函数的值域在(0,1/4)，当多个sigmoid的导数相乘的时候，会使得值越来越小，这也是梯度消失的原因。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;[toc]&lt;/p&gt;
+&lt;h1 id=&quot;1-表达式&quot;&gt;&lt;a href=&quot;#1-表达式&quot; class=&quot;headerlink&quot; title=&quot;1 表达式&quot;&gt;&lt;/a&gt;1 表达式&lt;/h1&gt;&lt;p&gt;逻辑函数（逻辑曲线、sigmoid函数）表达式如下：&lt;/p&gt;
+&lt;p&gt;$$\sigma(x)
+      
+    
+    </summary>
+    
+      <category term="Machine Learning" scheme="http://conghuai.me/categories/Machine-Learning/"/>
+    
+      <category term="Classification" scheme="http://conghuai.me/categories/Machine-Learning/Classification/"/>
+    
+    
+      <category term="ml" scheme="http://conghuai.me/tags/ml/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>逻辑回归 1-1：逻辑函数</title>
     <link href="http://conghuai.me/2018/09/24/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%201-1%EF%BC%9A%E9%80%BB%E8%BE%91%E5%87%BD%E6%95%B0/"/>
     <id>http://conghuai.me/2018/09/24/逻辑回归 1-1：逻辑函数/</id>
     <published>2018-09-24T07:20:12.000Z</published>

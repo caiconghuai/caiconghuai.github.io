@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="ml," />
 
 
 
@@ -81,16 +81,21 @@
 
 
 
-<meta name="description" content="Algorithm/Machine Learning/Deep Learning/NLP">
-<meta property="og:type" content="website">
-<meta property="og:title" content="蔡聪怀">
-<meta property="og:url" content="http://conghuai.me/tags/svm/index.html">
+<meta name="description" content="[toc] 1 表达式逻辑函数（逻辑曲线、sigmoid函数）表达式如下： $$\sigma(x)=\frac{L}{1+e^{-k(x-x_0)}}$$ 其中：  $e$是自然对数； $x_0$是sigmoid曲线的中点； $L$是曲线的最大值； $k$是曲线的坡度  其标准形式为：$L=1,k=1,x_0=0$ 标准的逻辑函数表达式如下： $$\begin{aligned} \sigma(x)">
+<meta name="keywords" content="ml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="逻辑回归 1-1：逻辑函数">
+<meta property="og:url" content="http://conghuai.me/2018/09/24/逻辑回归 1-2：逻辑回归由来/index.html">
 <meta property="og:site_name" content="蔡聪怀">
-<meta property="og:description" content="Algorithm/Machine Learning/Deep Learning/NLP">
+<meta property="og:description" content="[toc] 1 表达式逻辑函数（逻辑曲线、sigmoid函数）表达式如下： $$\sigma(x)=\frac{L}{1+e^{-k(x-x_0)}}$$ 其中：  $e$是自然对数； $x_0$是sigmoid曲线的中点； $L$是曲线的最大值； $k$是曲线的坡度  其标准形式为：$L=1,k=1,x_0=0$ 标准的逻辑函数表达式如下： $$\begin{aligned} \sigma(x)">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-17-040033.jpg">
+<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-09-23-114422.png">
+<meta property="og:updated_time" content="2018-09-24T08:28:32.128Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="蔡聪怀">
-<meta name="twitter:description" content="Algorithm/Machine Learning/Deep Learning/NLP">
+<meta name="twitter:title" content="逻辑回归 1-1：逻辑函数">
+<meta name="twitter:description" content="[toc] 1 表达式逻辑函数（逻辑曲线、sigmoid函数）表达式如下： $$\sigma(x)=\frac{L}{1+e^{-k(x-x_0)}}$$ 其中：  $e$是自然对数； $x_0$是sigmoid曲线的中点； $L$是曲线的最大值； $k$是曲线的坡度  其标准形式为：$L=1,k=1,x_0=0$ 标准的逻辑函数表达式如下： $$\begin{aligned} \sigma(x)">
+<meta name="twitter:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-17-040033.jpg">
 
 
 
@@ -120,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://conghuai.me/tags/svm/"/>
+  <link rel="canonical" href="http://conghuai.me/2018/09/24/逻辑回归 1-2：逻辑回归由来/"/>
 
 
 
 
 
-  <title>Tag: svm | 蔡聪怀</title>
+  <title>逻辑回归 1-1：逻辑函数 | 蔡聪怀</title>
   
 
 
@@ -145,7 +150,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -249,54 +254,243 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>svm<small>Tag</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://conghuai.me/2018/09/24/逻辑回归 1-2：逻辑回归由来/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Conghuai Cai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="蔡聪怀">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/04/19/Support-Vector-Machine/" itemprop="url">
-              
-                <span itemprop="name">Support Vector Machine</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">逻辑回归 1-1：逻辑函数</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-19T10:18:56+08:00"
-              content="2018-04-19" >
-          04-19
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-24T15:20:12+08:00">
+                2018-09-24
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Machine Learning</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/Classification/" itemprop="url" rel="index">
+                    <span itemprop="name">Classification</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/09/24/逻辑回归 1-2：逻辑回归由来/" class="leancloud_visitors" data-flag-title="逻辑回归 1-1：逻辑函数">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  241 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  1 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>[toc]</p>
+<h1 id="1-表达式"><a href="#1-表达式" class="headerlink" title="1 表达式"></a>1 表达式</h1><p>逻辑函数（逻辑曲线、sigmoid函数）表达式如下：</p>
+<p>$$\sigma(x)=\frac{L}{1+e^{-k(x-x_0)}}$$</p>
+<p>其中：</p>
+<ul>
+<li>$e$是自然对数；</li>
+<li>$x_0$是sigmoid曲线的中点；</li>
+<li>$L$是曲线的最大值；</li>
+<li>$k$是曲线的坡度</li>
+</ul>
+<p>其标准形式为：$L=1,k=1,x_0=0$</p>
+<p>标准的逻辑函数表达式如下：</p>
+<p>$$\begin{aligned} \sigma(x) &amp;= \frac{1}{1+e^{-x}} \\  &amp;= \frac{e^x}{1+e^x} \\  &amp;= \frac{1}{2}+\frac{1}{2}\cdot tanh(\frac{x}{2}) \end{aligned}$$</p>
+<h1 id="2-函数性质"><a href="#2-函数性质" class="headerlink" title="2 函数性质"></a>2 函数性质</h1><p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-17-040033.jpg" alt="logistics function函数图像"></p>
+<ul>
+<li>对称性：$1-\sigma(x) = \sigma(-x)$</li>
+<li>输出值不是关于0对称的</li>
+</ul>
+<h1 id="3-导函数"><a href="#3-导函数" class="headerlink" title="3 导函数"></a>3 导函数</h1><p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-09-23-114422.png" alt=""></p>
+<p>逻辑函数的一个优点在于其容易求导：</p>
+<p>$$\begin{aligned} \frac{d\sigma(x)}{dx} &amp;= \frac{e^x(1+e^x)-e^x\cdot e^x}{(1+e^{-x})^2} \\  &amp;= \frac{e^x}{(1+e^x)^2} \\  &amp;= \sigma(x)\cdot (1-\sigma(x)) \end{aligned}$$</p>
+<p>但是其缺点在于导函数的值域在(0,1/4)，当多个sigmoid的导数相乘的时候，会使得值越来越小，这也是梯度消失的原因。</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ml/" rel="tag"># ml</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/24/逻辑回归 1-1：逻辑函数/" rel="next" title="逻辑回归 1-1：逻辑函数">
+                <i class="fa fa-chevron-left"></i> 逻辑回归 1-1：逻辑函数
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -304,6 +498,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -324,8 +522,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -424,6 +631,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-表达式"><span class="nav-number">1.</span> <span class="nav-text">1 表达式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-函数性质"><span class="nav-number">2.</span> <span class="nav-text">2 函数性质</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-导函数"><span class="nav-number">3.</span> <span class="nav-text">3 导函数</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -564,6 +787,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
