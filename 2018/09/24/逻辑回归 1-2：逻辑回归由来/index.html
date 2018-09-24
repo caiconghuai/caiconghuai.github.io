@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="蔡聪怀">
 <meta property="og:description" content="1 高斯分布首先，LR的假设只有一个，就是两个类别的特征服从均值不等，方差相等的高斯分布，也就是 $$p(x|y=0)\sim N(\mu_0,\sigma)$$ $$p(x|y=1)\sim N(\mu_1,\sigma)$$ 为什么会假设它们服从高斯分布？一方面是因为高斯分布是比较容易处理的分布，另一方面，从信息论的角度上看，当均值和方差已知时（尽管你并不知道确切的均值和方差，但是根据概率论，">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-09-24T08:39:42.998Z">
+<meta property="og:updated_time" content="2018-09-24T08:42:01.219Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="逻辑回归 1-2：逻辑回归由来">
 <meta name="twitter:description" content="1 高斯分布首先，LR的假设只有一个，就是两个类别的特征服从均值不等，方差相等的高斯分布，也就是 $$p(x|y=0)\sim N(\mu_0,\sigma)$$ $$p(x|y=1)\sim N(\mu_1,\sigma)$$ 为什么会假设它们服从高斯分布？一方面是因为高斯分布是比较容易处理的分布，另一方面，从信息论的角度上看，当均值和方差已知时（尽管你并不知道确切的均值和方差，但是根据概率论，">
@@ -450,7 +450,7 @@
 <h1 id="3-最大熵原理"><a href="#3-最大熵原理" class="headerlink" title="3 最大熵原理"></a>3 最大熵原理</h1><p>我们现在尝试把最大熵模型推导成logistic回归模型：</p>
 <p>最大熵模型定义了在给定输入变量$x$时，输出变量$y$的条件分布：</p>
 <p>$$P(y|x,w)=\frac{e^{w\cdot f(x,y)}}{\sum_{y\in Dom(y)} e^{w\cdot f(x,y)}}$$</p>
-<p>如果我们我们限定$y$为二元变量，即$Dom(y) = {y_0,y_1}$，那么就可以把最大熵模型转换为logistic回归模型，我们还需要定义特征函数为：</p>
+<p>如果我们我们限定$y$为二元变量，即$Dom(y) = \{y_0,y_1\}$，那么就可以把最大熵模型转换为logistic回归模型，我们还需要定义特征函数为：</p>
 <p>$$f(x,y)=\begin{cases} g(x), &amp; \text{$y=y_1$} \\ 0, &amp; \text{$y=y_0$}\end{cases}$$</p>
 <p>即仅在$y=y_1$时抽取$x$的特征，在$y=y_0$时不抽任何特征（直接返回全为0的特征向量。）</p>
 <p>将这个特征函数带回最大熵模型，我们得到$y=y_1$时：</p>

@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="蔡聪怀">
 <meta property="og:description" content="1 逻辑斯蒂回归模型二项逻辑斯蒂回归模型是一种分类模型，由条件概率分布$P(Y|X)$表示，形式为参数化的逻辑斯蒂分布，这里随机变量$X$取值为实数，随机变量$Y$取值为1或-1。 $$P(Y=1|x) = \frac{e^{w\cdot x+b}}{1+e^{w\cdot x+b}}$$ $$P(Y=-1|x) = \frac{1}{1+e^{w\cdot x+b}}$$ 对于给定的输入实例$x">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-09-24T08:40:07.808Z">
+<meta property="og:updated_time" content="2018-09-24T08:41:41.224Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="逻辑回归 1-3：逻辑回归模型">
 <meta name="twitter:description" content="1 逻辑斯蒂回归模型二项逻辑斯蒂回归模型是一种分类模型，由条件概率分布$P(Y|X)$表示，形式为参数化的逻辑斯蒂分布，这里随机变量$X$取值为实数，随机变量$Y$取值为1或-1。 $$P(Y=1|x) = \frac{e^{w\cdot x+b}}{1+e^{w\cdot x+b}}$$ $$P(Y=-1|x) = \frac{1}{1+e^{w\cdot x+b}}$$ 对于给定的输入实例$x">
@@ -414,36 +414,36 @@
 <p>有时为了方便，将权值向量和输入向量进行扩充，仍记作$w,x$，即$w=(w^{(1)},w^{(2)},…,w^{(n)},b)^T$，$x=(x^{(1)},x^{(2)},…,x^{(n)},1)^T$，这时候，逻辑斯蒂回归模型如下：</p>
 <p>$$P(Y=1|x) = \frac{e^{w\cdot x}}{1+e^{w\cdot x}}$$</p>
 <p>$$P(Y=-1|x) = \frac{1}{1+e^{w\cdot x}}$$</p>
-<h1 id="2-模型参数估计"><a href="#2-模型参数估计" class="headerlink" title="2 模型参数估计"></a>2 模型参数估计</h1><h2 id="2-1-损失函数"><a href="#2-1-损失函数" class="headerlink" title="2.1 损失函数"></a>2.1 损失函数</h2><p>逻辑斯蒂回归模型学习时，对于给定的训练数据集$T={(x_1, 1),(x_2,-1),…,(x_N,-1)}$，其中，$x_i\in R^n \text{,}y_i\in{-1,1}$，可以应用极大似然估计法估计模型参数</p>
+<h1 id="2-模型参数估计"><a href="#2-模型参数估计" class="headerlink" title="2 模型参数估计"></a>2 模型参数估计</h1><h2 id="2-1-损失函数"><a href="#2-1-损失函数" class="headerlink" title="2.1 损失函数"></a>2.1 损失函数</h2><p>逻辑斯蒂回归模型学习时，对于给定的训练数据集$T=\{(x_1, 1),(x_2,-1),…,(x_N,-1)\}$，其中，$x_i\in R^n \text{,}y_i\in\{-1,1\}$，可以应用极大似然估计法估计模型参数</p>
 <p>$$\begin{aligned} L(h) &amp;= P(x_1)\cdot h(1|x_1)\cdot P(x_2)\cdot h(-1|x_2)…P(x_N)\cdot h(-1|x_N) \\  &amp;= P(x_1)\cdot h(1|x_1)\cdot P(x_2)\cdot [1-h(1|x_2)]…P(x_N)\cdot [1-h(1|x_N)] \end{aligned}$$</p>
 <p>对于$h$我们用sigmoid函数带入，用对称性$1-\sigma(x) = \sigma(-x)$得</p>
 <p>$$\begin{aligned} L(h) &amp;= P(x_1)\cdot \sigma(w_1^Tx_1)\cdot P(x_2)\cdot [1-\sigma(w_2^Tx_2)]…P(x_N)\cdot [1-\sigma(w_N^Tx_N)] \\ &amp;= P(x_1)\cdot \sigma(w_1^Tx_1)\cdot P(x_2)\cdot \sigma(-w_2^Tx_2)…P(x_N)\cdot \sigma(-w_N^Tx_N)\end{aligned} $$</p>
 <p>对于不同的模型，$P(x_1),P(x_2)…P(x_N)$是一样的，乘上这些值对于我们选择最优的模型没有帮助，故略去。</p>
 <p>$$L(\sigma)\propto \sigma(w_1^Tx_1)\cdot \sigma(-w_2^Tx_2) … \sigma(-w_N^Tx_N)$$<br>简化上述，可得两种表示方式</p>
 <ol>
-<li><strong>形式一：$y\in {-1, 1}$</strong> </li>
+<li><strong>形式一：$y\in \{-1, 1\}$</strong> </li>
 </ol>
 <p>$$L(\sigma)\propto\prod_{n=1}^N\sigma(y_nw^Tx_n)$$</p>
 <ol>
-<li><strong>形式二：$y\in {0, 1}$</strong></li>
+<li><strong>形式二：$y\in \{0, 1\}$</strong></li>
 </ol>
 <p>$$L(\sigma)\propto\prod_{n=1}^N[\sigma(w^Tx_n)]^{y_n}\cdot [1- \sigma(w^Tx_n)]^{1-y_n}$$</p>
 <p>下面，通过<strong>极大似然估计</strong>得到的函数取负数，得到等价的需要最小化的损失函数</p>
 <ol>
-<li><strong>形式一：$y\in {-1, 1}$</strong></li>
+<li><strong>形式一：$y\in \{-1, 1\}$</strong></li>
 </ol>
 <p>$$\begin{aligned} g &amp;= argmax_\sigma \prod_{n=1}^N\sigma(y_nw^Tx_n) \\  &amp;= argmax_{\sigma}ln\sum_{n=1}^N\sigma(y_nw^Tx_n) \\  &amp;= argmin_w\frac{1}{N}\sum_{n=1}^N-ln\sigma(y_nw^Tx_n)  \\ &amp;= argmin_w\frac{1}{N} \sum_{n=1}^Nln(1+e^{-y_nw^Tx_n})\\ \end{aligned}$$</p>
 <ol>
-<li><strong>形式二：$y\in {0, 1}$</strong></li>
+<li><strong>形式二：$y\in \{0, 1\}$</strong></li>
 </ol>
 <p>$$\begin{aligned} g &amp;= argmax_\sigma \prod_{n=1}^N[\sigma(w^Tx_n)]^{y_n}\cdot [1- \sigma(w^Tx_n)]^{1-y_n}\\  &amp;= argmax_{\sigma}\prod_{n=1}^N[\sigma(w^Tx_n)]^{y_n}\cdot [1- \sigma(w^Tx_n)]^{1-y_n} \\  &amp;= argmin_w\frac{1}{N}\sum_{n=1}^N-ln[\sigma(w^Tx_n)]^{y_n}\cdot [1- \sigma(w^Tx_n)]^{1-y_n}  \\ &amp;= argmin_w\frac{1}{N} \sum_{n=1}^N-[y_n\cdot ln\sigma(w^Tx_n)+(1-y_n)\cdot ln(1- \sigma(w^Tx_n))]\\ \end{aligned}$$</p>
 <p>所以，损失函数为</p>
 <ol>
-<li><strong>形式一：$y\in {-1, 1}$</strong></li>
+<li><strong>形式一：$y\in \{-1, 1\}$</strong></li>
 </ol>
 <p>$$E_{in}(w)=\frac{1}{N}\sum_{n=1}^Nln(1+e^{-y_nw^Tx_n})$$</p>
 <ol>
-<li><strong>形式二：$y\in {0, 1}$</strong></li>
+<li><strong>形式二：$y\in \{0, 1\}$</strong></li>
 </ol>
 <p>$$E_{in}(w)=\frac{1}{N} \sum_{n=1}^N-[y_n\cdot ln\sigma(w^Tx_n)+(1-y_n)\cdot ln(1- \sigma(w^Tx_n))]$$</p>
 <h2 id="2-2-证明损失函数为交叉熵"><a href="#2-2-证明损失函数为交叉熵" class="headerlink" title="2.2 证明损失函数为交叉熵"></a>2.2 证明损失函数为交叉熵</h2><p>如果熟悉交叉熵损失函数，那么可以发现对于形式二，其定义就是交叉熵损失函数。我们现在试着从交叉熵的公式推导到形式一，并证明形式一和形式二等价。</p>
@@ -451,7 +451,7 @@
 <p>对于二分类损失问题，交叉熵损失函数定义为<br>$$E =\sum_{n=1}^N -[y\cdot log(p)+(1-y)\cdot log(1-p)]$$</p>
 <p>其中</p>
 <ul>
-<li>$y\in {0,1}$，一般规定正类为1，负类为0；</li>
+<li>$y\in \{0,1\}$，一般规定正类为1，负类为0；</li>
 <li>$p$为取正类的概率；</li>
 <li>对于每个样本上式，其中一项为0；</li>
 </ul>
@@ -460,10 +460,10 @@
 <p>我们发现</p>
 <p>$$E=\begin{cases} \sum_{i=1}^Nlog(1+e^{-w\cdot x}), &amp; \text{$y=+1$} \\ \sum_{i=1}^Nlog(1+e^{w\cdot x}), &amp; \text{$y=0$}\end{cases}$$</p>
 <p>我们可以简化上式，得</p>
-<p>$$E= \sum_{i=1}^Nln(1+e^{-y_nw^Tx_n}),y_n\in {1,-1}$$</p>
+<p>$$E= \sum_{i=1}^Nln(1+e^{-y_nw^Tx_n}),y_n\in \{1,-1\}$$</p>
 <p>所以，我们发现，<strong>对逻辑斯蒂回归模型求极大似然估计得到的损失函数，本质上就是交叉熵损失函数</strong>。</p>
 <h1 id="3-学习算法"><a href="#3-学习算法" class="headerlink" title="3 学习算法"></a>3 学习算法</h1><p>对于逻辑回归的损失函数，由于是凸函数，所以我们可以使用梯度下降法来求解。现在，我们推导一下求导过程</p>
-<h2 id="3-1-形式一：-y-in-1-1"><a href="#3-1-形式一：-y-in-1-1" class="headerlink" title="3.1 形式一：$y\in {-1, 1}$"></a>3.1 形式一：$y\in {-1, 1}$</h2><p>对于形式一，其损失函数如下</p>
+<h2 id="3-1-形式一：-y-in-1-1"><a href="#3-1-形式一：-y-in-1-1" class="headerlink" title="3.1 形式一：$y\in \{-1, 1\}$"></a>3.1 形式一：$y\in \{-1, 1\}$</h2><p>对于形式一，其损失函数如下</p>
 <p>$$E_{in}(w)=\frac{1}{N}\sum_{i=1}^Nln(1+e^{-y_nw^Tx_n})$$</p>
 <p>对$w_i$求偏导，令$A = 1+e^{-y_nw^Tx_n}$，$B = -y_nw^Tx_n$</p>
 <p>$$\frac{\partial E_{in}(w)}{\partial w_i}= \frac{1}{N} \sum_{i=1}^{N} \frac{\partial lnA}{\partial A}\cdot \frac{\partial (1+e^B)}{\partial B}\cdot \frac{\partial -y_nw^Tx_n}{\partial w_i}$$</p>
@@ -474,7 +474,7 @@
 <p>$$\begin{aligned} \frac{\partial E_{in}(w)}{\partial w_i} &amp;= \frac{1}{N} \sum_{n=1}^{N} \frac{\partial lnA}{\partial A}\cdot \frac{\partial (1+e^B)}{\partial B}\cdot \frac{\partial -y_nw^Tx_n}{\partial w_i} \\  &amp;= \frac{1}{N}\sum_{n=1}^N\frac{1}{A}\cdot e^B \cdot (-y_nx_{n,i}) \\ &amp;= \frac{1}{N}\sum_{n=1}^N\frac{e^{-y_nw^Tx_n}}{1+e^{-y_nw^Tx_n}}\cdot  (-y_nx_{n,i}) \\ &amp;= \frac{1}{N}\sum_{n=1}^N\sigma(-y_nw^Tx_n)\cdot (-y_nx_{n,i})\end{aligned}$$</p>
 <p>通过梯度更新参数：</p>
 <p>$$w_{t+1} \leftarrow w_t-\eta \triangledown E_{in}(w_t)$$</p>
-<h2 id="3-2-形式二：-y-in-0-1"><a href="#3-2-形式二：-y-in-0-1" class="headerlink" title="3.2 形式二：$y\in {0, 1}$"></a>3.2 形式二：$y\in {0, 1}$</h2><p>对于形式二，其损失函数如下<br>$$E_{in}(w)=\frac{1}{N}\sum_{n=1}^N-[y\cdot log \frac{e^{w\cdot x}}{1+e^{w\cdot x}}+(1-y)\cdot  log\frac{1}{1+e^{w\cdot x}}]$$<br>参考交叉熵求导，可得<br>$$\frac{\partial E}{\partial w_i} = \frac{1}{N}\sum_{n=1}^N[\sigma(w^Tx_n)-y_n]\cdot x_{n,i}$$</p>
+<h2 id="3-2-形式二：-y-in-0-1"><a href="#3-2-形式二：-y-in-0-1" class="headerlink" title="3.2 形式二：$y\in \{0, 1\}$"></a>3.2 形式二：$y\in \{0, 1\}$</h2><p>对于形式二，其损失函数如下<br>$$E_{in}(w)=\frac{1}{N}\sum_{n=1}^N-[y\cdot log \frac{e^{w\cdot x}}{1+e^{w\cdot x}}+(1-y)\cdot  log\frac{1}{1+e^{w\cdot x}}]$$<br>参考交叉熵求导，可得<br>$$\frac{\partial E}{\partial w_i} = \frac{1}{N}\sum_{n=1}^N[\sigma(w^Tx_n)-y_n]\cdot x_{n,i}$$</p>
 <h2 id="3-3-证明形式一与形式二等价"><a href="#3-3-证明形式一与形式二等价" class="headerlink" title="3.3 证明形式一与形式二等价"></a>3.3 证明形式一与形式二等价</h2><p>对于形式一，我们得到求导的结果为<br>$$E = \frac{1}{N}\sum_{n=1}^N\sigma(-y_nw^Tx_n)\cdot (-y_nx_{n,i})$$<br>当$y_n = 1$时<br>$$\begin{aligned} E_n &amp;= \sigma(-y_nw^Tx_n)\cdot (-y_nx_{n,i}) \\  &amp;= \sigma(-w^Tx_n)\cdot (-x_{n,i}) \\  &amp;= [1 - \sigma(w^Tx_n)]\cdot (-x_{n,i})  \\ &amp;= [\sigma(w^Tx_n) - 1]\cdot x_{n,i}  \\  \\ \end{aligned}$$<br>上述的第三步，主要用到了sigmoid函数的对称性，最后得到的结果与形式二求导的结果一致。</p>
 <p>当$y_n = -1$ 时<br>$$\begin{aligned} E_n &amp;= \sigma(w^Tx_n)\cdot x_{n,i} \\  &amp;= [\sigma(w^Tx_n) - 0 ]\cdot x_{n,i} \\ \end{aligned}$$<br>注意到，形式一和形式二对<code>y</code>取负类的取值不同。所以，上述推导的结果和形式二也是一样的。</p>
 
@@ -686,7 +686,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-逻辑斯蒂回归模型"><span class="nav-number">1.</span> <span class="nav-text">1 逻辑斯蒂回归模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-模型参数估计"><span class="nav-number">2.</span> <span class="nav-text">2 模型参数估计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-损失函数"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 损失函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-证明损失函数为交叉熵"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 证明损失函数为交叉熵</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#形式二与形式一等价推导"><span class="nav-number">2.2.1.</span> <span class="nav-text">形式二与形式一等价推导</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-学习算法"><span class="nav-number">3.</span> <span class="nav-text">3 学习算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-形式一：-y-in-1-1"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 形式一：$y\in {-1, 1}$</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一项-frac-partial-lnA-partial-A"><span class="nav-number">3.1.0.1.</span> <span class="nav-text">第一项 $\frac{\partial lnA}{\partial A}$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二项-frac-partial-1-e-B-partial-B"><span class="nav-number">3.1.0.2.</span> <span class="nav-text">第二项 $\frac{\partial (1+e^B)}{\partial B}$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第三项-frac-partial-y-nw-Tx-n-partial-w-i"><span class="nav-number">3.1.0.3.</span> <span class="nav-text">第三项 $\frac{\partial -y_nw^Tx_n}{\partial w_i}$</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-形式二：-y-in-0-1"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 形式二：$y\in {0, 1}$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-证明形式一与形式二等价"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 证明形式一与形式二等价</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-逻辑斯蒂回归模型"><span class="nav-number">1.</span> <span class="nav-text">1 逻辑斯蒂回归模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-模型参数估计"><span class="nav-number">2.</span> <span class="nav-text">2 模型参数估计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-损失函数"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 损失函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-证明损失函数为交叉熵"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 证明损失函数为交叉熵</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#形式二与形式一等价推导"><span class="nav-number">2.2.1.</span> <span class="nav-text">形式二与形式一等价推导</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-学习算法"><span class="nav-number">3.</span> <span class="nav-text">3 学习算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-形式一：-y-in-1-1"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 形式一：$y\in \{-1, 1\}$</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一项-frac-partial-lnA-partial-A"><span class="nav-number">3.1.0.1.</span> <span class="nav-text">第一项 $\frac{\partial lnA}{\partial A}$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二项-frac-partial-1-e-B-partial-B"><span class="nav-number">3.1.0.2.</span> <span class="nav-text">第二项 $\frac{\partial (1+e^B)}{\partial B}$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第三项-frac-partial-y-nw-Tx-n-partial-w-i"><span class="nav-number">3.1.0.3.</span> <span class="nav-text">第三项 $\frac{\partial -y_nw^Tx_n}{\partial w_i}$</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-形式二：-y-in-0-1"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 形式二：$y\in \{0, 1\}$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-证明形式一与形式二等价"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 证明形式一与形式二等价</span></a></li></ol></li></ol></div>
             
 
           </div>
