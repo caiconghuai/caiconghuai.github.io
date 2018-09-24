@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="dl,regularization,hyperparameter tuning," />
+  <meta name="keywords" content="ml," />
 
 
 
@@ -81,24 +81,18 @@
 
 
 
-<meta name="description" content="神经网络通常有大量的参数需要训练，在模型一开始训练时，需要初始化模型的参数，我们该采用何种策略来初始化参数呢？不同的初始化方法将会带来如下的效果：  加速梯度下降的收敛速度； 可能会使得模型在训练集上的错误率更低。  Zero initialization如果我们将权重设置为零，那么所有层的所有神经元都执行相同的计算，给出相同的输出，则整个深层网络的复杂度将与单个神经元的复杂度相同，并且预测不会比">
-<meta name="keywords" content="dl,regularization,hyperparameter tuning">
+<meta name="description" content="1 逻辑斯蒂回归模型二项逻辑斯蒂回归模型是一种分类模型，由条件概率分布$P(Y|X)$表示，形式为参数化的逻辑斯蒂分布，这里随机变量$X$取值为实数，随机变量$Y$取值为1或-1。 $$P(Y=1|x) = \frac{e^{w\cdot x+b}}{1+e^{w\cdot x+b}}$$ $$P(Y=-1|x) = \frac{1}{1+e^{w\cdot x+b}}$$ 对于给定的输入实例$x">
+<meta name="keywords" content="ml">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Parameters Initialization">
-<meta property="og:url" content="http://conghuai.me/2018/04/30/Parameters-Initialization/index.html">
+<meta property="og:title" content="逻辑回归 1-3：逻辑回归模型">
+<meta property="og:url" content="http://conghuai.me/2018/09/24/逻辑回归 1-3：逻辑回归模型/index.html">
 <meta property="og:site_name" content="蔡聪怀">
-<meta property="og:description" content="神经网络通常有大量的参数需要训练，在模型一开始训练时，需要初始化模型的参数，我们该采用何种策略来初始化参数呢？不同的初始化方法将会带来如下的效果：  加速梯度下降的收敛速度； 可能会使得模型在训练集上的错误率更低。  Zero initialization如果我们将权重设置为零，那么所有层的所有神经元都执行相同的计算，给出相同的输出，则整个深层网络的复杂度将与单个神经元的复杂度相同，并且预测不会比">
+<meta property="og:description" content="1 逻辑斯蒂回归模型二项逻辑斯蒂回归模型是一种分类模型，由条件概率分布$P(Y|X)$表示，形式为参数化的逻辑斯蒂分布，这里随机变量$X$取值为实数，随机变量$Y$取值为1或-1。 $$P(Y=1|x) = \frac{e^{w\cdot x+b}}{1+e^{w\cdot x+b}}$$ $$P(Y=-1|x) = \frac{1}{1+e^{w\cdot x+b}}$$ 对于给定的输入实例$x">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fquqmny4l2j30dj0hktbc.jpg">
-<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fquqmmnj2qj30ey0hk413.jpg">
-<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fqvomchpu7j30ga08hjtd.jpg">
-<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fqvomc3qyqj30cm01qglh.jpg">
-<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fqvomcwj7zj30ai06kt8p.jpg">
-<meta property="og:updated_time" content="2018-05-01T04:04:03.000Z">
+<meta property="og:updated_time" content="2018-09-24T08:40:07.808Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Parameters Initialization">
-<meta name="twitter:description" content="神经网络通常有大量的参数需要训练，在模型一开始训练时，需要初始化模型的参数，我们该采用何种策略来初始化参数呢？不同的初始化方法将会带来如下的效果：  加速梯度下降的收敛速度； 可能会使得模型在训练集上的错误率更低。  Zero initialization如果我们将权重设置为零，那么所有层的所有神经元都执行相同的计算，给出相同的输出，则整个深层网络的复杂度将与单个神经元的复杂度相同，并且预测不会比">
-<meta name="twitter:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fquqmny4l2j30dj0hktbc.jpg">
+<meta name="twitter:title" content="逻辑回归 1-3：逻辑回归模型">
+<meta name="twitter:description" content="1 逻辑斯蒂回归模型二项逻辑斯蒂回归模型是一种分类模型，由条件概率分布$P(Y|X)$表示，形式为参数化的逻辑斯蒂分布，这里随机变量$X$取值为实数，随机变量$Y$取值为1或-1。 $$P(Y=1|x) = \frac{e^{w\cdot x+b}}{1+e^{w\cdot x+b}}$$ $$P(Y=-1|x) = \frac{1}{1+e^{w\cdot x+b}}$$ 对于给定的输入实例$x">
 
 
 
@@ -128,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://conghuai.me/2018/04/30/Parameters-Initialization/"/>
+  <link rel="canonical" href="http://conghuai.me/2018/09/24/逻辑回归 1-3：逻辑回归模型/"/>
 
 
 
 
 
-  <title>Parameters Initialization | 蔡聪怀</title>
+  <title>逻辑回归 1-3：逻辑回归模型 | 蔡聪怀</title>
   
 
 
@@ -271,7 +265,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://conghuai.me/2018/04/30/Parameters-Initialization/">
+    <link itemprop="mainEntityOfPage" href="http://conghuai.me/2018/09/24/逻辑回归 1-3：逻辑回归模型/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Conghuai Cai">
@@ -288,7 +282,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Parameters Initialization</h1>
+          <h1 class="post-title" itemprop="name headline">逻辑回归 1-3：逻辑回归模型</h1>
         
 
         <div class="post-meta">
@@ -300,8 +294,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-30T15:16:45+08:00">
-                2018-04-30
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-24T16:39:12+08:00">
+                2018-09-24
               </time>
             
 
@@ -323,8 +317,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Deep-Learning/" itemprop="url" rel="index">
-                    <span itemprop="name">Deep Learning</span>
+                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Machine Learning</span>
                   </a>
                 </span>
 
@@ -334,8 +328,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Deep-Learning/Optimization/" itemprop="url" rel="index">
-                    <span itemprop="name">Optimization</span>
+                  <a href="/categories/Machine-Learning/Classification/" itemprop="url" rel="index">
+                    <span itemprop="name">Classification</span>
                   </a>
                 </span>
 
@@ -351,7 +345,7 @@
 
           
           
-             <span id="/2018/04/30/Parameters-Initialization/" class="leancloud_visitors" data-flag-title="Parameters Initialization">
+             <span id="/2018/09/24/逻辑回归 1-3：逻辑回归模型/" class="leancloud_visitors" data-flag-title="逻辑回归 1-3：逻辑回归模型">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -376,7 +370,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  1,044 字
+                  1,777 字
                 </span>
               
 
@@ -392,7 +386,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  4 分钟
+                  9 分钟
                 </span>
               
             </div>
@@ -413,43 +407,76 @@
       
 
       
-        <p>神经网络通常有大量的参数需要训练，在模型一开始训练时，需要初始化模型的参数，我们该采用何种策略来初始化参数呢？不同的初始化方法将会带来如下的效果：</p>
+        <h1 id="1-逻辑斯蒂回归模型"><a href="#1-逻辑斯蒂回归模型" class="headerlink" title="1 逻辑斯蒂回归模型"></a>1 逻辑斯蒂回归模型</h1><p>二项逻辑斯蒂回归模型是一种分类模型，由条件概率分布$P(Y|X)$表示，形式为参数化的逻辑斯蒂分布，这里随机变量$X$取值为实数，随机变量$Y$取值为1或-1。</p>
+<p>$$P(Y=1|x) = \frac{e^{w\cdot x+b}}{1+e^{w\cdot x+b}}$$</p>
+<p>$$P(Y=-1|x) = \frac{1}{1+e^{w\cdot x+b}}$$</p>
+<p>对于给定的输入实例$x$，按照上面式可以求得$P(Y=1|x)$和$P(Y=-1|x)$。逻辑斯蒂回归比较两个条件概率值的大小，将实例$x$分到概率值较大的那一类。</p>
+<p>有时为了方便，将权值向量和输入向量进行扩充，仍记作$w,x$，即$w=(w^{(1)},w^{(2)},…,w^{(n)},b)^T$，$x=(x^{(1)},x^{(2)},…,x^{(n)},1)^T$，这时候，逻辑斯蒂回归模型如下：</p>
+<p>$$P(Y=1|x) = \frac{e^{w\cdot x}}{1+e^{w\cdot x}}$$</p>
+<p>$$P(Y=-1|x) = \frac{1}{1+e^{w\cdot x}}$$</p>
+<h1 id="2-模型参数估计"><a href="#2-模型参数估计" class="headerlink" title="2 模型参数估计"></a>2 模型参数估计</h1><h2 id="2-1-损失函数"><a href="#2-1-损失函数" class="headerlink" title="2.1 损失函数"></a>2.1 损失函数</h2><p>逻辑斯蒂回归模型学习时，对于给定的训练数据集$T={(x_1, 1),(x_2,-1),…,(x_N,-1)}$，其中，$x_i\in R^n \text{,}y_i\in{-1,1}$，可以应用极大似然估计法估计模型参数</p>
+<p>$$\begin{aligned} L(h) &amp;= P(x_1)\cdot h(1|x_1)\cdot P(x_2)\cdot h(-1|x_2)…P(x_N)\cdot h(-1|x_N) \\  &amp;= P(x_1)\cdot h(1|x_1)\cdot P(x_2)\cdot [1-h(1|x_2)]…P(x_N)\cdot [1-h(1|x_N)] \end{aligned}$$</p>
+<p>对于$h$我们用sigmoid函数带入，用对称性$1-\sigma(x) = \sigma(-x)$得</p>
+<p>$$\begin{aligned} L(h) &amp;= P(x_1)\cdot \sigma(w_1^Tx_1)\cdot P(x_2)\cdot [1-\sigma(w_2^Tx_2)]…P(x_N)\cdot [1-\sigma(w_N^Tx_N)] \\ &amp;= P(x_1)\cdot \sigma(w_1^Tx_1)\cdot P(x_2)\cdot \sigma(-w_2^Tx_2)…P(x_N)\cdot \sigma(-w_N^Tx_N)\end{aligned} $$</p>
+<p>对于不同的模型，$P(x_1),P(x_2)…P(x_N)$是一样的，乘上这些值对于我们选择最优的模型没有帮助，故略去。</p>
+<p>$$L(\sigma)\propto \sigma(w_1^Tx_1)\cdot \sigma(-w_2^Tx_2) … \sigma(-w_N^Tx_N)$$<br>简化上述，可得两种表示方式</p>
+<ol>
+<li><strong>形式一：$y\in {-1, 1}$</strong> </li>
+</ol>
+<p>$$L(\sigma)\propto\prod_{n=1}^N\sigma(y_nw^Tx_n)$$</p>
+<ol>
+<li><strong>形式二：$y\in {0, 1}$</strong></li>
+</ol>
+<p>$$L(\sigma)\propto\prod_{n=1}^N[\sigma(w^Tx_n)]^{y_n}\cdot [1- \sigma(w^Tx_n)]^{1-y_n}$$</p>
+<p>下面，通过<strong>极大似然估计</strong>得到的函数取负数，得到等价的需要最小化的损失函数</p>
+<ol>
+<li><strong>形式一：$y\in {-1, 1}$</strong></li>
+</ol>
+<p>$$\begin{aligned} g &amp;= argmax_\sigma \prod_{n=1}^N\sigma(y_nw^Tx_n) \\  &amp;= argmax_{\sigma}ln\sum_{n=1}^N\sigma(y_nw^Tx_n) \\  &amp;= argmin_w\frac{1}{N}\sum_{n=1}^N-ln\sigma(y_nw^Tx_n)  \\ &amp;= argmin_w\frac{1}{N} \sum_{n=1}^Nln(1+e^{-y_nw^Tx_n})\\ \end{aligned}$$</p>
+<ol>
+<li><strong>形式二：$y\in {0, 1}$</strong></li>
+</ol>
+<p>$$\begin{aligned} g &amp;= argmax_\sigma \prod_{n=1}^N[\sigma(w^Tx_n)]^{y_n}\cdot [1- \sigma(w^Tx_n)]^{1-y_n}\\  &amp;= argmax_{\sigma}\prod_{n=1}^N[\sigma(w^Tx_n)]^{y_n}\cdot [1- \sigma(w^Tx_n)]^{1-y_n} \\  &amp;= argmin_w\frac{1}{N}\sum_{n=1}^N-ln[\sigma(w^Tx_n)]^{y_n}\cdot [1- \sigma(w^Tx_n)]^{1-y_n}  \\ &amp;= argmin_w\frac{1}{N} \sum_{n=1}^N-[y_n\cdot ln\sigma(w^Tx_n)+(1-y_n)\cdot ln(1- \sigma(w^Tx_n))]\\ \end{aligned}$$</p>
+<p>所以，损失函数为</p>
+<ol>
+<li><strong>形式一：$y\in {-1, 1}$</strong></li>
+</ol>
+<p>$$E_{in}(w)=\frac{1}{N}\sum_{n=1}^Nln(1+e^{-y_nw^Tx_n})$$</p>
+<ol>
+<li><strong>形式二：$y\in {0, 1}$</strong></li>
+</ol>
+<p>$$E_{in}(w)=\frac{1}{N} \sum_{n=1}^N-[y_n\cdot ln\sigma(w^Tx_n)+(1-y_n)\cdot ln(1- \sigma(w^Tx_n))]$$</p>
+<h2 id="2-2-证明损失函数为交叉熵"><a href="#2-2-证明损失函数为交叉熵" class="headerlink" title="2.2 证明损失函数为交叉熵"></a>2.2 证明损失函数为交叉熵</h2><p>如果熟悉交叉熵损失函数，那么可以发现对于形式二，其定义就是交叉熵损失函数。我们现在试着从交叉熵的公式推导到形式一，并证明形式一和形式二等价。</p>
+<h3 id="形式二与形式一等价推导"><a href="#形式二与形式一等价推导" class="headerlink" title="形式二与形式一等价推导"></a>形式二与形式一等价推导</h3><p>如果不太熟悉交叉熵损失函数，可先回顾一下：<a href="http://conghuai.me/2018/04/08/Cross%20Entropy%20Loss%20Function/">Cross Entropy Loss Function</a></p>
+<p>对于二分类损失问题，交叉熵损失函数定义为<br>$$E =\sum_{n=1}^N -[y\cdot log(p)+(1-y)\cdot log(1-p)]$$</p>
+<p>其中</p>
 <ul>
-<li>加速梯度下降的收敛速度；</li>
-<li>可能会使得模型在训练集上的错误率更低。</li>
+<li>$y\in {0,1}$，一般规定正类为1，负类为0；</li>
+<li>$p$为取正类的概率；</li>
+<li>对于每个样本上式，其中一项为0；</li>
 </ul>
-<h1 id="Zero-initialization"><a href="#Zero-initialization" class="headerlink" title="Zero initialization"></a>Zero initialization</h1><p>如果我们将权重设置为零，那么所有层的所有神经元都执行相同的计算，给出相同的输出，则整个深层网络的复杂度将与单个神经元的复杂度相同，并且预测不会比随机更好。这样的初始化方式带来了隐藏层神经元<strong>对称问题</strong>。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> l <span class="keyword">in</span> range(<span class="number">1</span>, L):</span><br><span class="line">    <span class="comment">### START CODE HERE ### (≈ 2 lines of code)</span></span><br><span class="line">    parameters[<span class="string">'W'</span> + str(l)] = np.zeros((layers_dims[l], layers_dims[l<span class="number">-1</span>]))</span><br><span class="line">    parameters[<span class="string">'b'</span> + str(l)] = np.zeros((layers_dims[l], <span class="number">1</span>))</span><br><span class="line">    <span class="comment">### END CODE HERE ###</span></span><br></pre></td></tr></table></figure>
-<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fquqmny4l2j30dj0hktbc.jpg" alt="Screen Shot 2018-04-30 at 15.35.56"></p>
-<h1 id="Random-initialization"><a href="#Random-initialization" class="headerlink" title="Random initialization"></a>Random initialization</h1><p>为了解决对称问题，我们可以随机初始化$W$参数，这样可以使得每个神经元得到不同的输出。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> l <span class="keyword">in</span> range(<span class="number">1</span>, L):</span><br><span class="line">    <span class="comment">### START CODE HERE ### (≈ 2 lines of code)</span></span><br><span class="line">    parameters[<span class="string">'W'</span> + str(l)] = np.random.randn(layers_dims[l], layers_dims[l<span class="number">-1</span>]) * <span class="number">10</span></span><br><span class="line">    parameters[<span class="string">'b'</span> + str(l)] = np.zeros((layers_dims[l], <span class="number">1</span>))</span><br><span class="line">    <span class="comment">### END CODE HERE ###</span></span><br></pre></td></tr></table></figure>
-<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fquqmmnj2qj30ey0hk413.jpg" alt="Screen Shot 2018-04-30 at 15.38.06"></p>
-<p>随机初始化参数可能会带来两个问题：（1）梯度消失；（2）梯度爆炸。</p>
-<h2 id="梯度消失"><a href="#梯度消失" class="headerlink" title="梯度消失"></a>梯度消失</h2><blockquote>
-<p>The weight update is minor and results in slower convergence. This makes the optimization of the loss function slow. In the worst case, this may completely stop the neural network from training further.</p>
-</blockquote>
-<p>在神经网络中，对于任何激活函数，当我们对损失做反向传播的时候，$dW$将会越来越小。所以，越靠近输入层的神经元其改变量将越小。</p>
-<h2 id="梯度爆炸"><a href="#梯度爆炸" class="headerlink" title="梯度爆炸"></a>梯度爆炸</h2><blockquote>
-<p>This may result in oscillating around the minima or even overshooting the optimum again and again and the model will never learn!</p>
-</blockquote>
-<p>该问题和上面的相反，当我们参数值很大时，经过多层神经元累积后，得到的值将会非常大。</p>
-<h2 id="梯度消失于梯度爆炸分析"><a href="#梯度消失于梯度爆炸分析" class="headerlink" title="梯度消失于梯度爆炸分析"></a>梯度消失于梯度爆炸分析</h2><p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fqvomchpu7j30ga08hjtd.jpg" alt="v2-82873a89ff3c14c1d3b42d1862917f35_hd"></p>
-<p>如图含有3个隐藏层的神经网络，梯度消失问题发生时，接近于输出层的hidden layer3等的权值更新相对正常，单前面的hidden layer1的权值更新会变得很慢，导致前面的层权值几乎不变， 仍接近于初始化的权值，这就导致hidden layer 1相当于只是一个映射层，对所有的输入做一个同一映射，这时此深层网络的学习就等价于只有后几层的浅层网络的学习了。</p>
-<p>而这种问题为何会产生呢？以下图的反向传播为例（假设每一层只有一个神经元且对于每一层，$y_i=\sigma(z_i)=\sigma(w_ix_i+b_i)$，其中$\sigma$为sigmoid函数）</p>
-<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fqvomc3qyqj30cm01qglh.jpg" alt="v2-b9e0d6871fbcae05d602bab65620a3ca_hd"></p>
-<p>可以推导出</p>
-<p>$$\begin{align} \frac{\partial C}{\partial b_1} &amp;= \frac{\partial C}{\partial y_4}\cdot \frac{\partial y_4}{\partial z_4}\cdot \frac{\partial z_4}{\partial x_4}\cdot \frac{\partial x_4}{\partial z_3}\cdot \frac{\partial z_3}{\partial x_3}\cdot \frac{\partial x_3}{\partial z_2}\cdot \frac{\partial z_2}{\partial x_2}\cdot \frac{\partial x_2}{\partial z_1}\cdot \frac{\partial z_1}{\partial b_1} \\  &amp;= \frac{\partial C}{\partial y_4}\cdot \sigma’(z_4)\cdot w_4\cdot \sigma’(z_3)\cdot w_3\cdot \sigma’(z_2)\cdot w_2 \sigma’(z_1)  \\   \end{align}$$</p>
-<p>而sigmoid的导数$\sigma’(x)$如下图所示</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fqvomcwj7zj30ai06kt8p.jpg" alt="v2-da5606a2eebd4d9b6ac4095b398dacf5_hd"></p>
-<p>可见，$\sigma’(x)$的最大值为$\frac{1}{4}$，而我们初始化的网络权值$|w|$通常都小于1，因此$|\sigma’(z)w|\leq\frac{1}{4}$，因此对于上面的链式求导，层数越多，求导结果$\frac{\partial C}{\partial b_1}$越小，因而导致梯度消失的情况出现。</p>
-<p>这样，梯度爆炸问题的出现原因就显而易见了，即$|\sigma’(z)w|&gt;1$，也就是$w$比较大的情况下。</p>
-<h1 id="Best-Practices"><a href="#Best-Practices" class="headerlink" title="Best Practices"></a>Best Practices</h1><p>在神经网络模型中，我们通常会使用<code>ReLU</code>或者<code>leaky ReLU</code>作为激活函数，该激活函数对于梯度消失和梯度爆炸问题具有较好的鲁棒性。我们可以根据不同的激活函数，采用启发式方式来初始化参数。</p>
-<h2 id="ReLU"><a href="#ReLU" class="headerlink" title="ReLU"></a>ReLU</h2><p>$$\sqrt {\frac{2}{size^{[l-1]}}}$$</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">W = np.random.randn(size_l, size_l<span class="number">-1</span>) * np.sqrt(<span class="number">2</span>/size_l<span class="number">-1</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="Tanh"><a href="#Tanh" class="headerlink" title="Tanh"></a>Tanh</h2><p>$$\sqrt {\frac{1}{size^{[l-1]}}}$$</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">W = np.random.randn(size_l, size_l<span class="number">-1</span>) * np.sqrt(<span class="number">1</span>/size_l<span class="number">-1</span>)</span><br></pre></td></tr></table></figure>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1]. <a href="https://www.coursera.org/learn/deep-neural-network/lecture/RwqYe/weight-initialization-for-deep-networks" target="_blank" rel="noopener">coursera deeplearning.ai</a></p>
-<p>[2]. <a href="https://towardsdatascience.com/deep-learning-best-practices-1-weight-initialization-14e5c0295b94" target="_blank" rel="noopener">Deep Learning Best Practices (1) — Weight Initialization</a></p>
+<p>对于逻辑回归来说，其交叉熵损失函数中，$p$用逻辑函数带入，得</p>
+<p>$$\begin{aligned} E &amp;=\sum_{i=1}^N -(y\cdot log(p)+(1-y)\cdot log(1-p)) \\  &amp;= \sum_{i=1}^N -(y\cdot log(\frac{1}{1+e^{-w\cdot x}})+(1-y)\cdot log(1-\frac{1}{1+e^{-w\cdot x}})) \\  &amp;= \sum_{i=1}^N -(-y\cdot log(1+e^{-w\cdot x})+(1-y)\cdot log(\frac{e^{-w\cdot x}}{1+e^{-w\cdot x}}))  \\ &amp;= \sum_{i=1}^N -(-y\cdot log(1+e^{-w\cdot x})+(1-y)\cdot log(\frac{1}{1+e^{w\cdot x}}))  \\ &amp;=  \sum_{i=1}^N -(-y\cdot log(1+e^{-w\cdot x})-(1-y)\cdot log(1+e^{w\cdot x})) \\ &amp;= \sum_{i=1}^N y\cdot log(1+e^{-w\cdot x})+(1-y)\cdot log(1+e^{w\cdot x})\end{aligned}$$</p>
+<p>我们发现</p>
+<p>$$E=\begin{cases} \sum_{i=1}^Nlog(1+e^{-w\cdot x}), &amp; \text{$y=+1$} \\ \sum_{i=1}^Nlog(1+e^{w\cdot x}), &amp; \text{$y=0$}\end{cases}$$</p>
+<p>我们可以简化上式，得</p>
+<p>$$E= \sum_{i=1}^Nln(1+e^{-y_nw^Tx_n}),y_n\in {1,-1}$$</p>
+<p>所以，我们发现，<strong>对逻辑斯蒂回归模型求极大似然估计得到的损失函数，本质上就是交叉熵损失函数</strong>。</p>
+<h1 id="3-学习算法"><a href="#3-学习算法" class="headerlink" title="3 学习算法"></a>3 学习算法</h1><p>对于逻辑回归的损失函数，由于是凸函数，所以我们可以使用梯度下降法来求解。现在，我们推导一下求导过程</p>
+<h2 id="3-1-形式一：-y-in-1-1"><a href="#3-1-形式一：-y-in-1-1" class="headerlink" title="3.1 形式一：$y\in {-1, 1}$"></a>3.1 形式一：$y\in {-1, 1}$</h2><p>对于形式一，其损失函数如下</p>
+<p>$$E_{in}(w)=\frac{1}{N}\sum_{i=1}^Nln(1+e^{-y_nw^Tx_n})$$</p>
+<p>对$w_i$求偏导，令$A = 1+e^{-y_nw^Tx_n}$，$B = -y_nw^Tx_n$</p>
+<p>$$\frac{\partial E_{in}(w)}{\partial w_i}= \frac{1}{N} \sum_{i=1}^{N} \frac{\partial lnA}{\partial A}\cdot \frac{\partial (1+e^B)}{\partial B}\cdot \frac{\partial -y_nw^Tx_n}{\partial w_i}$$</p>
+<h4 id="第一项-frac-partial-lnA-partial-A"><a href="#第一项-frac-partial-lnA-partial-A" class="headerlink" title="第一项 $\frac{\partial lnA}{\partial A}$"></a>第一项 $\frac{\partial lnA}{\partial A}$</h4><p>$$\frac{\partial lnA}{\partial A} = \frac{1}{A}$$</p>
+<h4 id="第二项-frac-partial-1-e-B-partial-B"><a href="#第二项-frac-partial-1-e-B-partial-B" class="headerlink" title="第二项 $\frac{\partial (1+e^B)}{\partial B}$"></a>第二项 $\frac{\partial (1+e^B)}{\partial B}$</h4><p>$$\frac{\partial (1+e^B)}{\partial B}= e^B$$</p>
+<h4 id="第三项-frac-partial-y-nw-Tx-n-partial-w-i"><a href="#第三项-frac-partial-y-nw-Tx-n-partial-w-i" class="headerlink" title="第三项 $\frac{\partial -y_nw^Tx_n}{\partial w_i}$"></a>第三项 $\frac{\partial -y_nw^Tx_n}{\partial w_i}$</h4><p>$$\frac{\partial -y_nw^Tx_n}{\partial w_i} = -y_nx_{n,i}$$</p>
+<p>最后得</p>
+<p>$$\begin{aligned} \frac{\partial E_{in}(w)}{\partial w_i} &amp;= \frac{1}{N} \sum_{n=1}^{N} \frac{\partial lnA}{\partial A}\cdot \frac{\partial (1+e^B)}{\partial B}\cdot \frac{\partial -y_nw^Tx_n}{\partial w_i} \\  &amp;= \frac{1}{N}\sum_{n=1}^N\frac{1}{A}\cdot e^B \cdot (-y_nx_{n,i}) \\ &amp;= \frac{1}{N}\sum_{n=1}^N\frac{e^{-y_nw^Tx_n}}{1+e^{-y_nw^Tx_n}}\cdot  (-y_nx_{n,i}) \\ &amp;= \frac{1}{N}\sum_{n=1}^N\sigma(-y_nw^Tx_n)\cdot (-y_nx_{n,i})\end{aligned}$$</p>
+<p>通过梯度更新参数：</p>
+<p>$$w_{t+1} \leftarrow w_t-\eta \triangledown E_{in}(w_t)$$</p>
+<h2 id="3-2-形式二：-y-in-0-1"><a href="#3-2-形式二：-y-in-0-1" class="headerlink" title="3.2 形式二：$y\in {0, 1}$"></a>3.2 形式二：$y\in {0, 1}$</h2><p>对于形式二，其损失函数如下<br>$$E_{in}(w)=\frac{1}{N}\sum_{n=1}^N-[y\cdot log \frac{e^{w\cdot x}}{1+e^{w\cdot x}}+(1-y)\cdot  log\frac{1}{1+e^{w\cdot x}}]$$<br>参考交叉熵求导，可得<br>$$\frac{\partial E}{\partial w_i} = \frac{1}{N}\sum_{n=1}^N[\sigma(w^Tx_n)-y_n]\cdot x_{n,i}$$</p>
+<h2 id="3-3-证明形式一与形式二等价"><a href="#3-3-证明形式一与形式二等价" class="headerlink" title="3.3 证明形式一与形式二等价"></a>3.3 证明形式一与形式二等价</h2><p>对于形式一，我们得到求导的结果为<br>$$E = \frac{1}{N}\sum_{n=1}^N\sigma(-y_nw^Tx_n)\cdot (-y_nx_{n,i})$$<br>当$y_n = 1$时<br>$$\begin{aligned} E_n &amp;= \sigma(-y_nw^Tx_n)\cdot (-y_nx_{n,i}) \\  &amp;= \sigma(-w^Tx_n)\cdot (-x_{n,i}) \\  &amp;= [1 - \sigma(w^Tx_n)]\cdot (-x_{n,i})  \\ &amp;= [\sigma(w^Tx_n) - 1]\cdot x_{n,i}  \\  \\ \end{aligned}$$<br>上述的第三步，主要用到了sigmoid函数的对称性，最后得到的结果与形式二求导的结果一致。</p>
+<p>当$y_n = -1$ 时<br>$$\begin{aligned} E_n &amp;= \sigma(w^Tx_n)\cdot x_{n,i} \\  &amp;= [\sigma(w^Tx_n) - 0 ]\cdot x_{n,i} \\ \end{aligned}$$<br>注意到，形式一和形式二对<code>y</code>取负类的取值不同。所以，上述推导的结果和形式二也是一样的。</p>
 
       
     </div>
@@ -467,11 +494,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/dl/" rel="tag"># dl</a>
-          
-            <a href="/tags/regularization/" rel="tag"># regularization</a>
-          
-            <a href="/tags/hyperparameter-tuning/" rel="tag"># hyperparameter tuning</a>
+            <a href="/tags/ml/" rel="tag"># ml</a>
           
         </div>
       
@@ -484,8 +507,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/27/Building-blocks-of-deep-neural-networks/" rel="next" title="Building blocks of deep neural networks">
-                <i class="fa fa-chevron-left"></i> Building blocks of deep neural networks
+              <a href="/2018/09/24/逻辑回归 1-2：逻辑回归由来/" rel="next" title="逻辑回归 1-2：逻辑回归由来">
+                <i class="fa fa-chevron-left"></i> 逻辑回归 1-2：逻辑回归由来
               </a>
             
           </div>
@@ -493,10 +516,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/05/01/Dropout/" rel="prev" title="Dropout">
-                Dropout <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -667,7 +686,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Zero-initialization"><span class="nav-number">1.</span> <span class="nav-text">Zero initialization</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Random-initialization"><span class="nav-number">2.</span> <span class="nav-text">Random initialization</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#梯度消失"><span class="nav-number">2.1.</span> <span class="nav-text">梯度消失</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#梯度爆炸"><span class="nav-number">2.2.</span> <span class="nav-text">梯度爆炸</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#梯度消失于梯度爆炸分析"><span class="nav-number">2.3.</span> <span class="nav-text">梯度消失于梯度爆炸分析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Best-Practices"><span class="nav-number">3.</span> <span class="nav-text">Best Practices</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ReLU"><span class="nav-number">3.1.</span> <span class="nav-text">ReLU</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tanh"><span class="nav-number">3.2.</span> <span class="nav-text">Tanh</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-逻辑斯蒂回归模型"><span class="nav-number">1.</span> <span class="nav-text">1 逻辑斯蒂回归模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-模型参数估计"><span class="nav-number">2.</span> <span class="nav-text">2 模型参数估计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-损失函数"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 损失函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-证明损失函数为交叉熵"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 证明损失函数为交叉熵</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#形式二与形式一等价推导"><span class="nav-number">2.2.1.</span> <span class="nav-text">形式二与形式一等价推导</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-学习算法"><span class="nav-number">3.</span> <span class="nav-text">3 学习算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-形式一：-y-in-1-1"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 形式一：$y\in {-1, 1}$</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一项-frac-partial-lnA-partial-A"><span class="nav-number">3.1.0.1.</span> <span class="nav-text">第一项 $\frac{\partial lnA}{\partial A}$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二项-frac-partial-1-e-B-partial-B"><span class="nav-number">3.1.0.2.</span> <span class="nav-text">第二项 $\frac{\partial (1+e^B)}{\partial B}$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第三项-frac-partial-y-nw-Tx-n-partial-w-i"><span class="nav-number">3.1.0.3.</span> <span class="nav-text">第三项 $\frac{\partial -y_nw^Tx_n}{\partial w_i}$</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-形式二：-y-in-0-1"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 形式二：$y\in {0, 1}$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-证明形式一与形式二等价"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 证明形式一与形式二等价</span></a></li></ol></li></ol></div>
             
 
           </div>
