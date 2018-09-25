@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="ml,blending,stacking," />
+  <meta name="keywords" content="ml," />
 
 
 
@@ -81,24 +81,21 @@
 
 
 
-<meta name="description" content="模型融合策略是指我们对多个机器学习算法模型进行组合，以构造出一个更强大的分类器，组合多个模型后得到的结果往往比单个模型的效果要好。这里涉及两个概念，1. 如何得到多个不同的基模型？2. 有了多个基模型后，如何组合？针对此，Bagging强调产生模型的方式，即如何获得不同的基模型，而Blending是假设模型都有了，采用哪种组合策略。 Bagging我们要得到不同的模型，我们通常有两种思路，一种就是">
-<meta name="keywords" content="ml,blending,stacking">
+<meta name="description" content="线性支持向量机与软间隔最大化线性支持向量机线性可分问题的支持向量机学习方法，对线性不可分训练数据是不适用的，因为这时上述方法中的不等式约束并不能都成立。怎么才能将它扩展到线性不可分问题呢？这就需要修改硬间隔最大化，使其成为软间隔最大化。 线性不可分意味着某些样本点$(x_i,y_i)$不能满足函数间隔大于等于1的约束条件。为了解决这个问题，可以对每个样本点$(x_i,y_i)$引进一个松弛变量$\">
+<meta name="keywords" content="ml">
 <meta property="og:type" content="article">
-<meta property="og:title" content="集成学习 1-1：Bagging &amp; Blendding">
-<meta property="og:url" content="http://conghuai.me/2018/05/24/Bagging & Blendding/index.html">
+<meta property="og:title" content="支持向量机 1-2：线性支持向量机">
+<meta property="og:url" content="http://conghuai.me/2018/09/25/支持向量机 1-2：线性支持向量机/index.html">
 <meta property="og:site_name" content="蔡聪怀">
-<meta property="og:description" content="模型融合策略是指我们对多个机器学习算法模型进行组合，以构造出一个更强大的分类器，组合多个模型后得到的结果往往比单个模型的效果要好。这里涉及两个概念，1. 如何得到多个不同的基模型？2. 有了多个基模型后，如何组合？针对此，Bagging强调产生模型的方式，即如何获得不同的基模型，而Blending是假设模型都有了，采用哪种组合策略。 Bagging我们要得到不同的模型，我们通常有两种思路，一种就是">
+<meta property="og:description" content="线性支持向量机与软间隔最大化线性支持向量机线性可分问题的支持向量机学习方法，对线性不可分训练数据是不适用的，因为这时上述方法中的不等式约束并不能都成立。怎么才能将它扩展到线性不可分问题呢？这就需要修改硬间隔最大化，使其成为软间隔最大化。 线性不可分意味着某些样本点$(x_i,y_i)$不能满足函数间隔大于等于1的约束条件。为了解决这个问题，可以对每个样本点$(x_i,y_i)$引进一个松弛变量$\">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-24-032158.jpg">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-24-032134.jpg">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-24-031151.jpg">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-24-042805.jpg">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-24-042807.jpg">
-<meta property="og:updated_time" content="2018-09-25T03:27:19.120Z">
+<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-20-031530.jpg">
+<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-20-031533.jpg">
+<meta property="og:updated_time" content="2018-09-25T03:31:17.019Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="集成学习 1-1：Bagging &amp; Blendding">
-<meta name="twitter:description" content="模型融合策略是指我们对多个机器学习算法模型进行组合，以构造出一个更强大的分类器，组合多个模型后得到的结果往往比单个模型的效果要好。这里涉及两个概念，1. 如何得到多个不同的基模型？2. 有了多个基模型后，如何组合？针对此，Bagging强调产生模型的方式，即如何获得不同的基模型，而Blending是假设模型都有了，采用哪种组合策略。 Bagging我们要得到不同的模型，我们通常有两种思路，一种就是">
-<meta name="twitter:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-24-032158.jpg">
+<meta name="twitter:title" content="支持向量机 1-2：线性支持向量机">
+<meta name="twitter:description" content="线性支持向量机与软间隔最大化线性支持向量机线性可分问题的支持向量机学习方法，对线性不可分训练数据是不适用的，因为这时上述方法中的不等式约束并不能都成立。怎么才能将它扩展到线性不可分问题呢？这就需要修改硬间隔最大化，使其成为软间隔最大化。 线性不可分意味着某些样本点$(x_i,y_i)$不能满足函数间隔大于等于1的约束条件。为了解决这个问题，可以对每个样本点$(x_i,y_i)$引进一个松弛变量$\">
+<meta name="twitter:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-20-031530.jpg">
 
 
 
@@ -128,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://conghuai.me/2018/05/24/Bagging & Blendding/"/>
+  <link rel="canonical" href="http://conghuai.me/2018/09/25/支持向量机 1-2：线性支持向量机/"/>
 
 
 
 
 
-  <title>集成学习 1-1：Bagging & Blendding | 蔡聪怀</title>
+  <title>支持向量机 1-2：线性支持向量机 | 蔡聪怀</title>
   
 
 
@@ -271,7 +268,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://conghuai.me/2018/05/24/Bagging & Blendding/">
+    <link itemprop="mainEntityOfPage" href="http://conghuai.me/2018/09/25/支持向量机 1-2：线性支持向量机/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Conghuai Cai">
@@ -288,7 +285,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">集成学习 1-1：Bagging & Blendding</h1>
+          <h1 class="post-title" itemprop="name headline">支持向量机 1-2：线性支持向量机</h1>
         
 
         <div class="post-meta">
@@ -300,8 +297,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-24T11:10:15+08:00">
-                2018-05-24
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-25T11:30:12+08:00">
+                2018-09-25
               </time>
             
 
@@ -334,8 +331,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/集成算法/" itemprop="url" rel="index">
-                    <span itemprop="name">集成算法</span>
+                  <a href="/categories/机器学习/分类算法/" itemprop="url" rel="index">
+                    <span itemprop="name">分类算法</span>
                   </a>
                 </span>
 
@@ -351,7 +348,7 @@
 
           
           
-             <span id="/2018/05/24/Bagging & Blendding/" class="leancloud_visitors" data-flag-title="集成学习 1-1：Bagging & Blendding">
+             <span id="/2018/09/25/支持向量机 1-2：线性支持向量机/" class="leancloud_visitors" data-flag-title="支持向量机 1-2：线性支持向量机">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -376,7 +373,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  1,638 字
+                  1,417 字
                 </span>
               
 
@@ -413,60 +410,85 @@
       
 
       
-        <p>模型融合策略是指我们对多个机器学习算法模型进行组合，以构造出一个更强大的分类器，组合多个模型后得到的结果往往比单个模型的效果要好。这里涉及两个概念，1. 如何得到多个不同的基模型？2. 有了多个基模型后，如何组合？针对此，Bagging强调产生模型的方式，即如何获得不同的基模型，而Blending是假设模型都有了，采用哪种组合策略。</p>
-<h1 id="Bagging"><a href="#Bagging" class="headerlink" title="Bagging"></a>Bagging</h1><p>我们要得到不同的模型，我们通常有两种思路，一种就是用同一套模型，但是训练数据不一样，另外一种就是用不一样的模型。后者一般比较直接，只需要在同一份数据集上训练不同的模型即可，这里不再赘述。对于前者，我们需要考虑如何用已有的训练数据，产生出不一样的样本呢？一般都是采用<code>Bootstrap</code>的方式：先抓一个，记录下来，放回去，摇一摇，在抓一个…（注意这种抓取方式可能使得同一笔资料被抓取多次）。</p>
-<p>通过根据训练子集获取方式的不同，可以分为以下几类：</p>
+        <h1 id="线性支持向量机与软间隔最大化"><a href="#线性支持向量机与软间隔最大化" class="headerlink" title="线性支持向量机与软间隔最大化"></a>线性支持向量机与软间隔最大化</h1><h2 id="线性支持向量机"><a href="#线性支持向量机" class="headerlink" title="线性支持向量机"></a>线性支持向量机</h2><p>线性可分问题的支持向量机学习方法，对线性不可分训练数据是不适用的，因为这时上述方法中的不等式约束并不能都成立。怎么才能将它扩展到线性不可分问题呢？这就需要修改硬间隔最大化，使其成为软间隔最大化。</p>
+<p>线性不可分意味着某些样本点$(x_i,y_i)$不能满足函数间隔大于等于1的约束条件。为了解决这个问题，可以对每个样本点$(x_i,y_i)$引进一个松弛变量$\xi_i \geq 0$，使得函数间隔加上松弛变量大于等于1，这样约束条件为</p>
+<p>$$y_i(w\cdot x_i+b)+\xi_i\geq1 \rightarrow y_i(w\cdot x_i+b)\geq 1-\xi_i$$</p>
+<p>同时，对每个松弛变量$\xi_i$，支付一个代价$\xi_i$，目标函数变成</p>
+<p>$$\frac{1}{2}||w||^2+C\sum_{i=1}^N\xi_i$$</p>
+<p>这里，$C&gt;0$称为惩罚参数，一般由应用问题决定，$C$值大时对误分类的惩罚增大，$C$值小时对误分类的惩罚减小。最优化目标函数包含两层含义：（1）使$\frac{1}{2}||w||^2$尽量小即间隔尽量大（2）同时使误分类点的个数尽量小，C是调和二者的系数。</p>
+<p>线性不可分的线性支持向量机的学习问题如下</p>
+<p>$$min_{w,b,\xi}\ \ \frac{1}{2}||w||^2+C\sum_{i=1}^N\xi_i$$</p>
+<p>$$s.t.\ \ \ y_i(w\cdot x_i+b)\geq1-\xi_i,\ i=1,2,…,N$$</p>
+<p>$$s.t.\ \ \xi_i\geq0,\ i=1,2,…,N$$</p>
+<h2 id="凸二次规划求解"><a href="#凸二次规划求解" class="headerlink" title="凸二次规划求解"></a>凸二次规划求解</h2><p>上述优化问题可以用凸二次规划方法来求解，可以证明$w​$的解释唯一的，但$b​$的解不唯一，$b​$的解存在于一个区间。</p>
+<h2 id="学习的对偶算法"><a href="#学习的对偶算法" class="headerlink" title="学习的对偶算法"></a>学习的对偶算法</h2><p>原始最优化问题的拉格朗日函数是</p>
+<p>$$L(w,b,\xi,\alpha,\beta)=\frac{1}{2}||w||^2+C\sum_{i=1}^N\xi_i-\sum_{i=1}^N\alpha_i(y_i(w\cdot x_i+b)-1+\xi_i)-\sum_{i=1}^N\beta_i\xi_i$$</p>
+<p>其中，$\alpha_i\geq0$，$\beta_i\geq0$</p>
+<p>对偶问题是拉格朗日函数 的极大极小问题，即</p>
+<p>$$max_{\alpha,\beta} min_{w,b,\xi}L(w,b,\xi,\alpha,\beta)$$</p>
+<h3 id="求解对偶问题"><a href="#求解对偶问题" class="headerlink" title="求解对偶问题"></a>求解对偶问题</h3><h4 id="1-求-min-w-b-xi-L-w-b-xi-alpha-mu"><a href="#1-求-min-w-b-xi-L-w-b-xi-alpha-mu" class="headerlink" title="(1) 求$min_{w,b,\xi}L(w,b,\xi,\alpha,\mu)$"></a>(1) 求$min_{w,b,\xi}L(w,b,\xi,\alpha,\mu)$</h4><p>对$w,b,\xi$求偏导，令其为0</p>
+<p>$$\triangledown_wL(w,b,\xi,\alpha,\beta)=w-\sum_{i=1}^N\alpha_iy_ix_i=0$$</p>
+<p>$$\triangledown_bL(w,b,\xi,\alpha,\beta)=-\sum_{i=1}^N\alpha_iy_i=0$$</p>
+<p>$$\triangledown_{\xi_i} L(w,b,\xi,\alpha,\beta)=C-\alpha_i-\beta_i=0$$</p>
+<p>得</p>
+<p>$$w = \sum_{i=1}^N\alpha_iy_ix_i$$</p>
+<p>$$\sum_{i=1}^N\alpha_iy_i=0$$</p>
+<p>$$C-\alpha_i-\beta_i=0$$</p>
+<p>我们通过代数替换，将$\beta_i$换成$C-a_i$，并规定</p>
+<p>$$C-a_i\geq 0 \rightarrow \alpha_i \leq C$$</p>
+<p>将$\beta_i=C-\alpha_i$，$w = \sum_{i=1}^N\alpha_iy_ix_i$带入L中，得</p>
+<p>$$\begin{aligned} L(w,b,\xi,\alpha,\beta) &amp;= \frac{1}{2}||w||^2+C\sum_{i=1}^N\xi_i-\sum_{i=1}^N\alpha_i(y_i(w\cdot x_i+b)-1+\xi_i)-\sum_{i=1}^N(C-\alpha_i)\xi_i \\  &amp;= \frac{1}{2}||w||^2+C\sum_{i=1}^N\xi_i-\sum_{i=1}^N\alpha_iy_i(w\cdot x_i+b)+\sum_{i=1}^N\alpha_i-\sum_{i=1}^N\alpha_i\xi_i-C\sum_{i=1}^N\xi_i+\sum_{i=1}^N\alpha_i\xi_i \\  &amp;= \frac{1}{2}\sum_{i=1}^N\sum_{j=1}^N\alpha_i\alpha_jy_iy_j(x_i\cdot x_j) -\sum_{i=1}^N\alpha_i  \\ \end{aligned}$$</p>
+<h4 id="2-求-min-w-b-xi-L-w-b-xi-alpha-mu-对-alpha-的极大"><a href="#2-求-min-w-b-xi-L-w-b-xi-alpha-mu-对-alpha-的极大" class="headerlink" title="(2) 求$min_{w,b,\xi}L(w,b,\xi,\alpha,\mu)$对$\alpha$的极大"></a>(2) 求$min_{w,b,\xi}L(w,b,\xi,\alpha,\mu)$对$\alpha$的极大</h4><p>$$max_\alpha\ -\frac{1}{2}\sum_{i=1}^N\sum_{j=1}^N\alpha_i\alpha_jy_iy_j(x_i\cdot x_j)+\sum_{i=1}^N\alpha_i$$</p>
+<p>$$s.t.\ \sum_{i=1}^N\alpha_iy_i=0$$</p>
+<p>$$0\leq \alpha_i\leq C$$</p>
+<p>对偶问题取得最优解需要满足如下的KKT条件</p>
+<blockquote>
+<p>KKT 条件</p>
+<p>$$w^<em>-\sum_{i=1}^N\alpha_i^</em>y_ix_i=0$$</p>
+<p>$$-\sum_{i=1}^N\alpha_i^*y_i=0$$</p>
+<p>$$C-\alpha^<em>-\beta^</em>=0$$</p>
+<p>$$\alpha_i^<em>(y_i(w^</em>\cdot x_i+b^<em>)-1+\xi^</em>_i)=0$$</p>
+<p>$$\beta_i^<em>\xi_i^</em>=0$$</p>
+<p>$$y_i(w^<em>\cdot x_i+b^</em>)-1+\xi_i^*\geq0$$</p>
+<p>$$\xi_i^*\geq0$$</p>
+<p>$$\alpha_i^*\geq0$$</p>
+<p>$$\beta_i^*\geq0$$</p>
+</blockquote>
+<h3 id="模型理解"><a href="#模型理解" class="headerlink" title="模型理解"></a>模型理解</h3><p>设$\alpha^<em>=(\alpha_1^</em>,\alpha_2^<em>,…,\alpha_N^</em>)^T$是对偶问题的一个解，若存在$\alpha^<em>$的一个分量$\alpha_j^</em>$，$0&lt;\alpha_j^<em>&lt;C$，则原始问题的解$w^</em>,b^*$可按下式求得</p>
+<p>$$w^<em>=\sum_{i=1}^N\alpha_i^</em>y_ix_i$$</p>
+<p>$$b^<em>=y_j-\sum_{i=1}^Ny_i\alpha_i^</em>(x_i\cdot x_j)$$</p>
+<p>在线性不可分的情况下，将对偶问题的解$\alpha^<em>=(\alpha_1^</em>,\alpha_2^<em>,…,\alpha_N^</em>)^T$中对应于$\alpha_i^*&gt;0$的样本点$(x_i,y_i)$的实例$x_i$称为支持向量（软间隔的支持向量），这时的支持向量要比线性可分时的情况复杂一些</p>
+<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-20-031530.jpg" alt="|center|"></p>
+<p>软间隔的支持向量$x_i$或者在间隔边界上，或者在间隔边界与分离超平面之间，或者在分离超平面误分一侧。</p>
+<p>考虑两个KKT条件</p>
+<blockquote>
+<p>$$\alpha_i^<em>(y_i(w^</em>\cdot x_i+b^<em>)-1+\xi^</em>_i)=0$$</p>
+<p>$$\beta_i^<em>\xi_i^</em>=0 \rightarrow (C-\alpha_i^<em>)\xi_i^</em>=0$$</p>
+</blockquote>
 <ul>
-<li>随机取样——Pasting</li>
-<li><strong>有放回取样（Bootstrap）——Bagging</strong> 这种采样方式，有$N!/N^N$种几率从N个样本抽取出来的样本和原来样本一样。</li>
-<li>特征子集——Random Subspaces</li>
-<li>样本和特征都是子集——Random Patches</li>
+<li>若$\alpha_i = 0$，由第二个条件得，$\xi_i=0$，说明这些点没有违反边界，一般在边界之外；</li>
+<li>若$0&lt;\alpha_i&lt; C$，由第二个条件得，$\xi_i=0$，由第一个条件得，$y_i(w^<em>\cdot x_i+b^</em>)-1+\xi^<em>_i=0$，综上，得$y_i(w^</em>\cdot x_i+b^*)-1=0$，则这些点在边界上。</li>
+<li>若$\alpha_i = C$，样本点违反边界值，违反距离为$\xi_i=1-y_n(w^Tx_i+b)$<ul>
+<li>$0&lt;\xi_i&lt;1$，则分类正确，$x_i$在间隔边界与分离超平面之间；</li>
+<li>$\xi_i=1$，则$x_i$在分离超平面上；</li>
+<li>$\xi_i&gt;1$，则$x_i$位于分离超平面误分一面；</li>
 </ul>
-<p>所有选取样本子集的时候有两个方面要考虑，是否选取特征，是否为有放回选取。</p>
-<p>在取样的时候，我们有时候拿袋外的样本当做测试样本。</p>
-<p>那么这个袋外的资料有多少呢：</p>
-<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-05-24-032158.jpg" alt="3"></p>
-<p><strong>是否可以用来做验证集？</strong></p>
-<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-05-24-032134.jpg" alt="2"></p>
-<p>是的，但是要记住，在模型融合中，我们要的不是单个模型的最优，而是所有模型融合后的最优，所以我们希望用这些袋外数据来对G做验证集，具体如下:</p>
-<p>对于$(x_i, y_i)$然后来交叉验证$G_{N}^-(x) = average(g_i, g_j, …, g_t)$，其中，这些g是单个模型，而且$(x_i, y_i)$对于这些模型是袋外。最后求总的验证误差 ： $E_{oob}(G) = \frac{1}{N}\sum_{n=1}^Nerr(y_n, G^-_n(x_n))$</p>
-<h1 id="Blending"><a href="#Blending" class="headerlink" title="Blending"></a>Blending</h1><p>Blending强调的是组合弱分类器的策略，而不强调产生不同模型的方式。组合模型的策略有线性组合，此时每个模型都有一个投票权重，当权重都一样的时候，即都是1时，称为Uniform Blending，如果权重不一样呢，我们一般称为Linear Blending；当然也有非线性组合，我们一般称为Stacking，决策树模型实际上就是这种方式。</p>
-<h2 id="Uniform-Blending-Voting"><a href="#Uniform-Blending-Voting" class="headerlink" title="Uniform Blending(Voting)"></a>Uniform Blending(Voting)</h2><p>这种方式有称为投票的方式，我们给每个模型的权重是一样的，都是1票：</p>
-<ul>
-<li>对于二分类问题 $G(x) = sign(\sum_{t=1}^Tg_t(x))$，对于多分类问题 $G(x) = argmax_{1&lt;=k&lt;=K}\sum_{t=1}^T[g_t(x) = k]$</li>
-<li>对于回归问题，我们对所有结果相加然后求平均：$G(x) = \frac{1}{T} \sum_{t=1}^T g_t(x)$</li>
+</li>
 </ul>
-<h3 id="数学推导证明有效性"><a href="#数学推导证明有效性" class="headerlink" title="数学推导证明有效性"></a>数学推导证明有效性</h3><p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-05-24-031151.jpg" alt="1"></p>
-<p>我们可以认为右边的第一项为variance，第二项为bias，我们希望通过降低variance的方式来是的模型的误差变小。</p>
-<h2 id="Linear-Blending"><a href="#Linear-Blending" class="headerlink" title="Linear Blending"></a>Linear Blending</h2><p>上面讨论的是均匀组合，但是，有时候我们需要给不同的模型以不同的权值。</p>
-<p>即，$G(x) = sign(\sum_{t=1}^T \alpha_t g_t(x)) with \alpha_t &gt;= 0 $</p>
-<p>这时候我们需要通过计算，求得是的$E_{in}$最小的$\alpha$，如果选择损失函数为均方损失函数，我们就可以得到如下的表达式：$min_{\alpha_t &gt;= 0} \frac{1}{N}\sum_{n=1}^N(y_n - \sum_{t=1}^T \alpha_t g_t(x_x))^2$</p>
-<p>实践中，我们的做法都是，先在训练数据上选出最佳的单个模型，然后在验证集上进行权值的选择。</p>
-<h2 id="Any-Blending（Stacking）"><a href="#Any-Blending（Stacking）" class="headerlink" title="Any Blending（Stacking）"></a>Any Blending（Stacking）</h2><p>我们可以不用线性组合的方式，而是进行其他的组合方式，这样的方式的另一个名称叫做Stacking</p>
-<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-05-24-042805.jpg" alt="workflow"></p>
-<ul>
-<li>初始训练数据$X$包含$m$个观察值和$n$个特征（所以它是$m\times n$。</li>
-<li>有$M$个不同的模型在$X$（通过某种训练方法，如交叉验证）进行训练。</li>
-<li>每个模型提供对结果$y$的预测，然后将其转换为$m\times M$的第二级训练数据$X^{(l_2)}$。即，$M$个预测成为该第二级数据的特征。然后可以对这些数据进行二级模型（或多个模型）的训练，以产生将用于预测的最终结果。</li>
-</ul>
-<p>现在研究用Stacking方式构建二级训练数据的，这里的关键词是out-of-sample，因为如果我们使用适合所有训练数据的$M$模型的预测，那么第二级模型将偏向$M$模型中的最佳模型，这将是没用的。</p>
-<p>这个想法是将训练集分成几部分，就像你在k-fold交叉验证中所做的一样。对于每折数据，其余的数据在模型1 … M获得预测，并在该折上做预测。解释这个最好的方法是通过下图：</p>
-<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-05-24-042807.jpg" alt="stacking"></p>
-<p>最后这个预测矩阵将用于二级训练数据。</p>
-<h1 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h1><p>在天池、Kaggle等机器学习比赛中，要想提高得分，一个重要的技巧就是模型融合，在实际使用中，我们一般会采用哪些做法呢？</p>
-<h2 id="对submmison文件进行融合"><a href="#对submmison文件进行融合" class="headerlink" title="对submmison文件进行融合"></a>对submmison文件进行融合</h2><p>模型融合的最基本和最方便的方式是融合Kaggle提交CSV文件。您只需要对这些方法的测试集进行预测 - 无需重新训练模型。这使得它可以快速集成已经存在的模型预测，是组队时的理想选择。</p>
-<h2 id="Stacking"><a href="#Stacking" class="headerlink" title="Stacking"></a>Stacking</h2><p>对预测文件进行平均并不困难，但它并不是顶级Kagglers使用的唯一方法。更好的收益始于Stacking和Blending。</p>
-<p>原理在上面已经描述过，以2折为例子，说明一下：</p>
-<ul>
-<li>Split the train set in 2 parts: train_a and train_b</li>
-<li>Fit a first-stage model on train_a and create predictions for train_b</li>
-<li>Fit the same model on train_b and create predictions for train_a</li>
-<li>Finally fit the model on the entire train set and create predictions for the test set.</li>
-<li>Now train a second-stage stacker model on the probabilities from the first-stage model(s).</li>
-</ul>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1]. 李航 统计学习方法</p>
-<p>[2]. <a href="https://mlwave.com/kaggle-ensembling-guide/" target="_blank" rel="noopener">Kaggle Ensembling Guide | MLWave</a></p>
-<p>[3]. <a href="https://www.kdnuggets.com/2017/02/stacking-models-imropved-predictions.html" target="_blank" rel="noopener">Stacking Models for Improved Predictions</a></p>
+<h3 id="合页损失函数"><a href="#合页损失函数" class="headerlink" title="合页损失函数"></a>合页损失函数</h3><p>线性支持向量机还有另一种解释，就是最小化以下目标函数</p>
+<p>$$min_{b,w}\ \ \sum_{i=1}^N[1-y_i(w\cdot x_i+b)]_++\lambda||w||^2$$</p>
+<blockquote>
+<p>直观理解</p>
+<p>对于目标函数</p>
+<p>$$\frac{1}{2}||w||^2+C\sum_{i=1}^N\xi_i$$</p>
+<p>我们考虑$\xi_i$</p>
+<p>$$\xi_n=\begin{cases} 1-y_n(w^Tz_n+b), &amp; \text{$(x_n,y_n)$违反了边界} \\ 0, &amp; \text{$(x_n,y_n)$没有违反边界}\end{cases}$$</p>
+<p>所以，我们可以把$\xi_n$改写如下</p>
+<p>$$\begin{aligned} \xi_n &amp;= max(1-y_n(w^Tz_n+b),0) \\  &amp;= [1-y_i(w\cdot x_i+b)]_+  \end{aligned}$$</p>
+</blockquote>
+<p>严格证明</p>
+<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-20-031533.jpg" alt="|center|"></p>
+<p>所以，线性支持向量机学习等价于最小化二阶范数正则化的合页函数。</p>
 
       
     </div>
@@ -486,10 +508,6 @@
           
             <a href="/tags/ml/" rel="tag"># ml</a>
           
-            <a href="/tags/blending/" rel="tag"># blending</a>
-          
-            <a href="/tags/stacking/" rel="tag"># stacking</a>
-          
         </div>
       
 
@@ -501,8 +519,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/23/Random-Forest/" rel="next" title="Random Forest">
-                <i class="fa fa-chevron-left"></i> Random Forest
+              <a href="/2018/09/25/支持向量机 1-1：线性可分支持向量机/" rel="next" title="支持向量机 1-1：线性可分支持向量机">
+                <i class="fa fa-chevron-left"></i> 支持向量机 1-1：线性可分支持向量机
               </a>
             
           </div>
@@ -510,10 +528,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/09/24/逻辑回归 1-1：逻辑函数/" rel="prev" title="逻辑回归 1-1：逻辑函数">
-                逻辑回归 1-1：逻辑函数 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -684,7 +698,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Bagging"><span class="nav-number">1.</span> <span class="nav-text">Bagging</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Blending"><span class="nav-number">2.</span> <span class="nav-text">Blending</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Uniform-Blending-Voting"><span class="nav-number">2.1.</span> <span class="nav-text">Uniform Blending(Voting)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数学推导证明有效性"><span class="nav-number">2.1.1.</span> <span class="nav-text">数学推导证明有效性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linear-Blending"><span class="nav-number">2.2.</span> <span class="nav-text">Linear Blending</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Any-Blending（Stacking）"><span class="nav-number">2.3.</span> <span class="nav-text">Any Blending（Stacking）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实战"><span class="nav-number">3.</span> <span class="nav-text">实战</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#对submmison文件进行融合"><span class="nav-number">3.1.</span> <span class="nav-text">对submmison文件进行融合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Stacking"><span class="nav-number">3.2.</span> <span class="nav-text">Stacking</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#线性支持向量机与软间隔最大化"><span class="nav-number">1.</span> <span class="nav-text">线性支持向量机与软间隔最大化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线性支持向量机"><span class="nav-number">1.1.</span> <span class="nav-text">线性支持向量机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#凸二次规划求解"><span class="nav-number">1.2.</span> <span class="nav-text">凸二次规划求解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#学习的对偶算法"><span class="nav-number">1.3.</span> <span class="nav-text">学习的对偶算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#求解对偶问题"><span class="nav-number">1.3.1.</span> <span class="nav-text">求解对偶问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-求-min-w-b-xi-L-w-b-xi-alpha-mu"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">(1) 求$min_{w,b,\xi}L(w,b,\xi,\alpha,\mu)$</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-求-min-w-b-xi-L-w-b-xi-alpha-mu-对-alpha-的极大"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">(2) 求$min_{w,b,\xi}L(w,b,\xi,\alpha,\mu)$对$\alpha$的极大</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模型理解"><span class="nav-number">1.3.2.</span> <span class="nav-text">模型理解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#合页损失函数"><span class="nav-number">1.3.3.</span> <span class="nav-text">合页损失函数</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

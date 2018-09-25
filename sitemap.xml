@@ -2,16 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://conghuai.me/2018/09/25/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA%201-1%EF%BC%9A%E7%BA%BF%E6%80%A7%E5%8F%AF%E5%88%86%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/</loc>
+    <loc>http://conghuai.me/2018/09/25/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA%201-2%EF%BC%9A%E7%BA%BF%E6%80%A7%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/</loc>
     
-    <lastmod>2018-09-25T03:25:45.994Z</lastmod>
+    <lastmod>2018-09-25T03:31:17.019Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://conghuai.me/2018/04/19/Support-Vector-Machine/</loc>
+    <loc>http://conghuai.me/2018/04/22/Adaboost/</loc>
     
-    <lastmod>2018-09-24T15:29:50.680Z</lastmod>
+    <lastmod>2018-09-25T03:27:25.961Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://conghuai.me/2018/05/24/Bagging%20&%20Blendding/</loc>
+    
+    <lastmod>2018-09-25T03:27:19.120Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://conghuai.me/2018/09/25/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA%201-1%EF%BC%9A%E7%BA%BF%E6%80%A7%E5%8F%AF%E5%88%86%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA/</loc>
+    
+    <lastmod>2018-09-25T03:25:45.994Z</lastmod>
     
   </url>
   
@@ -166,20 +180,6 @@
     <loc>http://conghuai.me/2018/04/27/Building-blocks-of-deep-neural-networks/</loc>
     
     <lastmod>2018-09-24T15:23:26.065Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://conghuai.me/2018/05/24/Bagging%20&%20Blendding/</loc>
-    
-    <lastmod>2018-09-24T15:22:46.751Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://conghuai.me/2018/04/22/Adaboost/</loc>
-    
-    <lastmod>2018-09-24T15:22:41.392Z</lastmod>
     
   </url>
   
