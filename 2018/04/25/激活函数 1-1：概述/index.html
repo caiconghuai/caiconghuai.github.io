@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="dl," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="蔡聪怀" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="激活函数是神经网络中一个比较重要的概念，激活函数首先计算输入的线性值，然后决定是否“激活”该值。 $$Y=Activation(\sum(weight\ *\ input ) + bias)$$ 上面的线性组合的值的范围为$[-\infty, +\infty]$，激活函数根据上一层输出的线性组合值来决定是否将该值传到下一层，并决定以何种方式传到下一层。 正如绝大多数神经网络借助某种形式的梯度下降">
+<meta name="keywords" content="dl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="激活函数 1-1：概述">
+<meta property="og:url" content="http://conghuai.me/2018/04/25/激活函数 1-1：概述/index.html">
+<meta property="og:site_name" content="蔡聪怀">
+<meta property="og:description" content="激活函数是神经网络中一个比较重要的概念，激活函数首先计算输入的线性值，然后决定是否“激活”该值。 $$Y=Activation(\sum(weight\ *\ input ) + bias)$$ 上面的线性组合的值的范围为$[-\infty, +\infty]$，激活函数根据上一层输出的线性组合值来决定是否将该值传到下一层，并决定以何种方式传到下一层。 正如绝大多数神经网络借助某种形式的梯度下降">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fqp0idk6d0j315o0p0tc4.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fqp0icy6xwj311z0moacm.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fqp0ig26d5j311m0jy0vf.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fqp0if00ohj31240mujtv.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fqp0ieauwoj311z0mq0ve.jpg">
+<meta property="og:updated_time" content="2018-09-24T15:21:57.900Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="激活函数 1-1：概述">
+<meta name="twitter:description" content="激活函数是神经网络中一个比较重要的概念，激活函数首先计算输入的线性值，然后决定是否“激活”该值。 $$Y=Activation(\sum(weight\ *\ input ) + bias)$$ 上面的线性组合的值的范围为$[-\infty, +\infty]$，激活函数根据上一层输出的线性组合值来决定是否将该值传到下一层，并决定以何种方式传到下一层。 正如绝大多数神经网络借助某种形式的梯度下降">
+<meta name="twitter:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fqp0idk6d0j315o0p0tc4.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://conghuai.me/2018/04/25/激活函数 1-1：概述/"/>
+
+
+
+
+
+  <title>激活函数 1-1：概述 | 蔡聪怀</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">蔡聪怀</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://conghuai.me/2018/04/25/激活函数 1-1：概述/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Conghuai Cai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="蔡聪怀">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">激活函数 1-1：概述</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-25T15:38:44+08:00">
+                2018-04-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/深度学习/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/深度学习/激活函数/" itemprop="url" rel="index">
+                    <span itemprop="name">激活函数</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/04/25/激活函数 1-1：概述/" class="leancloud_visitors" data-flag-title="激活函数 1-1：概述">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  1,111 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  4 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fqp0idk6d0j315o0p0tc4.jpg" alt="nural-network_3"></p>
+<p>激活函数是神经网络中一个比较重要的概念，激活函数首先计算输入的线性值，然后决定是否“激活”该值。</p>
+<p>$$Y=Activation(\sum(weight\ *\ input ) + bias)$$</p>
+<p>上面的线性组合的值的范围为$[-\infty, +\infty]$，激活函数根据上一层输出的线性组合值来决定是否将该值传到下一层，并决定以何种方式传到下一层。</p>
+<p>正如绝大多数神经网络借助某种形式的梯度下降进行优化，激活函数需要是可微分的。此外，复杂的激活函数也许产生一些梯度消失或梯度爆炸的问题。常见的激活函数有很多，我们该如何选择合适的激活函数呢？我们先来分析一下每种激活函数的特点和性质。</p>
+<h1 id="激活函数的作用"><a href="#激活函数的作用" class="headerlink" title="激活函数的作用"></a>激活函数的作用</h1><p>激活函数显然增加了神经网络的复杂度，那么 ，我们是否可以不同激活函数呢？答案是不可行的，如果不用激活函数，那么神经网络模型最终将会只是一个线性模型。而线性模型由于其模型的复杂度不够，在解决很多复杂问题上都显得力不从心。</p>
+<h1 id="常见的激活函数"><a href="#常见的激活函数" class="headerlink" title="常见的激活函数"></a>常见的激活函数</h1><h2 id="Sigmoid"><a href="#Sigmoid" class="headerlink" title="Sigmoid"></a>Sigmoid</h2><h3 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h3><p>$$g(z) = \frac{1}{1+e^{-z}}$$</p>
+<h3 id="导数"><a href="#导数" class="headerlink" title="导数"></a>导数</h3><p>$$g’(z) = g(z)(1-g(z))$$</p>
+<h3 id="函数性质"><a href="#函数性质" class="headerlink" title="函数性质"></a>函数性质</h3><p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fqp0icy6xwj311z0moacm.jpg" alt="5561420171010093434"></p>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sigmoid</span><span class="params">(x, derivative=False)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> (derivative == <span class="keyword">True</span>):</span><br><span class="line">        <span class="keyword">return</span> x * (<span class="number">1</span> - x)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> / (<span class="number">1</span> + np.exp(-x))</span><br></pre></td></tr></table></figure>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ol>
+<li>梯度消失问题</li>
+</ol>
+<p>在导函数的两端，函数值非常的小，这意味着在做梯度下降时，参数的改变量将非常小。这就可能带来梯度消失的问题。</p>
+<ol>
+<li>饱和问题。</li>
+</ol>
+<p>饱和问题是指当初始参数过大时，会导致sigmoid导数值很小，造成学习速率非常慢。</p>
+<h2 id="Tanh"><a href="#Tanh" class="headerlink" title="Tanh"></a>Tanh</h2><h3 id="表达式-1"><a href="#表达式-1" class="headerlink" title="表达式"></a>表达式</h3><p>$$g(z) = tanh(z) = \frac{e^z-e^{-z}}{e^z+e^{-z}}$$</p>
+<h3 id="导数-1"><a href="#导数-1" class="headerlink" title="导数"></a>导数</h3><p>$$g’(z)= 1-g(z)^2$$</p>
+<h3 id="函数性质-1"><a href="#函数性质-1" class="headerlink" title="函数性质"></a>函数性质</h3><p>在分类任务中，双曲正切函数（Tanh）逐渐取代Sigmoid函数作为标准的激活函数。<img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fqp0ig26d5j311m0jy0vf.jpg" alt="8940520171010093544"></p>
+<h3 id="实现-1"><a href="#实现-1" class="headerlink" title="实现"></a>实现</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">tanh</span><span class="params">(x, derivative=False)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> (derivative == <span class="keyword">True</span>):</span><br><span class="line">        <span class="keyword">return</span> (<span class="number">1</span> - (x ** <span class="number">2</span>))</span><br><span class="line">    <span class="keyword">return</span> np.tanh(x)</span><br></pre></td></tr></table></figure>
+<h2 id="ReLU"><a href="#ReLU" class="headerlink" title="ReLU"></a>ReLU</h2><p>修正线性单元（Rectified linear unit，ReLU）是神经网络中最常用的激活函数。它保留了 step 函数的生物学启发（只有输入超出阈值时神经元才激活），不过当输入为正的时候，导数不为零，从而允许基于梯度的学习（尽管在 x=0 的时候，导数是未定义的）。使用这个函数能使计算变得很快，因为无论是函数还是其导数都不包含复杂的数学运算。然而，当输入为负值的时候，ReLU 的学习速度可能会变得很慢，甚至使神经元直接无效，因为此时输入小于零而梯度为零，从而其权重无法得到更新，在剩下的训练过程中会一直保持静默。</p>
+<h3 id="表达式-2"><a href="#表达式-2" class="headerlink" title="表达式"></a>表达式</h3><p>$$\begin{split} f(x)=\begin{cases} x, &amp; \text{$x\geq 0$} \\ 0, &amp; \text{$x&lt;0$}\end{cases}\end{split}$$</p>
+<h3 id="导数-2"><a href="#导数-2" class="headerlink" title="导数"></a>导数</h3><p>$$\begin{split} f’(x)=\begin{cases} 1, &amp; \text{$x\geq 0$} \\ 0, &amp; \text{$x&lt;0$}\end{cases}\end{split}$$</p>
+<h3 id="函数性质-2"><a href="#函数性质-2" class="headerlink" title="函数性质"></a>函数性质</h3><p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fqp0if00ohj31240mujtv.jpg" alt="4217520171010093357"></p>
+<h3 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h3><ol>
+<li>静默神经元。</li>
+</ol>
+<p>由于该激活函数在$x&lt;0$的时候，其导数值为0，就会使得一些神经元一直得不到更新。</p>
+<ol>
+<li>只能用于隐藏层。</li>
+</ol>
+<h2 id="Leaky-ReLU"><a href="#Leaky-ReLU" class="headerlink" title="Leaky ReLU"></a>Leaky ReLU</h2><p>经典（以及广泛使用的）ReLU 激活函数的变体，带泄露修正线性单元（Leaky ReLU）的输出对负值输入有很小的坡度。由于导数总是不为零，这能减少静默神经元的出现，允许基于梯度的学习（虽然会很慢）。</p>
+<h3 id="表达式-3"><a href="#表达式-3" class="headerlink" title="表达式"></a>表达式</h3><p>$$\begin{split} f(x)=\begin{cases} x, &amp; \text{$x\geq0$} \\ 0.01x, &amp; \text{$x&lt;0$}\end{cases}\end{split}$$</p>
+<h3 id="求导"><a href="#求导" class="headerlink" title="求导"></a>求导</h3><p>$$\begin{split} f’(x)=\begin{cases} 1, &amp; \text{$x\geq0$} \\ 0.01, &amp; \text{$x&lt;0$}\end{cases}\end{split}$$</p>
+<h3 id="函数性质-3"><a href="#函数性质-3" class="headerlink" title="函数性质"></a>函数性质</h3><p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fqp0ieauwoj311z0mq0ve.jpg" alt="1601520171010093621"></p>
+<h1 id="选择激活函数准则"><a href="#选择激活函数准则" class="headerlink" title="选择激活函数准则"></a>选择激活函数准则</h1><ul>
+<li>Sigmoid激活函数常用于分类任务。</li>
+<li>Sigmoid和Tanh函数会产生梯度消失问题。</li>
+<li>ReLU是目前使用最广泛的激活函数。</li>
+<li>如果在神经网络中，出现了静默神经元，可以考虑使用 Leaky ReLU。</li>
+<li>ReLU激活函数只能用于隐藏层。</li>
+</ul>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1]. <a href="https://medium.com/the-theory-of-everything/understanding-activation-functions-in-neural-networks-9491262884e0" target="_blank" rel="noopener">Understanding Activation Functions in Neural Networks</a></p>
+<p>[2]. <a href="https://www.analyticsvidhya.com/blog/2017/10/fundamentals-deep-learning-activation-functions-when-to-use-them/" target="_blank" rel="noopener">Fundamentals of Deep Learning – Activation Functions and When to Use Them?</a></p>
+<p>[3]. <a href="https://www.wikiwand.com/en/Activation_function" target="_blank" rel="noopener">维基百科Activation Functions</a></p>
+<p>[4]. <a href="https://analyticsindiamag.com/most-common-activation-functions-in-neural-networks-and-rationale-behind-it/" target="_blank" rel="noopener">Types Of Activation Functions In Neural Networks And Rationale Behind It</a></p>
+<p>[5]. <a href="https://dashee87.github.io/data%20science/deep%20learning/visualising-activation-functions-in-neural-networks/" target="_blank" rel="noopener">Visualising Activation Functions in Neural Networks</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/dl/" rel="tag"># dl</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/24/Neural-Networks-and-Deep-Learning-Foundation/" rel="next" title="Neural Networks and Deep Learning Foundation">
+                <i class="fa fa-chevron-left"></i> Neural Networks and Deep Learning Foundation
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/27/Building-blocks-of-deep-neural-networks/" rel="prev" title="Building blocks of deep neural networks">
+                Building blocks of deep neural networks <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Conghuai Cai" />
+            
+              <p class="site-author-name" itemprop="name">Conghuai Cai</p>
+              <p class="site-description motion-element" itemprop="description">Algorithm/Machine Learning/Deep Learning/NLP</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/caiconghuai" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:caiconghuai@gmail.com" target="_blank" title="Email">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>Email</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/6383237207/profile?topnav=1&wvr=6" target="_blank" title="Weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.zhihu.com/people/caiconghuai" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#激活函数的作用"><span class="nav-number">1.</span> <span class="nav-text">激活函数的作用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常见的激活函数"><span class="nav-number">2.</span> <span class="nav-text">常见的激活函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Sigmoid"><span class="nav-number">2.1.</span> <span class="nav-text">Sigmoid</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#表达式"><span class="nav-number">2.1.1.</span> <span class="nav-text">表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#导数"><span class="nav-number">2.1.2.</span> <span class="nav-text">导数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数性质"><span class="nav-number">2.1.3.</span> <span class="nav-text">函数性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现"><span class="nav-number">2.1.4.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点"><span class="nav-number">2.1.5.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tanh"><span class="nav-number">2.2.</span> <span class="nav-text">Tanh</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#表达式-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#导数-1"><span class="nav-number">2.2.2.</span> <span class="nav-text">导数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数性质-1"><span class="nav-number">2.2.3.</span> <span class="nav-text">函数性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现-1"><span class="nav-number">2.2.4.</span> <span class="nav-text">实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ReLU"><span class="nav-number">2.3.</span> <span class="nav-text">ReLU</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#表达式-2"><span class="nav-number">2.3.1.</span> <span class="nav-text">表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#导数-2"><span class="nav-number">2.3.2.</span> <span class="nav-text">导数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数性质-2"><span class="nav-number">2.3.3.</span> <span class="nav-text">函数性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点-1"><span class="nav-number">2.3.4.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Leaky-ReLU"><span class="nav-number">2.4.</span> <span class="nav-text">Leaky ReLU</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#表达式-3"><span class="nav-number">2.4.1.</span> <span class="nav-text">表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#求导"><span class="nav-number">2.4.2.</span> <span class="nav-text">求导</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数性质-3"><span class="nav-number">2.4.3.</span> <span class="nav-text">函数性质</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#选择激活函数准则"><span class="nav-number">3.</span> <span class="nav-text">选择激活函数准则</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Conghuai Cai</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("gDGQAvMXvJB5uSIhpUvw90hy-gzGzoHsz", "36U43UE0rMrmve1e0J8NOBhA");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
