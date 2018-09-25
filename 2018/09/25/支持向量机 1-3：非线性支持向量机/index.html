@@ -97,7 +97,7 @@
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-21-074030.jpg">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-21-74031.jpg">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-21-074031.jpg">
-<meta property="og:updated_time" content="2018-09-25T03:52:17.212Z">
+<meta property="og:updated_time" content="2018-09-25T03:54:38.093Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="支持向量机 1-3：非线性支持向量机">
 <meta name="twitter:description" content="非线性支持向量机与核函数对解线性分类问题，线性分类支持向量机是一种非常有效的方法。但是，有时候分类问题是非线性的，这时可以使用非线性支持向量机。其主要特点是利用核技巧。 核技巧 如图所示的数据集，其理想的分界应该是一个“圆圈”而不是一条线（超平面）。如果用$X_1$和$X_2$来表示这个二维平面的两个坐标的话，一条二次曲线的方差可以写成主要的形式 $$a_1X_1+a_2X_1^2+a_3X_2">
@@ -379,7 +379,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  2,286 字
+                  2,293 字
                 </span>
               
 
@@ -395,7 +395,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  9 分钟
+                  10 分钟
                 </span>
               
             </div>
@@ -435,7 +435,7 @@
 </blockquote>
 <p>核技巧的想法是，在学习与预测中只定义核函数$K(x,z)$，而不显式的定义映射函数$\varphi$。</p>
 <h2 id="核技巧在支持向量机中的应用"><a href="#核技巧在支持向量机中的应用" class="headerlink" title="核技巧在支持向量机中的应用"></a>核技巧在支持向量机中的应用</h2><h3 id="对偶问题目标函数"><a href="#对偶问题目标函数" class="headerlink" title="对偶问题目标函数"></a>对偶问题目标函数</h3><p>$$W(\alpha)=\frac{1}{2}\sum_{i=1}^N\sum_{j=1}^N\alpha_i\alpha_jy_iy_jK(x_i,x_j)-\sum_{i=1}^N\alpha_i$$</p>
-<h3 id="分类决策函数"><a href="#分类决策函数" class="headerlink" title="分类决策函数"></a>分类决策函数</h3><p>$$f(x) = sign(\sum_{i=1}^N\alpha_i^<em>y_i\varphi(x_i)\cdot\varphi(x)+b^</em>)=sign(\sum_{i=1}^N\alpha_i^<em>y_iK(x_i,x)+b^</em>)$$</p>
+<h3 id="分类决策函数"><a href="#分类决策函数" class="headerlink" title="分类决策函数"></a>分类决策函数</h3><p>$$f(x) = sign(\sum_{i=1}^N\alpha_i^\ast y_i\varphi(x_i)\cdot\varphi(x)+b^\ast )=sign(\sum_{i=1}^N\alpha_i^\ast y_iK(x_i,x)+b^\ast )$$</p>
 <p>这等价于经过映射函数$\varphi$将原来的输入空间变换到一个新的特征空间，将输入空间中的内积$x_i\cdot x_j$变换为特征空间中的内积$\varphi(x_i)\cdot \varphi(x_j)$，在新的特征空间里从训练样本中学习线性支持向量机。当映射函数是非线性函数时，学习到的含有核函数的支持向量机是非线性分类模型。</p>
 <p>也就是说，在核函数$K(x,z)$给定的条件下，可以利用解线性分类问题的方法求解非线性分类问题的支持向量机。学习是隐式地在特征空间中进行的，不需要显示的定义特征空间和映射函数。这样的技巧称为核技巧，它是巧妙地利用线性分类学习方法与核函数解决非线性问题的技术。</p>
 <h2 id="核函数类型"><a href="#核函数类型" class="headerlink" title="核函数类型"></a>核函数类型</h2><p>先看一下正定核的一些定义，通常所说的核函数就是正定核函数。</p>
@@ -534,7 +534,7 @@
 <h1 id="Kernel-Logistic-Regression"><a href="#Kernel-Logistic-Regression" class="headerlink" title="Kernel Logistic Regression"></a>Kernel Logistic Regression</h1><blockquote>
 <p>如果我们现在要解决的带有L2正则化的线性模型</p>
 <p>$$min_w \ \ \frac{\lambda}{N}w^Tw+\frac{1}{N}\sum_{n=1}^Nerr(y_n, w^Tz_n)$$</p>
-<p>那么最优$w$，会是输入的线性组合，即$w^*=\sum_{i=1}^N\beta_nz_n$</p>
+<p>那么最优$w$，会是输入的线性组合，即$w^\ast =\sum_{i=1}^N\beta_nz_n$</p>
 </blockquote>
 <p>如果是这样的话，那么我们可以将求解最佳$w$的问题，转化为求解最佳的$\beta$</p>
 <p>$$min_{\beta}\ \frac{\lambda}{N}\sum_{i=1}^N\sum_{j=1}^N\beta_i\beta_jK(x_i,x_j)+\frac{1}{N}\sum_{i=1}^Nlog(1+exp(-y_n\sum_{j=1}^N\beta_jK(x_i,x_j)))$$</p>
@@ -548,10 +548,10 @@
 <h1 id="Support-Vector-Regression"><a href="#Support-Vector-Regression" class="headerlink" title="Support Vector Regression"></a>Support Vector Regression</h1><h2 id="Kernel-Ridge-Regression"><a href="#Kernel-Ridge-Regression" class="headerlink" title="Kernel Ridge Regression"></a>Kernel Ridge Regression</h2><blockquote>
 <p>如果我们现在要解决的带有L2正则化的线性模型</p>
 <p>$$min_w \ \ \frac{\lambda}{N}w^Tw+\frac{1}{N}\sum_{n=1}^Nerr(y_n, w^Tx_n)$$</p>
-<p>那么最优$w$，会是输入的线性组合，即$w^*=\sum_{i=1}^N\beta_nx_n$</p>
+<p>那么最优$w$，会是输入的线性组合，即$w^\ast =\sum_{i=1}^N\beta_nx_n$</p>
 </blockquote>
 <p>现在，要解决的是回归的问题，我们令$err(y,w^Tx)=(y-w^Tx)^2$，带有正则化的回归模型被称为ridge regression，现在，我们看一下是否可以结合kernel函数和ridge regression？</p>
-<p>将最佳解$w^*=\sum_{i=1}^N\beta_nx_n$带入到目标函数中</p>
+<p>将最佳解$w^\ast =\sum_{i=1}^N\beta_nx_n$带入到目标函数中</p>
 <p>$$min_\beta\ \ \frac{\lambda}{N}\sum_{i=1}^N\sum_{j=1}^N\beta_i\beta_jK(x_n,x_m)+\frac{1}{N}\sum_{i=1}^N[y_i-\sum_{j=1}^N\beta_jK(x_i,x_j)]^2$$</p>
 <p>我们可以使用梯度下降法求解上述表达式。求解结果为：$\beta=(\lambda I+K)^{-1}y$</p>
 <p>所以，借助核函数，我们可以很轻易的解决非线性的回归问题。</p>
