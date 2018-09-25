@@ -91,7 +91,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-20-031530.jpg">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-20-031533.jpg">
-<meta property="og:updated_time" content="2018-09-25T03:46:50.483Z">
+<meta property="og:updated_time" content="2018-09-25T03:50:11.655Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="支持向量机 1-2：线性支持向量机">
 <meta name="twitter:description" content="线性支持向量机与软间隔最大化线性支持向量机线性可分问题的支持向量机学习方法，对线性不可分训练数据是不适用的，因为这时上述方法中的不等式约束并不能都成立。怎么才能将它扩展到线性不可分问题呢？这就需要修改硬间隔最大化，使其成为软间隔最大化。 线性不可分意味着某些样本点$(x_i,y_i)$不能满足函数间隔大于等于1的约束条件。为了解决这个问题，可以对每个样本点$(x_i,y_i)$引进一个松弛变量$\">
@@ -373,7 +373,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  1,417 字
+                  1,465 字
                 </span>
               
 
@@ -389,7 +389,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  6 分钟
+                  7 分钟
                 </span>
               
             </div>
@@ -444,30 +444,30 @@
 <p>对偶问题取得最优解需要满足如下的KKT条件</p>
 <blockquote>
 <p>KKT 条件</p>
-<p>$$w^\<em> -\sum_{i=1}^N\alpha_i^\</em> y_ix_i=0$$</p>
-<p>$$-\sum_{i=1}^N\alpha_i^\* y_i=0$$</p>
-<p>$$C-\alpha^\<em> -\beta^\</em> =0$$</p>
-<p>$$\alpha_i^\<em> (y_i(w^\</em> \cdot x_i+b^\<em> )-1+\xi^\</em> _i)=0$$</p>
-<p>$$\beta_i^\<em> \xi_i^\</em> =0$$</p>
-<p>$$y_i(w^\<em> \cdot x_i+b^\</em> )-1+\xi_i^\* \geq0$$</p>
-<p>$$\xi_i^\* \geq0$$</p>
-<p>$$\alpha_i^\* \geq0$$</p>
-<p>$$\beta_i^\* \geq0$$</p>
+<p>$$w^\ast -\sum_{i=1}^N\alpha_i^\ast y_ix_i=0$$</p>
+<p>$$-\sum_{i=1}^N\alpha_i^\ast y_i=0$$</p>
+<p>$$C-\alpha^\ast -\beta^\ast =0$$</p>
+<p>$$\alpha_i^\ast (y_i(w^\ast \cdot x_i+b^\ast )-1+\xi^\ast _i)=0$$</p>
+<p>$$\beta_i^\ast \xi_i^\ast =0$$</p>
+<p>$$y_i(w^\ast \cdot x_i+b^\ast )-1+\xi_i^\ast \geq0$$</p>
+<p>$$\xi_i^\ast \geq0$$</p>
+<p>$$\alpha_i^\ast \geq0$$</p>
+<p>$$\beta_i^\ast \geq0$$</p>
 </blockquote>
-<h3 id="模型理解"><a href="#模型理解" class="headerlink" title="模型理解"></a>模型理解</h3><p>设$\alpha^\<em> =(\alpha_1^\</em> ,\alpha_2^\<em> ,…,\alpha_N^\</em> )^T$是对偶问题的一个解，若存在$\alpha^\<em> $的一个分量$\alpha_j^\</em> $，$0&lt;\alpha_j^\<em> &lt;C$，则原始问题的解$w^\</em> ,b^\* $可按下式求得</p>
-<p>$$w^\<em> =\sum_{i=1}^N\alpha_i^\</em> y_ix_i$$</p>
-<p>$$b^\<em> =y_j-\sum_{i=1}^Ny_i\alpha_i^\</em> (x_i\cdot x_j)$$</p>
-<p>在线性不可分的情况下，将对偶问题的解$\alpha^\<em> =(\alpha_1^\</em> ,\alpha_2^\<em> ,…,\alpha_N^\</em> )^T$中对应于$\alpha_i^\* &gt;0$的样本点$(x_i,y_i)$的实例$x_i$称为支持向量（软间隔的支持向量），这时的支持向量要比线性可分时的情况复杂一些</p>
+<h3 id="模型理解"><a href="#模型理解" class="headerlink" title="模型理解"></a>模型理解</h3><p>设$\alpha^\ast =(\alpha_1^\ast ,\alpha_2^\ast ,…,\alpha_N^\ast )^T$是对偶问题的一个解，若存在$\alpha^\ast $的一个分量$\alpha_j^\ast $，$0&lt;\alpha_j^\ast &lt;C$，则原始问题的解$w^\ast ,b^\ast $可按下式求得</p>
+<p>$$w^\ast =\sum_{i=1}^N\alpha_i^\ast y_ix_i$$</p>
+<p>$$b^\ast =y_j-\sum_{i=1}^Ny_i\alpha_i^\ast (x_i\cdot x_j)$$</p>
+<p>在线性不可分的情况下，将对偶问题的解$\alpha^\ast =(\alpha_1^\ast ,\alpha_2^\ast ,…,\alpha_N^\ast )^T$中对应于$\alpha_i^\ast &gt;0$的样本点$(x_i,y_i)$的实例$x_i$称为支持向量（软间隔的支持向量），这时的支持向量要比线性可分时的情况复杂一些</p>
 <p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-20-031530.jpg" alt=""></p>
 <p>软间隔的支持向量$x_i$或者在间隔边界上，或者在间隔边界与分离超平面之间，或者在分离超平面误分一侧。</p>
 <p>考虑两个KKT条件</p>
 <blockquote>
-<p>$$\alpha_i^\<em> (y_i(w^\</em> \cdot x_i+b^\<em> )-1+\xi^\</em> _i)=0$$</p>
-<p>$$\beta_i^\<em> \xi_i^\</em> =0 \rightarrow (C-\alpha_i^\<em> )\xi_i^\</em> =0$$</p>
+<p>$$\alpha_i^\ast (y_i(w^\ast \cdot x_i+b^\ast )-1+\xi^\ast _i)=0$$</p>
+<p>$$\beta_i^\ast \xi_i^\ast =0 \rightarrow (C-\alpha_i^\ast )\xi_i^\ast =0$$</p>
 </blockquote>
 <ul>
 <li>若$\alpha_i = 0$，由第二个条件得，$\xi_i=0$，说明这些点没有违反边界，一般在边界之外；</li>
-<li>若$0&lt;\alpha_i&lt; C$，由第二个条件得，$\xi_i=0$，由第一个条件得，$y_i(w^\<em> \cdot x_i+b^\</em> )-1+\xi^\<em> _i=0$，综上，得$y_i(w^\</em> \cdot x_i+b^\* )-1=0$，则这些点在边界上。</li>
+<li>若$0&lt;\alpha_i&lt; C$，由第二个条件得，$\xi_i=0$，由第一个条件得，$y_i(w^\ast \cdot x_i+b^\ast )-1+\xi^\ast _i=0$，综上，得$y_i(w^\ast \cdot x_i+b^\ast )-1=0$，则这些点在边界上。</li>
 <li>若$\alpha_i = C$，样本点违反边界值，违反距离为$\xi_i=1-y_n(w^Tx_i+b)$<ul>
 <li>$0&lt;\xi_i&lt;1$，则分类正确，$x_i$在间隔边界与分离超平面之间；</li>
 <li>$\xi_i=1$，则$x_i$在分离超平面上；</li>
