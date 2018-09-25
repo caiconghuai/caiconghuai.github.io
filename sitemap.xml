@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://conghuai.me/2018/04/16/k-means%201-3%EF%BC%9A%E5%88%9D%E5%A7%8B%E5%8C%96%E6%96%B9%E5%BC%8F/</loc>
+    
+    <lastmod>2018-09-25T07:47:12.985Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://conghuai.me/2018/04/16/k-means%201-1%EF%BC%9A%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/</loc>
+    
+    <lastmod>2018-09-25T07:46:46.089Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://conghuai.me/2018/04/16/k-means%201-2%EF%BC%9Ak%E7%9A%84%E9%80%89%E6%8B%A9/</loc>
+    
+    <lastmod>2018-09-25T07:46:43.821Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://conghuai.me/2018/04/16/%E6%9C%80%E5%A4%A7%E7%86%B5%E6%A8%A1%E5%9E%8B%201-1%EF%BC%9A%E6%A6%82%E8%BF%B0/</loc>
     
     <lastmod>2018-09-25T07:33:04.442Z</lastmod>
@@ -103,13 +124,6 @@
     <loc>http://conghuai.me/2018/04/14/Mean-Squared-Error/</loc>
     
     <lastmod>2018-09-24T15:27:54.608Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://conghuai.me/2017/12/07/K-Means/</loc>
-    
-    <lastmod>2018-09-24T15:27:03.166Z</lastmod>
     
   </url>
   

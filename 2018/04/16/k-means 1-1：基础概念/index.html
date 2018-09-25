@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="algorithm," />
 
 
 
@@ -81,16 +81,18 @@
 
 
 
-<meta name="description" content="Algorithm/Machine Learning/Deep Learning/NLP">
-<meta property="og:type" content="website">
-<meta property="og:title" content="蔡聪怀">
-<meta property="og:url" content="http://conghuai.me/categories/机器学习/聚类算法/index.html">
+<meta name="description" content="聚类，是机器学习的任务之一。同分类算法一样，聚类算法也被广泛的应用在各个领域，如根据话题，对文章、网页和搜索结果做聚类；根据社区发现对社交网络中的用户做聚类；根据购买历史记录对消费者做聚类。和分类算法不同的是，聚类算法的样本是没有标签的，也就是说，我们并不知道样本有哪些类别，算法需要根据样本的特征，对样本进行聚类，形成不同的聚类中心点。这篇文章，主要介绍比较著名的聚类算法——K-means算法。">
+<meta name="keywords" content="algorithm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="k-means 1-1：基础概念">
+<meta property="og:url" content="http://conghuai.me/2018/04/16/k-means 1-1：基础概念/index.html">
 <meta property="og:site_name" content="蔡聪怀">
-<meta property="og:description" content="Algorithm/Machine Learning/Deep Learning/NLP">
+<meta property="og:description" content="聚类，是机器学习的任务之一。同分类算法一样，聚类算法也被广泛的应用在各个领域，如根据话题，对文章、网页和搜索结果做聚类；根据社区发现对社交网络中的用户做聚类；根据购买历史记录对消费者做聚类。和分类算法不同的是，聚类算法的样本是没有标签的，也就是说，我们并不知道样本有哪些类别，算法需要根据样本的特征，对样本进行聚类，形成不同的聚类中心点。这篇文章，主要介绍比较著名的聚类算法——K-means算法。">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-09-25T07:46:46.089Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="蔡聪怀">
-<meta name="twitter:description" content="Algorithm/Machine Learning/Deep Learning/NLP">
+<meta name="twitter:title" content="k-means 1-1：基础概念">
+<meta name="twitter:description" content="聚类，是机器学习的任务之一。同分类算法一样，聚类算法也被广泛的应用在各个领域，如根据话题，对文章、网页和搜索结果做聚类；根据社区发现对社交网络中的用户做聚类；根据购买历史记录对消费者做聚类。和分类算法不同的是，聚类算法的样本是没有标签的，也就是说，我们并不知道样本有哪些类别，算法需要根据样本的特征，对样本进行聚类，形成不同的聚类中心点。这篇文章，主要介绍比较著名的聚类算法——K-means算法。">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://conghuai.me/categories/机器学习/聚类算法/"/>
+  <link rel="canonical" href="http://conghuai.me/2018/04/16/k-means 1-1：基础概念/"/>
 
 
 
 
 
-  <title>Category: 聚类算法 | 蔡聪怀</title>
+  <title>k-means 1-1：基础概念 | 蔡聪怀</title>
   
 
 
@@ -145,7 +147,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -249,55 +251,268 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block category">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>聚类算法<small>Category</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://conghuai.me/2018/04/16/k-means 1-1：基础概念/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Conghuai Cai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="蔡聪怀">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2017/12/07/K-Means/" itemprop="url">
-              
-                <span itemprop="name">K-Means</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">k-means 1-1：基础概念</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-12-07T09:01:09+08:00"
-              content="2017-12-07" >
-          12-07
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-16T15:56:56+08:00">
+                2018-04-16
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/分类算法/" itemprop="url" rel="index">
+                    <span itemprop="name">分类算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/04/16/k-means 1-1：基础概念/" class="leancloud_visitors" data-flag-title="k-means 1-1：基础概念">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  1,042 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  4 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>聚类，是机器学习的任务之一。同分类算法一样，聚类算法也被广泛的应用在各个领域，如根据话题，对文章、网页和搜索结果做聚类；根据社区发现对社交网络中的用户做聚类；根据购买历史记录对消费者做聚类。和分类算法不同的是，聚类算法的样本是没有标签的，也就是说，我们并不知道样本有哪些类别，算法需要根据样本的特征，对样本进行聚类，形成不同的聚类中心点。这篇文章，主要介绍比较著名的聚类算法——K-means算法。</p>
+<p>首先，我们看一下基于目标来做聚类的算法定义:</p>
+<p><strong>Input</strong> : A set S of n points, also a distance/dissimilarity measure specifying the distance d(x, y) between pairs (x, y). </p>
+<p><strong>Goal</strong>: output a partition of the data</p>
+<p>基于这个定义，选择不同的距离计算公式，有以下三种具体的算法:</p>
+<ul>
+<li><strong>k-means</strong>: find center partitions $c_1, c_2, …, c_k$ to minimize<br>$$ \sum min_{j \in\{i, …,k\}}d^2(x^i, c_j) $$</li>
+<li><strong>k-median</strong>: find center partitions $c_1, c_2, …, c_k$ to minimize<br>$$ \sum min_{j \in\{i, …,k\}}d(x^i, c_j) $$ </li>
+<li><strong>k-center</strong>: find partition to minimize the maximum radius</li>
+</ul>
+<h1 id="1-Euclidean-k-means-clustering"><a href="#1-Euclidean-k-means-clustering" class="headerlink" title="1 Euclidean k-means clustering"></a>1 Euclidean k-means clustering</h1><p>采用欧拉距离公式的k-means算法定义如下:</p>
+<p><strong>Input</strong>: A set of n datapoints $x^1, x^2, …, x^n$ in $R^d$ (target #clusters k)</p>
+<p><strong>Output</strong>: k representatives $c_1, c_2, …, c_k \in R^d$ </p>
+<p><strong>Objective</strong>: choose $c_1, c_2, …, c_k \in R^d$ to minimize<br>$$ \sum min_{j \in \{1,…,k\}}||x^i - c_j||^2 $$</p>
+<p>求解该算法的最优解是一个NP难的问题，所有我们没有办法获得最优解，当然，当k=1或d=1这种特殊情况下，是可以获得最优解，有兴趣的可以自行推导一下， 这里不在赘述，这里我们主要介绍Lloyd’s method[1]，该方法的核心算法如下:</p>
+<p><strong>Input</strong>: A set of n datapoints $x^1, x^2, …, x^n$ in $R^d$</p>
+<p><strong>Initialize</strong> centers $c_1, c_2, …, c_k \in R^d$ and clusters $C_1, C_2, …, C_k$ in any way.</p>
+<p><strong>Repeat</strong> until there is no further change in the cost.</p>
+<ol>
+<li>For each j: $C_j \to \{x \in S\ whose\ closest\ center\ is\ c_j\}$</li>
+<li>For each j: $c_j \to \text{mean of }C_j$</li>
+</ol>
+<p>对于该算法，难度不是特别大，最重要的地方在Repeat中的1，2两个步骤，其中，步骤1将固定住聚类中心$c_1, c_2, …, c_k$，更新聚类集$C_1, C_2, …, C_k$。步骤2固定住聚类集$C_1, C_2, …, C_k$，更新聚类中心$c_1, c_2, …, c_k$（本文用大写字符表示集合，这里用C指聚类簇；用小写字符表示单个点，这里用c指聚类中心。在本人的其他博文中，也会采用这种表述方式）。</p>
+<p>大部分学习k-means算法的人理解了步骤1和步骤2就觉得已经理解了k-means了，其实不然，先不说k-means中比较重要的聚类中心的初始化问题，任何一个机器学习算法，它要是有效的，必须证明其可收敛，也需要给出其时间复杂度和空间复杂度。</p>
+<h1 id="2-Converges"><a href="#2-Converges" class="headerlink" title="2 Converges"></a>2 Converges</h1><ul>
+<li>目标函数的值在每一轮的迭代都会降低，这个特性由算法中步骤1和步骤2保证，因为对于每个样本点，我们每次都是选择最接近的聚类中心；而且，在每个聚类簇里，我们选择平均值作为其聚类中心。</li>
+<li>目标函数有最小值0。</li>
+</ul>
+<p>由于目标函数有最小值，而且在每一轮中都是值都是减少的，所有算法必然会收敛。</p>
+<h1 id="3-Running-Time"><a href="#3-Running-Time" class="headerlink" title="3 Running Time"></a>3 Running Time</h1><ul>
+<li>O(nkd)  n为样本数 k为聚类中心数 d为维度</li>
+</ul>
+<p>k-means算法由于其简单、易理解而被广泛使用。但是，该解法有三个问题：</p>
+<ol>
+<li>算法本身效率不高，运行时间长；</li>
+<li>对初始化敏感，不同的初始化方式会导致不同的聚类结果；</li>
+<li>需要预先给出聚类个数，这通常不容易得到。</li>
+</ol>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ol>
+<li>Lloyd, Stuart P. Least squares quantization in PCM[J]. IEEE Transactions on Information Theory, 1982, 28(2):129-137.</li>
+<li>Arthur D, Vassilvitskii S. k-means++:the advantages of careful seeding[C]// Eighteenth Acm-Siam Symposium on Discrete Algorithms. Society for Industrial and Applied Mathematics, 2007:1027-1035.</li>
+<li>Julyedu 机器学习算法班</li>
+</ol>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/algorithm/" rel="tag"># algorithm</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/16/最大熵模型 1-1：概述/" rel="next" title="最大熵模型 1-1：概述">
+                <i class="fa fa-chevron-left"></i> 最大熵模型 1-1：概述
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/18/Optimization-for-Machine-Learning/" rel="prev" title="Optimization Summary">
+                Optimization Summary <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -305,6 +520,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -325,8 +544,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -345,7 +573,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -425,6 +653,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Euclidean-k-means-clustering"><span class="nav-number">1.</span> <span class="nav-text">1 Euclidean k-means clustering</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Converges"><span class="nav-number">2.</span> <span class="nav-text">2 Converges</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Running-Time"><span class="nav-number">3.</span> <span class="nav-text">3 Running Time</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">3.1.</span> <span class="nav-text">References</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -565,6 +809,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
