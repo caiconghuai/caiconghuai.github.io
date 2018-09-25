@@ -97,7 +97,7 @@
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-21-074030.jpg">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-21-74031.jpg">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-21-074031.jpg">
-<meta property="og:updated_time" content="2018-09-25T03:37:01.252Z">
+<meta property="og:updated_time" content="2018-09-25T03:46:25.701Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="支持向量机 1-3：非线性支持向量机">
 <meta name="twitter:description" content="非线性支持向量机与核函数对解线性分类问题，线性分类支持向量机是一种非常有效的方法。但是，有时候分类问题是非线性的，这时可以使用非线性支持向量机。其主要特点是利用核技巧。 核技巧 如图所示的数据集，其理想的分界应该是一个“圆圈”而不是一条线（超平面）。如果用$X_1$和$X_2$来表示这个二维平面的两个坐标的话，一条二次曲线的方差可以写成主要的形式 $$a_1X_1+a_2X_1^2+a_3X_2">
@@ -447,10 +447,10 @@
 <p>这一定义在构造核函数时很有用，但对于一个具体函数$K(x,z)$来说，检验它是否为正定核函数并不容易，因为要求对任意有限输入集$\{x_1,x_2,…,x_m\}$验证$K$对应的$Gram$矩阵是否为半正定的。</p>
 <h3 id="多项式核函数"><a href="#多项式核函数" class="headerlink" title="多项式核函数"></a>多项式核函数</h3><p>$$K(x,z)=(x\cdot z+1)^p$$</p>
 <p>对应的支持向量机是一个$p$次多项式分类器，再此情形下，分类决策函数变为</p>
-<p>$$f(x)=sign(\sum_{i=1}^Na_i^<em>y_i(x_i\cdot x+1)^p+b^</em>)$$</p>
+<p>$$f(x)=sign(\sum_{i=1}^Na_i^\<em> y_i(x_i\cdot x+1)^p+b^\</em> )$$</p>
 <h3 id="高斯核函数"><a href="#高斯核函数" class="headerlink" title="高斯核函数"></a>高斯核函数</h3><p>$$K(x,z)=exp(-\frac{||x-z||^2}{2\sigma^2})$$</p>
 <p>对应的支持向量机是高斯径向基函数(radial basis function)分类器，在此情形下，分类决策函数变为</p>
-<p>$$f(x) = sign(\sum_{i=1}^Na_i^<em>y_iexp(-\frac{||x-z||^2}{2\sigma^2})+b^</em>)$$</p>
+<p>$$f(x) = sign(\sum_{i=1}^Na_i^\<em> y_iexp(-\frac{||x-z||^2}{2\sigma^2})+b^\</em> )$$</p>
 <h3 id="核函数选择"><a href="#核函数选择" class="headerlink" title="核函数选择"></a>核函数选择</h3><table>
 <thead>
 <tr>
