@@ -89,13 +89,13 @@
 <meta property="og:site_name" content="简单 专注">
 <meta property="og:description" content="线性支持向量机与软间隔最大化线性支持向量机线性可分问题的支持向量机学习方法，对线性不可分训练数据是不适用的，因为这时上述方法中的不等式约束并不能都成立。怎么才能将它扩展到线性不可分问题呢？这就需要修改硬间隔最大化，使其成为软间隔最大化。 线性不可分意味着某些样本点$(x_i,y_i)$不能满足函数间隔大于等于1的约束条件。为了解决这个问题，可以对每个样本点$(x_i,y_i)$引进一个松弛变量$\">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-20-031530.jpg">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-20-031533.jpg">
-<meta property="og:updated_time" content="2018-09-25T03:50:11.655Z">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-20-031530.jpg">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-20-031533.jpg">
+<meta property="og:updated_time" content="2018-11-22T06:15:45.008Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="支持向量机 1-2：线性支持向量机">
 <meta name="twitter:description" content="线性支持向量机与软间隔最大化线性支持向量机线性可分问题的支持向量机学习方法，对线性不可分训练数据是不适用的，因为这时上述方法中的不等式约束并不能都成立。怎么才能将它扩展到线性不可分问题呢？这就需要修改硬间隔最大化，使其成为软间隔最大化。 线性不可分意味着某些样本点$(x_i,y_i)$不能满足函数间隔大于等于1的约束条件。为了解决这个问题，可以对每个样本点$(x_i,y_i)$引进一个松弛变量$\">
-<meta name="twitter:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-20-031530.jpg">
+<meta name="twitter:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-20-031530.jpg">
 
 
 
@@ -458,7 +458,7 @@
 <p>$$w^\ast =\sum_{i=1}^N\alpha_i^\ast y_ix_i$$</p>
 <p>$$b^\ast =y_j-\sum_{i=1}^Ny_i\alpha_i^\ast (x_i\cdot x_j)$$</p>
 <p>在线性不可分的情况下，将对偶问题的解$\alpha^\ast =(\alpha_1^\ast ,\alpha_2^\ast ,…,\alpha_N^\ast )^T$中对应于$\alpha_i^\ast &gt;0$的样本点$(x_i,y_i)$的实例$x_i$称为支持向量（软间隔的支持向量），这时的支持向量要比线性可分时的情况复杂一些</p>
-<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-20-031530.jpg" alt=""></p>
+<p><img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-20-031530.jpg" alt=""></p>
 <p>软间隔的支持向量$x_i$或者在间隔边界上，或者在间隔边界与分离超平面之间，或者在分离超平面误分一侧。</p>
 <p>考虑两个KKT条件</p>
 <blockquote>
@@ -487,7 +487,7 @@
 <p>$$\begin{aligned} \xi_n &amp;= max(1-y_n(w^Tz_n+b),0) \\  &amp;= [1-y_i(w\cdot x_i+b)]_+  \end{aligned}$$</p>
 </blockquote>
 <p>严格证明</p>
-<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-20-031533.jpg" alt="|center|"></p>
+<p><img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-20-031533.jpg" alt="|center|"></p>
 <p>所以，线性支持向量机学习等价于最小化二阶范数正则化的合页函数。</p>
 
       

@@ -89,12 +89,12 @@
 <meta property="og:site_name" content="简单 专注">
 <meta property="og:description" content="函数特性在机器学习中，hinge loss是一种损失函数，它通常用于”maximum-margin”的分类任务中，如支持向量机。数学表达式为： $$L(y)=max(0,1-\hat{y}y)$$ 其中$\hat{y}$表示预测输出，通常都是软结果（就是说输出不是0，1这种，可能是0.87。），$y$表示正确的类别。  如果$\hat{y}y&amp;lt;1$，则损失为：$1-\hat{y}y$ 如果$">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-10-065844.jpg">
-<meta property="og:updated_time" content="2018-09-24T15:25:55.450Z">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-10-065844.jpg">
+<meta property="og:updated_time" content="2018-11-22T06:15:44.995Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="损失函数 1-1：Hinge损失">
 <meta name="twitter:description" content="函数特性在机器学习中，hinge loss是一种损失函数，它通常用于”maximum-margin”的分类任务中，如支持向量机。数学表达式为： $$L(y)=max(0,1-\hat{y}y)$$ 其中$\hat{y}$表示预测输出，通常都是软结果（就是说输出不是0，1这种，可能是0.87。），$y$表示正确的类别。  如果$\hat{y}y&amp;lt;1$，则损失为：$1-\hat{y}y$ 如果$">
-<meta name="twitter:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-10-065844.jpg">
+<meta name="twitter:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-10-065844.jpg">
 
 
 
@@ -417,7 +417,7 @@
 <li>如果$\hat{y}y&gt;=1$，则损失为：0</li>
 </ul>
 <p>其函数图像如下，与0-1损失对比：</p>
-<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-10-065844.jpg" alt="Hinge_loss_vs_zero_one_loss.svg"></p>
+<p><img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-10-065844.jpg" alt="Hinge_loss_vs_zero_one_loss.svg"></p>
 <h1 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h1><p>以支持向量机为例，其模型为：$\hat{y}=w\cdot x$，如果用hinge损失，其求导结果如下：</p>
 <p>$$\begin{split}\frac{\partial L}{\partial w_i}=\begin{cases} -y\cdot x_i, &amp; \text{if $\hat{y}y&lt;1$} \\ 0, &amp; \text{otherwise}\end{cases}\end{split}$$</p>
 <h1 id="变种"><a href="#变种" class="headerlink" title="变种"></a>变种</h1><p>实际应用中，一方面很多时候我们的y的值域并不是[-1,1]，比如我们可能更希望y更接近于一个概率，即其值域最好是[0,1]。另一方面，很多时候我们希望训练的是两个样本之间的相似关系，而非样本的整体分类，所以很多时候我们会用下面的公式： </p>

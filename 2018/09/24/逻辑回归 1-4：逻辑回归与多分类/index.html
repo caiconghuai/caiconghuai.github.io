@@ -89,17 +89,17 @@
 <meta property="og:site_name" content="简单 专注">
 <meta property="og:description" content="1 逻辑回归与多分类我们已经知道，普通的logistic回归只能针对二分类(Binary Classification)问题，要想实现多个类别的分类，我们必须要改进logistic回归，让其适应多分类问题。关于这种改进，有两种方式可以做到。  第一种方式是直接根据每个类别，都建立一个二分类器，带有这个类别的样本标记为1，带有其他类别的样本标记为0。假如我们有k个类别，最后我们就得到了k个针对不同标">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-08-05-071841.png">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-08-05-072523.jpg">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-08-05-072827.jpg">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-08-05-072908.jpg">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-08-05-073000.jpg">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-08-05-073043.jpg">
-<meta property="og:updated_time" content="2018-09-24T15:20:46.444Z">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-08-05-071841.png">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-08-05-072523.jpg">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-08-05-072827.jpg">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-08-05-072908.jpg">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-08-05-073000.jpg">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-08-05-073043.jpg">
+<meta property="og:updated_time" content="2018-11-22T06:15:45.003Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="逻辑回归 1-4：逻辑回归与多分类">
 <meta name="twitter:description" content="1 逻辑回归与多分类我们已经知道，普通的logistic回归只能针对二分类(Binary Classification)问题，要想实现多个类别的分类，我们必须要改进logistic回归，让其适应多分类问题。关于这种改进，有两种方式可以做到。  第一种方式是直接根据每个类别，都建立一个二分类器，带有这个类别的样本标记为1，带有其他类别的样本标记为0。假如我们有k个类别，最后我们就得到了k个针对不同标">
-<meta name="twitter:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-08-05-071841.png">
+<meta name="twitter:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-08-05-071841.png">
 
 
 
@@ -421,18 +421,18 @@
 <li><p>第二种方式是修改logistic回归的损失函数，让其适应多分类问题。这个损失函数不再笼统地只考虑二分类非1就0的损失，而是具体考虑每个样本标记的损失。这种方法叫做<strong>softmax</strong>回归，即logistic回归的多分类版本。</p>
 </li>
 </ol>
-<h1 id="2-ovr"><a href="#2-ovr" class="headerlink" title="2 ovr"></a>2 ovr</h1><p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-08-05-071841.png" alt="|center|500x300"></p>
+<h1 id="2-ovr"><a href="#2-ovr" class="headerlink" title="2 ovr"></a>2 ovr</h1><p><img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-08-05-071841.png" alt="|center|500x300"></p>
 <p>对于二分类问题，我们只需要一个分类器即可，但是对于多分类问题，我们需要多个分类器$h_1, h_2, …, h_k$，其中$h_c$表示一个二分类模型，其判断样本$x$属于第$c$类的概率值。<br>对于$h_c$的训练，我们挑选出带有标记为$c$的样本标记为1，将剩下的不带标记$c$的样本标记为0。针对每个分类器，都按上述步骤构造训练集进行训练。<br>针对每一个测试样本，我们需要找到这k个分类函数输出值最大的那一个，即为测试样本的标记</p>
 <p>$$argmax_c h_c(x) \text{  $c=1,2,…,k$}$$</p>
 <h1 id="3-softmax"><a href="#3-softmax" class="headerlink" title="3 softmax"></a>3 softmax</h1><p>该模型将逻辑回归推广到分类问题，其中类标签y可以采用两个以上的可能值。这对于诸如MNIST数字分类之类的问题将是有用的，其中目标是区分10个不同的数字。Softmax回归是一种监督学习算法，但我们稍后会将其与我们的深度学习/无监督特征学习方法结合使用。<br>在softmax回归设置中，我们对多类分类感兴趣（而不是仅对二元分类），所以<code>y</code>可以取<code>k</code>个不同的取值。因此，在我们的训练集$\{(x^{(1)}, y^{(1)}), …,(x^{(m)}, y^{(m)})\}$，其中$y^{(i)}\in \{1,2,…,k\}$。<br>给定测试输入x，我们希望我们的模型估计每个类别的概率。因此，我们的模型将输出k维向量（其元素总和为1），给出我们的k个类别的估计概率。具体地说，我们的假设$h_\theta(x)$采用以下形式：</p>
-<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-08-05-072523.jpg" alt="|center|"></p>
+<p><img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-08-05-072523.jpg" alt="|center|"></p>
 <p>其中，$\theta_1, \theta_2,…,\theta_k \in R^{n+1}$是模型的参数，而$\frac{1}{\sum_{j=1}^ke^{\theta_j^Tx^{(i)}}}$是归一化项。<br>为方便起见，我们还会向量法来表示模型的所有参数。当你实现softmax回归时，将θ表示为通过堆叠$\theta_1, \theta_2,…,\theta_k$成行获得的k-by（n + 1）矩阵通常很方便，这样</p>
-<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-08-05-072827.jpg" alt="|center|"></p>
-<h2 id="3-1-损失函数"><a href="#3-1-损失函数" class="headerlink" title="3.1 损失函数"></a>3.1 损失函数</h2><p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-08-05-072908.jpg" alt="|center|"></p>
+<p><img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-08-05-072827.jpg" alt="|center|"></p>
+<h2 id="3-1-损失函数"><a href="#3-1-损失函数" class="headerlink" title="3.1 损失函数"></a>3.1 损失函数</h2><p><img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-08-05-072908.jpg" alt="|center|"></p>
 <p>求导后，可得</p>
-<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-08-05-073000.jpg" alt="|center|"></p>
+<p><img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-08-05-073000.jpg" alt="|center|"></p>
 <p>更新参数</p>
-<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-08-05-073043.jpg" alt="|center|"></p>
+<p><img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-08-05-073043.jpg" alt="|center|"></p>
 <h1 id="4-ovr-vs-softmax"><a href="#4-ovr-vs-softmax" class="headerlink" title="4 ovr vs. softmax"></a>4 ovr vs. softmax</h1><p>假设您正在处理音乐分类应用程序，并且您正在尝试识别k种类型的音乐。您应该使用softmax分类器，还是应该使用逻辑回归构建k个单独的二元分类器？这取决于这四个类是否<strong>相互排斥</strong>。例如，如果您的四个类是经典，乡村，摇滚和爵士乐，那么假设您的每个训练样例都标有这四个类别标签中的一个，那么您应该构建一个k = 4的softmax分类器。（如果有’还有一些不属于上述四个类的例子，那么你可以在softmax回归中设置k = 5，并且还有第五个，“以上都不是”类。）但是，如果你的类别是has_vocals，舞蹈，配乐，流行音乐，那么这些课程<strong>并不相互排斥</strong>;例如，可以有一段来自音轨的流行音乐，另外还有人声。在这种情况下，构建4个二元逻辑回归分类器更合适。这样，对于每个新的音乐作品，<strong>您的算法可以单独决定它是否属于四个类别中的每一个</strong>。现在，考虑一个计算机视觉示例，您尝试将图像分为三个不同的类。（i）假设您的课程是indoor_scene，outdoor_urban_scene和outdoor_wilderness_scene。你会使用sofmax回归还是三个逻辑回归分类器？（ii）现在假设你的课程是indoor_scene，black_and_white_image和image_has_people。您会使用softmax回归或多重逻辑回归分类器吗？在第一种情况下，类是互斥的，因此softmax回归分类器是合适的。在第二种情况下，构建三个单独的逻辑回归分类器更为合适。<br>总结就是，如果类别之间是互斥的，那么用<strong>softmax</strong>会比较合适，如果类别之间不是互斥的，用<strong>ovr</strong>比较合适。</p>
 
       

@@ -89,13 +89,13 @@
 <meta property="og:site_name" content="简单 专注">
 <meta property="og:description" content="损失函数是用来衡量模型好坏的一个标准，在机器学习里，我们通常希望模型有比较小的loss，那么该如何选择我们的损失函数呢？最小化负的似然函数，借鉴了统计学的思想，是一种常见的损失函数。 Nagative Maximum Likehood首先，假设我们有一堆的样本点：$D={(x_1,-1),(x_2,1),…,(x_N,-1)}$，我们希望我们训练出来的模型能够准确预测$x_i$的类别。通常来说，我">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-08-085532.jpg">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-08-085535.jpg">
-<meta property="og:updated_time" content="2018-09-24T15:28:16.204Z">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-08-085532.jpg">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-08-085535.jpg">
+<meta property="og:updated_time" content="2018-11-22T06:15:44.823Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Negative Maximum Likehood Loss Function">
 <meta name="twitter:description" content="损失函数是用来衡量模型好坏的一个标准，在机器学习里，我们通常希望模型有比较小的loss，那么该如何选择我们的损失函数呢？最小化负的似然函数，借鉴了统计学的思想，是一种常见的损失函数。 Nagative Maximum Likehood首先，假设我们有一堆的样本点：$D={(x_1,-1),(x_2,1),…,(x_N,-1)}$，我们希望我们训练出来的模型能够准确预测$x_i$的类别。通常来说，我">
-<meta name="twitter:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-08-085532.jpg">
+<meta name="twitter:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-08-085532.jpg">
 
 
 
@@ -429,9 +429,9 @@
 <p>$$L=h_k(y_1x_1)\cdot h_k(y_2x_2)\cdot …\cdot h_k(y_Nx_N)=\prod_{n=1}^Nh(y_nx_n)$$</p>
 <h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><p>对上述的似然函数取负数，再取log，可以得到最终的负对数似然损失函数：</p>
 <p>$$MLE = \frac{1}{N}\sum_{n=1}^N-ln\theta(y_nw^Tx_n)=\frac{1}{N}\sum_{n=1}^Nln(1+e^{-y_nw^Tx_n})$$</p>
-<h2 id="求导"><a href="#求导" class="headerlink" title="求导"></a>求导</h2><p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-08-085532.jpg" alt="Screen Shot 2018-04-08 at 16.55.05"></p>
+<h2 id="求导"><a href="#求导" class="headerlink" title="求导"></a>求导</h2><p><img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-08-085532.jpg" alt="Screen Shot 2018-04-08 at 16.55.05"></p>
 <h1 id="sigmoid-function"><a href="#sigmoid-function" class="headerlink" title="sigmoid function"></a>sigmoid function</h1><p>我们通常会选择<code>sigmoid function</code>当做$h$。</p>
-<h2 id="函数特性"><a href="#函数特性" class="headerlink" title="函数特性"></a>函数特性</h2><p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-08-085535.jpg" alt="Screen Shot 2018-04-08 at 16.40.42"></p>
+<h2 id="函数特性"><a href="#函数特性" class="headerlink" title="函数特性"></a>函数特性</h2><p><img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-08-085535.jpg" alt="Screen Shot 2018-04-08 at 16.40.42"></p>
 <p>$$\theta(s)=\frac{e^s}{1+e^s}=\frac{1}{1+e^{-s}}$$</p>
 <ul>
 <li>$\theta(负无穷)$=0；</li>

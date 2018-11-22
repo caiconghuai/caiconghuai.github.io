@@ -89,17 +89,17 @@
 <meta property="og:site_name" content="简单 专注">
 <meta property="og:description" content="决策树模型呈树形结构，在分类问题中，表示基于特征对实例进行分类的过程。它可以认为是if-then规则的集合，也可以认为是定义在特征空间与类空间上的条件概率分布。其主要优点是模型具有可读性，分类速度快，学习时，利用训练数据，根据损失函数最小化的原则建立决策树模型。决策树学习通常包括3个步骤：特征选择、决策树的生成和决策树的修剪。 决策树介绍通俗来说，决策树分类的思想类似于找对象，先想象一个女孩的母亲">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-22-160930.jpg">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-22-160935.jpg">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-22-160936.jpg">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-22-160934.jpg">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-22-160938.jpg">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-05-22-160930.jpg">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-05-22-160935.jpg">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-05-22-160936.jpg">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-05-22-160934.jpg">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-05-22-160938.jpg">
 <meta property="og:image" content="http://scikit-learn.org/stable/_images/sphx_glr_plot_tree_regression_0011.png">
-<meta property="og:updated_time" content="2018-09-24T15:24:53.604Z">
+<meta property="og:updated_time" content="2018-11-22T06:15:44.994Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="决策树 1-1：概述">
 <meta name="twitter:description" content="决策树模型呈树形结构，在分类问题中，表示基于特征对实例进行分类的过程。它可以认为是if-then规则的集合，也可以认为是定义在特征空间与类空间上的条件概率分布。其主要优点是模型具有可读性，分类速度快，学习时，利用训练数据，根据损失函数最小化的原则建立决策树模型。决策树学习通常包括3个步骤：特征选择、决策树的生成和决策树的修剪。 决策树介绍通俗来说，决策树分类的思想类似于找对象，先想象一个女孩的母亲">
-<meta name="twitter:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-22-160930.jpg">
+<meta name="twitter:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-05-22-160930.jpg">
 
 
 
@@ -426,7 +426,7 @@
 <p>母亲：是，在税务局上班呢。</p>
 <p>女儿：那好，我去见见。</p>
 <p>这个女孩的决策过程就是典型的分类树决策。相当于通过年龄、长相、收入和是否公务员将男人分为两个类别：见或不见。我们可以将上面的决策过程抽象成一颗决策树:</p>
-<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-05-22-160930.jpg" alt="1_3"></p>
+<p><img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-05-22-160930.jpg" alt="1_3"></p>
 <p>上图完整表达了这个女孩决定是否见一个约会对象的策略， 其中绿色节点表示判断条件，橙色节点表示决策过程，箭头表示在一个判断条件在不同情况下的决策路径，途中红色表示了上面例子中女孩的决策过程。有了上面的直观的认识，我们可以正式定义决策树：</p>
 <p>决策树是一个树结构。其每个非叶节点表示一个特征属性上的测试，每个分支代表这个特征属性在某个值域上的输出，而每个叶节点存放一个类别。使用决策树进行决策的过程就是从根节点开始，测试待分类项中相应的特征属性，并按照其值选择输出分支，直到到达叶子节点，将叶子节点存放的类别作为决策结果。</p>
 <p>不同于贝叶斯算法，决策树的构造过程不依赖领域知识，它使用属性选择度量来选择将元组最好的划分成不同的属性。所谓决策树的构造就是进行属性选择度量确定各个特征属性之间的拓扑结构。</p>
@@ -558,7 +558,7 @@
 <h2 id="决策树与条件概率分布"><a href="#决策树与条件概率分布" class="headerlink" title="决策树与条件概率分布"></a>决策树与条件概率分布</h2><p>决策树还表示给定特征条件下类的概率分布，这一条件概率分布定义在特征空间的一个划分上，将特征空间划分为互不相交的单元或区域，并在每个单元定义一个类的概率分布就构成了一个条件概率分布。决策树所表示的条件概率分布由各个单元给定条件下类的条件概率分布组成。假设X为表示特征的随机变量，Y为表示类的随机变量，那么这个条件概率分布可以表示为$P(Y|X)$，X取值于给定划分下单元的集合，Y取值于类的集合。各叶节点上的条件概率往往偏向某一个类，即属于某一类的概率较大。决策树分类时将该结点的实例强行分到条件概率大的那一类去。</p>
 <h2 id="决策树的学习"><a href="#决策树的学习" class="headerlink" title="决策树的学习"></a>决策树的学习</h2><p>决策树学习的算法通常是一个递归地选择最优特征，并根据该特征对训练数据进行分割，使得对各个子数据集有一个最好的分类的过程，这一个过程对应着对特征空间的划分，也对应着决策树的构建。开始，构建根结点，将所有训练数据都放在根节点，选择一个最优特征，按照这一特征训练数据集分割成子集，使得各个子集有一个在当前条件下最好的分类。如果这些子集已经能够被基本正确分类，那么构建叶结点，并将这些子集分到对应的叶结点中取；如果还有子集不能被基本正确分类，那么就对这些子集选择新的最优特征，继续对其进行分割，构建相应的结点，如此递归地进行下去，直至所有训练数据子集被基本正确分类，或者没有合适的特征为止。</p>
 <h1 id="特征选择"><a href="#特征选择" class="headerlink" title="特征选择"></a>特征选择</h1><p>特征选择在于选取对训练数据具有分类能力的特征，这样可以提高决策树学习的效率。给出例子为如下</p>
-<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-05-22-160935.jpg" alt="Screen Shot 2018-05-19 at 15.33.07"></p>
+<p><img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-05-22-160935.jpg" alt="Screen Shot 2018-05-19 at 15.33.07"></p>
 <h2 id="熵"><a href="#熵" class="headerlink" title="熵"></a>熵</h2><p>在信息论与概率统计中，熵是表示随机变量不确定性的度量，设$X$是一个取有限个值的离散随机变量，其概率分布为：</p>
 <p>$$P(X = x_i)=p_i,i=1,2,…,n$$</p>
 <p>则随机变量$X$的熵定义为</p>
@@ -637,10 +637,10 @@
 <p>$$min_{j,s}[min_{c_1}\sum_{x_1\in R_1(j,s)}(y_i-c_1)^2+min_{c_2}\sum_{x_i\in R_2(j,s)}(y_i-c_2)^2]$$</p>
 <p>对固定输入变量$j$可以找到最优切分点$s$：</p>
 <p>$$\hat{c_1}=ave(y_i|x_i\in R(j,s))\text{ 和 } \hat{c_2}=ave(y_i|x_i\in R_2(j,s))$$</p>
-<p>遍历所有的输入变量，找到最优的切分变量$j$，构成一个对(j,s)，依次将输入空间划分为两个区域。<img src="http://p6sh0jwf6.bkt.clouddn.com/2018-05-22-160936.jpg" alt="回归树"></p>
-<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-05-22-160934.jpg" alt="生成"></p>
+<p>遍历所有的输入变量，找到最优的切分变量$j$，构成一个对(j,s)，依次将输入空间划分为两个区域。<img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-05-22-160936.jpg" alt="回归树"></p>
+<p><img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-05-22-160934.jpg" alt="生成"></p>
 <h3 id="分类树的生成"><a href="#分类树的生成" class="headerlink" title="分类树的生成"></a>分类树的生成</h3><p>用基尼指数选择最优特征，同时决定该特征的最优二值切分点。</p>
-<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-05-22-160938.jpg" alt="分类树"></p>
+<p><img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-05-22-160938.jpg" alt="分类树"></p>
 <h2 id="剪枝"><a href="#剪枝" class="headerlink" title="剪枝"></a>剪枝</h2><p>决策树为什么要剪枝？原因是避免决策树过拟合样本。前面的算法生产的决策树非常详细并且庞大，每个属性都被详细地加以考虑，决策树的树叶节点所覆盖的训练样本都是纯的，因此用这个决策树来对训练样本进行分类的话，你会发现对于训练样本而言，这个树表现完好，误差率极地且能够正确的对训练样本集中的样本进行分类。但是，对于测试数据的表现就没有想象的那么好，或者极差，这就是所谓的过拟合问题。</p>
 <p>现在的问题在于，如何在原生的过拟合决策树的基础上，生成简化版的决策树？可以通过剪枝的方法来简化过拟合的决策树。</p>
 <p>剪枝可以分为两种：预剪枝和后剪枝。</p>

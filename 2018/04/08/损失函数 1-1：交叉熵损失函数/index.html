@@ -89,13 +89,13 @@
 <meta property="og:site_name" content="简单 专注">
 <meta property="og:description" content="这篇文章中，讨论的Cross Entropy损失函数常用于分类问题中，但是为什么它会在分类问题中这么有效呢？我们先从一个简单的分类例子来入手。 预测政治倾向例子我们希望根据一个人的年龄、性别、年收入等相互独立的特征，来预测一个人的政治倾向，有三种可预测结果：民主党、共和党、其他党。假设我们当前有两个模型，这两个模型最后输出都是通过softmax的方式得到对于每个预测结果的概率： 模型1：    C">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-08-024353.jpg">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-08-064410.jpg">
-<meta property="og:updated_time" content="2018-09-24T15:24:15.412Z">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-08-024353.jpg">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-08-064410.jpg">
+<meta property="og:updated_time" content="2018-11-22T06:15:44.999Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="损失函数 1-1：交叉熵损失函数">
 <meta name="twitter:description" content="这篇文章中，讨论的Cross Entropy损失函数常用于分类问题中，但是为什么它会在分类问题中这么有效呢？我们先从一个简单的分类例子来入手。 预测政治倾向例子我们希望根据一个人的年龄、性别、年收入等相互独立的特征，来预测一个人的政治倾向，有三种可预测结果：民主党、共和党、其他党。假设我们当前有两个模型，这两个模型最后输出都是通过softmax的方式得到对于每个预测结果的概率： 模型1：    C">
-<meta name="twitter:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-08-024353.jpg">
+<meta name="twitter:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-08-024353.jpg">
 
 
 
@@ -487,7 +487,7 @@
 <li>$y$——指示变量（0或1）,如果该类别和样本观测到的类别相同就是1，否则是0；</li>
 <li>$p$——对于观测样本属于类别c的预测概率。</li>
 </ul>
-<h2 id="函数图像"><a href="#函数图像" class="headerlink" title="函数图像"></a>函数图像</h2><p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-08-024353.jpg" alt="cross_entropy"></p>
+<h2 id="函数图像"><a href="#函数图像" class="headerlink" title="函数图像"></a>函数图像</h2><p><img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-08-024353.jpg" alt="cross_entropy"></p>
 <p>可以看出，该函数是凸函数，求导时能够得到全局最优值。</p>
 <h2 id="求导"><a href="#求导" class="headerlink" title="求导"></a>求导</h2><p>我们用神经网络最后一层输出的情况，来看一眼整个模型预测及获得损失的的流程：</p>
 <ol>
@@ -495,7 +495,7 @@
 <li>该得分经过softmax转换为概率输出；</li>
 <li>模型预测的类别概率输出与真实类别的one hot形式进行cross entropy损失函数的计算。</li>
 </ol>
-<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-08-064410.jpg" alt="Screen Shot 2018-04-08 at 11.56.55"></p>
+<p><img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-08-064410.jpg" alt="Screen Shot 2018-04-08 at 11.56.55"></p>
 <p>下面，我们以二分类的情形来推导一下整个求导公式，我们将求导分成两个过程，即拆成两项偏导的乘积。：</p>
 <p>$$\frac{\partial E}{\partial score_i}=\frac{\partial E}{\partial p_i}\cdot \frac{\partial p_i}{\partial score_i}$$</p>
 <h3 id="计算第一项：-frac-partial-E-partial-p-i"><a href="#计算第一项：-frac-partial-E-partial-p-i" class="headerlink" title="计算第一项：$\frac{\partial E}{\partial p_i}$"></a>计算第一项：$\frac{\partial E}{\partial p_i}$</h3><p>\begin{align}<br>\frac{\partial E}{\partial p_i} &amp;= \frac{\partial −(ylog(p)+(1−y)log(1−p))}{\partial p_i} \\<br> &amp;= -\frac{\partial y_ilogp_i}{\partial p_i}-\frac{\partial (1-y_i)log(1-p_i)}{\partial p_i} \\<br> &amp;= -\frac{y_i}{p_i}-[(1-y_i)\cdot \frac{1}{1-p_i}\cdot (-1)] \\<br> &amp;= -\frac{y_i}{p_i}-\frac{1-y_i}{1-p_i} \\<br>\end{align}</p>

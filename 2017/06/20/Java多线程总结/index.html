@@ -89,13 +89,13 @@
 <meta property="og:site_name" content="简单 专注">
 <meta property="og:description" content="并发基础CPU通过给每个线程分配CPU时间片来实现这个机制。时间片是CPU分配给各个线程的时间，因为时间片非常短，所以CPU通过不停地切换线程执行，让我们感觉多个线程是同时执行的。    CPU通过时间片分配算法来循环执行任务，当前任务执行一个时间片后会切换到下一个任务。但是，在切换前会保存上一个任务的状态，以便下一次切换回这个任务时，可以再加载这个任务的状态。  上下文切换需要时间和开销。 减少">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-14-162034.jpg">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-17-160954.jpg">
-<meta property="og:updated_time" content="2018-09-24T15:26:45.112Z">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-14-162034.jpg">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-17-160954.jpg">
+<meta property="og:updated_time" content="2018-11-22T06:15:44.821Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java多线程总结">
 <meta name="twitter:description" content="并发基础CPU通过给每个线程分配CPU时间片来实现这个机制。时间片是CPU分配给各个线程的时间，因为时间片非常短，所以CPU通过不停地切换线程执行，让我们感觉多个线程是同时执行的。    CPU通过时间片分配算法来循环执行任务，当前任务执行一个时间片后会切换到下一个任务。但是，在切换前会保存上一个任务的状态，以便下一次切换回这个任务时，可以再加载这个任务的状态。  上下文切换需要时间和开销。 减少">
-<meta name="twitter:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-14-162034.jpg">
+<meta name="twitter:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-14-162034.jpg">
 
 
 
@@ -519,7 +519,7 @@
 </li>
 </ul>
 <p>结合Java内存模型分析图如下:</p>
-<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-14-162034.jpg" alt=""></p>
+<p><img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-14-162034.jpg" alt=""></p>
 <p>volatile关键字可以理解为就是缓存一致性协议。保证各个线程中的缓存内容是一致的。</p>
 <h2 id="Wait-Set"><a href="#Wait-Set" class="headerlink" title="Wait Set"></a>Wait Set</h2><ul>
 <li>如果某个线程调用<strong>LOCK.wait()</strong>，那么该线程会把自己放到<strong>该锁</strong>的wait set中。 </li>
@@ -638,7 +638,7 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">compare_and_swap</span><span class="params">(<span class="keyword">int</span>* reg, <span class="keyword">int</span> oldval, <span class="keyword">int</span> newval)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  ATOMIC();</span><br><span class="line">  <span class="keyword">int</span> old_reg_val = *reg;</span><br><span class="line">  <span class="keyword">if</span> (old_reg_val == oldval)</span><br><span class="line">     *reg = newval;</span><br><span class="line">  END_ATOMIC();</span><br><span class="line">  <span class="keyword">return</span> old_reg_val;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>CAS比较与交换的伪代码可以表示为：</p>
 <p>do{<br>​       备份旧数据；<br>​       基于旧数据构造新数据；<br>}while(!CAS( 内存地址，备份的旧数据，新数据 ))  </p>
-<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-17-160954.jpg" alt="191145387966044"></p>
+<p><img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-17-160954.jpg" alt="191145387966044"></p>
 <p>（上图的解释：CPU去更新一个值，但如果想改的值不再是原来的值，操作就失败，因为很明显，有其它操作先改变了这个值。）</p>
 <p>就是指当两者进行比较时，如果相等，则证明共享数据没有被修改，替换成新值，然后继续往下运行；如果不相等，说明共享数据已经被修改，放弃已经所做的操作，然后重新执行刚才的操作。容易看出 CAS 操作是基于共享数据不会被修改的假设，采用了类似于数据库的 commit-retry 的模式。当同步冲突出现的机会很少时，这种假设能带来较大的性能提升。</p>
 <h3 id="CAS的问题："><a href="#CAS的问题：" class="headerlink" title="CAS的问题："></a>CAS的问题：</h3><p>Some CAS-based algorithms are affected by and must handle the problem of a <a href="https://www.wikiwand.com/en/Type_I_error#False_negative_vs._false_positive" target="_blank" rel="noopener">false positive</a> match, or the <a href="https://www.wikiwand.com/en/ABA_problem" target="_blank" rel="noopener">ABA problem</a>. It is possible that between the time the old value is read and the time CAS is attempted, some other processors or threads change the memory location two or more times such that it acquires a bit pattern which matches the old value. </p>

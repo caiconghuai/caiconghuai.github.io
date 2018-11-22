@@ -89,19 +89,19 @@
 <meta property="og:site_name" content="简单 专注">
 <meta property="og:description" content="非线性支持向量机与核函数对解线性分类问题，线性分类支持向量机是一种非常有效的方法。但是，有时候分类问题是非线性的，这时可以使用非线性支持向量机。其主要特点是利用核技巧。 核技巧 如图所示的数据集，其理想的分界应该是一个“圆圈”而不是一条线（超平面）。如果用$X_1$和$X_2$来表示这个二维平面的两个坐标的话，一条二次曲线的方差可以写成主要的形式 $$a_1X_1+a_2X_1^2+a_3X_2">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-19-090106.jpg">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-21-074025.jpg">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-21-074028.jpg">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-21-74029.jpg">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-21-74026.jpg">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-21-074030.jpg">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-21-74031.jpg">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-21-074031.jpg">
-<meta property="og:updated_time" content="2018-09-25T03:54:38.093Z">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-19-090106.jpg">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-21-074025.jpg">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-21-074028.jpg">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-21-74029.jpg">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-21-74026.jpg">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-21-074030.jpg">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-21-74031.jpg">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-21-074031.jpg">
+<meta property="og:updated_time" content="2018-11-22T06:15:45.010Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="支持向量机 1-3：非线性支持向量机">
 <meta name="twitter:description" content="非线性支持向量机与核函数对解线性分类问题，线性分类支持向量机是一种非常有效的方法。但是，有时候分类问题是非线性的，这时可以使用非线性支持向量机。其主要特点是利用核技巧。 核技巧 如图所示的数据集，其理想的分界应该是一个“圆圈”而不是一条线（超平面）。如果用$X_1$和$X_2$来表示这个二维平面的两个坐标的话，一条二次曲线的方差可以写成主要的形式 $$a_1X_1+a_2X_1^2+a_3X_2">
-<meta name="twitter:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-19-090106.jpg">
+<meta name="twitter:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-19-090106.jpg">
 
 
 
@@ -416,9 +416,9 @@
       
 
       
-        <p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-19-090106.jpg" alt="|center|"></p>
+        <p><img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-19-090106.jpg" alt="|center|"></p>
 <h1 id="非线性支持向量机与核函数"><a href="#非线性支持向量机与核函数" class="headerlink" title="非线性支持向量机与核函数"></a>非线性支持向量机与核函数</h1><p>对解线性分类问题，线性分类支持向量机是一种非常有效的方法。但是，有时候分类问题是非线性的，这时可以使用非线性支持向量机。其主要特点是利用核技巧。</p>
-<h2 id="核技巧"><a href="#核技巧" class="headerlink" title="核技巧"></a>核技巧</h2><p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-21-074025.jpg" alt="|center|"></p>
+<h2 id="核技巧"><a href="#核技巧" class="headerlink" title="核技巧"></a>核技巧</h2><p><img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-21-074025.jpg" alt="|center|"></p>
 <p>如图所示的数据集，其理想的分界应该是一个“圆圈”而不是一条线（超平面）。如果用$X_1$和$X_2$来表示这个二维平面的两个坐标的话，一条二次曲线的方差可以写成主要的形式</p>
 <p>$$a_1X_1+a_2X_1^2+a_3X_2+a_4X_2^2+a_5X_1X_2+a_6=0$$</p>
 <p>注意上面的形式，如果我们构建另外一个五维的空间，其中五个坐标的值分别为$Z_1=X_1,Z_2=X_1^2,Z_3=X_2,Z_4=X_2^2,Z_5=X_1X_2$，那么显然，上面的方程在新的坐标系下可以写作</p>
@@ -486,7 +486,7 @@
 <p>中级：线性试试看，不行换高斯，卡方有奇效，绝招MKL；</p>
 <p>玩家：Kernel度量相似性，自己做啊自己做。</p>
 <h2 id="模型理解"><a href="#模型理解" class="headerlink" title="模型理解"></a>模型理解</h2><p>利用核技巧，可以将线性分类的学习方法应用到非线性分类问题中去。将线性支持向量机扩展到非线性支持向量机，只需将线性支持向量机对偶形式中的内积换成核函数。</p>
-<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-21-074028.jpg" alt="|center|"></p>
+<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><p><img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-21-074028.jpg" alt="|center|"></p>
 <h1 id="Soft-Binary-Classification"><a href="#Soft-Binary-Classification" class="headerlink" title="Soft Binary Classification"></a>Soft Binary Classification</h1><p>考虑Hinge损失函数形式的SVM目标函数</p>
 <p>$$min_{b,w}\ \ C\cdot \sum_{i=1}^Nmax(0, 1-y_i(w\cdot x_i+b))+\frac{1}{2}||w||^2$$</p>
 <p>把该目标函数与下面的形式进行对比</p>
@@ -522,7 +522,7 @@
 </tr>
 </tbody>
 </table>
-<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-21-74029.jpg" alt="|center|"></p>
+<p><img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-21-74029.jpg" alt="|center|"></p>
 <p>从上面的分析，我们可以看出来，如果我们解决了一个软间隔的SVM问题，就相当于解决了一个L2正则化的模型，反之也成立，那么我们是否可以结合两者进行处理呢？</p>
 <p>结合SVM模型和逻辑回归模型，分如下两个步骤</p>
 <ol>
@@ -556,14 +556,14 @@
 <p>我们可以使用梯度下降法求解上述表达式。求解结果为：$\beta=(\lambda I+K)^{-1}y$</p>
 <p>所以，借助核函数，我们可以很轻易的解决非线性的回归问题。</p>
 <p>比较线性回归和Kernel Ridge Regression</p>
-<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-21-74026.jpg" alt="|center|"></p>
+<p><img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-21-74026.jpg" alt="|center|"></p>
 <h2 id="Tube-Regression"><a href="#Tube-Regression" class="headerlink" title="Tube Regression"></a>Tube Regression</h2><p>在之前的线性回归模型中，我们距离的计算公式为：$|s-y|$。我们现在借助SVM的想法，设置一个间隔，如果预测值里真实值的距离在该间隔内，我们就不要计算该损失。</p>
 <p>$$err(y,s)=max(0,|s-y|-\varepsilon )$$</p>
-<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-21-074030.jpg" alt="|center|"></p>
+<p><img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-21-074030.jpg" alt="|center|"></p>
 <p>通过这样的定义，我们希望借助SVM的求解方式，来得到稀疏的$\beta$。</p>
-<h3 id="Tube-versus-Squared-Regression"><a href="#Tube-versus-Squared-Regression" class="headerlink" title="Tube versus Squared Regression"></a>Tube versus Squared Regression</h3><p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-21-74031.jpg" alt="|center|"></p>
+<h3 id="Tube-versus-Squared-Regression"><a href="#Tube-versus-Squared-Regression" class="headerlink" title="Tube versus Squared Regression"></a>Tube versus Squared Regression</h3><p><img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-21-74031.jpg" alt="|center|"></p>
 <p>模仿SVM的优化问题，我们将上述写成</p>
-<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-21-074031.jpg" alt="|center|"></p>
+<p><img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-21-074031.jpg" alt="|center|"></p>
 <h1 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h1><h2 id="sklearn-svm"><a href="#sklearn-svm" class="headerlink" title="sklearn.svm"></a>sklearn.svm</h2><h3 id="核函数"><a href="#核函数" class="headerlink" title="核函数"></a>核函数</h3><ul>
 <li>linear: $&lt;x,x’&gt;$</li>
 <li>polynomial:$(\gamma &lt;x,x’&gt;+r)^d$</li>

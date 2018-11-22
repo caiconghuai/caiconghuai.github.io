@@ -89,13 +89,13 @@
 <meta property="og:site_name" content="简单 专注">
 <meta property="og:description" content="1 表达式逻辑函数（逻辑曲线、sigmoid函数）表达式如下： $$\sigma(x)=\frac{L}{1+e^{-k(x-x_0)}}$$ 其中：  $e$是自然对数； $x_0$是sigmoid曲线的中点； $L$是曲线的最大值； $k$是曲线的坡度  其标准形式为：$L=1,k=1,x_0=0$ 标准的逻辑函数表达式如下： $$\begin{aligned} \sigma(x) &amp;amp;">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-17-040033.jpg">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-09-23-114422.png">
-<meta property="og:updated_time" content="2018-09-24T15:20:24.351Z">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-17-040033.jpg">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-09-23-114422.png">
+<meta property="og:updated_time" content="2018-11-22T06:15:44.997Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="逻辑回归 1-1：逻辑函数">
 <meta name="twitter:description" content="1 表达式逻辑函数（逻辑曲线、sigmoid函数）表达式如下： $$\sigma(x)=\frac{L}{1+e^{-k(x-x_0)}}$$ 其中：  $e$是自然对数； $x_0$是sigmoid曲线的中点； $L$是曲线的最大值； $k$是曲线的坡度  其标准形式为：$L=1,k=1,x_0=0$ 标准的逻辑函数表达式如下： $$\begin{aligned} \sigma(x) &amp;amp;">
-<meta name="twitter:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-17-040033.jpg">
+<meta name="twitter:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-17-040033.jpg">
 
 
 
@@ -422,12 +422,12 @@
 <p>其标准形式为：$L=1,k=1,x_0=0$</p>
 <p>标准的逻辑函数表达式如下：</p>
 <p>$$\begin{aligned} \sigma(x) &amp;= \frac{1}{1+e^{-x}} \\  &amp;= \frac{e^x}{1+e^x} \\  &amp;= \frac{1}{2}+\frac{1}{2}\cdot tanh(\frac{x}{2}) \end{aligned}$$</p>
-<h1 id="2-函数性质"><a href="#2-函数性质" class="headerlink" title="2 函数性质"></a>2 函数性质</h1><p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-17-040033.jpg" alt="logistics function函数图像"></p>
+<h1 id="2-函数性质"><a href="#2-函数性质" class="headerlink" title="2 函数性质"></a>2 函数性质</h1><p><img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-17-040033.jpg" alt="logistics function函数图像"></p>
 <ul>
 <li>对称性：$1-\sigma(x) = \sigma(-x)$</li>
 <li>输出值不是关于0对称的</li>
 </ul>
-<h1 id="3-导函数"><a href="#3-导函数" class="headerlink" title="3 导函数"></a>3 导函数</h1><p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-09-23-114422.png" alt=""></p>
+<h1 id="3-导函数"><a href="#3-导函数" class="headerlink" title="3 导函数"></a>3 导函数</h1><p><img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-09-23-114422.png" alt=""></p>
 <p>逻辑函数的一个优点在于其容易求导：</p>
 <p>$$\begin{aligned} \frac{d\sigma(x)}{dx} &amp;= \frac{e^x(1+e^x)-e^x\cdot e^x}{(1+e^{-x})^2} \\  &amp;= \frac{e^x}{(1+e^x)^2} \\  &amp;= \sigma(x)\cdot (1-\sigma(x)) \end{aligned}$$</p>
 <p>但是其缺点在于导函数的值域在(0,1/4)，当多个sigmoid的导数相乘的时候，会使得值越来越小，这也是梯度消失的原因。</p>

@@ -89,12 +89,12 @@
 <meta property="og:site_name" content="简单 专注">
 <meta property="og:description" content="提升方法是一种常用的统计学习方法，应用广泛且有效。在分类问题中，它通过改变训练样本的权重，学习多个分类器，并将这些分类器进行线性组合，提高分类的性能。提升方法就是从弱学习算法出发，反复学习，得到一系列弱分类器（又称为基本分类器），然后组合这些弱分类器，构成一个强分类器。大多数提升方法就是改变训练数据的概率分布，针对不同的训练数据分布调用弱学习算法学习一系列弱分类器。 这样，对提升方法来说，有两个问">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-24-080234.jpg">
-<meta property="og:updated_time" content="2018-09-25T03:27:25.961Z">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-05-24-080234.jpg">
+<meta property="og:updated_time" content="2018-11-22T06:15:44.808Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="集成学习 1-2：Adaboost">
 <meta name="twitter:description" content="提升方法是一种常用的统计学习方法，应用广泛且有效。在分类问题中，它通过改变训练样本的权重，学习多个分类器，并将这些分类器进行线性组合，提高分类的性能。提升方法就是从弱学习算法出发，反复学习，得到一系列弱分类器（又称为基本分类器），然后组合这些弱分类器，构成一个强分类器。大多数提升方法就是改变训练数据的概率分布，针对不同的训练数据分布调用弱学习算法学习一系列弱分类器。 这样，对提升方法来说，有两个问">
-<meta name="twitter:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-24-080234.jpg">
+<meta name="twitter:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-05-24-080234.jpg">
 
 
 
@@ -424,7 +424,7 @@
 <p>上式，表示的其实就是计算被$G_m(x)$模型误分类样本的权值之和。</p>
 <p>(c) 计算$G_m(x)$在最终决策中所占的系数</p>
 <p>$$\alpha_m=\frac{1}{2}log\frac{1-e_m}{e_m}$$</p>
-<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-05-24-080234.jpg" alt="Untitled"></p>
+<p><img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-05-24-080234.jpg" alt="Untitled"></p>
 <p>从图像可以看出，$e_m$越大，权重越小；$e_m$越小，权重越大。</p>
 <p>(d) 更新训练数据的权值分布：$D_{m+1}=(w_{m+1,1},…,w_{m+1,i},…,w_{m+1,N})$</p>
 <p>$$\begin{split} w_{m+1,i}=\begin{cases} \frac{w_{mi}}{Z_m}e^{-\alpha_m}, &amp; \text{ $G_m(x_i)=y_i$ } \\ \frac{w_{mi}}{Z_m}e^{\alpha_m}, &amp; \text{$G_m(x_i)\neq y_i$}\end{cases}\end{split}$$</p>

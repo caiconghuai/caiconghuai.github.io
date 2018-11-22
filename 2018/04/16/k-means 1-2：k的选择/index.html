@@ -89,13 +89,13 @@
 <meta property="og:site_name" content="简单 专注">
 <meta property="og:description" content="1 手肘法首先，计算某些k值（例如2,4,6,8等）的平方误差和（SSE）之和。SSE定义为聚类簇中每个成员与其聚类中心之间的平方距离之和。公式如下：$$SSE=∑^K_{i=1}∑_{x∈ci}dist(x,ci)2$$如果您对SSE绘制k，您将看到随着k变大，误差减小;这是因为当簇的数量增加时，它们应该更小，因此失真也更小。手肘法的想法是选择SSE突然减小的k。这会在图表中产生“肘部效应”，如">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-08-23-064107.jpg">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-08-23-064652.jpg">
-<meta property="og:updated_time" content="2018-09-25T07:46:43.821Z">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-08-23-064107.jpg">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-08-23-064652.jpg">
+<meta property="og:updated_time" content="2018-11-22T06:15:44.991Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="k-means 1-2：k的选择">
 <meta name="twitter:description" content="1 手肘法首先，计算某些k值（例如2,4,6,8等）的平方误差和（SSE）之和。SSE定义为聚类簇中每个成员与其聚类中心之间的平方距离之和。公式如下：$$SSE=∑^K_{i=1}∑_{x∈ci}dist(x,ci)2$$如果您对SSE绘制k，您将看到随着k变大，误差减小;这是因为当簇的数量增加时，它们应该更小，因此失真也更小。手肘法的想法是选择SSE突然减小的k。这会在图表中产生“肘部效应”，如">
-<meta name="twitter:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-08-23-064107.jpg">
+<meta name="twitter:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-08-23-064107.jpg">
 
 
 
@@ -411,9 +411,9 @@
 
       
         <h1 id="1-手肘法"><a href="#1-手肘法" class="headerlink" title="1 手肘法"></a>1 手肘法</h1><p>首先，计算某些k值（例如2,4,6,8等）的平方误差和（SSE）之和。SSE定义为聚类簇中每个成员与其聚类中心之间的平方距离之和。公式如下：<br>$$SSE=∑^K_{i=1}∑_{x∈ci}dist(x,ci)2$$<br>如果您对<code>SSE</code>绘制<code>k</code>，您将看到随着<code>k</code>变大，误差减小;这是因为当簇的数量增加时，它们应该更小，因此失真也更小。手肘法的想法是选择SSE<strong>突然减小</strong>的k。这会在图表中产生“肘部效应”，如下图所示：</p>
-<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-08-23-064107.jpg" alt="|center|"></p>
+<p><img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-08-23-064107.jpg" alt="|center|"></p>
 <p><code>k=6</code>是Elbow方法选择的值。考虑到Elbow方法是一种启发式方法，因此，在您的特定情况下，它可能会或可能不会很好。有时候，有一个以上的肘部，或者根本没有肘部。在这些情况下，您通常会通过评估k-means在您尝试解决的特定聚类问题的上下文中的执行情况来计算最佳k。</p>
-<h1 id="2-Gap-Statistic（间隔统计量）方法"><a href="#2-Gap-Statistic（间隔统计量）方法" class="headerlink" title="2 Gap Statistic（间隔统计量）方法"></a>2 Gap Statistic（间隔统计量）方法</h1><p>定义$D_k$和Gap Statistic公式为：<br>$$D_K=\sum_{i=1}^K\sum_{X\in C_i}|X-M_i|$$<br>$$Gap(K)=\text{E}(\log D_k)-\log D_k$$<br>这里$E(logD_k)$指的是$logD_k$的期望。这个数值通常通过<strong>蒙特卡洛</strong>模拟产生，我们在样本里所在的矩形区域中（高维的话就是立方体区域）按照均匀分布随机地产生和原始样本数一样多的随机样本，并对这个随机样本做K-Means，从而得到一个$D_K$。如此往复多次，通常20次，我们可以得到20个$logD_K$。对这20个数值求平均值，就得到了$E(logD_K)$的近似值。最终可以计算<code>Gap Statisitc</code>。而<code>Gap statistic</code>取得最大值所对应的K就是最佳的$K$。<br><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-08-23-064652.jpg" alt="|center|"><br>Gap Statistic的优点是，我们不再需要肉眼了。我们只需要找到最大gap statistic所对应的K即可。所以这种方法也适用于“批量化作业”。如果我们要做1000次聚类分析，不需要肉眼去看1000次了。所以我个人也倾向于这种方法。</p>
+<h1 id="2-Gap-Statistic（间隔统计量）方法"><a href="#2-Gap-Statistic（间隔统计量）方法" class="headerlink" title="2 Gap Statistic（间隔统计量）方法"></a>2 Gap Statistic（间隔统计量）方法</h1><p>定义$D_k$和Gap Statistic公式为：<br>$$D_K=\sum_{i=1}^K\sum_{X\in C_i}|X-M_i|$$<br>$$Gap(K)=\text{E}(\log D_k)-\log D_k$$<br>这里$E(logD_k)$指的是$logD_k$的期望。这个数值通常通过<strong>蒙特卡洛</strong>模拟产生，我们在样本里所在的矩形区域中（高维的话就是立方体区域）按照均匀分布随机地产生和原始样本数一样多的随机样本，并对这个随机样本做K-Means，从而得到一个$D_K$。如此往复多次，通常20次，我们可以得到20个$logD_K$。对这20个数值求平均值，就得到了$E(logD_K)$的近似值。最终可以计算<code>Gap Statisitc</code>。而<code>Gap statistic</code>取得最大值所对应的K就是最佳的$K$。<br><img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-08-23-064652.jpg" alt="|center|"><br>Gap Statistic的优点是，我们不再需要肉眼了。我们只需要找到最大gap statistic所对应的K即可。所以这种方法也适用于“批量化作业”。如果我们要做1000次聚类分析，不需要肉眼去看1000次了。所以我个人也倾向于这种方法。</p>
 
       
     </div>

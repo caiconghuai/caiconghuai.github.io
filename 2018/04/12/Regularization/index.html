@@ -89,17 +89,17 @@
 <meta property="og:site_name" content="简单 专注">
 <meta property="og:description" content="范数过拟合是机器学习中一个比较常见的问题，而正则化是解决模型过拟合的一种手段。我们先看一下范数的定义：  Going a bit further, we define $||x||_p$ as a “p-norm”. Given $x$, a vector with $i$ components, a p-norm is defined as: $$|| x ||_p = \left(\sum_i">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-15-114416.jpg">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-14-031232.jpg">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-14-031238.jpg">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-13-093559.jpg">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-13-093553.jpg">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-13-093556.jpg">
-<meta property="og:updated_time" content="2018-09-24T15:29:40.931Z">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-15-114416.jpg">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-14-031232.jpg">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-14-031238.jpg">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-13-093559.jpg">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-13-093553.jpg">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-13-093556.jpg">
+<meta property="og:updated_time" content="2018-11-22T06:15:44.989Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Regularization">
 <meta name="twitter:description" content="范数过拟合是机器学习中一个比较常见的问题，而正则化是解决模型过拟合的一种手段。我们先看一下范数的定义：  Going a bit further, we define $||x||_p$ as a “p-norm”. Given $x$, a vector with $i$ components, a p-norm is defined as: $$|| x ||_p = \left(\sum_i">
-<meta name="twitter:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-04-15-114416.jpg">
+<meta name="twitter:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-15-114416.jpg">
 
 
 
@@ -423,7 +423,7 @@
 <p>Another common norm is taxicab distance, which is the 1-norm:</p>
 <p>$$|| x ||_1 = \sum_i |x_i| = |x_1| + |x_2| + \ldots + |x_i|$$</p>
 <p>Taxicab distance is so-called because it emulates moving between two points as though you are moving through the streets of Manhattan in a taxi cab. Instead of measuring the distance “as the crow flies” it measures the right-angle distance between two points:</p>
-<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-15-114416.jpg" alt="1200px-Manhattan_distance.svg"></p>
+<p><img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-15-114416.jpg" alt="1200px-Manhattan_distance.svg"></p>
 </blockquote>
 <p>正则化（Regularization）是机器学习中一种常用的技术，其主要目的是控制模型复杂度，减小过拟合。最基本的正则化方法是在原目标（代价）函数 中添加惩罚项，对复杂度高的模型进行“惩罚”。其数学表达形式为：</p>
 <p>$$\tilde{J}(w;X,y)=J(w;X,y)+\alpha \Omega (w)$$</p>
@@ -481,22 +481,22 @@
 <h1 id="正则化效果理解"><a href="#正则化效果理解" class="headerlink" title="正则化效果理解"></a>正则化效果理解</h1><h2 id="直观理解"><a href="#直观理解" class="headerlink" title="直观理解"></a>直观理解</h2><p>有了正则化公式来源分析，我们现在从优化的角度来看一下正则化对目标函数的影响。考虑带约束条件的优化解释，对$l_2$正则化为：</p>
 <p>$$min_w J(w;X,y)\ s.t. ||w||_2 \leq C$$</p>
 <p>该问题的求解示意图如下：</p>
-<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-14-031232.jpg" alt="v2-7431d8a79deec5d0ab3193b6a3611b95_hd"></p>
+<p><img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-14-031232.jpg" alt="v2-7431d8a79deec5d0ab3193b6a3611b95_hd"></p>
 <p>图中椭圆为原目标函数$J(w)$的一条等高线，圆为半径$\sqrt{C}$的$l_2$范数球。由于约束条件的限制，$w$必须位于$l_2$范数球内。考虑边界上的一点$w$，图中蓝色箭头为$J(w)$在该处的梯度方向$\triangledown J(w)$，红色箭头为$l_2$范数球在该处的法线方向。由于$w$不能离开边界（否则就会违反约束条件），因为在使用梯度下降法更新$w$时，只能朝$\triangledown J(w)$在范数球上$w$处的切线方向更新，即图中的绿色箭头的方向。如此$w$将沿着边界移动，当$\triangledown J(w)$与范数球上$w$处的切线方向更新，即图中绿色箭头的方向。如果$w$将沿着边界移动，当$\triangledown J(w)$与范数球上$w$处的法线平行时，此时，$\triangledown J(w)$在切线方向的分量为0，$w$将无法继续移动，从而达到最优解$w^*$（图中红色点所示）。</p>
 <p>对于$l_1$正则化：</p>
 <p>$$min_w J(w;X,y)\ s.t. ||w||_1 \leq C$$</p>
 <p>同理，其求解示意图如下所示：</p>
-<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-14-031238.jpg" alt="v2-592216faffaa338fc792430a538afefc_hd"></p>
+<p><img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-14-031238.jpg" alt="v2-592216faffaa338fc792430a538afefc_hd"></p>
 <p>其主要差别在于$l1、l_2$范数球的形状差异。由于此时每条边界上$w$的切线和法线方向保持不变，在图中$w$一直朝着$\triangledown J(w)$的切线方向的分量沿着边界向左上移动。当$w$跨过顶点到达$w’$处时，$\triangledown J(w)$在切线方向的分量变为右上方，因而$w$将朝右上方移动。最终，$w$将稳定在顶点处，达到最优解$w^*$，此时，可以看到$w_1=0$，这也就是采用$l_1$范数会使得$w$产生稀疏性的原因。</p>
 <p>以上的分析虽然是基于二维的情况，但不难将其推广到多维度情况，其主要目的是为了直观地说明$l_1、l_2$正则化最优解的差异，以及$l_1$范数为什么会产生稀疏性。</p>
 <h1 id="正则化效果分析"><a href="#正则化效果分析" class="headerlink" title="正则化效果分析"></a>正则化效果分析</h1><h2 id="稀疏性"><a href="#稀疏性" class="headerlink" title="稀疏性"></a>稀疏性</h2><p>从以上的正则化效果理解其实已经可以看出$L1$正则化可以使得答案稀疏的效果，如果那个还不好理解，可以看下面这个例子。</p>
 <h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>L1正则化和L2正则化哪个能产生稀疏的解呢？答案是<strong>L1正则化</strong>。假设我们现在要求解模型$Ax=b$，也就是在2维空间上找到一条直线来拟合样本点。我们需要两个点才能去固定一条直线，但是，假设我们现在的训练样本中只有一个点。那么我们将得到无穷多个解。假设，该点为(10, 5)，直线为$y=a*x+b$，那么，该例子可形式化为求解模型：$b = 5 - 10*a$ 的参数。</p>
-<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-13-093559.jpg" alt="1_sMS5qc_2O6h87L_NF0B8Mw"></p>
+<p><img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-13-093559.jpg" alt="1_sMS5qc_2O6h87L_NF0B8Mw"></p>
 <p>那么，当我们加上正则化项后，又该如何求解呢？</p>
 <p>假设，我们的正则化的值等于一个常数，它的图像如下所示：</p>
-<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-13-093553.jpg" alt="1_uHXe9qibzdqieBfje7Hggw"></p>
+<p><img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-13-093553.jpg" alt="1_uHXe9qibzdqieBfje7Hggw"></p>
 <p>我们注意到，在红色直线上，并不是所有点都是稀疏点，而只有在顶点处的点才是稀疏的，因为顶点处的点某些维度为0。现在，我们要做的是就是扩大这个红色的形状，让它慢慢的靠近上图中蓝色的直线直到两者有公共点。当我们慢慢增大后，我们发现，最有可能成为公共交点的就是红色形状的顶点。而从刚才的分析中，我们知道，红色形状的顶点是稀疏点，所以，加上L1正则化后，得到的解往往都是稀疏的，而且这些公共点对应的常数$c$也是比较小的。</p>
-<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-04-13-093556.jpg" alt="1_0QRBxi6dlivROqCSFQeYhA"></p>
+<p><img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-04-13-093556.jpg" alt="1_0QRBxi6dlivROqCSFQeYhA"></p>
 <p>而，L2正则化没有这种稀疏性特点。</p>
 <h3 id="特征选择"><a href="#特征选择" class="headerlink" title="特征选择"></a>特征选择</h3><p>L1正则化具有特征选择的功能，这是因为L1正则化通常会产生系数的解，假设我们有100个系数，在L1正则化的作用下只有10个系数非0，那么这就等价于我们从100个特征中抽出10个重要的特征。</p>
 <h2 id="计算复杂度"><a href="#计算复杂度" class="headerlink" title="计算复杂度"></a>计算复杂度</h2><p>在计算效率上，L2优于L1，因为L1正则化通常是不可导的，这导致我们不能用矩阵方式来求解它，而大多数是依赖于近似的方式。</p>

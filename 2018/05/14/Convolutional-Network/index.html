@@ -89,22 +89,22 @@
 <meta property="og:site_name" content="简单 专注">
 <meta property="og:description" content="Convolutional Layer我们将卷积、padding、stride和filter的概念都整合起来，构建卷积神经网络。对于卷积后输出的结果，还需要经过激活函数来得到最终卷积层的输出：  现在考虑卷积层中需要的参数： 假设，卷积操作为：$f\cdot f\cdot n_c\cdot n’_c$，则总共需要的参数为：$f\cdot f\cdot n_c \cdot n’_c+1(bias)$">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-14-073109.jpg">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-14-073111.jpg">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-14-073110.jpg">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-14-73113.jpg">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-14-073112.jpg">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-14-073113.jpg">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-14-073114.jpg">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-14-73110.jpg">
-<meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-14-073106.jpg">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-05-14-073109.jpg">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-05-14-073111.jpg">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-05-14-073110.jpg">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-05-14-73113.jpg">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-05-14-073112.jpg">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-05-14-073113.jpg">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-05-14-073114.jpg">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-05-14-73110.jpg">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-05-14-073106.jpg">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-14-73107.jpg">
 <meta property="og:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-14-073108.jpg">
-<meta property="og:updated_time" content="2018-09-24T15:23:44.832Z">
+<meta property="og:updated_time" content="2018-11-22T06:15:44.816Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Convolutional Network">
 <meta name="twitter:description" content="Convolutional Layer我们将卷积、padding、stride和filter的概念都整合起来，构建卷积神经网络。对于卷积后输出的结果，还需要经过激活函数来得到最终卷积层的输出：  现在考虑卷积层中需要的参数： 假设，卷积操作为：$f\cdot f\cdot n_c\cdot n’_c$，则总共需要的参数为：$f\cdot f\cdot n_c \cdot n’_c+1(bias)$">
-<meta name="twitter:image" content="http://p6sh0jwf6.bkt.clouddn.com/2018-05-14-073109.jpg">
+<meta name="twitter:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-05-14-073109.jpg">
 
 
 
@@ -420,7 +420,7 @@
 
       
         <h1 id="Convolutional-Layer"><a href="#Convolutional-Layer" class="headerlink" title="Convolutional Layer"></a>Convolutional Layer</h1><p>我们将卷积、padding、stride和filter的概念都整合起来，构建卷积神经网络。对于卷积后输出的结果，还需要经过激活函数来得到最终卷积层的输出：</p>
-<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-05-14-073109.jpg" alt="Screen Shot 2018-05-14 at 11.19.00"></p>
+<p><img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-05-14-073109.jpg" alt="Screen Shot 2018-05-14 at 11.19.00"></p>
 <p>现在考虑卷积层中需要的参数：</p>
 <p>假设，卷积操作为：$f\cdot f\cdot n_c\cdot n’_c$，则总共需要的参数为：$f\cdot f\cdot n_c \cdot n’_c+1(bias)$个</p>
 <p>因为，在卷积神经网络中，会涉及不同的卷积层，池化层或者全连接，为了区分每层的参数及超参数，我们做如下的定义：</p>
@@ -438,33 +438,33 @@
 <li>Weights：$f^{[l]}\cdot f^{[l]}\cdot n_c^{[l-1]}\cdot n_c^{[l]}$</li>
 <li>bias：$n_c^{[l]}$</li>
 </ul>
-<h1 id="Pooling-Layers"><a href="#Pooling-Layers" class="headerlink" title="Pooling Layers"></a>Pooling Layers</h1><p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-05-14-073111.jpg" alt="Screen Shot 2018-05-14 at 11.35.30"></p>
+<h1 id="Pooling-Layers"><a href="#Pooling-Layers" class="headerlink" title="Pooling Layers"></a>Pooling Layers</h1><p><img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-05-14-073111.jpg" alt="Screen Shot 2018-05-14 at 11.35.30"></p>
 <p>常见的Pooling操作有：</p>
 <ul>
 <li>Average pooling.</li>
 <li>Max pooling.</li>
 </ul>
 <h1 id="CNN-Example"><a href="#CNN-Example" class="headerlink" title="CNN Example"></a>CNN Example</h1><p>将卷积层、池化层和全连接层组合拼接成一个比较深的网络结构，就得到了CNN网络：</p>
-<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-05-14-073110.jpg" alt="Screen Shot 2018-05-14 at 11.38.55"></p>
-<h1 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h1><p>我们通过实现一个小型的CNN来深入理解网络的细节，其模型结构如下所示：<img src="http://p6sh0jwf6.bkt.clouddn.com/2018-05-14-73113.jpg" alt="model"></p>
+<p><img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-05-14-073110.jpg" alt="Screen Shot 2018-05-14 at 11.38.55"></p>
+<h1 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h1><p>我们通过实现一个小型的CNN来深入理解网络的细节，其模型结构如下所示：<img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-05-14-73113.jpg" alt="model"></p>
 <h2 id="卷积层"><a href="#卷积层" class="headerlink" title="卷积层"></a>卷积层</h2><p>卷积层涉及到卷积、padding、stride、filter、activcation等概念，卷积层将输入转换成不同维度的输出：</p>
-<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-05-14-073112.jpg" alt="conv_nn"></p>
+<p><img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-05-14-073112.jpg" alt="conv_nn"></p>
 <h3 id="Zero-Padding"><a href="#Zero-Padding" class="headerlink" title="Zero-Padding"></a>Zero-Padding</h3><p>padding操作对图片四周填充默认值，这个值通常是0：</p>
-<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-05-14-073113.jpg" alt="PAD"></p>
+<p><img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-05-14-073113.jpg" alt="PAD"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># GRADED FUNCTION: zero_pad</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">zero_pad</span><span class="params">(X, pad)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Pad with zeros all images of the dataset X. The padding is applied to the height and width of an image, </span></span><br><span class="line"><span class="string">    as illustrated in Figure 1.</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    Argument:</span></span><br><span class="line"><span class="string">    X -- python numpy array of shape (m, n_H, n_W, n_C) representing a batch of m images</span></span><br><span class="line"><span class="string">    pad -- integer, amount of padding around each image on vertical and horizontal dimensions</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">    X_pad -- padded image of shape (m, n_H + 2*pad, n_W + 2*pad, n_C)</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">### START CODE HERE ### (≈ 1 line)</span></span><br><span class="line">    X_pad = np.pad(X, ((<span class="number">0</span>,<span class="number">0</span>), (pad, pad), (pad, pad), (<span class="number">0</span>,<span class="number">0</span>)), <span class="string">'constant'</span>)</span><br><span class="line">    <span class="comment">### END CODE HERE ###</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> X_pad</span><br></pre></td></tr></table></figure>
-<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-05-14-073114.jpg" alt="download"></p>
+<p><img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-05-14-073114.jpg" alt="download"></p>
 <h3 id="单步卷积操作"><a href="#单步卷积操作" class="headerlink" title="单步卷积操作"></a>单步卷积操作</h3><p>实现单步卷积操作，将卷积核与输入进行卷积操作，包含如下步骤：</p>
 <ul>
 <li>输入数据；</li>
 <li>将卷积核作用于输入数据对应的每个位置上；</li>
 <li>对其他通道采用同样的操作。</li>
 </ul>
-<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-05-14-73110.jpg" alt="Convolution_schematic"></p>
+<p><img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-05-14-73110.jpg" alt="Convolution_schematic"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># GRADED FUNCTION: conv_single_step</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">conv_single_step</span><span class="params">(a_slice_prev, W, b)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Apply one filter defined by parameters W on a single slice (a_slice_prev) of the output activation </span></span><br><span class="line"><span class="string">    of the previous layer.</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    Arguments:</span></span><br><span class="line"><span class="string">    a_slice_prev -- slice of input data of shape (f, f, n_C_prev)</span></span><br><span class="line"><span class="string">    W -- Weight parameters contained in a window - matrix of shape (f, f, n_C_prev)</span></span><br><span class="line"><span class="string">    b -- Bias parameters contained in a window - matrix of shape (1, 1, 1)</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">    Z -- a scalar value, result of convolving the sliding window (W, b) on a slice x of the input data</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">### START CODE HERE ### (≈ 2 lines of code)</span></span><br><span class="line">    <span class="comment"># Element-wise product between a_slice and W. Do not add the bias yet.</span></span><br><span class="line">    s = a_slice_prev * W</span><br><span class="line">    <span class="comment"># Sum over all entries of the volume s.</span></span><br><span class="line">    Z = np.sum(s)</span><br><span class="line">    <span class="comment"># Add bias b to Z. Cast b to a float() so that Z results in a scalar value.</span></span><br><span class="line">    Z = Z + np.squeeze(b)</span><br><span class="line">    <span class="comment">### END CODE HERE ###</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> Z</span><br></pre></td></tr></table></figure>
 <h3 id="卷积神经网络——前向运算"><a href="#卷积神经网络——前向运算" class="headerlink" title="卷积神经网络——前向运算"></a>卷积神经网络——前向运算</h3><ul>
 <li>选择区域；</li>
 </ul>
-<p><img src="http://p6sh0jwf6.bkt.clouddn.com/2018-05-14-073106.jpg" alt="vert_horiz_kiank"></p>
+<p><img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-05-14-073106.jpg" alt="vert_horiz_kiank"></p>
 <ul>
 <li>定义输出的维度；</li>
 </ul>
