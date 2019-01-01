@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>简单 专注</title>
+  <title>Hello</title>
   
   
   <link href="/atom.xml" rel="self"/>
@@ -10,7 +10,7 @@
   <id>http://conghuai.me/</id>
   
   <author>
-    <name>香菜</name>
+    <name>独木舟</name>
     
   </author>
   
