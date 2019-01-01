@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="dl,nlp,word2vec," />
 
 
 
@@ -81,16 +81,22 @@
 
 
 
-<meta name="description" content="Algorithm/Machine Learning/Deep Learning/NLP">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hello">
-<meta property="og:url" content="http://conghuai.me/categories/Natural-Language-Processing/Feature-Extraction/index.html">
+<meta name="description" content="背景在训练神经网络时，每当接受一个训练样本，然后调整所有神经单元权重参数，来使神经网络预测更加准确。换句话说，每个训练样本都将会调整所有神经网络中的参数。我们词汇表的大小决定了我们skip-gram 神经网络将会有一个非常大的权重参数，并且所有的权重参数会随着数十亿训练样本不断调整。negative sampling 每次让一个训练样本仅仅更新一小部分的权重参数，从而降低梯度下降过程中的计算量。如">
+<meta name="keywords" content="dl,nlp,word2vec">
+<meta property="og:type" content="article">
+<meta property="og:title" content="负采样">
+<meta property="og:url" content="http://conghuai.me/2018/05/23/word2vec 1-5：负采样/index.html">
 <meta property="og:site_name" content="Hello">
-<meta property="og:description" content="Algorithm/Machine Learning/Deep Learning/NLP">
+<meta property="og:description" content="背景在训练神经网络时，每当接受一个训练样本，然后调整所有神经单元权重参数，来使神经网络预测更加准确。换句话说，每个训练样本都将会调整所有神经网络中的参数。我们词汇表的大小决定了我们skip-gram 神经网络将会有一个非常大的权重参数，并且所有的权重参数会随着数十亿训练样本不断调整。negative sampling 每次让一个训练样本仅仅更新一小部分的权重参数，从而降低梯度下降过程中的计算量。如">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-08-19-035535.png">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-08-19-080409.png">
+<meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-08-19-081025.png">
+<meta property="og:updated_time" content="2019-01-01T04:17:13.450Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello">
-<meta name="twitter:description" content="Algorithm/Machine Learning/Deep Learning/NLP">
+<meta name="twitter:title" content="负采样">
+<meta name="twitter:description" content="背景在训练神经网络时，每当接受一个训练样本，然后调整所有神经单元权重参数，来使神经网络预测更加准确。换句话说，每个训练样本都将会调整所有神经网络中的参数。我们词汇表的大小决定了我们skip-gram 神经网络将会有一个非常大的权重参数，并且所有的权重参数会随着数十亿训练样本不断调整。negative sampling 每次让一个训练样本仅仅更新一小部分的权重参数，从而降低梯度下降过程中的计算量。如">
+<meta name="twitter:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-08-19-035535.png">
 
 
 
@@ -120,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://conghuai.me/categories/Natural-Language-Processing/Feature-Extraction/"/>
+  <link rel="canonical" href="http://conghuai.me/2018/05/23/word2vec 1-5：负采样/"/>
 
 
 
 
 
-  <title>Category: Feature Extraction | Hello</title>
+  <title>负采样 | Hello</title>
   
 
 
@@ -145,7 +151,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -249,55 +255,236 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block category">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>Feature Extraction<small>Category</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://conghuai.me/2018/05/23/word2vec 1-5：负采样/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="独木舟">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hello">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/05/23/词向量总结/" itemprop="url">
-              
-                <span itemprop="name">词向量总结</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">负采样</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-05-23T11:26:25+08:00"
-              content="2018-05-23" >
-          05-23
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-23T11:26:25+08:00">
+                2018-05-23
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/自然语言处理/" itemprop="url" rel="index">
+                    <span itemprop="name">自然语言处理</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/自然语言处理/文本特征抽取/" itemprop="url" rel="index">
+                    <span itemprop="name">文本特征抽取</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/05/23/word2vec 1-5：负采样/" class="leancloud_visitors" data-flag-title="负采样">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  523 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  2 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>在训练神经网络时，每当接受一个训练样本，然后调整所有神经单元权重参数，来使神经网络预测更加准确。换句话说，每个训练样本都将会调整所有神经网络中的参数。<br>我们词汇表的大小决定了我们skip-gram 神经网络将会有一个非常大的权重参数，并且所有的权重参数会随着数十亿训练样本不断调整。<br><strong>negative sampling</strong> 每次让一个训练样本仅仅更新一小部分的权重参数，从而降低梯度下降过程中的计算量。<br>如果 vocabulary 大小为1万时， 当输入样本 ( “fox”, “quick”) 到神经网络时， “ fox” 经过 one-hot 编码，在输出层我们期望对应 “quick” 单词的那个神经元结点输出 1，其余 9999 个都应该输出 0。在这里，这9999个我们期望输出为0的神经元结点所对应的单词我们为 negative word. negative sampling 的想法也很直接 ，将随机选择一小部分的 negative words，比如选 10个 negative words 来更新对应的权重参数。</p>
+<h1 id="负采样策略"><a href="#负采样策略" class="headerlink" title="负采样策略"></a>负采样策略</h1><p><img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-08-19-035535.png" alt=""></p>
+<h1 id="CBOW-负采样"><a href="#CBOW-负采样" class="headerlink" title="CBOW + 负采样"></a>CBOW + 负采样</h1><p>在将逻辑回归模型扩展到多分类的时候，有两种思路，一种是修改损失函数，采用<code>softmax</code>损失函数，第二种是通过训练<code>K</code>个不同的二分类模型，采用<code>ovr</code>的方式来解决多分类问题。<br>当我们采用负采样策略时，我们采用<code>ovr</code>的策略， 本来是应该训练<code>V</code>个二分类器的，但是负采样的想法就是，对于负类，我们随机采样<code>K</code>个即可。</p>
+<h2 id="模型结构"><a href="#模型结构" class="headerlink" title="模型结构"></a>模型结构</h2><p><img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-08-19-080409.png" alt="|center|"></p>
+<h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><p>可以采用极大似然估计，使得概率最大<br>$$E = -log\sigma(v^{\prime T}_{w_{j^*}}\cdot h)\prod_{i=1}^K[1-\sigma (v^{\prime T}_{w_i}\cdot h)]$$</p>
+<h1 id="Skip-Gram-负采样"><a href="#Skip-Gram-负采样" class="headerlink" title="Skip-Gram + 负采样"></a>Skip-Gram + 负采样</h1><h2 id="模型结构-1"><a href="#模型结构-1" class="headerlink" title="模型结构"></a>模型结构</h2><p><img src="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-08-19-081025.png" alt=""></p>
+<h2 id="损失函数-1"><a href="#损失函数-1" class="headerlink" title="损失函数"></a>损失函数</h2><p>$$E = -\sum_{c=1}^Clog\sigma(v^{\prime T}_{w_{c,j^*}}\cdot h)\prod_{i=1}^K[1-\sigma (v^{\prime T}_{w_{c,i}}\cdot h)]$$</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/dl/" rel="tag"># dl</a>
+          
+            <a href="/tags/nlp/" rel="tag"># nlp</a>
+          
+            <a href="/tags/word2vec/" rel="tag"># word2vec</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/23/word2vec 1-4：层次softmax/" rel="next" title="层次softmax">
+                <i class="fa fa-chevron-left"></i> 层次softmax
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/23/word2vec 1-1：概述/" rel="prev" title="概述">
+                概述 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -305,6 +492,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -325,8 +516,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -345,7 +545,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -356,7 +556,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">39</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -413,6 +613,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#负采样策略"><span class="nav-number">2.</span> <span class="nav-text">负采样策略</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CBOW-负采样"><span class="nav-number">3.</span> <span class="nav-text">CBOW + 负采样</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#模型结构"><span class="nav-number">3.1.</span> <span class="nav-text">模型结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#损失函数"><span class="nav-number">3.2.</span> <span class="nav-text">损失函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Skip-Gram-负采样"><span class="nav-number">4.</span> <span class="nav-text">Skip-Gram + 负采样</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#模型结构-1"><span class="nav-number">4.1.</span> <span class="nav-text">模型结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#损失函数-1"><span class="nav-number">4.2.</span> <span class="nav-text">损失函数</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -553,6 +769,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

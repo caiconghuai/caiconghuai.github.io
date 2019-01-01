@@ -2094,7 +2094,7 @@ Random Forest(RF) = bagging + fully-g
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://conghuai.me/2018/05/23/词向量总结/">
+    <link itemprop="mainEntityOfPage" href="http://conghuai.me/2018/05/23/word2vec 1-2：Skip-Gram Model/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="独木舟">
@@ -2113,7 +2113,7 @@ Random Forest(RF) = bagging + fully-g
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/05/23/词向量总结/" itemprop="url">词向量总结</a></h1>
+                <a class="post-title-link" href="/2018/05/23/word2vec 1-2：Skip-Gram Model/" itemprop="url">Skip-Gram Model</a></h1>
         
 
         <div class="post-meta">
@@ -2148,8 +2148,8 @@ Random Forest(RF) = bagging + fully-g
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Deep-Learning/" itemprop="url" rel="index">
-                    <span itemprop="name">Deep Learning</span>
+                  <a href="/categories/自然语言处理/" itemprop="url" rel="index">
+                    <span itemprop="name">自然语言处理</span>
                   </a>
                 </span>
 
@@ -2159,19 +2159,8 @@ Random Forest(RF) = bagging + fully-g
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Natural-Language-Processing/" itemprop="url" rel="index">
-                    <span itemprop="name">Natural Language Processing</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Natural-Language-Processing/Feature-Extraction/" itemprop="url" rel="index">
-                    <span itemprop="name">Feature Extraction</span>
+                  <a href="/categories/自然语言处理/文本特征抽取/" itemprop="url" rel="index">
+                    <span itemprop="name">文本特征抽取</span>
                   </a>
                 </span>
 
@@ -2187,7 +2176,7 @@ Random Forest(RF) = bagging + fully-g
 
           
           
-             <span id="/2018/05/23/词向量总结/" class="leancloud_visitors" data-flag-title="词向量总结">
+             <span id="/2018/05/23/word2vec 1-2：Skip-Gram Model/" class="leancloud_visitors" data-flag-title="Skip-Gram Model">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -2212,7 +2201,7 @@ Random Forest(RF) = bagging + fully-g
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  650 字
+                  609 字
                 </span>
               
 
@@ -2228,7 +2217,7 @@ Random Forest(RF) = bagging + fully-g
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  2 分钟
+                  3 分钟
                 </span>
               
             </div>
@@ -2251,12 +2240,16 @@ Random Forest(RF) = bagging + fully-g
       
         
           
-          自然语言处理任务中，词通常作为最小的基本单位，如何提取词的特征也成为非常重要的话题。常见的提取特征的方式有：one-hot表示、tf-idf表示、word class和word embedding方式。
-词袋模型One-Hot这种方式对词的表征方式非常的简单直接，首先收集样本中的词，构建词表，假设总
+          网络架构
+模型训练参数表示
+输入：$x$，表示one-hot；
+输出：$\{y_1,…,y_C\}$，类别one-hot；
+$W$表示输入层和隐藏层的权值矩阵，第$i^{th}$行代表第$i^{th}$个词对应的词向量权值；
+$W^\prime$表示隐藏层和输出层的权值矩阵，维度为$N\times 
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/05/23/词向量总结/#more" rel="contents">
+            <a class="btn" href="/2018/05/23/word2vec 1-2：Skip-Gram Model/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -2298,7 +2291,7 @@ Random Forest(RF) = bagging + fully-g
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2348,7 +2341,7 @@ Random Forest(RF) = bagging + fully-g
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2359,7 +2352,7 @@ Random Forest(RF) = bagging + fully-g
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">39</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>

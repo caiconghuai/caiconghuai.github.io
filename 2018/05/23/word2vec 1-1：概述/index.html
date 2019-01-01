@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="dl,nlp,word2vec," />
 
 
 
@@ -81,16 +81,18 @@
 
 
 
-<meta name="description" content="Algorithm/Machine Learning/Deep Learning/NLP">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hello">
-<meta property="og:url" content="http://conghuai.me/categories/Deep-Learning/index.html">
+<meta name="description" content="词向量的作用 我们可以通过计算它们对应的单词向量之间的余弦相似度来测量两个单词之间的语义相似性。 我们可以使用这些单词向量作为各种监督NLP任务的特征，例如文档分类，命名实体识别和情感分析。 这些向量中包含的语义信息使它们成为这些任务的强大功能。  Skip-Gram和CBOW比较CBOW在cbow方法中，是用周围词预测中心词，从而利用中心词的预测结果情况，使用GradientDesent方法，不">
+<meta name="keywords" content="dl,nlp,word2vec">
+<meta property="og:type" content="article">
+<meta property="og:title" content="概述">
+<meta property="og:url" content="http://conghuai.me/2018/05/23/word2vec 1-1：概述/index.html">
 <meta property="og:site_name" content="Hello">
-<meta property="og:description" content="Algorithm/Machine Learning/Deep Learning/NLP">
+<meta property="og:description" content="词向量的作用 我们可以通过计算它们对应的单词向量之间的余弦相似度来测量两个单词之间的语义相似性。 我们可以使用这些单词向量作为各种监督NLP任务的特征，例如文档分类，命名实体识别和情感分析。 这些向量中包含的语义信息使它们成为这些任务的强大功能。  Skip-Gram和CBOW比较CBOW在cbow方法中，是用周围词预测中心词，从而利用中心词的预测结果情况，使用GradientDesent方法，不">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-01-01T04:13:58.627Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello">
-<meta name="twitter:description" content="Algorithm/Machine Learning/Deep Learning/NLP">
+<meta name="twitter:title" content="概述">
+<meta name="twitter:description" content="词向量的作用 我们可以通过计算它们对应的单词向量之间的余弦相似度来测量两个单词之间的语义相似性。 我们可以使用这些单词向量作为各种监督NLP任务的特征，例如文档分类，命名实体识别和情感分析。 这些向量中包含的语义信息使它们成为这些任务的强大功能。  Skip-Gram和CBOW比较CBOW在cbow方法中，是用周围词预测中心词，从而利用中心词的预测结果情况，使用GradientDesent方法，不">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://conghuai.me/categories/Deep-Learning/"/>
+  <link rel="canonical" href="http://conghuai.me/2018/05/23/word2vec 1-1：概述/"/>
 
 
 
 
 
-  <title>Category: Deep Learning | Hello</title>
+  <title>概述 | Hello</title>
   
 
 
@@ -145,7 +147,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -249,55 +251,242 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block category">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>Deep Learning<small>Category</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://conghuai.me/2018/05/23/word2vec 1-1：概述/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="独木舟">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hello">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/05/23/词向量总结/" itemprop="url">
-              
-                <span itemprop="name">词向量总结</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">概述</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-05-23T11:26:25+08:00"
-              content="2018-05-23" >
-          05-23
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-23T11:26:25+08:00">
+                2018-05-23
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/自然语言处理/" itemprop="url" rel="index">
+                    <span itemprop="name">自然语言处理</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/自然语言处理/文本特征抽取/" itemprop="url" rel="index">
+                    <span itemprop="name">文本特征抽取</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/05/23/word2vec 1-1：概述/" class="leancloud_visitors" data-flag-title="概述">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  601 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  2 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="词向量的作用"><a href="#词向量的作用" class="headerlink" title="词向量的作用"></a>词向量的作用</h1><ol>
+<li>我们可以通过计算它们对应的单词向量之间的余弦相似度来测量两个单词之间的语义相似性。</li>
+<li>我们可以使用这些单词向量作为各种监督NLP任务的特征，例如文档分类，命名实体识别和情感分析。 这些向量中包含的语义信息使它们成为这些任务的强大功能。</li>
+</ol>
+<h1 id="Skip-Gram和CBOW比较"><a href="#Skip-Gram和CBOW比较" class="headerlink" title="Skip-Gram和CBOW比较"></a>Skip-Gram和CBOW比较</h1><h2 id="CBOW"><a href="#CBOW" class="headerlink" title="CBOW"></a>CBOW</h2><p>在cbow方法中，是用周围词预测中心词，从而利用中心词的预测结果情况，使用GradientDesent方法，不断的去调整周围词的向量。当训练完成之后，每个词都会作为中心词，把周围词的词向量进行了调整，这样也就获得了整个文本里面所有词的词向量。</p>
+<ul>
+<li>cbow的对周围词的调整是统一的：求出的gradient的值会同样的作用到每个周围词的词向量当中去。</li>
+<li>可以看到，cbow预测行为的次数跟整个文本的词数几乎是相等的（每次预测行为才会进行一次backpropgation, 而往往这也是最耗时的部分），复杂度大概是O(V);<h2 id="Skip-Gram"><a href="#Skip-Gram" class="headerlink" title="Skip-Gram"></a>Skip-Gram</h2>而skip-gram是用中心词来预测周围的词。在skip-gram中，会利用周围的词的预测结果情况，使用GradientDecent来不断的调整中心词的词向量，最终所有的文本遍历完毕之后，也就得到了文本所有词的词向量。</li>
+<li>可以看出，skip-gram进行预测的次数是要多于cbow的：因为每个词在作为中心词时，都要使用周围词进行预测一次。这样相当于比cbow的方法多进行了K次（假设K为窗口大小），因此时间的复杂度为O(KV)，训练时间要比cbow要长。</li>
+<li>但是在skip-gram当中，每个词都要收到周围的词的影响，每个词在作为中心词的时候，都要进行K次的预测、调整。<h2 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h2></li>
+<li><code>skip-gram</code>对于非频繁词训练得比较好，因为对于每个词，它都用周围词得到的损失值对其进行梯度更新；</li>
+<li><code>skip-gram</code>梯度下降，更新参数的次数为$O(KV)$，而<code>cbow</code>只要$O(V)$次，所以<code>skip-gram</code>的时间复杂度比较高。</li>
+</ul>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/dl/" rel="tag"># dl</a>
+          
+            <a href="/tags/nlp/" rel="tag"># nlp</a>
+          
+            <a href="/tags/word2vec/" rel="tag"># word2vec</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/23/word2vec 1-5：负采样/" rel="next" title="负采样">
+                <i class="fa fa-chevron-left"></i> 负采样
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/23/word2vec 1-2：Skip-Gram Model/" rel="prev" title="Skip-Gram Model">
+                Skip-Gram Model <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -305,6 +494,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -325,8 +518,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -345,7 +547,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -356,7 +558,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">39</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -413,6 +615,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#词向量的作用"><span class="nav-number">1.</span> <span class="nav-text">词向量的作用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Skip-Gram和CBOW比较"><span class="nav-number">2.</span> <span class="nav-text">Skip-Gram和CBOW比较</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CBOW"><span class="nav-number">2.1.</span> <span class="nav-text">CBOW</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Skip-Gram"><span class="nav-number">2.2.</span> <span class="nav-text">Skip-Gram</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#综述"><span class="nav-number">2.3.</span> <span class="nav-text">综述</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -553,6 +771,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
