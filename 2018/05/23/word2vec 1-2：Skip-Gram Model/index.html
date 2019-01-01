@@ -90,7 +90,7 @@
 <meta property="og:description" content="网络架构 模型训练参数表示 输入：$x$，表示one-hot； 输出：$\{y_1,…,y_C\}$，类别one-hot； $W$表示输入层和隐藏层的权值矩阵，第$i^{th}$行代表第$i^{th}$个词对应的词向量权值； $W^\prime$表示隐藏层和输出层的权值矩阵，维度为$N\times V$ 前向计算概率隐藏层因为$x$是one-hot的形式，$W$中只有一行权值会被送到隐藏层，所以隐">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-08-18-042210.png">
-<meta property="og:updated_time" content="2019-01-01T04:20:16.202Z">
+<meta property="og:updated_time" content="2019-01-01T04:35:21.802Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="word2vec 1-2：Skip-Gram Model">
 <meta name="twitter:description" content="网络架构 模型训练参数表示 输入：$x$，表示one-hot； 输出：$\{y_1,…,y_C\}$，类别one-hot； $W$表示输入层和隐藏层的权值矩阵，第$i^{th}$行代表第$i^{th}$个词对应的词向量权值； $W^\prime$表示隐藏层和输出层的权值矩阵，维度为$N\times V$ 前向计算概率隐藏层因为$x$是one-hot的形式，$W$中只有一行权值会被送到隐藏层，所以隐">
@@ -421,13 +421,13 @@
 <h3 id="输出层"><a href="#输出层" class="headerlink" title="输出层"></a>输出层</h3><p>我们这里需要对每个相近的词都产生一个输出值，但是这些输出值的权值是共享的：<br>$$u_{1,0}=u_{2,0} = … = u_{C,0} = v^{\prime T}_{w_0}\cdot h$$<br>$$u_{1,1}=u_{2,1} = … = u_{C,1} = v^{\prime T}_{w_1}\cdot h$$<br>$$…$$<br>$$u_{1,V}=u_{2,V} = … = u_{C,V} = v^{\prime T}_{w_V}\cdot h$$<br>对于这些分数，我们通过<code>softmax</code>函数将其转化为概率值：<br>$$p(w_{c,j} = w_{O,c} | w_I)=y_{c,j}=\frac{exp(u_{c,j})}{\sum_{j=1}^Vexp(u_j^\prime)}$$</p>
 </li>
 </ul>
-<h2 id="反向传播损失"><a href="#反向传播损失" class="headerlink" title="反向传播损失"></a>反向传播损失</h2><h3 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h3><p>$$\begin{aligned} E &amp;= -logp(w_{o,1}, w_{o,2},…,w_{o,c}|w_I) \\  &amp;= -log\prod_{c=1}^C\frac{exp(u_{c,j_c^<em>})}{\sum_{j\prime = 1}^Vexp(u_j^\prime)} \\  &amp;= -\sum_{c=1}^Cu_{j_c^</em>} + C\cdot log\sum_{j^\prime=1}^Vexp(u_j^\prime) \\ \end{aligned}$$</p>
+<h2 id="反向传播损失"><a href="#反向传播损失" class="headerlink" title="反向传播损失"></a>反向传播损失</h2><h3 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h3><p>$$\begin{align<em>} E &amp;= -logp(w_{o,1}, w_{o,2},…,w_{o,c}|w_I) \\  &amp;= -log\prod_{c=1}^C\frac{exp(u_{c,j_c^</em>})}{\sum_{j\prime = 1}^Vexp(u_j^\prime)} \\  &amp;= -\sum_{c=1}^Cu_{j_c^<em>} + C\cdot log\sum_{j^\prime=1}^Vexp(u_j^\prime) \\ \end{align</em>}$$</p>
 <h3 id="求导"><a href="#求导" class="headerlink" title="求导"></a>求导</h3><h4 id="对于-W-prime"><a href="#对于-W-prime" class="headerlink" title="对于$W^\prime$"></a>对于$W^\prime$</h4><p>$$\frac{\partial E}{\partial u_{c,j}}=y_{c,j} - t_{c,j}$$</p>
 <ul>
 <li>$t_{c,j}=1$如果第$c$个词属于第$j$个类别；</li>
 </ul>
 <p>$$\frac{\partial E}{\partial w_{i,j}^\prime}=\sum_{c=1}^C\frac{\partial E}{\partial u_{c,j}}\cdot \frac{\partial u_{c,j}}{\partial w_{i,j}^\prime}=\sum_{c=1}^C(y_{c,j}-t_{c,j})\cdot h_i$$<br>更新梯度为<br>$$w_{i,j}^{\prime(new)} = w_{i,j}^{\prime(old)} - \eta \cdot \sum_{c=1}^C(y_{c,j}-t_{c,j})\cdot h_i$$</p>
-<h4 id="对于-W"><a href="#对于-W" class="headerlink" title="对于$W$"></a>对于$W$</h4><p>对隐藏层求导<br>$$\begin{aligned} \frac{\partial E}{\partial h_i} &amp;= \sum_{j=1}^V \frac{\partial E}{\partial u_j}\cdot \frac{\partial u_j}{\partial h_i} \\  &amp;= \sum_{j=1}^V \sum_{c=1}^C(y_{c,j}-t_{c,j})\cdot w_{ij}^\prime \\  \end{aligned}$$<br>对输入参数求导<br>$$\begin{aligned} \frac{\partial E}{\partial w_{ki}} &amp;= \frac{\partial E}{\partial h_i}\cdot \frac{\partial h_i}{\partial w_{ki}} \\  &amp;= \sum_{j=1}^V \sum_{c=1}^C(y_{c,j}-t_{c,j})\cdot w_{ij}^\prime \cdot x_j  \end{aligned}$$<br>更新参数<br>$$w_{i,j}^{(new)} = w_{i,j}^{(old)} - \eta \cdot \sum_{j=1}^V \sum_{c=1}^C(y_{c,j}-t_{c,j})\cdot w_{i,j}^\prime \cdot x_j$$<br>如您所见，每个梯度下降更新都需要在整个词汇表中求和，这在计算上是昂贵的。</p>
+<h4 id="对于-W"><a href="#对于-W" class="headerlink" title="对于$W$"></a>对于$W$</h4><p>对隐藏层求导<br>$$\begin{align<em>} \frac{\partial E}{\partial h_i} &amp;= \sum_{j=1}^V \frac{\partial E}{\partial u_j}\cdot \frac{\partial u_j}{\partial h_i} \\  &amp;= \sum_{j=1}^V \sum_{c=1}^C(y_{c,j}-t_{c,j})\cdot w_{ij}^\prime \\  \end{align</em>}$$<br>对输入参数求导<br>$$\begin{align<em>} \frac{\partial E}{\partial w_{ki}} &amp;= \frac{\partial E}{\partial h_i}\cdot \frac{\partial h_i}{\partial w_{ki}} \\  &amp;= \sum_{j=1}^V \sum_{c=1}^C(y_{c,j}-t_{c,j})\cdot w_{ij}^\prime \cdot x_j  \end{align</em>}$$<br>更新参数<br>$$w_{i,j}^{(new)} = w_{i,j}^{(old)} - \eta \cdot \sum_{j=1}^V \sum_{c=1}^C(y_{c,j}-t_{c,j})\cdot w_{i,j}^\prime \cdot x_j$$<br>如您所见，每个梯度下降更新都需要在整个词汇表中求和，这在计算上是昂贵的。</p>
 
       
     </div>
