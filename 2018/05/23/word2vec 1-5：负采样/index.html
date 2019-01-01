@@ -84,7 +84,7 @@
 <meta name="description" content="背景在训练神经网络时，每当接受一个训练样本，然后调整所有神经单元权重参数，来使神经网络预测更加准确。换句话说，每个训练样本都将会调整所有神经网络中的参数。我们词汇表的大小决定了我们skip-gram 神经网络将会有一个非常大的权重参数，并且所有的权重参数会随着数十亿训练样本不断调整。negative sampling 每次让一个训练样本仅仅更新一小部分的权重参数，从而降低梯度下降过程中的计算量。如">
 <meta name="keywords" content="dl,nlp,word2vec">
 <meta property="og:type" content="article">
-<meta property="og:title" content="负采样">
+<meta property="og:title" content="word2vec 1-5：负采样">
 <meta property="og:url" content="http://conghuai.me/2018/05/23/word2vec 1-5：负采样/index.html">
 <meta property="og:site_name" content="Hello">
 <meta property="og:description" content="背景在训练神经网络时，每当接受一个训练样本，然后调整所有神经单元权重参数，来使神经网络预测更加准确。换句话说，每个训练样本都将会调整所有神经网络中的参数。我们词汇表的大小决定了我们skip-gram 神经网络将会有一个非常大的权重参数，并且所有的权重参数会随着数十亿训练样本不断调整。negative sampling 每次让一个训练样本仅仅更新一小部分的权重参数，从而降低梯度下降过程中的计算量。如">
@@ -92,9 +92,9 @@
 <meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-08-19-035535.png">
 <meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-08-19-080409.png">
 <meta property="og:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-08-19-081025.png">
-<meta property="og:updated_time" content="2019-01-01T04:17:13.450Z">
+<meta property="og:updated_time" content="2019-01-01T04:20:43.249Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="负采样">
+<meta name="twitter:title" content="word2vec 1-5：负采样">
 <meta name="twitter:description" content="背景在训练神经网络时，每当接受一个训练样本，然后调整所有神经单元权重参数，来使神经网络预测更加准确。换句话说，每个训练样本都将会调整所有神经网络中的参数。我们词汇表的大小决定了我们skip-gram 神经网络将会有一个非常大的权重参数，并且所有的权重参数会随着数十亿训练样本不断调整。negative sampling 每次让一个训练样本仅仅更新一小部分的权重参数，从而降低梯度下降过程中的计算量。如">
 <meta name="twitter:image" content="https://media-1253434227.cos.ap-chengdu.myqcloud.com/2018-08-19-035535.png">
 
@@ -132,7 +132,7 @@
 
 
 
-  <title>负采样 | Hello</title>
+  <title>word2vec 1-5：负采样 | Hello</title>
   
 
 
@@ -286,7 +286,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">负采样</h1>
+          <h1 class="post-title" itemprop="name headline">word2vec 1-5：负采样</h1>
         
 
         <div class="post-meta">
@@ -349,7 +349,7 @@
 
           
           
-             <span id="/2018/05/23/word2vec 1-5：负采样/" class="leancloud_visitors" data-flag-title="负采样">
+             <span id="/2018/05/23/word2vec 1-5：负采样/" class="leancloud_visitors" data-flag-title="word2vec 1-5：负采样">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -452,8 +452,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/23/word2vec 1-4：层次softmax/" rel="next" title="层次softmax">
-                <i class="fa fa-chevron-left"></i> 层次softmax
+              <a href="/2018/05/23/word2vec 1-4：层次softmax/" rel="next" title="word2vec 1-4：层次softmax">
+                <i class="fa fa-chevron-left"></i> word2vec 1-4：层次softmax
               </a>
             
           </div>
@@ -462,8 +462,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/05/23/word2vec 1-1：概述/" rel="prev" title="概述">
-                概述 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/05/23/word2vec 1-1：概述/" rel="prev" title="word2vec 1-1：概述">
+                word2vec 1-1：概述 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
